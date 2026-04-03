@@ -1,0 +1,17 @@
+---
+description: Tailwind CSS 与 Ant Design 5.x 协作规范
+globs: **/*.{tsx,css}
+---
+
+# 样式与 UI 规范
+
+- **分工**:
+  - 使用 **Ant Design** 作为基础组件库（Table, Form, Modal）。
+  - 使用 **Tailwind CSS** 处理布局 (Flex, Grid)、间距 (m, p)、尺寸和微调样式。
+- **AntD 主题**:
+  - 禁止在代码中硬编码颜色值（如 `#1677ff`）。
+  - 必须使用 AntD 的 `theme.useToken()` 获取全局 token。
+- **Tailwind 实践**:
+  - 避免过长的类名。如果超过 10 个类名，考虑换行或提取为变量。
+  - 动态类名使用 `clsx` 或 `tailwind-merge` 合并。
+- **响应式**: 必须优先考虑响应式设计，使用 Tailwind 的 `md:`, `lg:` 前缀。

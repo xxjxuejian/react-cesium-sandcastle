@@ -1,0 +1,41 @@
+---
+alwaysApply: true
+---
+
+# 通用命名与代码规范
+
+## 1. 命名规范 (Naming Conventions)
+
+- **文件与目录**:
+  - 组件文件: `PascalCase` (如 `UserCard.tsx`)。
+  - 非组件文件/目录: `kebab-case` (如 `auth-provider.ts`, `user-services/`)。
+  - 静态资源: `snake_case` (如 `logo_main.png`)。
+- **变量与函数**:
+  - 变量/通用函数: `camelCase` (如 `getUserId`)。
+  - 常量: `UPPER_SNAKE_CASE` (如 `MAX_RETRY_COUNT`)。
+  - 布尔值: 必须带有前缀，如 `isVisible`, `hasToken`, `canEdit`, `isLoading`。
+- **事件处理**:
+  - 处理函数: `handle` + 动作 (如 `handleSearch`, `handleSubmit`)。
+  - 属性回调: `on` + 动作 (如 `onSearch`, `onSuccess`)。
+
+## 2. 组件与 Hooks 基础
+
+- **组件定义**:
+  - 统一使用箭头函数: `const ComponentName: React.FC<Props> = (...) => { ... }`。
+  - 优先使用具名导出 (`export const ...`)。
+- **Hooks 基础**:
+  - 必须以 `use` 开头 (如 `useFetchData`)。
+  - 逻辑抽离原则: 任何超过 15 行的纯逻辑块，或跨组件复用的逻辑，必须抽离为自定义 Hook。
+  - 存放位置: 全局 Hook 存放在 `src/hooks/`，模块私有 Hook 存放在 `features/xxx/hooks/`。
+
+## 3. 代码风格 (Code Style)
+
+- **缩进与格式**: 使用 2 空格缩进，结尾分号。
+- **注释**:
+  - 复杂的业务逻辑必须有行前注释。
+  - 导出的公共函数/接口必须使用 JSDoc 注释。
+- **导入顺序**:
+  1. React 核心及官方库。
+  2. 第三方库 (AntD, Zustand, Tailwind 等)。
+  3. 项目内公共路径 (@/components, @/hooks)。
+  4. 相对路径依赖及样式文件。

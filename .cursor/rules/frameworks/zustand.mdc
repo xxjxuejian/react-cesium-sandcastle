@@ -1,0 +1,16 @@
+---
+description: Zustand 状态管理最佳实践
+globs: **/store/**/*.{ts,tsx}, **/*Store.ts
+---
+
+# Zustand 规范
+
+- **Store 结构**:
+  - 每个业务模块拥有独立的 Store 文件。
+  - 状态 (State) 和 动作 (Actions) 建议写在同一个对象内。
+- **不可变性**:
+  - 必须使用 `immer` 中间件来简化状态更新。
+- **访问模式**:
+  - **强制**在组件中使用 Selector 模式提取状态：`const user = useUserStore(s => s.user)`。
+  - 禁止直接解构 Store：`const { user } = useUserStore()` (这会导致性能问题)。
+- **持久化**: 涉及本地存储的状态需使用 `persist` 中间件。

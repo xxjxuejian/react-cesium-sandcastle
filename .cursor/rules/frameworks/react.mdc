@@ -1,0 +1,45 @@
+---
+description: React 18 架构、React Router 7 路由规范及 Zustand 状态管理准则
+globs: **/*.{tsx,ts}
+---
+
+# React 架构与逻辑规范
+
+## 1. 核心选型 (Core Stack)
+
+- **组件**: 强制函数组件 (FC)，禁止类组件。
+- **状态**: 全局状态用 **Zustand**，UI 局部状态用 `useState`。
+- **路由**: 使用 **React Router 7**。
+
+## 2. React Router 7 路由规范
+
+- **路由定义**:
+  - 优先使用 `createBrowserRouter` (Data APIs) 模式，而非传统的组件嵌套式路由。
+  - 路由配置应集中在 `src/routes/` 目录。
+- **数据加载 (Data Flow)**:
+  - 充分利用路由的 `loader` 属性进行页面数据预获取，减少组件挂载后的 "Loading" 状态跳动。
+  - 提交数据优先使用 `Form` 组件或 `useFetcher` 配合路由 `action`。
+- **导航控制**:
+  - 编程式导航使用 `useNavigate`。
+  - 声明式导航使用 `Link` 或 `NavLink`（用于菜单高亮）。
+- **懒加载**:
+  - 页面级组件必须使用 `lazy` 属性进行代码分割：`{ path: "/path", lazy: () => import("./Page") }`。
+
+## 3. Zustand 状态管理准则
+
+- **原子化**: 按功能拆分 Store (如 `useAuthStore`, `useUserStore`)。
+- **Selector 访问**: 强制通过 Selector 访问状态，防止组件不必要的重渲染。
+  - `const user = useAuthStore(s => s.user);` // 正确
+  - `const { user } = useAuthStore();` // 错误
+- **Actions 定义**: Actions 必须定义在 Store 内部，严禁在组件内直接修改 Store 状态。
+
+## 4. Hooks 逻辑抽象
+
+- **业务解耦**: 凡是涉及 API 调用、复杂计算、定时器逻辑的代码，必须提取到 `src/hooks/`。
+- **命名**: 自定义 Hook 必须以 `use` 开头。
+- **依赖管理**: 严格遵守 ESLint 的 Hook 依赖项检查，严禁为了规避警告而删除依赖。
+
+## 5. 性能与渲染
+
+- **列表 Key**: 必须使用唯一的业务 ID 作为 `key`。
+- **早返回模式**: 在组件顶部处理 `isLoading` 或 `error` 状态，避免深层嵌套的条件判断。

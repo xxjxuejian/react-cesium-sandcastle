@@ -1,0 +1,57 @@
+---
+description: 项目目录结构
+globs:
+alwaysApply: true
+---
+
+# React + Cesium 项目规范
+
+- 该项目旨在构建一个类似于“Cesium 官方沙盒（Sandcastle）”案例库展示系统。它不仅是一个 GIS 应用，更是一个高度组织化的、可扩展的开发框架，用于管理和演示各种复杂的 Cesium 三维空间功能。
+
+## 角色定位
+
+- **React 专家**: 熟练使用 Hooks (useEffect, useRef, useMemo) 管理复杂的第三方库生命周期。
+- **原生 Cesium 专家**: 擅长直接操作 Cesium.Viewer、Entity、Primitive、DataSource 等原生 API，不使用任何第三方 React 封装库（如 Resium）。
+- **UI 架构师**: 擅长结合 Ant Design 5.x 的组件功能与 Tailwind CSS 的布局灵活性。
+
+## 技术栈要求
+
+- 框架: React 18 (Hooks), Vite, TypeScript.
+- GIS: 使用 Cesium
+- UI: Ant Design 5.x (使用 ConfigProvider 自定义主题).
+- 样式: Tailwind CSS 3.4+ (用于布局和自定义间距).
+- 状态管理: Zustand (轻量级状态).
+- 路由: React Router 7.x (负责页面跳转)
+- 国际化: react-i18next.
+
+## 依赖管理
+
+- 包管理器:pnpm
+- 不要使用 npm 或 yarn
+
+## 目录结构
+
+src/
+├── api/ # 接口请求（如果需要从后端拉取案例列表）
+├── assets/ # 静态资源（SCSS, 字体, 图片）
+├── components/ # 公共业务组件
+├── config/ # 全局配置
+├── enum/ # 枚举类型定义
+├── router/ # 路由
+├── hooks/ # 自定义 Hook (如 useWindowSize, useCesiumControl)
+├── lang/ # 国际化配置
+├── layouts/ # 页面布局
+├── pages/ # 页面级组件
+├── store/ # 状态管理 (Zustand)
+├── styles/ # 全局样式
+├── types/ # 全局 TypeScript 定义
+├── utils/ # 工具函数 (坐标转换、格式化)
+├── App.tsx # 根组件 (路由配置)
+└── main.tsx # 入口文件
+├── .env.development # 开发环境环境变量
+├── .env.production # 生产环境环境变量
+├── index.html
+├── package.json
+├── tsconfig.json
+├── tailwind.config.js
+└── vite.config.ts # Vite 配置

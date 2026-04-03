@@ -1,0 +1,16 @@
+---
+description: 强制执行 TypeScript 严格模式和命名规范
+globs: **/*.{ts,tsx}
+---
+
+# TypeScript 规范
+
+- **严格类型**: 严禁使用 `any`。无法确定类型时使用 `unknown`。
+- **接口定义**:
+  - 优先使用 `interface` 定义对象结构，使用 `type` 定义联合类型或交叉类型。
+  - 组件 Props 必须定义为 `interface Props`。
+- **命名规范**:
+  - 类/接口/类型: `PascalCase` (如 `UserResponse`)。
+  - 枚举: `PascalCase`，成员使用 `UPPER_SNAKE_CASE`。
+  - 函数/变量: `camelCase`。
+- **导出**: 模块导出必须显式声明返回类型，特别是导出的 API 函数。
