@@ -19,22 +19,34 @@ export type MenuItem = Required<MenuProps>["items"][number] & CustomMenuItem;
 
 export const menuConfig: MenuItem[] = [
   {
-    key: "/",
+    key: "/home",
     icon: <HomeOutlined />,
     label: "首页",
     component: "home", // 对应 src/pages/dashboard.tsx 或 dashboard/index.tsx
-  },
-  {
-    key: "/user",
-    icon: <UserOutlined />,
-    label: "用户管理",
-    component: "user",
   },
   {
     key: "/dashboard",
     icon: <DashboardOutlined />,
     label: "仪表盘",
     component: "dashboard",
+  },
+  {
+    key: "/user",
+    icon: <UserOutlined />,
+    label: "用户",
+    component: "user",
+    children: [
+      {
+        key: "/user/list",
+        label: "用户列表",
+        component: "user/list",
+      },
+      {
+        key: "/user/add",
+        label: "添加用户",
+        component: "user/add",
+      },
+    ],
   },
   {
     key: "/settings",

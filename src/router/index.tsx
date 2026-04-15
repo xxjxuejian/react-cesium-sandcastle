@@ -26,7 +26,7 @@ const lazyLoad = (componentPath: string) => {
   const importFn = modules[fullPath] || modules[indexPath];
 
   if (!importFn) {
-    console.error(`未找到组件文件: ${fullPath} 或 ${indexPath}`);
+    // console.error(`未找到组件文件: ${fullPath} 或 ${indexPath}`);
     return <NotFound />;
   }
 
