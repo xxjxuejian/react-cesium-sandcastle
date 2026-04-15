@@ -1,41 +1,79 @@
-import { createBrowserRouter } from "react-router";
-import Layout from "@/layouts";
-import Home from "@/pages/home";
-import Dashboard from "@/pages/dashboard";
-import User from "@/pages/user";
-import NotFound from "@/pages/error/NotFound";
+import React, { lazy, Suspense } from "react";
 
-export const router = createBrowserRouter([
+import { createBrowserRouter, Navigate } from "react-router";
+import type { RouteObject } from "react-router";
+
+import type { MenuItem } from "@/config/menuConfig";
+import { menuConfig } from "@/config/menuConfig";
+const NotFound = lazy(() => import("@/pages/error/NotFound"));
+const MainLayout = lazy(() => import("@/layouts"));
+
+/**
+ * 1. 使用 Vite 的 glob 导入所有页面组件
+ * 这会生成一个对象，键是文件路径，值是一个返回 import() 的函数
+ * 匹配 src/pages 下的所有 .tsx 文件
+ */
+const modules = import.meta.glob("../pages/**/*.tsx");
+
+// 辅助函数：根据字符串路径动态转换为组件
+const lazyLoad = (componentPath: string) => {
+  // 尝试匹配多种可能的路径格式
+  // 这里统一约定 componentPath 对应的组件为 src/pages/${componentPath}/index.tsx
+  // 如果找不到，则返回一个错误组件
+  const fullPath = `../pages/${componentPath}.tsx`;
+  const indexPath = `../pages/${componentPath}/index.tsx`;
+
+  const importFn = modules[fullPath] || modules[indexPath];
+
+  if (!importFn) {
+    console.error(`未找到组件文件: ${fullPath} 或 ${indexPath}`);
+    return <NotFound />;
+  }
+
+  // 使用 React.lazy 动态加载
+  const Component = lazy(
+    importFn as () => Promise<{ default: React.ComponentType }>,
+  );
+
+  return (
+    <Suspense fallback={<div className="p-4">加载中...</div>}>
+      <Component />
+    </Suspense>
+  );
+};
+
+/**
+ * 2. 递归生成路由表
+ */
+const generateRoutes = (items: MenuItem[]): RouteObject[] => {
+  const routes: RouteObject[] = [];
+
+  items.forEach((item) => {
+    if (item.component) {
+      routes.push({
+        path: item.key as string,
+        element: lazyLoad(item.component),
+      });
+    }
+
+    if (item.children) {
+      routes.push(...generateRoutes(item.children));
+    }
+  });
+
+  return routes;
+};
+
+const router = createBrowserRouter([
   {
     path: "/",
-    element: <Layout />, // 使用骨架组件作为父级
+    element: <MainLayout />,
     children: [
-      {
-        index: true, // 默认索引路由，即访问 / 时显示 Home
-        element: <Home />,
-      },
-      {
-        path: "dashboard",
-        element: <Dashboard />,
-      },
-      {
-        path: "settings",
-        element: <div>系统设置页面 (内联组件测试)</div>,
-      },
-      {
-        path: "user",
-        element: <User />,
-      },
-      {
-        path: "profile/:id", // 动态路由测试
-        element: (
-          <div>用户详情 ID: {window.location.pathname.split("/").pop()}</div>
-        ),
-      },
+      { index: true, element: <Navigate to="/dashboard" replace /> },
+      ...generateRoutes(menuConfig),
+      { path: "*", element: <NotFound /> },
     ],
   },
-  {
-    path: "*", // 全局 404
-    element: <NotFound />,
-  },
 ]);
+
+export default router;
