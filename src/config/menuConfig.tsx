@@ -11,6 +11,7 @@ import type { MenuProps } from "antd"; // 引入 AntD 的 MenuProps
 type CustomMenuItem = {
   component?: string; // 例如 'dashboard'
   children?: MenuItem[];
+  redirect?: string; // 可选的重定向路径
 };
 
 // 使用 AntD 导出的类型定义单个菜单项
@@ -19,27 +20,53 @@ export type MenuItem = Required<MenuProps>["items"][number] & CustomMenuItem;
 
 export const menuConfig: MenuItem[] = [
   {
-    key: "/",
+    key: "/home",
     icon: <HomeOutlined />,
-    label: "首页",
+    label: "home",
     component: "home", // 对应 src/pages/dashboard.tsx 或 dashboard/index.tsx
   },
   {
-    key: "/user",
+    key: "/getting-started",
     icon: <UserOutlined />,
-    label: "用户管理",
-    component: "user",
+    label: "getting-started",
+    redirect: "/getting-started/hello-world", // 访问 /getting-started 时自动重定向到第一个子菜单
+    children: [
+      {
+        key: "/getting-started/hello-world",
+        label: "hello-world",
+        component: "getting-started/hello-world",
+      },
+      {
+        key: "/getting-started/resolution-scale",
+        label: "resolution-scale",
+        component: "getting-started/resolution-scale",
+      },
+    ],
   },
   {
-    key: "/dashboard",
+    key: "/showcases",
     icon: <DashboardOutlined />,
-    label: "仪表盘",
-    component: "dashboard",
+    label: "showcases",
+    redirect: "/showcases/google-2d-tiles",
+    children: [
+      {
+        key: "/showcases/google-2d-tiles",
+        label: "google-2d-tiles",
+        component: "showcases/google-2d-tiles",
+      },
+    ],
   },
   {
-    key: "/settings",
+    key: "/animation",
     icon: <SettingOutlined />,
-    label: "系统设置",
-    component: "settings",
+    label: "animation",
+    redirect: "/animation/clock",
+    children: [
+      {
+        key: "/animation/clock",
+        label: "clock",
+        component: "animation/clock",
+      },
+    ],
   },
 ];

@@ -25,10 +25,10 @@ const MainLayout: React.FC = () => {
   return (
     <Layout className="min-h-screen">
       {/* 左侧侧边栏 */}
-      <Sider trigger={null} collapsible collapsed={collapsed}>
+      <Sider trigger={null} collapsible collapsed={collapsed} theme="light">
         <div className="demo-logo-vertical" />
         <Menu
-          theme="dark"
+          theme="light"
           mode="inline"
           defaultSelectedKeys={[location.pathname]}
           items={menuConfig}

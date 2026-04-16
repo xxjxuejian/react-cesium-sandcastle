@@ -3,6 +3,6 @@
 @tailwind utilities;
 
 :root {
-  --sidebar-width: 210px;
-  --sidebar-collapsed-width: 54px;
+  --sidebar-width: 200px;
+  --sidebar-collapsed-width: 80px;
 }

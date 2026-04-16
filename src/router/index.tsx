@@ -49,13 +49,23 @@ const generateRoutes = (items: MenuItem[]): RouteObject[] => {
   const routes: RouteObject[] = [];
 
   items.forEach((item) => {
+    // A. 处理重定向：如果有 redirect 属性，注册一个重定向路由
+    // 注意：重定向路由应该放在普通页面路由之前，以确保正确匹配
+    // 重定向路由的写法：path对应菜单项的key，element是一个Navigate组件，to属性指向redirect的值
+    if (item.redirect) {
+      routes.push({
+        path: item.key as string,
+        element: <Navigate to={item.redirect} replace />,
+      });
+    }
+    // B. 处理普通页面：如果有 component，注册该路由
     if (item.component) {
       routes.push({
         path: item.key as string,
         element: lazyLoad(item.component),
       });
     }
-
+    // C. 递归子级
     if (item.children) {
       routes.push(...generateRoutes(item.children));
     }
@@ -69,7 +79,8 @@ const router = createBrowserRouter([
     path: "/",
     element: <MainLayout />,
     children: [
-      { index: true, element: <Navigate to="/dashboard" replace /> },
+      // 访问 / 时重定向到 /home
+      { index: true, element: <Navigate to="/home" replace /> },
       ...generateRoutes(menuConfig),
       { path: "*", element: <NotFound /> },
     ],
