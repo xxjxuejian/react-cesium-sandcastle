@@ -1,6 +1,14 @@
 {
+  "permissions": {
+    "allow": [
+      "mcp__antd__antd_info",
+      "mcp__antd__antd_doc",
+      "mcp__antd__antd_demo",
+      "Bash(pnpm build *)"
+    ]
+  },
+  "enableAllProjectMcpServers": true,
   "enabledMcpjsonServers": [
     "antd"
-  ],
-  "enableAllProjectMcpServers": true
+  ]
 }
