@@ -32,7 +32,7 @@ export const mockRoutes: BackendRouteItem[] = [
         component: "getting-started/hello-world",
         meta: {
           title: "Hello World",
-          titleKey: "menu.helloWorld",
+          titleKey: "menu.gettingStarted.helloWorld",
           showInMenu: true,
           order: 1,
         },
@@ -43,7 +43,7 @@ export const mockRoutes: BackendRouteItem[] = [
         component: "getting-started/resolution-scale",
         meta: {
           title: "分辨率缩放",
-          titleKey: "menu.resolutionScale",
+          titleKey: "menu.gettingStarted.resolutionScale",
           showInMenu: true,
           order: 2,
         },
@@ -68,7 +68,31 @@ export const mockRoutes: BackendRouteItem[] = [
         component: "showcases/google-2d-tiles",
         meta: {
           title: "Google 2D Tiles",
-          titleKey: "menu.google2dTiles",
+          titleKey: "menu.showcases.google2dTiles",
+          showInMenu: true,
+          order: 1,
+        },
+      },
+    ],
+  },
+  {
+    path: "animation",
+    name: "animation",
+    meta: {
+      title: "动画",
+      titleKey: "menu.animation",
+      icon: "SettingOutlined",
+      showInMenu: true,
+      order: 4,
+    },
+    redirect: "/animation/clock",
+    children: [
+      {
+        path: "clock",
+        name: "clock",
+        meta: {
+          title: "时钟",
+          titleKey: "menu.animation.clock",
           showInMenu: true,
           order: 1,
         },
