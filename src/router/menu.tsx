@@ -7,7 +7,7 @@ import {
   UserOutlined,
 } from "@ant-design/icons";
 import type { MenuProps } from "antd";
-
+import type { TFunction } from "i18next";
 import type { BackendRouteItem } from "./types";
 
 type MenuItem = Required<MenuProps>["items"][number];
@@ -33,6 +33,7 @@ function joinPath(parentPath: string, path: string) {
 // 只会生成 meta.showInMenu 为 true 的路由，并按 meta.order 从小到大排序。
 export function createMenuItems(
   routes: BackendRouteItem[],
+  t: TFunction,
   parentPath = "",
 ): MenuItem[] {
   return routes
@@ -48,15 +49,20 @@ export function createMenuItems(
         ? iconMap[iconName as keyof typeof iconMap]
         : undefined;
 
+      // 获取国际化的标题。
+      const title = route.meta?.titleKey
+        ? t(route.meta.titleKey)
+        : route.meta?.title;
+
       // 递归处理子路由，让多级路由结构转换成多级菜单结构。
       const children = route.children
-        ? createMenuItems(route.children, fullPath)
+        ? createMenuItems(route.children, t, fullPath)
         : undefined;
 
       return {
         key: fullPath,
         icon: Icon ? createElement(Icon) : undefined,
-        label: route.meta?.title,
+        label: title,
         children: children?.length ? children : undefined,
       };
     });

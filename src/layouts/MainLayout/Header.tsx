@@ -2,7 +2,7 @@
 
 import { Button, Layout } from "antd";
 import { MenuOutlined } from "@ant-design/icons";
-
+import { LanguageSwitch } from "@/components/LanguageSwitch";
 const { Header } = Layout;
 
 type MainLayoutHeaderProps = {
@@ -12,6 +12,7 @@ type MainLayoutHeaderProps = {
 export function MainLayoutHeader({ onMenuClick }: MainLayoutHeaderProps) {
   return (
     <Header className="flex h-14 items-center justify-between bg-white px-4 shadow-sm">
+      {/* 移动端用来展开侧边栏的按钮 */}
       <Button
         type="text"
         icon={<MenuOutlined />}
@@ -19,8 +20,9 @@ export function MainLayoutHeader({ onMenuClick }: MainLayoutHeaderProps) {
         onClick={onMenuClick}
       />
 
-      <div className="flex items-center gap-2">
+      <div className="flex w-full items-center justify-center gap-2">
         {/* 后期放主题切换、语言切换、用户菜单 */}
+        <LanguageSwitch />
       </div>
     </Header>
   );

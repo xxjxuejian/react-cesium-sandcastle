@@ -1,18 +1,25 @@
 // 负责桌面端左侧菜单。这里放 AntD Sider、Menu、菜单点击跳转、当前路由选中态。
 import { Layout, Menu } from "antd";
 import { useLocation, useNavigate } from "react-router";
+import { useMemo } from "react";
 import type { MenuProps } from "antd";
 
 import { mockRoutes } from "@/router/mockRoutes";
 import { createMenuItems } from "@/router/menu";
+import { useTranslation } from "react-i18next";
 
 const { Sider } = Layout;
 
-const menuItems = createMenuItems(mockRoutes);
+// const menuItems = createMenuItems(mockRoutes);
 
 export function MainLayoutSidebar() {
   const location = useLocation();
   const navigate = useNavigate();
+  const { t, i18n } = useTranslation();
+  const menuItems = useMemo(
+    () => createMenuItems(mockRoutes, t),
+    [t, i18n.language],
+  );
 
   const onMenuClick: MenuProps["onClick"] = ({ key }) => {
     navigate(key);

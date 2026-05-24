@@ -8,7 +8,6 @@ const MainLayout = lazy(() => import("@/layouts"));
 const NotFound = lazy(() => import("@/pages/error/NotFound"));
 
 const layoutRoutes = transformRoutes(mockRoutes);
-console.log("routes: , layoutRoutes", layoutRoutes);
 
 const router = createBrowserRouter([
   {

@@ -20,7 +20,7 @@ export const mockRoutes: BackendRouteItem[] = [
     redirect: "/getting-started/hello-world",
     meta: {
       title: "快速开始",
-      titleKey: "menu.gettingStarted",
+      titleKey: "menu.gettingStarted.title",
       icon: "UserOutlined",
       showInMenu: true,
       order: 2,
@@ -56,7 +56,7 @@ export const mockRoutes: BackendRouteItem[] = [
     redirect: "/showcases/google-2d-tiles",
     meta: {
       title: "示例展示",
-      titleKey: "menu.showcases",
+      titleKey: "menu.showcases.title",
       icon: "DashboardOutlined",
       showInMenu: true,
       order: 3,
@@ -80,7 +80,7 @@ export const mockRoutes: BackendRouteItem[] = [
     name: "animation",
     meta: {
       title: "动画",
-      titleKey: "menu.animation",
+      titleKey: "menu.animation.title",
       icon: "SettingOutlined",
       showInMenu: true,
       order: 4,
