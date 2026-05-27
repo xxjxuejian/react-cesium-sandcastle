@@ -17,6 +17,9 @@ const enUS = {
   },
   header: {
     switchLanguage: "Switch language",
+    fullScreen: "Full Screen",
+    exitFullscreen: "Exit Full Screen",
+    github: "GitHub",
   },
 };
 

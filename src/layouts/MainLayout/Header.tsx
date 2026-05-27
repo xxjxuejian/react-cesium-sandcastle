@@ -3,6 +3,7 @@
 import { Button, Layout } from "antd";
 import { MenuOutlined } from "@ant-design/icons";
 import { LanguageSwitch } from "@/components/LanguageSwitch";
+import { FullScreen } from "@/components/FullScreen";
 const { Header } = Layout;
 
 type MainLayoutHeaderProps = {
@@ -23,6 +24,7 @@ export function MainLayoutHeader({ onMenuClick }: MainLayoutHeaderProps) {
       <div className="flex w-full items-center justify-center gap-2">
         {/* 后期放主题切换、语言切换、用户菜单 */}
         <LanguageSwitch />
+        <FullScreen />
       </div>
     </Header>
   );

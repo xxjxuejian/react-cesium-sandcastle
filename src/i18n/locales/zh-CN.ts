@@ -17,6 +17,9 @@ const zhCN = {
   },
   header: {
     switchLanguage: "切换语言",
+    fullScreen: "全屏",
+    exitFullscreen: "退出全屏",
+    github: "GitHub",
   },
 };
 
