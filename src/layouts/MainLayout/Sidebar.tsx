@@ -10,9 +10,11 @@ import { useTranslation } from "react-i18next";
 
 const { Sider } = Layout;
 
-// const menuItems = createMenuItems(mockRoutes);
+type MainLayoutSidebarProps = {
+  collapsed: boolean;
+};
 
-export function MainLayoutSidebar() {
+export function MainLayoutSidebar({ collapsed }: MainLayoutSidebarProps) {
   const location = useLocation();
   const navigate = useNavigate();
   const { t, i18n } = useTranslation();
@@ -26,9 +28,23 @@ export function MainLayoutSidebar() {
   };
 
   return (
-    <Sider breakpoint="lg" collapsedWidth="0" className="hidden lg:block">
-      <div className="flex h-14 items-center px-4 text-white">
-        Cesium Sandcastle
+    <Sider
+      breakpoint="lg"
+      collapsedWidth={80}
+      collapsed={collapsed}
+      collapsible
+      trigger={null}
+      className="hidden lg:block"
+    >
+      <div className="flex h-14 items-center overflow-hidden px-4 text-white">
+        <span
+          className={[
+            "whitespace-nowrap transition-opacity duration-200",
+            collapsed ? "opacity-0" : "opacity-100",
+          ].join(" ")}
+        >
+          Cesium Sandcastle
+        </span>
       </div>
 
       <Menu
@@ -36,6 +52,7 @@ export function MainLayoutSidebar() {
         mode="inline"
         selectedKeys={[location.pathname]}
         items={menuItems}
+        inlineCollapsed={collapsed}
         onClick={onMenuClick}
       />
     </Sider>

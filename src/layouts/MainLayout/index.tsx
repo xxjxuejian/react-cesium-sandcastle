@@ -7,22 +7,31 @@ import { useState } from "react";
 import { MainLayoutHeader } from "./Header";
 import { MainLayoutSidebar } from "./Sidebar";
 import { MainLayoutContent } from "./Content";
-// import { MainLayoutMobileDrawer } from "./MobileDrawer";
+import { MainLayoutMobileDrawer } from "./MobileDrawer";
 
 export default function MainLayout() {
   const [mobileOpen, setMobileOpen] = useState(false);
+  const [sidebarCollapsed, setSidebarCollapsed] = useState(false);
+
+  const toggleSidebarCollapsed = () => {
+    setSidebarCollapsed((collapsed) => !collapsed);
+  };
 
   return (
     <Layout className="min-h-screen">
-      <MainLayoutSidebar />
+      <MainLayoutSidebar collapsed={sidebarCollapsed} />
 
-      {/* <MainLayoutMobileDrawer
+      <MainLayoutMobileDrawer
         open={mobileOpen}
         onClose={() => setMobileOpen(false)}
-      /> */}
+      />
 
       <Layout>
-        <MainLayoutHeader onMenuClick={() => setMobileOpen(true)} />
+        <MainLayoutHeader
+          sidebarCollapsed={sidebarCollapsed}
+          onMenuClick={() => setMobileOpen(true)}
+          onSidebarToggle={toggleSidebarCollapsed}
+        />
 
         <MainLayoutContent>
           <Outlet />
