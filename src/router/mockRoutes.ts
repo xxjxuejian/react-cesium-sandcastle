@@ -90,6 +90,7 @@ export const mockRoutes: BackendRouteItem[] = [
       {
         path: "clock",
         name: "clock",
+        component: "animation/clock",
         meta: {
           title: "时钟",
           titleKey: "menu.animation.clock",

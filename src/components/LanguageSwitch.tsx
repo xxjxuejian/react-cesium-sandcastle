@@ -3,7 +3,8 @@ import { Button, Dropdown, Tooltip } from "antd";
 import type { MenuProps } from "antd";
 import { useTranslation } from "react-i18next";
 
-type LanguageKey = "zh-CN" | "en-US";
+import { LANGUAGE_STORAGE_KEY } from "@/i18n";
+import type { AppLanguage } from "@/i18n";
 
 const languageItems: MenuProps["items"] = [
   {
@@ -20,10 +21,10 @@ export function LanguageSwitch() {
   const { t, i18n } = useTranslation();
 
   const onLanguageClick: MenuProps["onClick"] = ({ key }) => {
-    const language = key as LanguageKey;
+    const language = key as AppLanguage;
 
     i18n.changeLanguage(language);
-    localStorage.setItem("language", language);
+    localStorage.setItem(LANGUAGE_STORAGE_KEY, language);
   };
 
   return (
