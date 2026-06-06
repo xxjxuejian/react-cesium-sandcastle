@@ -37,6 +37,8 @@ export function LanguageSwitch() {
           onClick: onLanguageClick,
         }}
         trigger={["click"]}
+        placement="bottom"
+        arrow
       >
         <Button
           type="text"

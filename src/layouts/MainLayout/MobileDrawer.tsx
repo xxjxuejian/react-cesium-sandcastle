@@ -6,8 +6,7 @@ import type { MenuProps } from "antd";
 
 import { mockRoutes } from "@/router/mockRoutes";
 import { createMenuItems } from "@/router/menu";
-
-const menuItems = createMenuItems(mockRoutes);
+import { useTranslation } from "react-i18next";
 
 type MainLayoutMobileDrawerProps = {
   open: boolean;
@@ -20,6 +19,9 @@ export function MainLayoutMobileDrawer({
 }: MainLayoutMobileDrawerProps) {
   const location = useLocation();
   const navigate = useNavigate();
+  const { t } = useTranslation();
+
+  const menuItems = createMenuItems(mockRoutes, t);
 
   const onMenuClick: MenuProps["onClick"] = ({ key }) => {
     navigate(key);
@@ -32,10 +34,11 @@ export function MainLayoutMobileDrawer({
       placement="left"
       open={open}
       onClose={onClose}
-      width={280}
+      size={280}
       className="lg:hidden"
     >
       <Menu
+        theme="dark"
         mode="inline"
         selectedKeys={[location.pathname]}
         items={menuItems}
