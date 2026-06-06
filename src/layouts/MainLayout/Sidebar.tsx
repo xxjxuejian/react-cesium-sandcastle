@@ -17,11 +17,8 @@ type MainLayoutSidebarProps = {
 export function MainLayoutSidebar({ collapsed }: MainLayoutSidebarProps) {
   const location = useLocation();
   const navigate = useNavigate();
-  const { t, i18n } = useTranslation();
-  const menuItems = useMemo(
-    () => createMenuItems(mockRoutes, t),
-    [t, i18n.language],
-  );
+  const { t } = useTranslation();
+  const menuItems = useMemo(() => createMenuItems(mockRoutes, t), [t]);
 
   const onMenuClick: MenuProps["onClick"] = ({ key }) => {
     navigate(key);

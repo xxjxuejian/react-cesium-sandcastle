@@ -1,3 +1,11 @@
+import { DatePicker, Empty, Pagination, Space } from "antd";
+
 export default function Home() {
-  return <h1>欢迎来到首页</h1>;
+  return (
+    <Space orientation="vertical" size="large">
+      <DatePicker />
+      <Empty />
+      <Pagination total={85} showSizeChanger showQuickJumper />
+    </Space>
+  );
 }

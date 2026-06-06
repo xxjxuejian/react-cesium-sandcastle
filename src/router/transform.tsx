@@ -5,6 +5,7 @@ import { pageModules } from "./routeModules";
 import type { AppRouteObject, BackendRouteItem } from "./types";
 import type { PageModule } from "./routeModules";
 
+// eslint-disable-next-line react-refresh/only-export-components
 const NotFound = lazy(() => import("@/pages/error/NotFound"));
 function getPageImport(component?: string) {
   if (!component) return null;

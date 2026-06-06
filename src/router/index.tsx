@@ -4,7 +4,9 @@ import { createBrowserRouter, Navigate } from "react-router";
 import { mockRoutes } from "./mockRoutes";
 import { transformRoutes } from "./transform";
 
+// eslint-disable-next-line react-refresh/only-export-components
 const MainLayout = lazy(() => import("@/layouts"));
+// eslint-disable-next-line react-refresh/only-export-components
 const NotFound = lazy(() => import("@/pages/error/NotFound"));
 
 const layoutRoutes = transformRoutes(mockRoutes);

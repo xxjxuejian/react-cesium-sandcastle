@@ -1,6 +1,5 @@
 import { useMemo, type ReactNode } from "react";
 import { Breadcrumb } from "antd";
-import { HomeOutlined } from "@ant-design/icons";
 import { Link, useLocation } from "react-router";
 import { useTranslation } from "react-i18next";
 import type { BreadcrumbProps } from "antd";
