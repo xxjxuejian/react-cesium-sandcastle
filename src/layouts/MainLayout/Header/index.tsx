@@ -1,5 +1,5 @@
 // 负责顶部栏。这里放移动端菜单按钮、主题切换按钮、语言切换按钮、用户信息入口等。
-import { Button, Layout } from "antd";
+import { Button, Layout, theme } from "antd";
 import {
   MenuOutlined,
   MenuFoldOutlined,
@@ -8,9 +8,11 @@ import {
 import { LanguageSwitch } from "@/components/LanguageSwitch";
 import { FullScreen } from "@/components/FullScreen";
 import { BreadCrumb } from "@/components/BreadCrumb";
+import { ThemeSwitch } from "@/components/ThemeSwitch";
 import { UserProfile } from "./components/UserProfile";
 
 const { Header } = Layout;
+const { useToken } = theme;
 
 type MainLayoutHeaderProps = {
   onMenuClick: () => void;
@@ -23,8 +25,13 @@ export function MainLayoutHeader({
   onSidebarToggle,
   sidebarCollapsed,
 }: MainLayoutHeaderProps) {
+  const { token } = useToken();
+
   return (
-    <Header className="flex h-14 items-center justify-between bg-white px-4 shadow-sm">
+    <Header
+      className="flex h-14 items-center justify-between px-4 shadow-sm"
+      style={{ background: token.colorBgContainer }}
+    >
       {/* 移动端用来展开侧边栏的按钮 */}
       <Button
         type="text"
@@ -48,6 +55,7 @@ export function MainLayoutHeader({
 
       <div className="flex items-center justify-center gap-2">
         {/* 后期放主题切换、语言切换、用户菜单 */}
+        <ThemeSwitch />
         <LanguageSwitch />
         <FullScreen />
         {/* <GithubLink /> */}

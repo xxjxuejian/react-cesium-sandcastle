@@ -2,12 +2,14 @@ import { RouterProvider } from "react-router";
 
 import router from "@/router";
 import { AntdProvider } from "./AntdProvider";
-// import { ThemeProvider } from "./ThemeProvider";
+import { ThemeProvider } from "./ThemeProvider";
 
 export function AppProvider() {
   return (
-    <AntdProvider>
-      <RouterProvider router={router} />
-    </AntdProvider>
+    <ThemeProvider>
+      <AntdProvider>
+        <RouterProvider router={router} />
+      </AntdProvider>
+    </ThemeProvider>
   );
 }
