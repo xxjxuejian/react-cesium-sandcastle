@@ -1,5 +1,5 @@
 import { lazy, Suspense } from "react";
-import { createBrowserRouter, Navigate } from "react-router";
+import { createHashRouter, Navigate } from "react-router";
 
 import { mockRoutes } from "./mockRoutes";
 import { transformRoutes } from "./transform";
@@ -11,7 +11,7 @@ const NotFound = lazy(() => import("@/pages/error/NotFound"));
 
 const layoutRoutes = transformRoutes(mockRoutes);
 
-const router = createBrowserRouter([
+const router = createHashRouter([
   {
     path: "/",
     element: (
