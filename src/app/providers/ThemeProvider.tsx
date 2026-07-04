@@ -31,22 +31,12 @@ type ThemeProviderProps = {
 const THEME_STORAGE_KEY = "app-theme";
 
 // 主题上下文。默认值为 null，用于在 hook 中判断是否缺少 Provider。
+// 使用 React.createContext 创建一个 Context 对象。这个对象包含两个组件：Provider 和 Consumer。
 const ThemeContext = createContext<ThemeContextValue | null>(null);
 
 // 判断字符串是否是合法主题模式，同时帮助 TypeScript 收窄类型。
 function isThemeMode(value: string | null): value is ThemeMode {
   return value === "light" || value === "dark";
-}
-
-// 获取系统当前的深浅色偏好，作为用户未手动选择时的默认值。
-function getSystemThemeMode(): ThemeMode {
-  if (typeof window === "undefined") {
-    return "light";
-  }
-
-  return window.matchMedia("(prefers-color-scheme: dark)").matches
-    ? "dark"
-    : "light";
 }
 
 // 计算应用首次渲染时使用的主题模式。
@@ -62,7 +52,10 @@ function getInitialThemeMode(): ThemeMode {
     return storedThemeMode;
   }
 
-  return getSystemThemeMode();
+  // 获取系统当前的深浅色偏好，作为用户未手动选择时的默认值。
+  return window.matchMedia("(prefers-color-scheme: dark)").matches
+    ? "dark"
+    : "light";
 }
 
 // 提供全局主题状态，让 AntdProvider、Header 开关等组件共享同一份主题。
