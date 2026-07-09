@@ -100,4 +100,29 @@ export const mockRoutes: BackendRouteItem[] = [
       },
     ],
   },
+  {
+    path: "system-management",
+    name: "SystemManagement",
+    redirect: "/system-management/user-management",
+    meta: {
+      title: "系统管理",
+      titleKey: "menu.systemManagement.title",
+      icon: "SettingOutlined",
+      showInMenu: true,
+      order: 5,
+    },
+    children: [
+      {
+        path: "user-management",
+        name: "UserManagement",
+        component: "system-management/user-management",
+        meta: {
+          title: "用户管理",
+          titleKey: "menu.systemManagement.userManagement",
+          showInMenu: true,
+          order: 1,
+        },
+      },
+    ],
+  },
 ];

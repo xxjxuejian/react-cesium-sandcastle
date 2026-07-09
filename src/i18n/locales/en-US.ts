@@ -14,6 +14,10 @@ const enUS = {
       title: "Animation",
       clock: "Clock",
     },
+    systemManagement: {
+      title: "System Management",
+      userManagement: "User Management",
+    },
   },
   header: {
     switchLanguage: "Switch Language",

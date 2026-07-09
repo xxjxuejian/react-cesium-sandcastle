@@ -14,6 +14,10 @@ const zhCN = {
       title: "动画",
       clock: "时钟",
     },
+    systemManagement: {
+      title: "系统管理",
+      userManagement: "用户管理",
+    },
   },
   header: {
     switchLanguage: "切换语言",
