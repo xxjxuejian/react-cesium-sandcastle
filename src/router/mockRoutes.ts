@@ -123,6 +123,17 @@ export const mockRoutes: BackendRouteItem[] = [
           order: 1,
         },
       },
+      {
+        path: "shelter-management",
+        name: "ShelterManagement",
+        component: "system-management/shelter-management",
+        meta: {
+          title: "避难场所管理",
+          titleKey: "menu.systemManagement.shelterManagement",
+          showInMenu: true,
+          order: 2,
+        },
+      },
     ],
   },
 ];

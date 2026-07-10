@@ -17,6 +17,7 @@ const enUS = {
     systemManagement: {
       title: "System Management",
       userManagement: "User Management",
+      shelterManagement: "Shelter Management",
     },
   },
   header: {
