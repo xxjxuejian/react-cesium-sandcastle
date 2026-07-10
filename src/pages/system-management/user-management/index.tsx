@@ -1,4 +1,5 @@
 import { useCallback, useEffect, useState } from "react";
+import { message } from "antd";
 
 import {
   createUser,
@@ -30,9 +31,10 @@ export default function UserManagement() {
 
     try {
       const result = await getUserList(nextQuery);
-
       setUsers(result.list);
       setTotal(result.total);
+    } catch {
+      message.error("加载用户列表失败");
     } finally {
       setLoading(false);
     }
@@ -74,16 +76,25 @@ export default function UserManagement() {
     setModalOpen(true);
   }
 
+  function handleModalClose() {
+    setModalOpen(false);
+    setCurrentUser(null);
+  }
+
   async function handleDelete(user: UserRecord) {
-    await deleteUser(user.id);
+    try {
+      await deleteUser(user.id);
 
-    const nextPage =
-      users.length === 1 && query.page > 1 ? query.page - 1 : query.page;
+      const nextPage =
+        users.length === 1 && query.page > 1 ? query.page - 1 : query.page;
 
-    setQuery((currentQuery) => ({
-      ...currentQuery,
-      page: nextPage,
-    }));
+      setQuery((currentQuery) => ({
+        ...currentQuery,
+        page: nextPage,
+      }));
+    } catch {
+      message.error("删除用户失败");
+    }
   }
 
   async function handleSubmit(values: UserFormValues) {
@@ -96,12 +107,13 @@ export default function UserManagement() {
         await updateUser(currentUser.id, values);
       }
 
-      setModalOpen(false);
-      setCurrentUser(null);
+      handleModalClose();
       setQuery((currentQuery) => ({
         ...currentQuery,
         page: modalMode === "create" ? 1 : currentQuery.page,
       }));
+    } catch {
+      message.error("保存用户失败");
     } finally {
       setSubmitting(false);
     }
@@ -126,7 +138,7 @@ export default function UserManagement() {
         mode={modalMode}
         initialUser={currentUser}
         confirmLoading={submitting}
-        onCancel={() => setModalOpen(false)}
+        onCancel={handleModalClose}
         onSubmit={handleSubmit}
       />
     </>

@@ -42,6 +42,21 @@ const defaultFormValues: Partial<UserFormValues> = {
   gender: "unknown",
 };
 
+function getFormValues(initialUser: UserRecord | null) {
+  if (!initialUser) return defaultFormValues;
+
+  return {
+    username: initialUser.username,
+    nickname: initialUser.nickname,
+    status: initialUser.status,
+    gender: initialUser.gender,
+    department: initialUser.department,
+    role: initialUser.role,
+    phone: initialUser.phone,
+    email: initialUser.email,
+  };
+}
+
 export function UserFormModal({
   open,
   mode,
@@ -56,20 +71,8 @@ export function UserFormModal({
   useEffect(() => {
     if (!open) return;
 
-    form.setFieldsValue(
-      initialUser
-        ? {
-            username: initialUser.username,
-            nickname: initialUser.nickname,
-            status: initialUser.status,
-            gender: initialUser.gender,
-            department: initialUser.department,
-            role: initialUser.role,
-            phone: initialUser.phone,
-            email: initialUser.email,
-          }
-        : defaultFormValues,
-    );
+    form.resetFields();
+    form.setFieldsValue(getFormValues(initialUser));
   }, [form, initialUser, open]);
 
   function handleCancel() {
@@ -86,12 +89,10 @@ export function UserFormModal({
       confirmLoading={confirmLoading}
       onCancel={handleCancel}
       onOk={() => form.submit()}
-      destroyOnHidden
     >
       <Form<UserFormValues>
         form={form}
         layout="vertical"
-        preserve={false}
         onFinish={onSubmit}
       >
         <Form.Item

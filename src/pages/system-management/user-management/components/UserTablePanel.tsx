@@ -12,11 +12,7 @@ import {
 import type { TableProps } from "antd";
 import { useEffect } from "react";
 
-import type {
-  UserQueryParams,
-  UserRecord,
-  UserStatus,
-} from "../types";
+import type { UserQueryParams, UserRecord, UserStatus } from "../types";
 
 interface UserTablePanelProps {
   users: UserRecord[];
@@ -164,7 +160,7 @@ export function UserTablePanel({
   }
 
   return (
-    <Space className="w-full" direction="vertical" size="middle">
+    <Space className="w-full" orientation="vertical" size="middle">
       <Form<SearchFormValues>
         form={form}
         layout="inline"
