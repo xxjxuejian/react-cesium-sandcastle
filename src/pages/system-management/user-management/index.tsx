@@ -85,6 +85,8 @@ export default function UserManagement() {
     try {
       await deleteUser(user.id);
 
+      // 删除当前页最后一条数据后，自动返回上一页，
+      // 避免停留在一个已经不存在的空白分页上。
       const nextPage =
         users.length === 1 && query.page > 1 ? query.page - 1 : query.page;
 

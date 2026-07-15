@@ -1,0 +1,12 @@
+{
+  "extends": "./tsconfig.app.json",
+  "compilerOptions": {
+    "module": "NodeNext",
+    "moduleResolution": "NodeNext",
+    "allowImportingTsExtensions": false,
+    "noEmit": false,
+    "outDir": "./node_modules/.tmp/api-response-tests",
+    "types": ["node"]
+  },
+  "include": ["tests/**/*.test.ts"]
+}

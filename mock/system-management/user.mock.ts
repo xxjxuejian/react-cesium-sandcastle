@@ -1,3 +1,5 @@
+import type { ApiResponse } from "../../src/types/api.js";
+
 type UserStatus = "enabled" | "disabled";
 type UserGender = "male" | "female" | "unknown";
 
@@ -21,6 +23,11 @@ type UserQueryParams = Partial<
   page?: string;
   pageSize?: string;
 };
+
+interface UserListResult {
+  list: UserRecord[];
+  total: number;
+}
 
 interface UserMockRequest {
   url: string;
@@ -130,9 +137,13 @@ export default [
       const start = (page - 1) * pageSize;
 
       return {
-        list: filteredUsers.slice(start, start + pageSize),
-        total: filteredUsers.length,
-      };
+        code: 0,
+        message: "查询用户列表成功",
+        data: {
+          list: filteredUsers.slice(start, start + pageSize),
+          total: filteredUsers.length,
+        },
+      } satisfies ApiResponse<UserListResult>;
     },
   },
   {
@@ -146,7 +157,11 @@ export default [
       };
 
       users = [user, ...users];
-      return user;
+      return {
+        code: 0,
+        message: "新增用户成功",
+        data: user,
+      } satisfies ApiResponse<UserRecord>;
     },
   },
   {
@@ -157,12 +172,20 @@ export default [
       const userIndex = users.findIndex((user) => user.id === id);
 
       if (userIndex < 0) {
-        return { message: "用户不存在" };
+        return {
+          code: 40401,
+          message: "用户不存在",
+          data: null,
+        } satisfies ApiResponse<null>;
       }
 
       const updatedUser = { ...users[userIndex], ...body };
       users = users.map((user) => (user.id === id ? updatedUser : user));
-      return updatedUser;
+      return {
+        code: 0,
+        message: "更新用户成功",
+        data: updatedUser,
+      } satisfies ApiResponse<UserRecord>;
     },
   },
   {
@@ -170,8 +193,21 @@ export default [
     method: "delete",
     response: ({ url }) => {
       const id = getPathId(url);
+
+      if (!users.some((user) => user.id === id)) {
+        return {
+          code: 40401,
+          message: "用户不存在",
+          data: null,
+        } satisfies ApiResponse<null>;
+      }
+
       users = users.filter((user) => user.id !== id);
-      return undefined;
+      return {
+        code: 0,
+        message: "删除用户成功",
+        data: true,
+      } satisfies ApiResponse<boolean>;
     },
   },
 ] satisfies UserMockMethod[];

@@ -39,7 +39,7 @@ export function MainLayoutMobileDrawer({
       placement="left"
       open={open}
       onClose={onClose}
-      width={MOBILE_DRAWER_WIDTH}
+      size={MOBILE_DRAWER_WIDTH}
       closeIcon={<CloseOutlined className="text-white" />}
       className="lg:hidden"
       styles={{

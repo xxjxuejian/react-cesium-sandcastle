@@ -25,3 +25,6 @@ dist-ssr
 
 .codex/*
 .agents/*
+.superpowers/*
+docs/superpowers/*
+tests/*
