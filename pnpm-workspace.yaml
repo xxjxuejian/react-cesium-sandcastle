@@ -1,2 +1,5 @@
 allowBuilds:
   esbuild: true
+
+patchedDependencies:
+  vite-plugin-mock@3.0.2: patches/vite-plugin-mock@3.0.2.patch

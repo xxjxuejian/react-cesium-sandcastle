@@ -67,10 +67,10 @@ export function ShelterDetailModal({
               {shelter.address}
             </Descriptions.Item>
             <Descriptions.Item label="经纬度" span={2}>
-              {`${shelter.location.longitude}, ${shelter.location.latitude}`}
+              {`${shelter.location?.longitude}, ${shelter.location?.latitude}`}
             </Descriptions.Item>
             <Descriptions.Item label="高度">
-              {shelter.location.height ?? "-"}
+              {shelter.location?.height ?? "-"}
             </Descriptions.Item>
             <Descriptions.Item label="管理单位">
               {shelter.managementUnit}

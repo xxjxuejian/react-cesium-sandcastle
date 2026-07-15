@@ -1,0 +1,28 @@
+diff --git a/dist/client.cjs b/dist/client.cjs
+index d19f83d26d052a2362e110010662e8ec031918c4..a285f0d7ce77a88bba5161aeb3453b1358cd0128 100644
+--- a/dist/client.cjs
++++ b/dist/client.cjs
+@@ -62,7 +62,8 @@ function __XHR2ExpressReqWrapper__(_Mock, handle) {
+         method: type,
+         body: b,
+         query: __param2Obj__(url),
+-        headers
++        headers,
++        url
+       });
+     } else {
+       result = handle;
+diff --git a/dist/client.mjs b/dist/client.mjs
+index 5af75b8c15d435facc9d8d094c2ba9715dbf847d..833190dcd95f5b86edd9521e6f32de67e68ba7a1 100644
+--- a/dist/client.mjs
++++ b/dist/client.mjs
+@@ -60,7 +60,8 @@ function __XHR2ExpressReqWrapper__(_Mock, handle) {
+         method: type,
+         body: b,
+         query: __param2Obj__(url),
+-        headers
++        headers,
++        url
+       });
+     } else {
+       result = handle;

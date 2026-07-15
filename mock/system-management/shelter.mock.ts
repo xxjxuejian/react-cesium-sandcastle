@@ -171,6 +171,28 @@ function getPathId(url: string) {
 
 export default [
   {
+    /** 按 ID 查询避难场所详情。 */
+    url: "/api/system-management/shelters/:id",
+    method: "get",
+    response: ({ url }) => {
+      const shelter = shelters.find((item) => item.id === getPathId(url));
+
+      if (!shelter) {
+        return {
+          code: 40402,
+          message: "避难场所不存在",
+          data: null,
+        } satisfies ApiResponse<null>;
+      }
+
+      return {
+        code: 0,
+        message: "查询避难场所详情成功",
+        data: shelter,
+      } satisfies ApiResponse<ShelterRecord>;
+    },
+  },
+  {
     /** 查询避难场所列表，并在 Mock 层执行筛选和分页。 */
     url: "/api/system-management/shelters",
     method: "get",
@@ -198,28 +220,6 @@ export default [
           total: filteredShelters.length,
         },
       } satisfies ApiResponse<ShelterListResult>;
-    },
-  },
-  {
-    /** 按 ID 查询避难场所详情。 */
-    url: "/api/system-management/shelters/:id",
-    method: "get",
-    response: ({ url }) => {
-      const shelter = shelters.find((item) => item.id === getPathId(url));
-
-      if (!shelter) {
-        return {
-          code: 40402,
-          message: "避难场所不存在",
-          data: null,
-        } satisfies ApiResponse<null>;
-      }
-
-      return {
-        code: 0,
-        message: "查询避难场所详情成功",
-        data: shelter,
-      } satisfies ApiResponse<ShelterRecord>;
     },
   },
   {
