@@ -4,8 +4,8 @@ import { useLocation, useNavigate } from "react-router";
 import { useMemo } from "react";
 import type { MenuProps } from "antd";
 
-import { mockRoutes } from "@/router/mockRoutes";
 import { createMenuItems } from "@/router/menu";
+import { useAuthStore } from "@/store/auth";
 import { useTranslation } from "react-i18next";
 
 const { Sider } = Layout;
@@ -18,7 +18,8 @@ export function MainLayoutSidebar({ collapsed }: MainLayoutSidebarProps) {
   const location = useLocation();
   const navigate = useNavigate();
   const { t } = useTranslation();
-  const menuItems = useMemo(() => createMenuItems(mockRoutes, t), [t]);
+  const routes = useAuthStore((state) => state.routes);
+  const menuItems = useMemo(() => createMenuItems(routes, t), [routes, t]);
 
   const onMenuClick: MenuProps["onClick"] = ({ key }) => {
     navigate(key);

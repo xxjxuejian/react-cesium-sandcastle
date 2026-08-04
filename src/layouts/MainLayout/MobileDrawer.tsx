@@ -6,8 +6,8 @@ import { useLocation, useNavigate } from "react-router";
 import { useMemo } from "react";
 import type { MenuProps } from "antd";
 
-import { mockRoutes } from "@/router/mockRoutes";
 import { createMenuItems } from "@/router/menu";
+import { useAuthStore } from "@/store/auth";
 import { useTranslation } from "react-i18next";
 
 const MOBILE_DRAWER_WIDTH = "min(80vw, 220px)";
@@ -25,8 +25,9 @@ export function MainLayoutMobileDrawer({
   const location = useLocation();
   const navigate = useNavigate();
   const { t } = useTranslation();
+  const routes = useAuthStore((state) => state.routes);
 
-  const menuItems = useMemo(() => createMenuItems(mockRoutes, t), [t]);
+  const menuItems = useMemo(() => createMenuItems(routes, t), [routes, t]);
 
   const onMenuClick: MenuProps["onClick"] = ({ key }) => {
     navigate(key);

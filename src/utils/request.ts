@@ -1,5 +1,6 @@
 import type { ApiResponse } from "../types/api.js";
 import axios from "axios";
+import { getAccessToken } from "@/auth/token";
 
 /** 判断请求异常是否由主动取消产生。 */
 export function isRequestCanceled(error: unknown): boolean {
@@ -12,6 +13,12 @@ const request = axios.create({
 });
 
 request.interceptors.request.use((config) => {
+  const token = getAccessToken();
+
+  if (token) {
+    config.headers.set("Authorization", `Bearer ${token}`);
+  }
+
   return config;
 });
 

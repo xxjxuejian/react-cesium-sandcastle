@@ -1,0 +1,305 @@
+.login-shell {
+  --space-bg: #06111f;
+  --space-panel: #0b2239;
+  --space-cyan: #22d3ee;
+  --space-violet: #8b5cf6;
+  --space-text: #e6f4ff;
+  --space-muted: #7e93a8;
+  position: relative;
+  display: grid;
+  min-height: 100vh;
+  grid-template-columns: minmax(0, 1.25fr) minmax(380px, 0.75fr);
+  overflow: hidden;
+  color: var(--space-text);
+  background:
+    radial-gradient(circle at 20% 25%, rgb(34 211 238 / 12%), transparent 32%),
+    linear-gradient(135deg, #06111f 0%, #071827 52%, #091522 100%);
+  font-family: "Segoe UI Variable", "Segoe UI", sans-serif;
+}
+
+.login-shell::before {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  content: "";
+  opacity: 0.18;
+  background-image:
+    linear-gradient(rgb(126 147 168 / 16%) 1px, transparent 1px),
+    linear-gradient(90deg, rgb(126 147 168 / 16%) 1px, transparent 1px);
+  background-size: 64px 64px;
+  mask-image: linear-gradient(to right, black, transparent 72%);
+}
+
+.login-language {
+  position: absolute;
+  z-index: 4;
+  top: 24px;
+  right: 28px;
+}
+
+.login-language .ant-btn {
+  color: var(--space-text);
+}
+
+.login-intro,
+.login-panel-wrap {
+  position: relative;
+  z-index: 1;
+}
+
+.login-intro {
+  display: flex;
+  min-height: 100vh;
+  flex-direction: column;
+  justify-content: center;
+  padding: 8vh 8vw;
+}
+
+.login-eyebrow,
+.login-panel-kicker,
+.login-system-line,
+.coordinate {
+  font-family: Bahnschrift, "Arial Narrow", sans-serif;
+  letter-spacing: 0.16em;
+}
+
+.login-eyebrow {
+  margin-bottom: 18px;
+  color: var(--space-cyan);
+  font-size: 12px;
+}
+
+.login-intro h1 {
+  max-width: 720px;
+  margin: 0;
+  font-family: Bahnschrift, "Arial Narrow", sans-serif;
+  font-size: clamp(44px, 6vw, 84px);
+  font-weight: 520;
+  line-height: 0.98;
+  letter-spacing: -0.045em;
+}
+
+.login-intro > p {
+  max-width: 580px;
+  margin: 28px 0 0;
+  color: var(--space-muted);
+  font-size: 16px;
+  line-height: 1.8;
+}
+
+.orbital-map {
+  position: relative;
+  width: min(50vw, 620px);
+  height: 280px;
+  margin-top: 34px;
+}
+
+.orbital-globe {
+  position: absolute;
+  top: 34px;
+  left: 50%;
+  width: 210px;
+  height: 210px;
+  transform: translateX(-50%);
+  border: 1px solid rgb(34 211 238 / 48%);
+  border-radius: 50%;
+  background:
+    repeating-radial-gradient(ellipse at center, transparent 0 20px, rgb(34 211 238 / 15%) 21px 22px),
+    linear-gradient(90deg, transparent 49.5%, rgb(34 211 238 / 30%) 50%, transparent 50.5%);
+  box-shadow: inset -32px -16px 60px rgb(139 92 246 / 18%), 0 0 60px rgb(34 211 238 / 10%);
+}
+
+.orbit {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  border: 1px solid rgb(126 147 168 / 40%);
+  border-radius: 50%;
+}
+
+.orbit-one {
+  width: 480px;
+  height: 130px;
+  transform: translate(-50%, -50%) rotate(-8deg);
+}
+
+.orbit-two {
+  width: 380px;
+  height: 190px;
+  transform: translate(-50%, -50%) rotate(22deg);
+}
+
+.orbit span {
+  position: absolute;
+  top: 50%;
+  left: -4px;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--space-cyan);
+  box-shadow: 0 0 16px var(--space-cyan);
+  animation: orbital-pulse 2.4s ease-in-out infinite;
+}
+
+.orbit-two span {
+  right: 24px;
+  left: auto;
+  background: var(--space-violet);
+  box-shadow: 0 0 16px var(--space-violet);
+  animation-delay: -1.2s;
+}
+
+.coordinate {
+  position: absolute;
+  color: var(--space-muted);
+  font-size: 10px;
+}
+
+.coordinate-north {
+  top: 20px;
+  right: 24px;
+}
+
+.coordinate-east {
+  bottom: 18px;
+  left: 18px;
+}
+
+.login-system-line {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px 28px;
+  color: var(--space-muted);
+  font-size: 10px;
+}
+
+.login-system-line span::before {
+  display: inline-block;
+  width: 6px;
+  height: 6px;
+  margin-right: 8px;
+  border-radius: 50%;
+  background: var(--space-cyan);
+  content: "";
+}
+
+.login-panel-wrap {
+  display: flex;
+  min-height: 100vh;
+  align-items: center;
+  justify-content: center;
+  padding: 80px 7vw 60px 3vw;
+  border-left: 1px solid rgb(126 147 168 / 16%);
+  background: rgb(4 14 25 / 42%);
+  backdrop-filter: blur(12px);
+}
+
+.login-panel {
+  width: 100%;
+  max-width: 410px;
+}
+
+.login-panel-mark {
+  display: grid;
+  width: 44px;
+  height: 44px;
+  margin-bottom: 32px;
+  place-items: center;
+  border: 1px solid rgb(34 211 238 / 50%);
+  color: var(--space-cyan);
+  font-family: Bahnschrift, sans-serif;
+  font-size: 13px;
+  letter-spacing: 0.08em;
+  clip-path: polygon(0 0, 80% 0, 100% 20%, 100% 100%, 20% 100%, 0 80%);
+}
+
+.login-panel-kicker {
+  margin: 0 0 8px;
+  color: var(--space-cyan);
+  font-size: 10px;
+}
+
+.login-panel h2 {
+  margin: 0;
+  color: var(--space-text);
+  font-size: 32px;
+  font-weight: 600;
+}
+
+.login-panel-description {
+  margin: 10px 0 30px;
+  color: var(--space-muted);
+  line-height: 1.7;
+}
+
+.login-panel .ant-form-item-label > label {
+  color: #b9cbda;
+}
+
+.login-panel .ant-input-affix-wrapper {
+  border-color: rgb(126 147 168 / 28%);
+  background: rgb(6 17 31 / 74%);
+}
+
+.login-panel .ant-input {
+  background: transparent;
+}
+
+.login-error {
+  margin-bottom: 20px;
+}
+
+.login-submit {
+  height: 44px;
+  margin-top: 4px;
+  font-weight: 600;
+  box-shadow: 0 10px 28px rgb(34 211 238 / 16%);
+}
+
+.login-demo-accounts {
+  display: grid;
+  margin-top: 28px;
+  padding-top: 20px;
+  border-top: 1px solid rgb(126 147 168 / 18%);
+  grid-template-columns: auto 1fr;
+  gap: 6px 18px;
+  color: var(--space-muted);
+  font-size: 12px;
+}
+
+.login-demo-accounts span {
+  grid-row: 1 / 3;
+}
+
+.login-demo-accounts code {
+  color: #b9cbda;
+}
+
+@keyframes orbital-pulse {
+  0%, 100% { opacity: 0.45; transform: scale(0.85); }
+  50% { opacity: 1; transform: scale(1.15); }
+}
+
+@media (max-width: 900px) {
+  .login-shell {
+    grid-template-columns: 1fr;
+  }
+
+  .login-intro {
+    display: none;
+  }
+
+  .login-panel-wrap {
+    padding: 80px 24px 40px;
+    border-left: 0;
+    background:
+      radial-gradient(circle at 50% 20%, rgb(34 211 238 / 12%), transparent 36%),
+      transparent;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .orbit span {
+    animation: none;
+  }
+}

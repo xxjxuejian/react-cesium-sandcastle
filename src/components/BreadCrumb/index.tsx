@@ -4,8 +4,7 @@ import { Link, useLocation } from "react-router";
 import { useTranslation } from "react-i18next";
 import type { BreadcrumbProps } from "antd";
 import type { BackendRouteItem } from "@/router/types";
-
-import { mockRoutes } from "@/router/mockRoutes";
+import { useAuthStore } from "@/store/auth";
 
 type RouteBreadcrumb = {
   path: string;
@@ -76,8 +75,11 @@ function matchBreadcrumbs(
   return [];
 }
 
-function getHomeBreadcrumb(t: ReturnType<typeof useTranslation>["t"]) {
-  const homeRoute = mockRoutes.find(
+function getHomeBreadcrumb(
+  routes: BackendRouteItem[],
+  t: ReturnType<typeof useTranslation>["t"],
+) {
+  const homeRoute = routes.find(
     (route) => joinPath("", route.path) === HOME_PATH,
   );
 
@@ -99,14 +101,15 @@ function renderHomeTitle(title: string) {
 export function BreadCrumb() {
   const { pathname } = useLocation();
   const { t } = useTranslation();
+  const routes = useAuthStore((state) => state.routes);
 
   const items = useMemo<BreadcrumbProps["items"]>(() => {
     const matchedBreadcrumbs = matchBreadcrumbs(
-      mockRoutes,
+      routes,
       normalizePath(pathname),
       t,
     );
-    const homeBreadcrumb = getHomeBreadcrumb(t);
+    const homeBreadcrumb = getHomeBreadcrumb(routes, t);
     const breadcrumbs =
       matchedBreadcrumbs[0]?.path === HOME_PATH
         ? matchedBreadcrumbs
@@ -123,7 +126,7 @@ export function BreadCrumb() {
         title: isLast ? title : <Link to={breadcrumb.path}>{title}</Link>,
       };
     });
-  }, [pathname, t]);
+  }, [pathname, routes, t]);
 
   if (!items?.length) {
     return null;

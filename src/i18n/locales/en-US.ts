@@ -26,6 +26,26 @@ const enUS = {
     fullScreen: "Full Screen",
     exitFullscreen: "Exit Full Screen",
     github: "GitHub",
+    logout: "Sign out",
+  },
+  login: {
+    heroTitle: "Trace the motion of spatial data",
+    heroDescription:
+      "Enter Cesium Sandcastle and load the scenes, tools, and system capabilities available to your account.",
+    systemStatus: "Spatial services online",
+    routePolicy: "Identity-based routes",
+    renderEngine: "Cesium scene ready",
+    title: "Sign in to the console",
+    description: "Use a demo account to load the routes assigned to that role.",
+    username: "Username",
+    password: "Password",
+    usernamePlaceholder: "Enter your username",
+    passwordPlaceholder: "Enter your password",
+    usernameRequired: "Enter your username",
+    passwordRequired: "Enter your password",
+    submit: "Enter workspace",
+    loginFailed: "Sign-in failed. Try again.",
+    demoTitle: "Demo accounts",
   },
 };
 

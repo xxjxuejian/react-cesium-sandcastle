@@ -1,9 +1,17 @@
 import { lazy, Suspense } from "react";
+import type { ComponentType } from "react";
 import { Navigate, Outlet } from "react-router";
 
-import { pageModules } from "./routeModules";
 import type { AppRouteObject, BackendRouteItem } from "./types";
-import type { PageModule } from "./routeModules";
+
+export type PageModule = {
+  default: ComponentType;
+};
+
+export const pageModules = import.meta.glob<PageModule>(
+  "../pages/**/index.tsx",
+);
+console.log("pageModules", pageModules);
 
 // eslint-disable-next-line react-refresh/only-export-components
 const NotFound = lazy(() => import("@/pages/error/NotFound"));

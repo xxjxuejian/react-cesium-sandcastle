@@ -27,4 +27,3 @@ dist-ssr
 .agents/*
 .superpowers/*
 docs/superpowers/*
-tests/*
