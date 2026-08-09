@@ -112,6 +112,7 @@ function LoginRoute() {
   const status = useAuthStore((state) => state.status);
   const routes = useAuthStore((state) => state.routes);
   const location = useLocation();
+  console.log("登录状态发生变化")
 
   if (status === "booting") {
     return <LoadingScreen />;

@@ -74,6 +74,7 @@ export const useAuthStore = create<AuthState>((set) => ({
       return;
     }
 
+    console.log("调用恢复会话接口")
     //
     // 而是携带 token 请求 /auth/session，由后端确认会话仍然有效，再恢复用户信息和权限路由。
     // 携带 token 有axios请求拦截器中完成

@@ -6,7 +6,7 @@ import { useTranslation } from "react-i18next";
 import { LanguageSwitch } from "@/components/LanguageSwitch";
 import { useAuthStore } from "@/store/auth";
 import type { LoginRequest } from "@/auth/types";
-import "./login.css";
+import "./login.scss";
 
 const { darkAlgorithm } = theme;
 

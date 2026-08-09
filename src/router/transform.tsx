@@ -27,6 +27,7 @@ function lazyLoad(component?: string) {
   const importFn = getPageImport(component);
 
   if (!importFn) {
+    console.error(`未找到路由组件：${component}`);
     return <NotFound />;
   }
 
