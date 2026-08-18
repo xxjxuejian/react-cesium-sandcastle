@@ -1,8 +1,18 @@
 import { StrictMode } from "react";
 import { createRoot } from "react-dom/client";
+import { Ion } from "cesium";
 import "./index.css";
+import "cesium/Build/Cesium/Widgets/widgets.css";
 import App from "@/app/App";
 import { useAuthStore } from "@/store/auth";
+
+const cesiumIonToken = import.meta.env.VITE_CESIUM_ION_TOKEN?.trim();
+
+if (cesiumIonToken) {
+  Ion.defaultAccessToken = cesiumIonToken;
+} else {
+  console.warn("Cesium ion Token 未配置，部分在线资源可能无法加载！");
+}
 
 // 按启动顺序完成运行环境初始化、登录状态恢复和 React 应用挂载。
 async function bootstrap() {
