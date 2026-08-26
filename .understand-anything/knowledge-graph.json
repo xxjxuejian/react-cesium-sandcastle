@@ -1,0 +1,4630 @@
+{
+  "version": "1.0.0",
+  "project": {
+    "name": "react-cesium-sandcastle",
+    "languages": [
+      "config",
+      "css",
+      "html",
+      "javascript",
+      "json",
+      "markdown",
+      "mdc",
+      "patch",
+      "typescript",
+      "unknown",
+      "yaml"
+    ],
+    "frameworks": [
+      "GitHub Actions",
+      "React",
+      "Tailwind CSS",
+      "Vite",
+      "Zustand"
+    ],
+    "description": "这是一个用于学习 React、TypeScript 与 CesiumJS 的 Vite 应用，使用本地 CesiumJS 静态资源，并包含 Cesium Ion Token 与 GitHub Pages 子路径配置。注意：项目包含超过 100 个源文件；如需提升分析速度，可考虑将分析范围限定到某个子目录。",
+    "analyzedAt": "2026-08-22T13:34:40.828Z",
+    "gitCommitHash": "15a7f9c9a4290358e3d5e32b0cd611b836e3c503"
+  },
+  "nodes": [
+    {
+      "id": "file:src/pages/system-management/shelter-management/components/ShelterDetailModal.tsx",
+      "type": "file",
+      "name": "ShelterDetailModal.tsx",
+      "filePath": "src/pages/system-management/shelter-management/components/ShelterDetailModal.tsx",
+      "summary": "以 Ant Design Modal 和 Descriptions 展示避难场所详情，并计算容量占用率与呈现设施标签。",
+      "tags": [
+        "react-component",
+        "详情弹窗",
+        "避难所管理",
+        "antd"
+      ],
+      "complexity": "moderate",
+      "languageNotes": "通过带类型的 Props 将打开状态、加载状态、数据与关闭事件交由父组件控制。"
+    },
+    {
+      "id": "function:src/pages/system-management/shelter-management/components/ShelterDetailModal.tsx:ShelterDetailModal",
+      "type": "function",
+      "name": "ShelterDetailModal",
+      "filePath": "src/pages/system-management/shelter-management/components/ShelterDetailModal.tsx",
+      "lineRange": [
+        28,
+        105
+      ],
+      "summary": "根据加载状态和避难场所记录渲染详情弹窗，展示分类、容量、联系方式、坐标与设施信息。",
+      "tags": [
+        "react-component",
+        "详情展示",
+        "受控组件"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:src/pages/system-management/shelter-management/components/ShelterForm.tsx",
+      "type": "file",
+      "name": "ShelterForm.tsx",
+      "filePath": "src/pages/system-management/shelter-management/components/ShelterForm.tsx",
+      "summary": "承载避难场所新增与编辑表单，负责初始值回填、字段校验、提交和关闭时的表单复位。",
+      "tags": [
+        "react-component",
+        "表单",
+        "crud",
+        "避难所管理"
+      ],
+      "complexity": "complex",
+      "languageNotes": "使用 Ant Design Form 的泛型和字段间 validator 表达容量约束，并通过 useEffect 同步弹窗模式与初始数据。"
+    },
+    {
+      "id": "function:src/pages/system-management/shelter-management/components/ShelterForm.tsx:getFormValues",
+      "type": "function",
+      "name": "getFormValues",
+      "filePath": "src/pages/system-management/shelter-management/components/ShelterForm.tsx",
+      "lineRange": [
+        29,
+        50
+      ],
+      "summary": "根据新增或编辑模式生成表单初始值，并把已有避难场所记录转换为可编辑字段。",
+      "tags": [
+        "工具函数",
+        "表单映射",
+        "类型转换"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:src/pages/system-management/shelter-management/components/ShelterForm.tsx:ShelterForm",
+      "type": "function",
+      "name": "ShelterForm",
+      "filePath": "src/pages/system-management/shelter-management/components/ShelterForm.tsx",
+      "lineRange": [
+        53,
+        313
+      ],
+      "summary": "渲染完整的避难场所编辑表单，并协调字段校验、弹窗生命周期与父级提交回调。",
+      "tags": [
+        "react-component",
+        "antd-form",
+        "表单校验",
+        "crud"
+      ],
+      "complexity": "complex"
+    },
+    {
+      "id": "file:src/pages/system-management/shelter-management/components/ShelterTable.tsx",
+      "type": "file",
+      "name": "ShelterTable.tsx",
+      "filePath": "src/pages/system-management/shelter-management/components/ShelterTable.tsx",
+      "summary": "提供避难场所查询表单、数据表格和分页操作，并把查询、新增、详情、编辑与删除事件交给父页面处理。",
+      "tags": [
+        "react-component",
+        "数据表格",
+        "查询筛选",
+        "crud"
+      ],
+      "complexity": "complex",
+      "languageNotes": "组件保持展示与用户事件职责，业务请求和状态编排由父组件负责。"
+    },
+    {
+      "id": "function:src/pages/system-management/shelter-management/components/ShelterTable.tsx:ShelterTable",
+      "type": "function",
+      "name": "ShelterTable",
+      "filePath": "src/pages/system-management/shelter-management/components/ShelterTable.tsx",
+      "lineRange": [
+        54,
+        269
+      ],
+      "summary": "组合筛选表单、列定义、行级操作和分页配置，形成受控的避难场所列表视图。",
+      "tags": [
+        "react-component",
+        "table",
+        "事件回调",
+        "分页"
+      ],
+      "complexity": "complex"
+    },
+    {
+      "id": "file:src/pages/system-management/shelter-management/constants.ts",
+      "type": "file",
+      "name": "constants.ts",
+      "filePath": "src/pages/system-management/shelter-management/constants.ts",
+      "summary": "集中定义避难场所类型、用途、运行状态和设施的显示文本、颜色及表单选项，供表格、表单和详情组件共享。",
+      "tags": [
+        "常量",
+        "展示映射",
+        "表单选项",
+        "避难所管理"
+      ],
+      "complexity": "moderate",
+      "languageNotes": "映射与选项数组都受领域联合类型约束，减少界面层出现无效枚举值。"
+    },
+    {
+      "id": "file:src/pages/system-management/shelter-management/hooks/useShelterDetail.ts",
+      "type": "file",
+      "name": "useShelterDetail.ts",
+      "filePath": "src/pages/system-management/shelter-management/hooks/useShelterDetail.ts",
+      "summary": "封装避难场所详情请求的 loading、error 与数据状态，并处理重复请求取消、清理和组件卸载。",
+      "tags": [
+        "custom-hook",
+        "请求取消",
+        "详情状态",
+        "异步状态"
+      ],
+      "complexity": "moderate",
+      "languageNotes": "以 AbortController 和 useRef 管理当前请求，避免过期响应覆盖新的详情状态。"
+    },
+    {
+      "id": "function:src/pages/system-management/shelter-management/hooks/useShelterDetail.ts:useShelterDetail",
+      "type": "function",
+      "name": "useShelterDetail",
+      "filePath": "src/pages/system-management/shelter-management/hooks/useShelterDetail.ts",
+      "lineRange": [
+        10,
+        79
+      ],
+      "summary": "向页面提供详情加载、清空和取消能力，并维护请求生命周期对应的数据、加载与错误状态。",
+      "tags": [
+        "custom-hook",
+        "abort-controller",
+        "异步请求",
+        "生命周期"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:src/pages/system-management/shelter-management/hooks/useShelterList.ts",
+      "type": "file",
+      "name": "useShelterList.ts",
+      "filePath": "src/pages/system-management/shelter-management/hooks/useShelterList.ts",
+      "summary": "封装避难场所分页列表的获取、刷新与错误状态，并在查询条件变化时取消旧请求。",
+      "tags": [
+        "custom-hook",
+        "列表请求",
+        "请求取消",
+        "latest-wins"
+      ],
+      "complexity": "moderate",
+      "languageNotes": "effect 的清理函数中调用 AbortController.abort，实现查询切换和卸载时的请求回收。"
+    },
+    {
+      "id": "function:src/pages/system-management/shelter-management/hooks/useShelterList.ts:useShelterList",
+      "type": "function",
+      "name": "useShelterList",
+      "filePath": "src/pages/system-management/shelter-management/hooks/useShelterList.ts",
+      "lineRange": [
+        24,
+        80
+      ],
+      "summary": "根据查询参数拉取列表并返回数据、总数、加载状态、错误与显式刷新入口。",
+      "tags": [
+        "custom-hook",
+        "分页列表",
+        "异步状态",
+        "refresh"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:src/pages/system-management/shelter-management/index.tsx",
+      "type": "file",
+      "name": "index.tsx",
+      "filePath": "src/pages/system-management/shelter-management/index.tsx",
+      "summary": "作为避难场所管理页面的编排层，组合列表、表单、详情和两个请求 Hook，并处理 CRUD 后的查询与刷新。",
+      "tags": [
+        "react-page",
+        "页面编排",
+        "crud",
+        "避难所管理"
+      ],
+      "complexity": "moderate",
+      "languageNotes": "页面保留业务状态和动作编排，重复的列表与详情请求生命周期下沉到 feature-local Hooks。"
+    },
+    {
+      "id": "function:src/pages/system-management/shelter-management/index.tsx:ShelterManagement",
+      "type": "function",
+      "name": "ShelterManagement",
+      "filePath": "src/pages/system-management/shelter-management/index.tsx",
+      "lineRange": [
+        24,
+        187
+      ],
+      "summary": "协调查询分页、弹窗模式、详情加载以及新增、更新、删除流程，并向子组件传递数据与事件回调。",
+      "tags": [
+        "react-page",
+        "状态编排",
+        "crud",
+        "事件处理"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:src/pages/system-management/shelter-management/types.ts",
+      "type": "file",
+      "name": "types.ts",
+      "filePath": "src/pages/system-management/shelter-management/types.ts",
+      "summary": "定义避难场所领域枚举、坐标、记录、查询参数、表单值和组件 Props，形成该功能的 TypeScript 类型契约。",
+      "tags": [
+        "type-definition",
+        "领域模型",
+        "props",
+        "api-contract"
+      ],
+      "complexity": "moderate",
+      "languageNotes": "通过联合类型、Pick、Omit 与组合接口区分持久化记录、查询条件和表单输入。"
+    },
+    {
+      "id": "file:src/pages/system-management/shelter-management/without-custom-hooks/WithoutCustomHooksExample.tsx",
+      "type": "file",
+      "name": "WithoutCustomHooksExample.tsx",
+      "filePath": "src/pages/system-management/shelter-management/without-custom-hooks/WithoutCustomHooksExample.tsx",
+      "summary": "用单一大型组件直接实现避难场所列表、详情和 CRUD 流程，并加入可观察的竞态模拟，作为抽取自定义 Hook 前后的对照示例。",
+      "tags": [
+        "react-example",
+        "竞态演示",
+        "请求取消",
+        "教学对照"
+      ],
+      "complexity": "complex",
+      "languageNotes": "该文件刻意集中大量 useState、useRef、useEffect 与 AbortController 逻辑，用于展示未抽象请求生命周期时的复杂度。"
+    },
+    {
+      "id": "function:src/pages/system-management/shelter-management/without-custom-hooks/WithoutCustomHooksExample.tsx:waitForResponse",
+      "type": "function",
+      "name": "waitForResponse",
+      "filePath": "src/pages/system-management/shelter-management/without-custom-hooks/WithoutCustomHooksExample.tsx",
+      "lineRange": [
+        41,
+        54
+      ],
+      "summary": "创建支持 AbortSignal 的延迟 Promise，用于模拟不同响应速度和请求被取消的场景。",
+      "tags": [
+        "工具函数",
+        "promise",
+        "abort-signal",
+        "竞态模拟"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:src/pages/system-management/shelter-management/without-custom-hooks/WithoutCustomHooksExample.tsx:ShelterManagementWithoutCustomHooks",
+      "type": "function",
+      "name": "ShelterManagementWithoutCustomHooks",
+      "filePath": "src/pages/system-management/shelter-management/without-custom-hooks/WithoutCustomHooksExample.tsx",
+      "lineRange": [
+        62,
+        455
+      ],
+      "summary": "在组件内部直接管理查询、CRUD、列表竞态、详情请求和取消控制，以可视化日志演示 latest-wins 问题。",
+      "tags": [
+        "react-component",
+        "竞态演示",
+        "abort-controller",
+        "教学示例"
+      ],
+      "complexity": "complex"
+    },
+    {
+      "id": "file:src/i18n/constants.ts",
+      "type": "file",
+      "name": "constants.ts",
+      "filePath": "src/i18n/constants.ts",
+      "summary": "集中定义语言偏好的 localStorage 键、默认语言与受支持语言列表，为国际化初始化和语言切换提供统一常量。",
+      "tags": [
+        "国际化",
+        "语言配置",
+        "常量定义"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:src/i18n/index.ts",
+      "type": "file",
+      "name": "index.ts",
+      "filePath": "src/i18n/index.ts",
+      "summary": "初始化 i18next 与 React 适配器，注册中英文资源，并按照本地偏好选择启动语言。",
+      "tags": [
+        "国际化",
+        "i18next",
+        "初始化入口",
+        "react"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:src/i18n/locales/en-US.ts",
+      "type": "file",
+      "name": "en-US.ts",
+      "filePath": "src/i18n/locales/en-US.ts",
+      "summary": "提供菜单、页头和登录页使用的英文翻译资源，键结构与中文资源保持一致。",
+      "tags": [
+        "国际化",
+        "英文资源",
+        "翻译词典"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:src/i18n/locales/zh-CN.ts",
+      "type": "file",
+      "name": "zh-CN.ts",
+      "filePath": "src/i18n/locales/zh-CN.ts",
+      "summary": "提供菜单、页头和登录页使用的中文翻译资源，作为应用默认语言内容。",
+      "tags": [
+        "国际化",
+        "中文资源",
+        "翻译词典"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:src/i18n/types.ts",
+      "type": "file",
+      "name": "types.ts",
+      "filePath": "src/i18n/types.ts",
+      "summary": "定义应用允许使用的语言代码联合类型，为语言配置和持久化值提供静态约束。",
+      "tags": [
+        "typescript",
+        "类型定义",
+        "国际化"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:src/i18n/utils.ts",
+      "type": "file",
+      "name": "utils.ts",
+      "filePath": "src/i18n/utils.ts",
+      "summary": "校验外部语言值并从 localStorage 恢复语言偏好，在无效或缺失时回退到项目默认语言。",
+      "tags": [
+        "国际化",
+        "工具函数",
+        "本地存储",
+        "类型守卫"
+      ],
+      "complexity": "simple",
+      "languageNotes": "使用 TypeScript 类型谓词把经过运行时校验的字符串收窄为 AppLanguage。"
+    },
+    {
+      "id": "function:src/i18n/utils.ts:isAppLanguage",
+      "type": "function",
+      "name": "isAppLanguage",
+      "filePath": "src/i18n/utils.ts",
+      "lineRange": [
+        14,
+        16
+      ],
+      "summary": "判断给定值是否属于应用支持的语言集合，并向 TypeScript 提供类型收窄信息。",
+      "tags": [
+        "类型守卫",
+        "语言校验",
+        "工具函数"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:src/i18n/utils.ts:getDefaultLanguage",
+      "type": "function",
+      "name": "getDefaultLanguage",
+      "filePath": "src/i18n/utils.ts",
+      "lineRange": [
+        26,
+        34
+      ],
+      "summary": "读取持久化的语言偏好，经校验后返回有效语言，否则使用默认语言。",
+      "tags": [
+        "语言偏好",
+        "本地存储",
+        "回退策略"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:src/layouts/MainLayout/Content.tsx",
+      "type": "file",
+      "name": "Content.tsx",
+      "filePath": "src/layouts/MainLayout/Content.tsx",
+      "summary": "定义主布局的内容容器，使用 antd 主题 token 设置页面与内层卡片背景，并承载子页面内容。",
+      "tags": [
+        "React-组件",
+        "布局内容",
+        "主题-token",
+        "children-组合"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:src/layouts/MainLayout/Content.tsx:MainLayoutContent",
+      "type": "function",
+      "name": "MainLayoutContent",
+      "filePath": "src/layouts/MainLayout/Content.tsx",
+      "lineRange": [
+        11,
+        27
+      ],
+      "summary": "读取 antd 主题 token，并将传入的 ReactNode 渲染到主内容区的响应式容器中。",
+      "tags": [
+        "React-组件",
+        "布局容器",
+        "主题适配"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:src/layouts/MainLayout/Header/components/UserProfile.tsx",
+      "type": "file",
+      "name": "UserProfile.tsx",
+      "filePath": "src/layouts/MainLayout/Header/components/UserProfile.tsx",
+      "summary": "提供顶部栏用户入口，从认证 Store 读取用户信息，并通过下拉菜单触发退出登录。",
+      "tags": [
+        "React-组件",
+        "用户菜单",
+        "认证状态",
+        "国际化"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:src/layouts/MainLayout/Header/components/UserProfile.tsx:UserProfile",
+      "type": "function",
+      "name": "UserProfile",
+      "filePath": "src/layouts/MainLayout/Header/components/UserProfile.tsx",
+      "lineRange": [
+        8,
+        45
+      ],
+      "summary": "把用户角色、昵称和退出操作组织为 antd Dropdown，并使用 i18n 生成菜单文案。",
+      "tags": [
+        "React-组件",
+        "下拉菜单",
+        "Zustand",
+        "事件处理"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:src/layouts/MainLayout/Header/index.tsx",
+      "type": "file",
+      "name": "index.tsx",
+      "filePath": "src/layouts/MainLayout/Header/index.tsx",
+      "summary": "实现主布局顶部栏，组合面包屑、侧栏控制、主题切换、语言切换、全屏与用户入口。",
+      "tags": [
+        "React-组件",
+        "顶部栏",
+        "组合组件",
+        "响应式布局"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:src/layouts/MainLayout/Header/index.tsx:MainLayoutHeader",
+      "type": "function",
+      "name": "MainLayoutHeader",
+      "filePath": "src/layouts/MainLayout/Header/index.tsx",
+      "lineRange": [
+        23,
+        66
+      ],
+      "summary": "根据桌面端折叠状态展示对应图标，并把移动端菜单和侧栏切换事件回传给上层布局。",
+      "tags": [
+        "React-组件",
+        "受控属性",
+        "事件回调",
+        "主题-token"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:src/layouts/MainLayout/MobileDrawer.tsx",
+      "type": "file",
+      "name": "MobileDrawer.tsx",
+      "filePath": "src/layouts/MainLayout/MobileDrawer.tsx",
+      "summary": "实现移动端抽屉导航，根据授权路由生成菜单，并让选中项与当前 URL 保持同步。",
+      "tags": [
+        "React-组件",
+        "移动端导航",
+        "动态菜单",
+        "路由状态"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:src/layouts/MainLayout/MobileDrawer.tsx:MainLayoutMobileDrawer",
+      "type": "function",
+      "name": "MainLayoutMobileDrawer",
+      "filePath": "src/layouts/MainLayout/MobileDrawer.tsx",
+      "lineRange": [
+        21,
+        68
+      ],
+      "summary": "使用 useMemo 生成国际化菜单项，点击菜单后完成路由跳转并关闭移动端抽屉。",
+      "tags": [
+        "React-组件",
+        "useMemo",
+        "路由导航",
+        "移动端抽屉"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:src/layouts/MainLayout/Sidebar.tsx",
+      "type": "file",
+      "name": "Sidebar.tsx",
+      "filePath": "src/layouts/MainLayout/Sidebar.tsx",
+      "summary": "实现桌面端可折叠侧栏，使用授权路由和翻译函数生成菜单，并同步当前路径的选中状态。",
+      "tags": [
+        "React-组件",
+        "桌面端导航",
+        "动态菜单",
+        "路由状态"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:src/layouts/MainLayout/Sidebar.tsx:MainLayoutSidebar",
+      "type": "function",
+      "name": "MainLayoutSidebar",
+      "filePath": "src/layouts/MainLayout/Sidebar.tsx",
+      "lineRange": [
+        17,
+        58
+      ],
+      "summary": "接收折叠状态，缓存由路由生成的菜单项，并在菜单点击时通过 React Router 导航。",
+      "tags": [
+        "React-组件",
+        "受控属性",
+        "useMemo",
+        "路由导航"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:src/layouts/MainLayout/index.tsx",
+      "type": "file",
+      "name": "index.tsx",
+      "filePath": "src/layouts/MainLayout/index.tsx",
+      "summary": "作为受保护页面的整体布局骨架，集中管理桌面侧栏折叠与移动抽屉开关状态，并通过 Outlet 承载当前路由页面。",
+      "tags": [
+        "React-组件",
+        "主布局",
+        "状态提升",
+        "嵌套路由"
+      ],
+      "complexity": "simple",
+      "languageNotes": "该组件体现 React 的状态提升：响应式导航状态由共同父组件持有，再通过 props 和回调分发给 Header、Sidebar 与 MobileDrawer。"
+    },
+    {
+      "id": "function:src/layouts/MainLayout/index.tsx:MainLayout",
+      "type": "function",
+      "name": "MainLayout",
+      "filePath": "src/layouts/MainLayout/index.tsx",
+      "lineRange": [
+        12,
+        46
+      ],
+      "summary": "组合 Header、Sidebar、MobileDrawer 和 Content，并用两个 useState 协调桌面端与移动端导航交互。",
+      "tags": [
+        "React-组件",
+        "状态编排",
+        "组件组合",
+        "Outlet"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:src/router/index.tsx",
+      "type": "file",
+      "name": "index.tsx",
+      "filePath": "src/router/index.tsx",
+      "summary": "创建应用的 Hash Router，并依据 Zustand 认证状态在会话等待、登录跳转和权限路由树之间切换。",
+      "tags": [
+        "react-router",
+        "认证守卫",
+        "动态路由",
+        "入口配置"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:src/router/menu.tsx",
+      "type": "file",
+      "name": "menu.tsx",
+      "filePath": "src/router/menu.tsx",
+      "summary": "把后端路由树递归转换为 Ant Design Menu 数据，同时处理路径拼接、排序、图标和国际化标题。",
+      "tags": [
+        "菜单构建",
+        "递归转换",
+        "ant-design",
+        "国际化"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:src/router/mockRoutes.ts",
+      "type": "file",
+      "name": "mockRoutes.ts",
+      "filePath": "src/router/mockRoutes.ts",
+      "summary": "声明学习项目使用的静态权限路由树，覆盖首页、Cesium 示例、动画和系统管理页面。",
+      "tags": [
+        "模拟数据",
+        "权限路由",
+        "路由配置"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:src/router/transform.tsx",
+      "type": "file",
+      "name": "transform.tsx",
+      "filePath": "src/router/transform.tsx",
+      "summary": "利用 import.meta.glob 建立页面模块表，并把后端路由描述递归转换为可懒加载的 React Router 对象。",
+      "tags": [
+        "动态路由",
+        "懒加载",
+        "vite",
+        "递归转换"
+      ],
+      "complexity": "moderate",
+      "languageNotes": "通过 TypeScript 泛型约束 import.meta.glob 的模块形状，并保留业务路由元信息。"
+    },
+    {
+      "id": "file:src/router/types.ts",
+      "type": "file",
+      "name": "types.ts",
+      "filePath": "src/router/types.ts",
+      "summary": "定义后端路由、菜单元信息及应用路由对象类型，约束递归路由转换的数据契约。",
+      "tags": [
+        "typescript",
+        "类型定义",
+        "路由契约"
+      ],
+      "complexity": "simple",
+      "languageNotes": "使用 Omit 重写 React Router 的 children 类型，使业务路由可同时容纳普通路由和 index 路由。"
+    },
+    {
+      "id": "function:src/router/index.tsx:hasRoutePath",
+      "type": "function",
+      "name": "hasRoutePath",
+      "filePath": "src/router/index.tsx",
+      "lineRange": [
+        35,
+        50
+      ],
+      "summary": "递归遍历当前用户的权限路由树，判断登录后希望返回的目标路径是否仍可访问。",
+      "tags": [
+        "权限校验",
+        "递归搜索",
+        "路径匹配"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:src/router/index.tsx:ProtectedRoutes",
+      "type": "function",
+      "name": "ProtectedRoutes",
+      "filePath": "src/router/index.tsx",
+      "lineRange": [
+        53,
+        108
+      ],
+      "summary": "订阅认证状态和权限路由，生成受保护路由树，并处理启动等待与匿名用户跳转。",
+      "tags": [
+        "react-component",
+        "认证守卫",
+        "动态路由",
+        "zustand"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:src/router/index.tsx:LoginRoute",
+      "type": "function",
+      "name": "LoginRoute",
+      "filePath": "src/router/index.tsx",
+      "lineRange": [
+        111,
+        139
+      ],
+      "summary": "控制登录页的反向守卫，让已认证用户返回仍有权限的原地址或统一进入首页。",
+      "tags": [
+        "react-component",
+        "登录路由",
+        "重定向",
+        "权限校验"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:src/router/menu.tsx:createMenuItems",
+      "type": "function",
+      "name": "createMenuItems",
+      "filePath": "src/router/menu.tsx",
+      "lineRange": [
+        34,
+        69
+      ],
+      "summary": "筛选并排序可见路由，递归构造带完整路径、图标和翻译标题的多级菜单项。",
+      "tags": [
+        "菜单构建",
+        "递归转换",
+        "国际化",
+        "ant-design"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:src/router/transform.tsx:lazyLoad",
+      "type": "function",
+      "name": "lazyLoad",
+      "filePath": "src/router/transform.tsx",
+      "lineRange": [
+        26,
+        41
+      ],
+      "summary": "根据页面模块路径创建 React 懒加载元素，并在组件不存在时回退到未找到页面。",
+      "tags": [
+        "懒加载",
+        "错误回退",
+        "react-component"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:src/router/transform.tsx:transformRoutes",
+      "type": "function",
+      "name": "transformRoutes",
+      "filePath": "src/router/transform.tsx",
+      "lineRange": [
+        45,
+        82
+      ],
+      "summary": "递归转换、排序后端路由，并组合页面元素、Outlet 子路由容器与默认重定向。",
+      "tags": [
+        "动态路由",
+        "递归转换",
+        "react-router",
+        "懒加载"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:src/app/App.tsx",
+      "type": "file",
+      "name": "App.tsx",
+      "filePath": "src/app/App.tsx",
+      "summary": "定义根 React 组件，将应用级能力统一委托给 AppProvider。",
+      "tags": [
+        "React-组件",
+        "应用根组件",
+        "Provider-入口"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:src/app/App.tsx:App",
+      "type": "function",
+      "name": "App",
+      "filePath": "src/app/App.tsx",
+      "lineRange": [
+        3,
+        5
+      ],
+      "summary": "渲染 AppProvider，保持根组件只负责应用装配入口。",
+      "tags": [
+        "React-组件",
+        "入口组件",
+        "组件委托"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:src/app/providers/AntdProvider.tsx",
+      "type": "file",
+      "name": "AntdProvider.tsx",
+      "filePath": "src/app/providers/AntdProvider.tsx",
+      "summary": "桥接应用语言和主题状态到 antd ConfigProvider，统一控制组件库 locale 与明暗主题算法。",
+      "tags": [
+        "React-Provider",
+        "antd-配置",
+        "国际化",
+        "主题适配"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:src/app/providers/AntdProvider.tsx:AntdProvider",
+      "type": "function",
+      "name": "AntdProvider",
+      "filePath": "src/app/providers/AntdProvider.tsx",
+      "lineRange": [
+        22,
+        37
+      ],
+      "summary": "根据 i18n 当前语言选择 antd locale，并依据全局主题模式切换 darkAlgorithm 或 defaultAlgorithm。",
+      "tags": [
+        "React-Provider",
+        "ConfigProvider",
+        "主题算法",
+        "locale"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:src/app/providers/AppProvider.tsx",
+      "type": "file",
+      "name": "AppProvider.tsx",
+      "filePath": "src/app/providers/AppProvider.tsx",
+      "summary": "集中编排应用级 Provider 顺序，在主题上下文中挂载 antd 配置和 React Router。",
+      "tags": [
+        "React-Provider",
+        "应用装配",
+        "Provider-组合",
+        "路由入口"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:src/app/providers/AppProvider.tsx:AppProvider",
+      "type": "function",
+      "name": "AppProvider",
+      "filePath": "src/app/providers/AppProvider.tsx",
+      "lineRange": [
+        7,
+        15
+      ],
+      "summary": "按 ThemeProvider、AntdProvider、RouterProvider 的顺序组合全局运行环境。",
+      "tags": [
+        "React-组件",
+        "Provider-组合",
+        "路由装配"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:src/app/providers/ThemeProvider.tsx",
+      "type": "file",
+      "name": "ThemeProvider.tsx",
+      "filePath": "src/app/providers/ThemeProvider.tsx",
+      "summary": "使用 React Context 管理全局明暗主题，支持本地持久化、系统偏好回退和根节点 colorScheme 同步。",
+      "tags": [
+        "React-Context",
+        "主题状态",
+        "自定义-Hook",
+        "持久化"
+      ],
+      "complexity": "moderate",
+      "languageNotes": "文件通过类型守卫收窄 localStorage 值，并用 useCallback 与 useMemo 稳定 Context API，展示了 TypeScript 与 React Context 的典型组合。"
+    },
+    {
+      "id": "function:src/app/providers/ThemeProvider.tsx:getInitialThemeMode",
+      "type": "function",
+      "name": "getInitialThemeMode",
+      "filePath": "src/app/providers/ThemeProvider.tsx",
+      "lineRange": [
+        43,
+        59
+      ],
+      "summary": "优先读取用户持久化选择，未命中时查询系统 prefers-color-scheme，并兼容无 window 的执行环境。",
+      "tags": [
+        "初始化逻辑",
+        "localStorage",
+        "系统主题",
+        "SSR-防护"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:src/app/providers/ThemeProvider.tsx:ThemeProvider",
+      "type": "function",
+      "name": "ThemeProvider",
+      "filePath": "src/app/providers/ThemeProvider.tsx",
+      "lineRange": [
+        62,
+        91
+      ],
+      "summary": "持有主题模式状态，将变化同步到 localStorage 与 document 根节点，并向子树提供稳定的 Context value。",
+      "tags": [
+        "React-Provider",
+        "useEffect",
+        "useMemo",
+        "状态共享"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:src/app/providers/ThemeProvider.tsx:useThemeMode",
+      "type": "function",
+      "name": "useThemeMode",
+      "filePath": "src/app/providers/ThemeProvider.tsx",
+      "lineRange": [
+        95,
+        104
+      ],
+      "summary": "封装主题 Context 读取，并在缺少 ThemeProvider 时立即抛出清晰错误。",
+      "tags": [
+        "自定义-Hook",
+        "Context-消费",
+        "防御式检查"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:src/pages/system-management/user-management/components/UserFormModal.tsx",
+      "type": "file",
+      "name": "UserFormModal.tsx",
+      "filePath": "src/pages/system-management/user-management/components/UserFormModal.tsx",
+      "summary": "封装用户新增和编辑共用的 Ant Design 模态表单，负责字段初始化、校验、重置与提交事件上抛。",
+      "tags": [
+        "react-component",
+        "表单组件",
+        "用户管理",
+        "ant-design"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:src/pages/system-management/user-management/components/UserTablePanel.tsx",
+      "type": "file",
+      "name": "UserTablePanel.tsx",
+      "filePath": "src/pages/system-management/user-management/components/UserTablePanel.tsx",
+      "summary": "展示用户搜索条件、操作入口、数据表格和分页控件，通过回调把查询与 CRUD 意图交给父页面处理。",
+      "tags": [
+        "react-component",
+        "数据表格",
+        "搜索筛选",
+        "用户管理"
+      ],
+      "complexity": "complex"
+    },
+    {
+      "id": "file:src/pages/system-management/user-management/index.tsx",
+      "type": "file",
+      "name": "index.tsx",
+      "filePath": "src/pages/system-management/user-management/index.tsx",
+      "summary": "作为用户管理页面编排层，维护查询、列表、分页和弹窗状态，并协调用户 CRUD 请求与子组件。",
+      "tags": [
+        "react-page",
+        "状态编排",
+        "crud",
+        "用户管理"
+      ],
+      "complexity": "moderate",
+      "languageNotes": "采用父页面持有业务状态、受控子组件通过回调上抛动作的 React 责任划分。"
+    },
+    {
+      "id": "file:src/pages/system-management/user-management/types.ts",
+      "type": "file",
+      "name": "types.ts",
+      "filePath": "src/pages/system-management/user-management/types.ts",
+      "summary": "定义用户记录、查询参数、表单值和分页响应等领域类型，为页面、组件与 API 提供共享契约。",
+      "tags": [
+        "typescript",
+        "类型定义",
+        "用户模型",
+        "api-contract"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:src/pages/system-management/user-management/components/UserFormModal.tsx:getFormValues",
+      "type": "function",
+      "name": "getFormValues",
+      "filePath": "src/pages/system-management/user-management/components/UserFormModal.tsx",
+      "lineRange": [
+        45,
+        58
+      ],
+      "summary": "把待编辑用户记录映射为表单字段，新增模式下则返回默认状态与性别。",
+      "tags": [
+        "数据映射",
+        "表单初始化",
+        "工具函数"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:src/pages/system-management/user-management/components/UserFormModal.tsx:UserFormModal",
+      "type": "function",
+      "name": "UserFormModal",
+      "filePath": "src/pages/system-management/user-management/components/UserFormModal.tsx",
+      "lineRange": [
+        60,
+        163
+      ],
+      "summary": "渲染新增或编辑用户的受控模态表单，并在打开时同步初始数据与提交状态。",
+      "tags": [
+        "react-component",
+        "受控表单",
+        "表单校验",
+        "ant-design"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:src/pages/system-management/user-management/components/UserTablePanel.tsx:UserTablePanel",
+      "type": "function",
+      "name": "UserTablePanel",
+      "filePath": "src/pages/system-management/user-management/components/UserTablePanel.tsx",
+      "lineRange": [
+        54,
+        223
+      ],
+      "summary": "渲染用户筛选表单、表格、分页及编辑删除操作，并将交互结果通过 props 回调上抛。",
+      "tags": [
+        "react-component",
+        "数据表格",
+        "搜索筛选",
+        "分页"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:src/pages/system-management/user-management/index.tsx:UserManagement",
+      "type": "function",
+      "name": "UserManagement",
+      "filePath": "src/pages/system-management/user-management/index.tsx",
+      "lineRange": [
+        19,
+        148
+      ],
+      "summary": "协调用户列表请求、搜索分页、新增编辑弹窗和删除后的页码修正，是该功能的业务状态所有者。",
+      "tags": [
+        "react-page",
+        "状态管理",
+        "crud",
+        "请求编排"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "pipeline:.github/workflows/deploy-pages.yml",
+      "type": "pipeline",
+      "name": "deploy-pages.yml",
+      "filePath": ".github/workflows/deploy-pages.yml",
+      "summary": "在 main 分支推送或手动触发时构建 Vite 应用，并把 dist 产物部署到 GitHub Pages；流程同时校验 Cesium ion token。",
+      "tags": [
+        "ci-cd",
+        "github-actions",
+        "github-pages",
+        "deployment"
+      ],
+      "complexity": "moderate",
+      "languageNotes": "build 与 deploy 作业通过 needs 串联，使用 repository name 生成 VITE_BASE_PATH，并从 GitHub Secret 注入 Cesium ion token。"
+    },
+    {
+      "id": "config:.env.development",
+      "type": "config",
+      "name": ".env.development",
+      "filePath": ".env.development",
+      "summary": "定义开发模式下是否启用 Vite Mock 以及应用公共基础路径。",
+      "tags": [
+        "环境配置",
+        "开发模式",
+        "Vite",
+        "Mock"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "config:.env.production",
+      "type": "config",
+      "name": ".env.production",
+      "filePath": ".env.production",
+      "summary": "定义生产构建使用的 Mock 开关和 GitHub Pages 项目基础路径。",
+      "tags": [
+        "环境配置",
+        "生产构建",
+        "Vite",
+        "GitHub-Pages"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "document:AGENTS.md",
+      "type": "document",
+      "name": "AGENTS.md",
+      "filePath": "AGENTS.md",
+      "summary": "规定仓库目录职责、pnpm 命令、编码风格、测试基线、PR 要求和配置安全注意事项。",
+      "tags": [
+        "项目规范",
+        "开发流程",
+        "代码风格",
+        "安全约束"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "document:README.md",
+      "type": "document",
+      "name": "README.md",
+      "filePath": "README.md",
+      "summary": "介绍 React、TypeScript、Vite 项目基础，并重点说明 CesiumJS 静态资源、Ion token 与 GitHub Pages 部署配置。",
+      "tags": [
+        "项目说明",
+        "CesiumJS",
+        "Vite",
+        "部署指南"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:index.html",
+      "type": "file",
+      "name": "index.html",
+      "filePath": "index.html",
+      "summary": "提供 Vite 应用的 HTML 外壳和 React 挂载节点，并加载 src/main.tsx 模块入口。",
+      "tags": [
+        "HTML-入口",
+        "Vite",
+        "React-挂载",
+        "页面外壳"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "config:package.json",
+      "type": "config",
+      "name": "package.json",
+      "filePath": "package.json",
+      "summary": "声明项目脚本、Node 与 pnpm 版本要求，以及 React、antd、Cesium、路由、状态管理和构建测试依赖。",
+      "tags": [
+        "包配置",
+        "依赖管理",
+        "构建脚本",
+        "pnpm"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "config:pnpm-workspace.yaml",
+      "type": "config",
+      "name": "pnpm-workspace.yaml",
+      "filePath": "pnpm-workspace.yaml",
+      "summary": "配置 pnpm 允许执行的依赖构建脚本，并登记 vite-plugin-mock 的本地补丁。",
+      "tags": [
+        "pnpm",
+        "工作区配置",
+        "依赖补丁",
+        "构建许可"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "config:skills-lock.json",
+      "type": "config",
+      "name": "skills-lock.json",
+      "filePath": "skills-lock.json",
+      "summary": "锁定项目级 Codex skill 的来源与版本信息，保证协作工具能力可追溯。",
+      "tags": [
+        "skill-锁定",
+        "Codex",
+        "工具配置",
+        "版本追踪"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "config:tsconfig.app.json",
+      "type": "config",
+      "name": "tsconfig.app.json",
+      "filePath": "tsconfig.app.json",
+      "summary": "配置浏览器应用源码的 TypeScript 编译目标、严格检查、模块解析和路径别名。",
+      "tags": [
+        "TypeScript",
+        "应用编译",
+        "严格模式",
+        "路径别名"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "config:tsconfig.json",
+      "type": "config",
+      "name": "tsconfig.json",
+      "filePath": "tsconfig.json",
+      "summary": "作为 TypeScript 项目引用入口，串联应用源码与 Node 构建配置。",
+      "tags": [
+        "TypeScript",
+        "项目引用",
+        "编译入口"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "config:tsconfig.node.json",
+      "type": "config",
+      "name": "tsconfig.node.json",
+      "filePath": "tsconfig.node.json",
+      "summary": "配置 Vite 等 Node 侧 TypeScript 文件的编译环境和严格检查规则。",
+      "tags": [
+        "TypeScript",
+        "Node-环境",
+        "构建配置",
+        "严格模式"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "config:tsconfig.test.json",
+      "type": "config",
+      "name": "tsconfig.test.json",
+      "filePath": "tsconfig.test.json",
+      "summary": "基于应用 TypeScript 配置补充 Node 测试类型、输出目录以及测试与 Mock 文件范围。",
+      "tags": [
+        "TypeScript",
+        "测试配置",
+        "Node-Test",
+        "Mock"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "document:docs/Codex上下文.md",
+      "type": "document",
+      "name": "Codex上下文.md",
+      "filePath": "docs/Codex上下文.md",
+      "summary": "汇总项目定位、技术栈、启动链路、目录职责、路由菜单、布局状态、国际化和常用开发流程，供后续协作快速建立上下文。",
+      "tags": [
+        "项目上下文",
+        "架构概览",
+        "开发指南",
+        "Codex"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "document:docs/Vite-base配置说明.md",
+      "type": "document",
+      "name": "Vite-base配置说明.md",
+      "filePath": "docs/Vite-base配置说明.md",
+      "summary": "系统解释 Vite base 在 GitHub Pages 子路径部署中的作用，并区分它与 Cesium 静态资源 URL、Hash Router 和 HTML base 标签的职责。",
+      "tags": [
+        "Vite",
+        "base-路径",
+        "GitHub-Pages",
+        "CesiumJS"
+      ],
+      "complexity": "complex",
+      "languageNotes": "文档通过开发环境、构建产物和浏览器 URL 三个层次解释路径问题，适合学习 Vite 的构建期路径重写机制。"
+    },
+    {
+      "id": "document:docs/antd主题切换.md",
+      "type": "document",
+      "name": "antd主题切换.md",
+      "filePath": "docs/antd主题切换.md",
+      "summary": "讲解以 ThemeProvider、React Context 和 antd ConfigProvider 实现全局明暗主题的步骤、Provider 顺序与常见问题。",
+      "tags": [
+        "antd",
+        "主题切换",
+        "React-Context",
+        "Provider"
+      ],
+      "complexity": "complex"
+    },
+    {
+      "id": "document:docs/i18n配置和使用.md",
+      "type": "document",
+      "name": "i18n配置和使用.md",
+      "filePath": "docs/i18n配置和使用.md",
+      "summary": "从依赖、目录与语言类型开始，完整说明 i18n 初始化、Provider 接入、路由标题、菜单生成和语言切换组件。",
+      "tags": [
+        "国际化",
+        "react-i18next",
+        "路由文案",
+        "菜单生成"
+      ],
+      "complexity": "complex"
+    },
+    {
+      "id": "document:docs/vite-plugin-mock生产环境动态路由问题.md",
+      "type": "document",
+      "name": "vite-plugin-mock生产环境动态路由问题.md",
+      "filePath": "docs/vite-plugin-mock生产环境动态路由问题.md",
+      "summary": "复盘 vite-plugin-mock 在生产环境处理动态详情路由时的匹配顺序和 handler URL 缺失问题，并记录补丁方案与验证方法。",
+      "tags": [
+        "vite-plugin-mock",
+        "动态路由",
+        "生产环境",
+        "问题复盘"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "document:docs/大纲目录.md",
+      "type": "document",
+      "name": "大纲目录.md",
+      "filePath": "docs/大纲目录.md",
+      "summary": "提供项目学习资料与功能文档的总目录，作为查找各专题说明的导航入口。",
+      "tags": [
+        "文档索引",
+        "学习大纲",
+        "导航入口"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "document:docs/目录结构.md",
+      "type": "document",
+      "name": "目录结构.md",
+      "filePath": "docs/目录结构.md",
+      "summary": "说明 src/app 及应用级 Provider 的职责边界，以当前与后期示例展示推荐目录结构和不应放入 app 层的内容。",
+      "tags": [
+        "目录结构",
+        "职责边界",
+        "Provider",
+        "架构设计"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "document:docs/路由后续改进清单.md",
+      "type": "document",
+      "name": "路由后续改进清单.md",
+      "filePath": "docs/路由后续改进清单.md",
+      "summary": "按 P0、P1、P2 整理动态权限路由的服务端校验、运行时验证、回跳、懒加载、异常边界与日志治理任务。",
+      "tags": [
+        "技术债",
+        "权限路由",
+        "改进计划",
+        "验收标准"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "document:docs/路由配置和使用.md",
+      "type": "document",
+      "name": "路由配置和使用.md",
+      "filePath": "docs/路由配置和使用.md",
+      "summary": "解释根路由、配置字段、路由转换与菜单生成规则，并给出新增一级页面和分组子路由的操作流程。",
+      "tags": [
+        "React-Router",
+        "动态路由",
+        "菜单配置",
+        "开发指南"
+      ],
+      "complexity": "complex"
+    },
+    {
+      "id": "file:.cursor/rules/base/core.mdc",
+      "type": "file",
+      "name": "core.mdc",
+      "filePath": ".cursor/rules/base/core.mdc",
+      "summary": "定义始终生效的项目核心协作规则，要求中文沟通、沿用既有风格并保持输出简洁。",
+      "tags": [
+        "cursor-rules",
+        "协作规范",
+        "中文沟通"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:.cursor/rules/base/general.mdc",
+      "type": "file",
+      "name": "general.mdc",
+      "filePath": ".cursor/rules/base/general.mdc",
+      "summary": "约定文件、变量、事件处理器和 React Hook 的命名方式，并规定注释、导入顺序与基础代码风格。",
+      "tags": [
+        "cursor-rules",
+        "命名规范",
+        "代码风格",
+        "react"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:.cursor/rules/base/project-structure.mdc",
+      "type": "file",
+      "name": "project-structure.mdc",
+      "filePath": ".cursor/rules/base/project-structure.mdc",
+      "summary": "描述 React + Cesium Sandcastle 学习项目的定位、技术角色和推荐目录职责，强调使用原生 Cesium API。",
+      "tags": [
+        "cursor-rules",
+        "项目结构",
+        "react",
+        "cesium"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:.cursor/rules/base/tech-stack.mdc",
+      "type": "file",
+      "name": "tech-stack.mdc",
+      "filePath": ".cursor/rules/base/tech-stack.mdc",
+      "summary": "记录项目采用的 React、Vite、TypeScript、Cesium、Ant Design、Tailwind CSS、Zustand、React Router 与 i18n 技术栈。",
+      "tags": [
+        "cursor-rules",
+        "技术栈",
+        "依赖管理",
+        "pnpm"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:.cursor/rules/frameworks/react.mdc",
+      "type": "file",
+      "name": "react.mdc",
+      "filePath": ".cursor/rules/frameworks/react.mdc",
+      "summary": "规定函数组件、React Router、Zustand Selector、自定义 Hook 抽取及渲染性能方面的实践准则。",
+      "tags": [
+        "cursor-rules",
+        "react",
+        "react-router",
+        "hooks",
+        "zustand"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:.cursor/rules/frameworks/styling-standards.mdc",
+      "type": "file",
+      "name": "styling-standards.mdc",
+      "filePath": ".cursor/rules/frameworks/styling-standards.mdc",
+      "summary": "划分 Ant Design 与 Tailwind CSS 的样式职责，并约束主题 token、动态类名和响应式设计实践。",
+      "tags": [
+        "cursor-rules",
+        "样式规范",
+        "tailwind-css",
+        "antd"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:.cursor/rules/frameworks/zustand.mdc",
+      "type": "file",
+      "name": "zustand.mdc",
+      "filePath": ".cursor/rules/frameworks/zustand.mdc",
+      "summary": "约定 Zustand Store 的模块边界、State 与 Actions 组织方式、Selector 访问、immer 更新和 persist 持久化。",
+      "tags": [
+        "cursor-rules",
+        "zustand",
+        "状态管理",
+        "selector"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:.cursor/rules/languages/typescript.mdc",
+      "type": "file",
+      "name": "typescript.mdc",
+      "filePath": ".cursor/rules/languages/typescript.mdc",
+      "summary": "约束 TypeScript 严格类型、interface 与 type 的使用边界、类型命名以及导出 API 的返回类型。",
+      "tags": [
+        "cursor-rules",
+        "typescript",
+        "类型规范",
+        "strict-mode"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:.understand-anything/.understandignore",
+      "type": "file",
+      "name": ".understandignore",
+      "filePath": ".understand-anything/.understandignore",
+      "summary": "提供知识图谱扫描的可选排除规则草案；当前建议项均保持注释，不会额外排除源码、测试或文档。",
+      "tags": [
+        "知识图谱",
+        "忽略规则",
+        "analysis-config"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "config:.understand-anything/config.json",
+      "type": "config",
+      "name": "config.json",
+      "filePath": ".understand-anything/config.json",
+      "summary": "配置 Understand Anything 将知识图谱的自然语言内容输出为中文。",
+      "tags": [
+        "configuration",
+        "知识图谱",
+        "中文输出"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:eslint.config.js",
+      "type": "file",
+      "name": "eslint.config.js",
+      "filePath": "eslint.config.js",
+      "summary": "组合 ESLint、typescript-eslint、React Hooks 与 React Refresh 的 flat config，检查浏览器端 TypeScript 和 TSX 文件并忽略 dist。",
+      "tags": [
+        "eslint",
+        "configuration",
+        "typescript",
+        "react-hooks"
+      ],
+      "complexity": "simple",
+      "languageNotes": "采用 ESLint flat config 的 defineConfig 和 globalIgnores 组织规则。"
+    },
+    {
+      "id": "file:mock/auth.mock.ts",
+      "type": "file",
+      "name": "auth.mock.ts",
+      "filePath": "mock/auth.mock.ts",
+      "summary": "实现登录、会话恢复和退出的本地 Mock 接口，通过固定用户、Bearer token 与角色路由模拟认证流程。",
+      "tags": [
+        "mock-api",
+        "认证",
+        "会话",
+        "动态路由"
+      ],
+      "complexity": "moderate",
+      "languageNotes": "使用 satisfies 和类型索引确保 Mock 响应、用户及路由结构符合生产侧 TypeScript 契约。"
+    },
+    {
+      "id": "function:mock/auth.mock.ts:getSessionResult",
+      "type": "function",
+      "name": "getSessionResult",
+      "filePath": "mock/auth.mock.ts",
+      "lineRange": [
+        45,
+        55
+      ],
+      "summary": "从包含密码、token 和路由的 Mock 用户中提取可返回给客户端的安全会话信息。",
+      "tags": [
+        "工具函数",
+        "会话映射",
+        "认证"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:mock/system-management/_shelter.mock.bundled_1786024270130_6cti8700vk4.mjs",
+      "type": "file",
+      "name": "_shelter.mock.bundled_1786024270130_6cti8700vk4.mjs",
+      "filePath": "mock/system-management/_shelter.mock.bundled_1786024270130_6cti8700vk4.mjs",
+      "summary": "由避难场所 Mock 模块生成的 JavaScript bundle，保留内存数据、筛选分页和 RESTful CRUD 路由以供生产 Mock 加载。",
+      "tags": [
+        "generated-code",
+        "mock-api",
+        "避难所管理",
+        "crud"
+      ],
+      "complexity": "complex",
+      "languageNotes": "这是构建生成的 ESM 产物，逻辑来源于 shelter.mock.ts，不宜作为主要编辑入口。"
+    },
+    {
+      "id": "function:mock/system-management/_shelter.mock.bundled_1786024270130_6cti8700vk4.mjs:getCurrentTime",
+      "type": "function",
+      "name": "getCurrentTime",
+      "filePath": "mock/system-management/_shelter.mock.bundled_1786024270130_6cti8700vk4.mjs",
+      "lineRange": [
+        116,
+        126
+      ],
+      "summary": "在生成的 Mock bundle 中格式化中文区域当前时间，供创建和更新记录写入审计字段。",
+      "tags": [
+        "工具函数",
+        "日期格式化",
+        "generated-code"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:mock/system-management/_user.mock.bundled_1786024270130_ed22rch2ug.mjs",
+      "type": "file",
+      "name": "_user.mock.bundled_1786024270130_ed22rch2ug.mjs",
+      "filePath": "mock/system-management/_user.mock.bundled_1786024270130_ed22rch2ug.mjs",
+      "summary": "由用户管理 Mock 模块生成的 JavaScript bundle，包含内存用户数据、列表筛选分页和 CRUD 路由处理。",
+      "tags": [
+        "generated-code",
+        "mock-api",
+        "用户管理",
+        "crud"
+      ],
+      "complexity": "moderate",
+      "languageNotes": "这是构建生成的 ESM 产物，业务修改应回到 user.mock.ts。"
+    },
+    {
+      "id": "function:mock/system-management/_user.mock.bundled_1786024270130_ed22rch2ug.mjs:getCreatedAt",
+      "type": "function",
+      "name": "getCreatedAt",
+      "filePath": "mock/system-management/_user.mock.bundled_1786024270130_ed22rch2ug.mjs",
+      "lineRange": [
+        56,
+        66
+      ],
+      "summary": "在生成的用户 Mock bundle 中格式化新用户的创建时间。",
+      "tags": [
+        "工具函数",
+        "日期格式化",
+        "generated-code"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:mock/system-management/shelter.mock.ts",
+      "type": "file",
+      "name": "shelter.mock.ts",
+      "filePath": "mock/system-management/shelter.mock.ts",
+      "summary": "提供避难场所的开发期内存数据源和 RESTful Mock CRUD 接口，支持多字段筛选、分页、详情查询与审计时间更新。",
+      "tags": [
+        "mock-api",
+        "避难所管理",
+        "crud",
+        "筛选分页"
+      ],
+      "complexity": "complex",
+      "languageNotes": "以 satisfies 校验 Mock 路由数组，并复用页面领域类型与统一 ApiResponse 契约。"
+    },
+    {
+      "id": "function:mock/system-management/shelter.mock.ts:getCurrentTime",
+      "type": "function",
+      "name": "getCurrentTime",
+      "filePath": "mock/system-management/shelter.mock.ts",
+      "lineRange": [
+        153,
+        165
+      ],
+      "summary": "生成符合避难场所记录审计字段格式的本地当前时间。",
+      "tags": [
+        "工具函数",
+        "日期格式化",
+        "审计字段"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:mock/system-management/user.mock.ts",
+      "type": "file",
+      "name": "user.mock.ts",
+      "filePath": "mock/system-management/user.mock.ts",
+      "summary": "实现用户管理的内存 Mock 数据与列表、新增、更新、删除接口，支持关键字、状态和分页筛选。",
+      "tags": [
+        "mock-api",
+        "用户管理",
+        "crud",
+        "筛选分页"
+      ],
+      "complexity": "moderate",
+      "languageNotes": "通过局部领域类型和 satisfies 保持 Mock handler 输入输出可检查，同时重启开发服务即可恢复初始数据。"
+    },
+    {
+      "id": "function:mock/system-management/user.mock.ts:getCreatedAt",
+      "type": "function",
+      "name": "getCreatedAt",
+      "filePath": "mock/system-management/user.mock.ts",
+      "lineRange": [
+        104,
+        116
+      ],
+      "summary": "格式化创建用户时写入记录的本地时间。",
+      "tags": [
+        "工具函数",
+        "日期格式化",
+        "创建时间"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:patches/vite-plugin-mock@3.0.2.patch",
+      "type": "file",
+      "name": "vite-plugin-mock@3.0.2.patch",
+      "filePath": "patches/vite-plugin-mock@3.0.2.patch",
+      "summary": "修补 vite-plugin-mock 3.0.2 的客户端请求包装器，把原始 url 传入 Mock handler 以支持从动态 REST 路径提取资源 ID。",
+      "tags": [
+        "pnpm-patch",
+        "vite-plugin-mock",
+        "动态路由",
+        "兼容性修复"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:postcss.config.js",
+      "type": "file",
+      "name": "postcss.config.js",
+      "filePath": "postcss.config.js",
+      "summary": "为 PostCSS 注册 Tailwind CSS 与 Autoprefixer，支持工具类生成和浏览器前缀补全。",
+      "tags": [
+        "postcss",
+        "configuration",
+        "tailwind-css",
+        "autoprefixer"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:src/api/auth.ts",
+      "type": "file",
+      "name": "auth.ts",
+      "filePath": "src/api/auth.ts",
+      "summary": "封装登录、读取会话与退出 API，并通过 Axios 泛型表达后端 ApiResponse 被响应拦截器解包后的返回类型。",
+      "tags": [
+        "api-client",
+        "认证",
+        "会话",
+        "typescript"
+      ],
+      "complexity": "simple",
+      "languageNotes": "每个导出函数显式声明 Promise 返回类型，并同时给 request 泛型提供原始响应与解包结果。"
+    },
+    {
+      "id": "function:src/api/auth.ts:login",
+      "type": "function",
+      "name": "login",
+      "filePath": "src/api/auth.ts",
+      "lineRange": [
+        21,
+        26
+      ],
+      "summary": "提交账号凭证并返回包含 access token、用户与动态路由的登录结果。",
+      "tags": [
+        "api-client",
+        "登录",
+        "认证"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:src/api/auth.ts:getSession",
+      "type": "function",
+      "name": "getSession",
+      "filePath": "src/api/auth.ts",
+      "lineRange": [
+        29,
+        33
+      ],
+      "summary": "请求当前登录用户及其动态路由的会话信息。",
+      "tags": [
+        "api-client",
+        "会话恢复",
+        "认证"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:src/api/auth.ts:logout",
+      "type": "function",
+      "name": "logout",
+      "filePath": "src/api/auth.ts",
+      "lineRange": [
+        36,
+        38
+      ],
+      "summary": "调用退出接口并返回布尔结果。",
+      "tags": [
+        "api-client",
+        "退出登录",
+        "认证"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:src/api/shelterManagement.ts",
+      "type": "file",
+      "name": "shelterManagement.ts",
+      "filePath": "src/api/shelterManagement.ts",
+      "summary": "提供避难场所列表、详情、新增、更新和删除的类型化 API 封装，其中读取请求支持 AbortSignal 取消。",
+      "tags": [
+        "api-client",
+        "避难所管理",
+        "crud",
+        "abort-signal"
+      ],
+      "complexity": "moderate",
+      "languageNotes": "API 层显式区分 ApiResponse 包装类型与拦截器解包后的领域返回类型。"
+    },
+    {
+      "id": "function:src/api/shelterManagement.ts:getShelterList",
+      "type": "function",
+      "name": "getShelterList",
+      "filePath": "src/api/shelterManagement.ts",
+      "lineRange": [
+        16,
+        24
+      ],
+      "summary": "按筛选与分页参数查询避难场所列表，并允许调用方传入 AbortSignal。",
+      "tags": [
+        "api-client",
+        "列表查询",
+        "分页",
+        "请求取消"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:src/api/shelterManagement.ts:getShelterDetail",
+      "type": "function",
+      "name": "getShelterDetail",
+      "filePath": "src/api/shelterManagement.ts",
+      "lineRange": [
+        32,
+        40
+      ],
+      "summary": "按唯一标识查询避难场所详情，并支持取消过期请求。",
+      "tags": [
+        "api-client",
+        "详情查询",
+        "请求取消"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:src/api/shelterManagement.ts:createShelter",
+      "type": "function",
+      "name": "createShelter",
+      "filePath": "src/api/shelterManagement.ts",
+      "lineRange": [
+        43,
+        50
+      ],
+      "summary": "提交表单值创建避难场所并返回新记录。",
+      "tags": [
+        "api-client",
+        "创建记录",
+        "crud"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:src/api/shelterManagement.ts:updateShelter",
+      "type": "function",
+      "name": "updateShelter",
+      "filePath": "src/api/shelterManagement.ts",
+      "lineRange": [
+        53,
+        61
+      ],
+      "summary": "按唯一标识提交表单值并返回更新后的避难场所。",
+      "tags": [
+        "api-client",
+        "更新记录",
+        "crud"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:src/api/shelterManagement.ts:deleteShelter",
+      "type": "function",
+      "name": "deleteShelter",
+      "filePath": "src/api/shelterManagement.ts",
+      "lineRange": [
+        64,
+        68
+      ],
+      "summary": "按唯一标识删除避难场所并返回操作结果。",
+      "tags": [
+        "api-client",
+        "删除记录",
+        "crud"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:src/api/userManagement.ts",
+      "type": "file",
+      "name": "userManagement.ts",
+      "filePath": "src/api/userManagement.ts",
+      "summary": "封装用户分页列表、新增、更新与删除请求，以统一 ApiResponse 和页面领域类型约束调用结果。",
+      "tags": [
+        "api-client",
+        "用户管理",
+        "crud",
+        "分页"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:src/api/userManagement.ts:getUserList",
+      "type": "function",
+      "name": "getUserList",
+      "filePath": "src/api/userManagement.ts",
+      "lineRange": [
+        11,
+        16
+      ],
+      "summary": "根据查询与分页参数获取用户列表结果。",
+      "tags": [
+        "api-client",
+        "列表查询",
+        "分页"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:src/api/userManagement.ts:createUser",
+      "type": "function",
+      "name": "createUser",
+      "filePath": "src/api/userManagement.ts",
+      "lineRange": [
+        19,
+        24
+      ],
+      "summary": "提交用户表单值并返回创建后的用户记录。",
+      "tags": [
+        "api-client",
+        "创建用户",
+        "crud"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:src/api/userManagement.ts:updateUser",
+      "type": "function",
+      "name": "updateUser",
+      "filePath": "src/api/userManagement.ts",
+      "lineRange": [
+        27,
+        35
+      ],
+      "summary": "按用户 ID 更新资料并返回最新记录。",
+      "tags": [
+        "api-client",
+        "更新用户",
+        "crud"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:src/api/userManagement.ts:deleteUser",
+      "type": "function",
+      "name": "deleteUser",
+      "filePath": "src/api/userManagement.ts",
+      "lineRange": [
+        38,
+        42
+      ],
+      "summary": "按用户 ID 删除记录并返回布尔结果。",
+      "tags": [
+        "api-client",
+        "删除用户",
+        "crud"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:src/app/providers/I18nProvider.tsx",
+      "type": "file",
+      "name": "I18nProvider.tsx",
+      "filePath": "src/app/providers/I18nProvider.tsx",
+      "summary": "在应用 Provider 层触发 i18n 模块初始化，并以透明组件形式继续渲染 children。",
+      "tags": [
+        "react-provider",
+        "i18n",
+        "应用初始化"
+      ],
+      "complexity": "simple",
+      "languageNotes": "组件利用模块副作用完成一次性初始化，本身不额外创建 DOM。"
+    },
+    {
+      "id": "function:src/app/providers/I18nProvider.tsx:I18nProvider",
+      "type": "function",
+      "name": "I18nProvider",
+      "filePath": "src/app/providers/I18nProvider.tsx",
+      "lineRange": [
+        9,
+        11
+      ],
+      "summary": "保证 i18n 初始化模块已加载后原样返回子节点。",
+      "tags": [
+        "react-provider",
+        "i18n",
+        "透明组件"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:src/auth/token.ts",
+      "type": "file",
+      "name": "token.ts",
+      "filePath": "src/auth/token.ts",
+      "summary": "集中管理 access token 在 localStorage 中的读取、写入和删除。",
+      "tags": [
+        "认证",
+        "token-storage",
+        "local-storage",
+        "工具函数"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:src/auth/token.ts:getAccessToken",
+      "type": "function",
+      "name": "getAccessToken",
+      "filePath": "src/auth/token.ts",
+      "lineRange": [
+        3,
+        5
+      ],
+      "summary": "从 localStorage 读取当前 access token。",
+      "tags": [
+        "认证",
+        "读取-token",
+        "local-storage"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:src/auth/token.ts:setAccessToken",
+      "type": "function",
+      "name": "setAccessToken",
+      "filePath": "src/auth/token.ts",
+      "lineRange": [
+        7,
+        9
+      ],
+      "summary": "把 access token 写入统一的 localStorage 键。",
+      "tags": [
+        "认证",
+        "保存-token",
+        "local-storage"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:src/auth/token.ts:removeAccessToken",
+      "type": "function",
+      "name": "removeAccessToken",
+      "filePath": "src/auth/token.ts",
+      "lineRange": [
+        11,
+        13
+      ],
+      "summary": "从 localStorage 移除当前 access token。",
+      "tags": [
+        "认证",
+        "删除-token",
+        "local-storage"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:src/auth/types.ts",
+      "type": "file",
+      "name": "types.ts",
+      "filePath": "src/auth/types.ts",
+      "summary": "定义认证用户、登录请求、登录结果和会话结果类型，并把后端动态路由纳入认证契约。",
+      "tags": [
+        "type-definition",
+        "认证",
+        "会话",
+        "动态路由"
+      ],
+      "complexity": "simple",
+      "languageNotes": "登录结果在会话数据基础上增加 accessToken，而两者复用 AuthUser 与 BackendRouteItem 类型。"
+    },
+    {
+      "id": "file:src/components/BreadCrumb/index.tsx",
+      "type": "file",
+      "name": "index.tsx",
+      "filePath": "src/components/BreadCrumb/index.tsx",
+      "summary": "根据当前位置、认证 Store 中的动态路由和 i18n 文案递归生成面包屑，并补齐首页入口。",
+      "tags": [
+        "react-component",
+        "breadcrumb",
+        "动态路由",
+        "i18n"
+      ],
+      "complexity": "moderate",
+      "languageNotes": "使用递归匹配嵌套路由并通过 useMemo 缓存 Ant Design Breadcrumb items。"
+    },
+    {
+      "id": "function:src/components/BreadCrumb/index.tsx:getRouteTitle",
+      "type": "function",
+      "name": "getRouteTitle",
+      "filePath": "src/components/BreadCrumb/index.tsx",
+      "lineRange": [
+        30,
+        39
+      ],
+      "summary": "优先翻译路由 titleKey，并回退到静态 title 或路由 name。",
+      "tags": [
+        "工具函数",
+        "路由标题",
+        "i18n"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:src/components/BreadCrumb/index.tsx:matchBreadcrumbs",
+      "type": "function",
+      "name": "matchBreadcrumbs",
+      "filePath": "src/components/BreadCrumb/index.tsx",
+      "lineRange": [
+        41,
+        76
+      ],
+      "summary": "递归匹配当前 pathname 在动态路由树中的父子链，并返回完整路径与本地化标题。",
+      "tags": [
+        "递归",
+        "路由匹配",
+        "breadcrumb",
+        "工具函数"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:src/components/BreadCrumb/index.tsx:getHomeBreadcrumb",
+      "type": "function",
+      "name": "getHomeBreadcrumb",
+      "filePath": "src/components/BreadCrumb/index.tsx",
+      "lineRange": [
+        78,
+        90
+      ],
+      "summary": "从动态路由中寻找首页配置，并在缺失时使用默认国际化标题。",
+      "tags": [
+        "工具函数",
+        "首页路由",
+        "breadcrumb"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:src/components/BreadCrumb/index.tsx:BreadCrumb",
+      "type": "function",
+      "name": "BreadCrumb",
+      "filePath": "src/components/BreadCrumb/index.tsx",
+      "lineRange": [
+        101,
+        136
+      ],
+      "summary": "组合 pathname、动态路由和翻译函数生成 Ant Design 面包屑，非末级条目渲染为 Link。",
+      "tags": [
+        "react-component",
+        "breadcrumb",
+        "use-memo",
+        "动态路由"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:src/components/FullScreen/index.tsx",
+      "type": "file",
+      "name": "index.tsx",
+      "filePath": "src/components/FullScreen/index.tsx",
+      "summary": "提供可复用的全屏切换按钮，监听浏览器 fullscreenchange 事件并同步图标与国际化提示。",
+      "tags": [
+        "react-component",
+        "全屏控制",
+        "事件监听",
+        "国际化"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:src/components/GithubLink/index.tsx",
+      "type": "file",
+      "name": "index.tsx",
+      "filePath": "src/components/GithubLink/index.tsx",
+      "summary": "渲染指向项目 GitHub 仓库的响应式图标按钮，在较大视口中显示。",
+      "tags": [
+        "react-component",
+        "外部链接",
+        "github"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:src/components/LanguageSwitch/index.tsx",
+      "type": "file",
+      "name": "index.tsx",
+      "filePath": "src/components/LanguageSwitch/index.tsx",
+      "summary": "提供中英文下拉切换控件，调用 i18next 更新语言并把选择持久化到 localStorage。",
+      "tags": [
+        "react-component",
+        "国际化",
+        "语言切换",
+        "本地存储"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:src/components/ThemeSwitch/index.tsx",
+      "type": "file",
+      "name": "index.tsx",
+      "filePath": "src/components/ThemeSwitch/index.tsx",
+      "summary": "通过主题上下文切换明暗模式，并用国际化 Tooltip 说明控件用途。",
+      "tags": [
+        "react-component",
+        "主题切换",
+        "context",
+        "国际化"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:src/config/menu.ts",
+      "type": "file",
+      "name": "menu.ts",
+      "filePath": "src/config/menu.ts",
+      "summary": "保留早期 Vue/Cesium 学习场景的庞大静态菜单树和菜单类型，列举入门、影像、地形、实体与元数据示例。",
+      "tags": [
+        "菜单配置",
+        "cesium",
+        "学习目录",
+        "遗留配置"
+      ],
+      "complexity": "complex"
+    },
+    {
+      "id": "file:src/index.css",
+      "type": "file",
+      "name": "index.css",
+      "filePath": "src/index.css",
+      "summary": "加载 Tailwind CSS，并为根节点和页面主体建立铺满视口的基础尺寸。",
+      "tags": [
+        "全局样式",
+        "tailwind",
+        "页面布局"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:src/layouts/index.tsx",
+      "type": "file",
+      "name": "index.tsx",
+      "filePath": "src/layouts/index.tsx",
+      "summary": "作为布局模块的 barrel 文件，向路由层转发 MainLayout 默认导出。",
+      "tags": [
+        "barrel",
+        "布局入口",
+        "模块导出"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:src/main.tsx",
+      "type": "file",
+      "name": "main.tsx",
+      "filePath": "src/main.tsx",
+      "summary": "应用启动入口：设置 Cesium ion Token、按环境启用生产 Mock、触发会话恢复并以 StrictMode 挂载 React 根组件。",
+      "tags": [
+        "entry-point",
+        "react",
+        "cesium",
+        "启动流程",
+        "认证恢复"
+      ],
+      "complexity": "simple",
+      "languageNotes": "使用 async bootstrap 配合动态 import，让生产 Mock 在请求发出前初始化，同时不阻塞 React 首次挂载的会话恢复。"
+    },
+    {
+      "id": "file:src/mockProdServer.ts",
+      "type": "file",
+      "name": "mockProdServer.ts",
+      "filePath": "src/mockProdServer.ts",
+      "summary": "通过 import.meta.glob 聚合 mock 模块，并在生产构建启用时注册 vite-plugin-mock 客户端服务。",
+      "tags": [
+        "mock-server",
+        "vite",
+        "动态导入",
+        "开发支撑"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:src/pages/animation/clock/index.tsx",
+      "type": "file",
+      "name": "index.tsx",
+      "filePath": "src/pages/animation/clock/index.tsx",
+      "summary": "提供时钟学习路由的占位页面，当前仅渲染标题。",
+      "tags": [
+        "react-page",
+        "占位页面",
+        "动画学习"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:src/pages/error/NotFound.tsx",
+      "type": "file",
+      "name": "NotFound.tsx",
+      "filePath": "src/pages/error/NotFound.tsx",
+      "summary": "提供未匹配路由使用的简洁 404 页面。",
+      "tags": [
+        "react-page",
+        "错误页面",
+        "路由回退"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:src/pages/getting-started/hello-world/index.tsx",
+      "type": "file",
+      "name": "index.tsx",
+      "filePath": "src/pages/getting-started/hello-world/index.tsx",
+      "summary": "创建最小 Cesium Viewer 学习场景，加载世界地形、飞往上海，并处理初始化、渲染错误和组件卸载清理。",
+      "tags": [
+        "react-page",
+        "cesium",
+        "viewer",
+        "生命周期",
+        "错误处理"
+      ],
+      "complexity": "moderate",
+      "languageNotes": "用 useRef 保存 DOM 容器和 Viewer 实例，在 useEffect 清理函数中移除事件监听并销毁 Cesium 资源。"
+    },
+    {
+      "id": "file:src/pages/getting-started/resolution-scale/index.tsx",
+      "type": "file",
+      "name": "index.tsx",
+      "filePath": "src/pages/getting-started/resolution-scale/index.tsx",
+      "summary": "提供分辨率缩放学习路由的占位页面，尚未实现 Cesium 交互。",
+      "tags": [
+        "react-page",
+        "占位页面",
+        "cesium-学习"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:src/pages/home/index.tsx",
+      "type": "file",
+      "name": "index.tsx",
+      "filePath": "src/pages/home/index.tsx",
+      "summary": "作为首页组件展示 DatePicker、Empty 和 Pagination，用于练习 Ant Design 基础组件组合。",
+      "tags": [
+        "react-page",
+        "ant-design",
+        "组件练习"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "document:src/pages/index.md",
+      "type": "document",
+      "name": "index.md",
+      "filePath": "src/pages/index.md",
+      "summary": "说明页面目录的组织约定：简单页面保留入口文件，复杂页面内聚组件、Hooks 和工具，再按复用范围提升。",
+      "tags": [
+        "documentation",
+        "目录约定",
+        "组件组织",
+        "react"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:src/pages/login/index.tsx",
+      "type": "file",
+      "name": "index.tsx",
+      "filePath": "src/pages/login/index.tsx",
+      "summary": "实现国际化登录页、表单校验和提交反馈，并通过局部 Ant Design 主题包装登录内容。",
+      "tags": [
+        "react-page",
+        "登录表单",
+        "认证",
+        "国际化",
+        "ant-design"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:src/pages/login/login.scss",
+      "type": "file",
+      "name": "login.scss",
+      "filePath": "src/pages/login/login.scss",
+      "summary": "定义登录页的单视口双栏布局、空间主题装饰、表单面板以及响应式适配。",
+      "tags": [
+        "scss",
+        "登录样式",
+        "响应式布局",
+        "视觉设计"
+      ],
+      "complexity": "complex"
+    },
+    {
+      "id": "file:src/pages/showcases/google-2d-tiles/index.tsx",
+      "type": "file",
+      "name": "index.tsx",
+      "filePath": "src/pages/showcases/google-2d-tiles/index.tsx",
+      "summary": "提供 Google 2D Tiles 展示路由的占位页面，尚未接入真实图层。",
+      "tags": [
+        "react-page",
+        "占位页面",
+        "cesium-案例"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:src/store/auth.ts",
+      "type": "file",
+      "name": "auth.ts",
+      "filePath": "src/store/auth.ts",
+      "summary": "使用 Zustand 管理 booting、anonymous 和 authenticated 三态认证流程，协调 Token、会话、用户与权限路由。",
+      "tags": [
+        "zustand",
+        "认证状态",
+        "会话恢复",
+        "权限路由"
+      ],
+      "complexity": "moderate",
+      "languageNotes": "同一 store 同时暴露 React selector Hook 与 getState 命令式 API，使组件订阅和入口启动逻辑共享状态源。"
+    },
+    {
+      "id": "file:src/styles/theme.css",
+      "type": "file",
+      "name": "theme.css",
+      "filePath": "src/styles/theme.css",
+      "summary": "预留主题样式文件，当前没有实际样式规则。",
+      "tags": [
+        "主题样式",
+        "占位文件",
+        "css"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:src/types/api.ts",
+      "type": "file",
+      "name": "api.ts",
+      "filePath": "src/types/api.ts",
+      "summary": "定义统一后端响应泛型，约束业务状态码、消息和数据载荷。",
+      "tags": [
+        "typescript",
+        "api-contract",
+        "类型定义"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:src/utils/request.ts",
+      "type": "file",
+      "name": "request.ts",
+      "filePath": "src/utils/request.ts",
+      "summary": "配置 Axios 实例、基础路径和超时，自动附加访问令牌并把统一响应解包为业务数据。",
+      "tags": [
+        "axios",
+        "http-client",
+        "请求拦截器",
+        "响应处理"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:src/vite-env.d.ts",
+      "type": "file",
+      "name": "vite-env.d.ts",
+      "filePath": "src/vite-env.d.ts",
+      "summary": "声明 Cesium ion Token 与生产 Mock 开关两个 Vite 环境变量的 TypeScript 类型。",
+      "tags": [
+        "typescript",
+        "环境变量",
+        "vite",
+        "类型声明"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:tailwind.config.js",
+      "type": "file",
+      "name": "tailwind.config.js",
+      "filePath": "tailwind.config.js",
+      "summary": "配置 Tailwind CSS 扫描入口 HTML 和 src 下的 React/TypeScript 文件，当前未扩展主题或插件。",
+      "tags": [
+        "tailwind",
+        "构建配置",
+        "样式扫描"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:tests/auth.mock.test.ts",
+      "type": "file",
+      "name": "auth.mock.test.ts",
+      "filePath": "tests/auth.mock.test.ts",
+      "summary": "使用 Node Test 和断言验证认证 Mock：管理员路由、普通用户权限以及错误凭证响应。",
+      "tags": [
+        "test",
+        "认证测试",
+        "mock-api",
+        "权限验证"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:src/components/FullScreen/index.tsx:FullScreen",
+      "type": "function",
+      "name": "FullScreen",
+      "filePath": "src/components/FullScreen/index.tsx",
+      "lineRange": [
+        6,
+        59
+      ],
+      "summary": "监听浏览器全屏状态并提供进入或退出全屏的国际化按钮。",
+      "tags": [
+        "react-component",
+        "全屏控制",
+        "use-effect",
+        "事件清理"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:src/components/GithubLink/index.tsx:GithubLink",
+      "type": "function",
+      "name": "GithubLink",
+      "filePath": "src/components/GithubLink/index.tsx",
+      "lineRange": [
+        4,
+        14
+      ],
+      "summary": "渲染打开项目 GitHub 仓库的新窗口链接按钮。",
+      "tags": [
+        "react-component",
+        "外部链接",
+        "github"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:src/components/LanguageSwitch/index.tsx:LanguageSwitch",
+      "type": "function",
+      "name": "LanguageSwitch",
+      "filePath": "src/components/LanguageSwitch/index.tsx",
+      "lineRange": [
+        20,
+        51
+      ],
+      "summary": "渲染可选中当前语言的下拉菜单，并同步 i18next 与持久化偏好。",
+      "tags": [
+        "react-component",
+        "国际化",
+        "语言切换",
+        "本地存储"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:src/components/ThemeSwitch/index.tsx:ThemeSwitch",
+      "type": "function",
+      "name": "ThemeSwitch",
+      "filePath": "src/components/ThemeSwitch/index.tsx",
+      "lineRange": [
+        7,
+        22
+      ],
+      "summary": "读取主题上下文并渲染明暗模式切换开关。",
+      "tags": [
+        "react-component",
+        "主题切换",
+        "context"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:src/main.tsx:bootstrap",
+      "type": "function",
+      "name": "bootstrap",
+      "filePath": "src/main.tsx",
+      "lineRange": [
+        18,
+        41
+      ],
+      "summary": "按顺序初始化可选生产 Mock、启动认证会话恢复并挂载 React 应用。",
+      "tags": [
+        "启动流程",
+        "异步初始化",
+        "react-root",
+        "认证恢复"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:src/mockProdServer.ts:setupProdMockServer",
+      "type": "function",
+      "name": "setupProdMockServer",
+      "filePath": "src/mockProdServer.ts",
+      "lineRange": [
+        11,
+        13
+      ],
+      "summary": "把预先聚合的 Mock 模块注册到生产 Mock 服务。",
+      "tags": [
+        "mock-server",
+        "生产模拟",
+        "vite"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:src/pages/animation/clock/index.tsx:Clock",
+      "type": "function",
+      "name": "Clock",
+      "filePath": "src/pages/animation/clock/index.tsx",
+      "lineRange": [
+        1,
+        3
+      ],
+      "summary": "渲染时钟示例的占位标题。",
+      "tags": [
+        "react-component",
+        "占位页面",
+        "动画学习"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:src/pages/error/NotFound.tsx:NotFound",
+      "type": "function",
+      "name": "NotFound",
+      "filePath": "src/pages/error/NotFound.tsx",
+      "lineRange": [
+        1,
+        3
+      ],
+      "summary": "渲染路由未匹配时的 404 提示。",
+      "tags": [
+        "react-component",
+        "错误页面",
+        "404"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:src/pages/getting-started/hello-world/index.tsx:CesiumWidgetPage",
+      "type": "function",
+      "name": "CesiumWidgetPage",
+      "filePath": "src/pages/getting-started/hello-world/index.tsx",
+      "lineRange": [
+        9,
+        97
+      ],
+      "summary": "在 React 生命周期中创建和销毁 Cesium Viewer，展示世界地形并暴露初始化错误。",
+      "tags": [
+        "react-component",
+        "cesium-viewer",
+        "use-effect",
+        "资源清理"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:src/pages/getting-started/resolution-scale/index.tsx:ResolutionScale",
+      "type": "function",
+      "name": "ResolutionScale",
+      "filePath": "src/pages/getting-started/resolution-scale/index.tsx",
+      "lineRange": [
+        1,
+        3
+      ],
+      "summary": "渲染分辨率缩放示例的占位标题。",
+      "tags": [
+        "react-component",
+        "占位页面",
+        "cesium-学习"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:src/pages/home/index.tsx:Home",
+      "type": "function",
+      "name": "Home",
+      "filePath": "src/pages/home/index.tsx",
+      "lineRange": [
+        3,
+        11
+      ],
+      "summary": "组合多个 Ant Design 控件形成简单的组件练习首页。",
+      "tags": [
+        "react-component",
+        "ant-design",
+        "组件组合"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:src/pages/login/index.tsx:LoginContent",
+      "type": "function",
+      "name": "LoginContent",
+      "filePath": "src/pages/login/index.tsx",
+      "lineRange": [
+        13,
+        131
+      ],
+      "summary": "维护登录提交和错误反馈状态，渲染品牌介绍、语言切换与认证表单。",
+      "tags": [
+        "react-component",
+        "登录表单",
+        "认证",
+        "国际化"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:src/pages/login/index.tsx:LoginPage",
+      "type": "function",
+      "name": "LoginPage",
+      "filePath": "src/pages/login/index.tsx",
+      "lineRange": [
+        133,
+        148
+      ],
+      "summary": "用局部暗色 Ant Design 主题包装登录内容，作为路由页面默认导出。",
+      "tags": [
+        "react-component",
+        "主题配置",
+        "登录页面",
+        "ant-design"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:src/pages/showcases/google-2d-tiles/index.tsx:Google2DTiles",
+      "type": "function",
+      "name": "Google2DTiles",
+      "filePath": "src/pages/showcases/google-2d-tiles/index.tsx",
+      "lineRange": [
+        1,
+        3
+      ],
+      "summary": "渲染 Google 2D Tiles 案例的占位标题。",
+      "tags": [
+        "react-component",
+        "占位页面",
+        "cesium-案例"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:src/utils/request.ts:isRequestCanceled",
+      "type": "function",
+      "name": "isRequestCanceled",
+      "filePath": "src/utils/request.ts",
+      "lineRange": [
+        6,
+        8
+      ],
+      "summary": "使用 Axios 判定请求异常是否由主动取消产生。",
+      "tags": [
+        "axios",
+        "请求取消",
+        "类型判断"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:tests/request.test.ts",
+      "type": "file",
+      "name": "request.test.ts",
+      "filePath": "tests/request.test.ts",
+      "summary": "使用 Node Test 和自定义 Axios adapter 验证统一响应解包、业务错误、原始 Axios 错误保留及取消请求识别。",
+      "tags": [
+        "测试",
+        "Axios",
+        "响应拦截",
+        "取消请求"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:tests/shelterMock.test.ts",
+      "type": "file",
+      "name": "shelterMock.test.ts",
+      "filePath": "tests/shelterMock.test.ts",
+      "summary": "验证避难场所 Mock 的动态详情路由注册顺序、统一列表响应、不存在记录错误和重复删除行为。",
+      "tags": [
+        "测试",
+        "Mock-接口",
+        "动态路由",
+        "避难场所"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:tests/shelterRequestHooks.test.ts",
+      "type": "file",
+      "name": "shelterRequestHooks.test.ts",
+      "filePath": "tests/shelterRequestHooks.test.ts",
+      "summary": "在 JSDOM 中测试避难场所请求 Hook，覆盖查询变化取消旧请求、latest-wins、loading 归属和清空详情后的回写保护。",
+      "tags": [
+        "测试",
+        "React-Hook",
+        "并发请求",
+        "latest-wins"
+      ],
+      "complexity": "moderate",
+      "languageNotes": "测试通过可控 Promise adapter 精确安排响应顺序，使竞态条件和 AbortSignal 状态可以被确定性观察。"
+    },
+    {
+      "id": "function:tests/shelterRequestHooks.test.ts:createDeferredAdapter",
+      "type": "function",
+      "name": "createDeferredAdapter",
+      "filePath": "tests/shelterRequestHooks.test.ts",
+      "lineRange": [
+        40,
+        62
+      ],
+      "summary": "创建可延迟解析的 Axios adapter，并记录待处理请求以控制测试中的并发响应顺序。",
+      "tags": [
+        "测试工具",
+        "Axios-adapter",
+        "Promise-控制",
+        "竞态模拟"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:tests/shelterRequestHooks.test.ts:createShelter",
+      "type": "function",
+      "name": "createShelter",
+      "filePath": "tests/shelterRequestHooks.test.ts",
+      "lineRange": [
+        64,
+        82
+      ],
+      "summary": "按给定 id 生成完整的 ShelterRecord 测试数据，供 Hook 响应断言复用。",
+      "tags": [
+        "测试数据",
+        "工厂函数",
+        "类型约束"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:tests/userMock.test.ts",
+      "type": "file",
+      "name": "userMock.test.ts",
+      "filePath": "tests/userMock.test.ts",
+      "summary": "验证用户 Mock 列表的统一响应格式，以及首次删除成功和重复删除返回业务错误的状态变化。",
+      "tags": [
+        "测试",
+        "Mock-接口",
+        "用户管理",
+        "CRUD"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:vite.config.ts",
+      "type": "file",
+      "name": "vite.config.ts",
+      "filePath": "vite.config.ts",
+      "summary": "配置 Vite base、Cesium 运行时静态资源复制、开发 Mock、src 路径别名和开发服务器 API 代理。",
+      "tags": [
+        "Vite-配置",
+        "CesiumJS",
+        "静态资源",
+        "开发代理",
+        "Mock"
+      ],
+      "complexity": "moderate",
+      "languageNotes": "配置将浏览器公共 URL 与构建输出路径分开处理，并用 normalizePath 兼容 Windows 下的 Cesium 静态资源 glob。"
+    }
+  ],
+  "edges": [
+    {
+      "source": "file:src/pages/system-management/shelter-management/components/ShelterDetailModal.tsx",
+      "target": "function:src/pages/system-management/shelter-management/components/ShelterDetailModal.tsx:ShelterDetailModal",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:src/pages/system-management/shelter-management/components/ShelterDetailModal.tsx",
+      "target": "function:src/pages/system-management/shelter-management/components/ShelterDetailModal.tsx:ShelterDetailModal",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:src/pages/system-management/shelter-management/components/ShelterForm.tsx",
+      "target": "function:src/pages/system-management/shelter-management/components/ShelterForm.tsx:getFormValues",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:src/pages/system-management/shelter-management/components/ShelterForm.tsx",
+      "target": "function:src/pages/system-management/shelter-management/components/ShelterForm.tsx:ShelterForm",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:src/pages/system-management/shelter-management/components/ShelterForm.tsx",
+      "target": "function:src/pages/system-management/shelter-management/components/ShelterForm.tsx:ShelterForm",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:src/pages/system-management/shelter-management/components/ShelterTable.tsx",
+      "target": "function:src/pages/system-management/shelter-management/components/ShelterTable.tsx:ShelterTable",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:src/pages/system-management/shelter-management/components/ShelterTable.tsx",
+      "target": "function:src/pages/system-management/shelter-management/components/ShelterTable.tsx:ShelterTable",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:src/pages/system-management/shelter-management/hooks/useShelterDetail.ts",
+      "target": "function:src/pages/system-management/shelter-management/hooks/useShelterDetail.ts:useShelterDetail",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:src/pages/system-management/shelter-management/hooks/useShelterDetail.ts",
+      "target": "function:src/pages/system-management/shelter-management/hooks/useShelterDetail.ts:useShelterDetail",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:src/pages/system-management/shelter-management/hooks/useShelterList.ts",
+      "target": "function:src/pages/system-management/shelter-management/hooks/useShelterList.ts:useShelterList",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:src/pages/system-management/shelter-management/hooks/useShelterList.ts",
+      "target": "function:src/pages/system-management/shelter-management/hooks/useShelterList.ts:useShelterList",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:src/pages/system-management/shelter-management/index.tsx",
+      "target": "function:src/pages/system-management/shelter-management/index.tsx:ShelterManagement",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:src/pages/system-management/shelter-management/index.tsx",
+      "target": "function:src/pages/system-management/shelter-management/index.tsx:ShelterManagement",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:src/pages/system-management/shelter-management/without-custom-hooks/WithoutCustomHooksExample.tsx",
+      "target": "function:src/pages/system-management/shelter-management/without-custom-hooks/WithoutCustomHooksExample.tsx:waitForResponse",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:src/pages/system-management/shelter-management/without-custom-hooks/WithoutCustomHooksExample.tsx",
+      "target": "function:src/pages/system-management/shelter-management/without-custom-hooks/WithoutCustomHooksExample.tsx:ShelterManagementWithoutCustomHooks",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:src/pages/system-management/shelter-management/without-custom-hooks/WithoutCustomHooksExample.tsx",
+      "target": "function:src/pages/system-management/shelter-management/without-custom-hooks/WithoutCustomHooksExample.tsx:ShelterManagementWithoutCustomHooks",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:src/pages/system-management/shelter-management/components/ShelterDetailModal.tsx",
+      "target": "file:src/pages/system-management/shelter-management/constants.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:src/pages/system-management/shelter-management/components/ShelterDetailModal.tsx",
+      "target": "file:src/pages/system-management/shelter-management/types.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:src/pages/system-management/shelter-management/components/ShelterForm.tsx",
+      "target": "file:src/pages/system-management/shelter-management/constants.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:src/pages/system-management/shelter-management/components/ShelterForm.tsx",
+      "target": "file:src/pages/system-management/shelter-management/types.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:src/pages/system-management/shelter-management/components/ShelterTable.tsx",
+      "target": "file:src/pages/system-management/shelter-management/constants.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:src/pages/system-management/shelter-management/components/ShelterTable.tsx",
+      "target": "file:src/pages/system-management/shelter-management/types.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:src/pages/system-management/shelter-management/constants.ts",
+      "target": "file:src/pages/system-management/shelter-management/types.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:src/pages/system-management/shelter-management/index.tsx",
+      "target": "file:src/pages/system-management/shelter-management/components/ShelterDetailModal.tsx",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:src/pages/system-management/shelter-management/index.tsx",
+      "target": "file:src/pages/system-management/shelter-management/components/ShelterForm.tsx",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:src/pages/system-management/shelter-management/index.tsx",
+      "target": "file:src/pages/system-management/shelter-management/components/ShelterTable.tsx",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:src/pages/system-management/shelter-management/index.tsx",
+      "target": "file:src/pages/system-management/shelter-management/hooks/useShelterDetail.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:src/pages/system-management/shelter-management/index.tsx",
+      "target": "file:src/pages/system-management/shelter-management/hooks/useShelterList.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:src/pages/system-management/shelter-management/index.tsx",
+      "target": "file:src/pages/system-management/shelter-management/types.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:src/pages/system-management/shelter-management/without-custom-hooks/WithoutCustomHooksExample.tsx",
+      "target": "file:src/pages/system-management/shelter-management/components/ShelterDetailModal.tsx",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:src/pages/system-management/shelter-management/without-custom-hooks/WithoutCustomHooksExample.tsx",
+      "target": "file:src/pages/system-management/shelter-management/components/ShelterForm.tsx",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:src/pages/system-management/shelter-management/without-custom-hooks/WithoutCustomHooksExample.tsx",
+      "target": "file:src/pages/system-management/shelter-management/components/ShelterTable.tsx",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:src/pages/system-management/shelter-management/without-custom-hooks/WithoutCustomHooksExample.tsx",
+      "target": "file:src/pages/system-management/shelter-management/types.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:src/i18n/constants.ts",
+      "target": "file:src/i18n/types.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:src/i18n/index.ts",
+      "target": "file:src/i18n/constants.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:src/i18n/index.ts",
+      "target": "file:src/i18n/locales/en-US.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:src/i18n/index.ts",
+      "target": "file:src/i18n/locales/zh-CN.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:src/i18n/index.ts",
+      "target": "file:src/i18n/utils.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:src/i18n/utils.ts",
+      "target": "file:src/i18n/constants.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:src/i18n/utils.ts",
+      "target": "file:src/i18n/types.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:src/i18n/utils.ts",
+      "target": "function:src/i18n/utils.ts:isAppLanguage",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:src/i18n/utils.ts",
+      "target": "function:src/i18n/utils.ts:getDefaultLanguage",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:src/i18n/utils.ts",
+      "target": "function:src/i18n/utils.ts:isAppLanguage",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:src/i18n/utils.ts",
+      "target": "function:src/i18n/utils.ts:getDefaultLanguage",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "function:src/i18n/utils.ts:getDefaultLanguage",
+      "target": "function:src/i18n/utils.ts:isAppLanguage",
+      "type": "calls",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:src/layouts/MainLayout/Content.tsx",
+      "target": "function:src/layouts/MainLayout/Content.tsx:MainLayoutContent",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:src/layouts/MainLayout/Content.tsx",
+      "target": "function:src/layouts/MainLayout/Content.tsx:MainLayoutContent",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:src/layouts/MainLayout/Header/components/UserProfile.tsx",
+      "target": "function:src/layouts/MainLayout/Header/components/UserProfile.tsx:UserProfile",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:src/layouts/MainLayout/Header/components/UserProfile.tsx",
+      "target": "function:src/layouts/MainLayout/Header/components/UserProfile.tsx:UserProfile",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:src/layouts/MainLayout/Header/index.tsx",
+      "target": "function:src/layouts/MainLayout/Header/index.tsx:MainLayoutHeader",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:src/layouts/MainLayout/Header/index.tsx",
+      "target": "function:src/layouts/MainLayout/Header/index.tsx:MainLayoutHeader",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:src/layouts/MainLayout/MobileDrawer.tsx",
+      "target": "function:src/layouts/MainLayout/MobileDrawer.tsx:MainLayoutMobileDrawer",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:src/layouts/MainLayout/MobileDrawer.tsx",
+      "target": "function:src/layouts/MainLayout/MobileDrawer.tsx:MainLayoutMobileDrawer",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:src/layouts/MainLayout/Sidebar.tsx",
+      "target": "function:src/layouts/MainLayout/Sidebar.tsx:MainLayoutSidebar",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:src/layouts/MainLayout/Sidebar.tsx",
+      "target": "function:src/layouts/MainLayout/Sidebar.tsx:MainLayoutSidebar",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:src/layouts/MainLayout/index.tsx",
+      "target": "function:src/layouts/MainLayout/index.tsx:MainLayout",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:src/layouts/MainLayout/index.tsx",
+      "target": "function:src/layouts/MainLayout/index.tsx:MainLayout",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:src/layouts/MainLayout/Header/index.tsx",
+      "target": "file:src/layouts/MainLayout/Header/components/UserProfile.tsx",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:src/layouts/MainLayout/index.tsx",
+      "target": "file:src/layouts/MainLayout/Content.tsx",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:src/layouts/MainLayout/index.tsx",
+      "target": "file:src/layouts/MainLayout/Header/index.tsx",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:src/layouts/MainLayout/index.tsx",
+      "target": "file:src/layouts/MainLayout/MobileDrawer.tsx",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:src/layouts/MainLayout/index.tsx",
+      "target": "file:src/layouts/MainLayout/Sidebar.tsx",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:src/router/index.tsx",
+      "target": "file:src/router/transform.tsx",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:src/router/index.tsx",
+      "target": "file:src/router/types.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:src/router/menu.tsx",
+      "target": "file:src/router/types.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:src/router/mockRoutes.ts",
+      "target": "file:src/router/types.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:src/router/transform.tsx",
+      "target": "file:src/router/types.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:src/router/index.tsx",
+      "target": "function:src/router/index.tsx:hasRoutePath",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:src/router/index.tsx",
+      "target": "function:src/router/index.tsx:ProtectedRoutes",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:src/router/index.tsx",
+      "target": "function:src/router/index.tsx:LoginRoute",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:src/router/menu.tsx",
+      "target": "function:src/router/menu.tsx:createMenuItems",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:src/router/transform.tsx",
+      "target": "function:src/router/transform.tsx:lazyLoad",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:src/router/transform.tsx",
+      "target": "function:src/router/transform.tsx:transformRoutes",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:src/router/menu.tsx",
+      "target": "function:src/router/menu.tsx:createMenuItems",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:src/router/transform.tsx",
+      "target": "function:src/router/transform.tsx:transformRoutes",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "function:src/router/index.tsx:ProtectedRoutes",
+      "target": "function:src/router/transform.tsx:transformRoutes",
+      "type": "calls",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "function:src/router/index.tsx:LoginRoute",
+      "target": "function:src/router/index.tsx:hasRoutePath",
+      "type": "calls",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "function:src/router/transform.tsx:transformRoutes",
+      "target": "function:src/router/transform.tsx:lazyLoad",
+      "type": "calls",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:src/app/App.tsx",
+      "target": "function:src/app/App.tsx:App",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:src/app/App.tsx",
+      "target": "function:src/app/App.tsx:App",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:src/app/providers/AntdProvider.tsx",
+      "target": "function:src/app/providers/AntdProvider.tsx:AntdProvider",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:src/app/providers/AntdProvider.tsx",
+      "target": "function:src/app/providers/AntdProvider.tsx:AntdProvider",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:src/app/providers/AppProvider.tsx",
+      "target": "function:src/app/providers/AppProvider.tsx:AppProvider",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:src/app/providers/AppProvider.tsx",
+      "target": "function:src/app/providers/AppProvider.tsx:AppProvider",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:src/app/providers/ThemeProvider.tsx",
+      "target": "function:src/app/providers/ThemeProvider.tsx:getInitialThemeMode",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:src/app/providers/ThemeProvider.tsx",
+      "target": "function:src/app/providers/ThemeProvider.tsx:ThemeProvider",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:src/app/providers/ThemeProvider.tsx",
+      "target": "function:src/app/providers/ThemeProvider.tsx:useThemeMode",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:src/app/providers/ThemeProvider.tsx",
+      "target": "function:src/app/providers/ThemeProvider.tsx:ThemeProvider",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:src/app/providers/ThemeProvider.tsx",
+      "target": "function:src/app/providers/ThemeProvider.tsx:useThemeMode",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:src/app/App.tsx",
+      "target": "file:src/app/providers/AppProvider.tsx",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:src/app/providers/AntdProvider.tsx",
+      "target": "file:src/app/providers/ThemeProvider.tsx",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:src/app/providers/AppProvider.tsx",
+      "target": "file:src/app/providers/AntdProvider.tsx",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:src/app/providers/AppProvider.tsx",
+      "target": "file:src/app/providers/ThemeProvider.tsx",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "function:src/app/providers/AntdProvider.tsx:AntdProvider",
+      "target": "function:src/app/providers/ThemeProvider.tsx:useThemeMode",
+      "type": "calls",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:src/pages/system-management/user-management/components/UserFormModal.tsx",
+      "target": "file:src/pages/system-management/user-management/types.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:src/pages/system-management/user-management/components/UserTablePanel.tsx",
+      "target": "file:src/pages/system-management/user-management/types.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:src/pages/system-management/user-management/index.tsx",
+      "target": "file:src/pages/system-management/user-management/components/UserFormModal.tsx",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:src/pages/system-management/user-management/index.tsx",
+      "target": "file:src/pages/system-management/user-management/components/UserTablePanel.tsx",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:src/pages/system-management/user-management/index.tsx",
+      "target": "file:src/pages/system-management/user-management/types.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:src/pages/system-management/user-management/components/UserFormModal.tsx",
+      "target": "function:src/pages/system-management/user-management/components/UserFormModal.tsx:getFormValues",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:src/pages/system-management/user-management/components/UserFormModal.tsx",
+      "target": "function:src/pages/system-management/user-management/components/UserFormModal.tsx:UserFormModal",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:src/pages/system-management/user-management/components/UserTablePanel.tsx",
+      "target": "function:src/pages/system-management/user-management/components/UserTablePanel.tsx:UserTablePanel",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:src/pages/system-management/user-management/index.tsx",
+      "target": "function:src/pages/system-management/user-management/index.tsx:UserManagement",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:src/pages/system-management/user-management/components/UserFormModal.tsx",
+      "target": "function:src/pages/system-management/user-management/components/UserFormModal.tsx:UserFormModal",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:src/pages/system-management/user-management/components/UserTablePanel.tsx",
+      "target": "function:src/pages/system-management/user-management/components/UserTablePanel.tsx:UserTablePanel",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:src/pages/system-management/user-management/index.tsx",
+      "target": "function:src/pages/system-management/user-management/index.tsx:UserManagement",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "document:AGENTS.md",
+      "target": "config:package.json",
+      "type": "documents",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "document:README.md",
+      "target": "config:package.json",
+      "type": "documents",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "document:README.md",
+      "target": "file:index.html",
+      "type": "documents",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "config:package.json",
+      "target": "file:index.html",
+      "type": "configures",
+      "direction": "forward",
+      "weight": 0.6
+    },
+    {
+      "source": "config:pnpm-workspace.yaml",
+      "target": "config:package.json",
+      "type": "configures",
+      "direction": "forward",
+      "weight": 0.6
+    },
+    {
+      "source": "config:tsconfig.json",
+      "target": "config:tsconfig.app.json",
+      "type": "configures",
+      "direction": "forward",
+      "weight": 0.6
+    },
+    {
+      "source": "config:tsconfig.json",
+      "target": "config:tsconfig.node.json",
+      "type": "configures",
+      "direction": "forward",
+      "weight": 0.6
+    },
+    {
+      "source": "config:tsconfig.test.json",
+      "target": "config:tsconfig.app.json",
+      "type": "depends_on",
+      "direction": "forward",
+      "weight": 0.6
+    },
+    {
+      "source": "config:skills-lock.json",
+      "target": "document:AGENTS.md",
+      "type": "related",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "document:docs/大纲目录.md",
+      "target": "document:docs/Codex上下文.md",
+      "type": "related",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "document:docs/大纲目录.md",
+      "target": "document:docs/Vite-base配置说明.md",
+      "type": "related",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "document:docs/大纲目录.md",
+      "target": "document:docs/antd主题切换.md",
+      "type": "related",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "document:docs/大纲目录.md",
+      "target": "document:docs/i18n配置和使用.md",
+      "type": "related",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "document:docs/大纲目录.md",
+      "target": "document:docs/vite-plugin-mock生产环境动态路由问题.md",
+      "type": "related",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "document:docs/大纲目录.md",
+      "target": "document:docs/目录结构.md",
+      "type": "related",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "document:docs/大纲目录.md",
+      "target": "document:docs/路由后续改进清单.md",
+      "type": "related",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "document:docs/大纲目录.md",
+      "target": "document:docs/路由配置和使用.md",
+      "type": "related",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "file:mock/auth.mock.ts",
+      "target": "function:mock/auth.mock.ts:getSessionResult",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:mock/system-management/_shelter.mock.bundled_1786024270130_6cti8700vk4.mjs",
+      "target": "function:mock/system-management/_shelter.mock.bundled_1786024270130_6cti8700vk4.mjs:getCurrentTime",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:mock/system-management/_user.mock.bundled_1786024270130_ed22rch2ug.mjs",
+      "target": "function:mock/system-management/_user.mock.bundled_1786024270130_ed22rch2ug.mjs:getCreatedAt",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:mock/system-management/shelter.mock.ts",
+      "target": "function:mock/system-management/shelter.mock.ts:getCurrentTime",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:mock/system-management/user.mock.ts",
+      "target": "function:mock/system-management/user.mock.ts:getCreatedAt",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:src/api/auth.ts",
+      "target": "function:src/api/auth.ts:login",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:src/api/auth.ts",
+      "target": "function:src/api/auth.ts:login",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:src/api/auth.ts",
+      "target": "function:src/api/auth.ts:getSession",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:src/api/auth.ts",
+      "target": "function:src/api/auth.ts:getSession",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:src/api/auth.ts",
+      "target": "function:src/api/auth.ts:logout",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:src/api/auth.ts",
+      "target": "function:src/api/auth.ts:logout",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:src/api/shelterManagement.ts",
+      "target": "function:src/api/shelterManagement.ts:getShelterList",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:src/api/shelterManagement.ts",
+      "target": "function:src/api/shelterManagement.ts:getShelterList",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:src/api/shelterManagement.ts",
+      "target": "function:src/api/shelterManagement.ts:getShelterDetail",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:src/api/shelterManagement.ts",
+      "target": "function:src/api/shelterManagement.ts:getShelterDetail",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:src/api/shelterManagement.ts",
+      "target": "function:src/api/shelterManagement.ts:createShelter",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:src/api/shelterManagement.ts",
+      "target": "function:src/api/shelterManagement.ts:createShelter",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:src/api/shelterManagement.ts",
+      "target": "function:src/api/shelterManagement.ts:updateShelter",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:src/api/shelterManagement.ts",
+      "target": "function:src/api/shelterManagement.ts:updateShelter",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:src/api/shelterManagement.ts",
+      "target": "function:src/api/shelterManagement.ts:deleteShelter",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:src/api/shelterManagement.ts",
+      "target": "function:src/api/shelterManagement.ts:deleteShelter",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:src/api/userManagement.ts",
+      "target": "function:src/api/userManagement.ts:getUserList",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:src/api/userManagement.ts",
+      "target": "function:src/api/userManagement.ts:getUserList",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:src/api/userManagement.ts",
+      "target": "function:src/api/userManagement.ts:createUser",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:src/api/userManagement.ts",
+      "target": "function:src/api/userManagement.ts:createUser",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:src/api/userManagement.ts",
+      "target": "function:src/api/userManagement.ts:updateUser",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:src/api/userManagement.ts",
+      "target": "function:src/api/userManagement.ts:updateUser",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:src/api/userManagement.ts",
+      "target": "function:src/api/userManagement.ts:deleteUser",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:src/api/userManagement.ts",
+      "target": "function:src/api/userManagement.ts:deleteUser",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:src/app/providers/I18nProvider.tsx",
+      "target": "function:src/app/providers/I18nProvider.tsx:I18nProvider",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:src/app/providers/I18nProvider.tsx",
+      "target": "function:src/app/providers/I18nProvider.tsx:I18nProvider",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:src/auth/token.ts",
+      "target": "function:src/auth/token.ts:getAccessToken",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:src/auth/token.ts",
+      "target": "function:src/auth/token.ts:getAccessToken",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:src/auth/token.ts",
+      "target": "function:src/auth/token.ts:setAccessToken",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:src/auth/token.ts",
+      "target": "function:src/auth/token.ts:setAccessToken",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:src/auth/token.ts",
+      "target": "function:src/auth/token.ts:removeAccessToken",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:src/auth/token.ts",
+      "target": "function:src/auth/token.ts:removeAccessToken",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:src/components/BreadCrumb/index.tsx",
+      "target": "function:src/components/BreadCrumb/index.tsx:getRouteTitle",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:src/components/BreadCrumb/index.tsx",
+      "target": "function:src/components/BreadCrumb/index.tsx:matchBreadcrumbs",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:src/components/BreadCrumb/index.tsx",
+      "target": "function:src/components/BreadCrumb/index.tsx:getHomeBreadcrumb",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:src/components/BreadCrumb/index.tsx",
+      "target": "function:src/components/BreadCrumb/index.tsx:BreadCrumb",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:src/components/BreadCrumb/index.tsx",
+      "target": "function:src/components/BreadCrumb/index.tsx:BreadCrumb",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:src/main.tsx",
+      "target": "file:src/index.css",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:src/pages/login/index.tsx",
+      "target": "file:src/pages/login/login.scss",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:src/components/FullScreen/index.tsx",
+      "target": "function:src/components/FullScreen/index.tsx:FullScreen",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:src/components/GithubLink/index.tsx",
+      "target": "function:src/components/GithubLink/index.tsx:GithubLink",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:src/components/LanguageSwitch/index.tsx",
+      "target": "function:src/components/LanguageSwitch/index.tsx:LanguageSwitch",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:src/components/ThemeSwitch/index.tsx",
+      "target": "function:src/components/ThemeSwitch/index.tsx:ThemeSwitch",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:src/main.tsx",
+      "target": "function:src/main.tsx:bootstrap",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:src/mockProdServer.ts",
+      "target": "function:src/mockProdServer.ts:setupProdMockServer",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:src/pages/animation/clock/index.tsx",
+      "target": "function:src/pages/animation/clock/index.tsx:Clock",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:src/pages/error/NotFound.tsx",
+      "target": "function:src/pages/error/NotFound.tsx:NotFound",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:src/pages/getting-started/hello-world/index.tsx",
+      "target": "function:src/pages/getting-started/hello-world/index.tsx:CesiumWidgetPage",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:src/pages/getting-started/resolution-scale/index.tsx",
+      "target": "function:src/pages/getting-started/resolution-scale/index.tsx:ResolutionScale",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:src/pages/home/index.tsx",
+      "target": "function:src/pages/home/index.tsx:Home",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:src/pages/login/index.tsx",
+      "target": "function:src/pages/login/index.tsx:LoginContent",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:src/pages/login/index.tsx",
+      "target": "function:src/pages/login/index.tsx:LoginPage",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:src/pages/showcases/google-2d-tiles/index.tsx",
+      "target": "function:src/pages/showcases/google-2d-tiles/index.tsx:Google2DTiles",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:src/utils/request.ts",
+      "target": "function:src/utils/request.ts:isRequestCanceled",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:src/components/FullScreen/index.tsx",
+      "target": "function:src/components/FullScreen/index.tsx:FullScreen",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:src/components/GithubLink/index.tsx",
+      "target": "function:src/components/GithubLink/index.tsx:GithubLink",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:src/components/LanguageSwitch/index.tsx",
+      "target": "function:src/components/LanguageSwitch/index.tsx:LanguageSwitch",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:src/components/ThemeSwitch/index.tsx",
+      "target": "function:src/components/ThemeSwitch/index.tsx:ThemeSwitch",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:src/mockProdServer.ts",
+      "target": "function:src/mockProdServer.ts:setupProdMockServer",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:src/pages/animation/clock/index.tsx",
+      "target": "function:src/pages/animation/clock/index.tsx:Clock",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:src/pages/error/NotFound.tsx",
+      "target": "function:src/pages/error/NotFound.tsx:NotFound",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:src/pages/getting-started/hello-world/index.tsx",
+      "target": "function:src/pages/getting-started/hello-world/index.tsx:CesiumWidgetPage",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:src/pages/getting-started/resolution-scale/index.tsx",
+      "target": "function:src/pages/getting-started/resolution-scale/index.tsx:ResolutionScale",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:src/pages/home/index.tsx",
+      "target": "function:src/pages/home/index.tsx:Home",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:src/pages/login/index.tsx",
+      "target": "function:src/pages/login/index.tsx:LoginPage",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:src/pages/showcases/google-2d-tiles/index.tsx",
+      "target": "function:src/pages/showcases/google-2d-tiles/index.tsx:Google2DTiles",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:src/utils/request.ts",
+      "target": "function:src/utils/request.ts:isRequestCanceled",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "function:src/main.tsx:bootstrap",
+      "target": "function:src/mockProdServer.ts:setupProdMockServer",
+      "type": "calls",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "function:src/main.tsx:bootstrap",
+      "target": "file:src/store/auth.ts",
+      "type": "depends_on",
+      "direction": "forward",
+      "weight": 0.6
+    },
+    {
+      "source": "function:src/pages/login/index.tsx:LoginContent",
+      "target": "file:src/store/auth.ts",
+      "type": "depends_on",
+      "direction": "forward",
+      "weight": 0.6
+    },
+    {
+      "source": "function:src/pages/login/index.tsx:LoginPage",
+      "target": "function:src/pages/login/index.tsx:LoginContent",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "function:src/pages/login/index.tsx:LoginContent",
+      "target": "function:src/components/LanguageSwitch/index.tsx:LanguageSwitch",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:tests/shelterRequestHooks.test.ts",
+      "target": "function:tests/shelterRequestHooks.test.ts:createDeferredAdapter",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:tests/shelterRequestHooks.test.ts",
+      "target": "function:tests/shelterRequestHooks.test.ts:createShelter",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    }
+  ],
+  "layers": [
+    {
+      "id": "layer:app-composition",
+      "name": "应用入口与导航层",
+      "description": "负责 React 应用挂载、全局 Provider 装配、动态路由组织、菜单配置与顶层导航入口。",
+      "nodeIds": [
+        "file:src/router/index.tsx",
+        "file:src/router/menu.tsx",
+        "file:src/router/mockRoutes.ts",
+        "file:src/router/transform.tsx",
+        "file:src/router/types.ts",
+        "file:src/app/App.tsx",
+        "file:src/app/providers/AntdProvider.tsx",
+        "file:src/app/providers/AppProvider.tsx",
+        "file:src/app/providers/ThemeProvider.tsx",
+        "file:index.html",
+        "file:src/app/providers/I18nProvider.tsx",
+        "file:src/config/menu.ts",
+        "file:src/main.tsx"
+      ]
+    },
+    {
+      "id": "layer:ui",
+      "name": "页面与组件 UI 层",
+      "description": "承载 Cesium 学习页面、系统管理页面、布局、通用交互组件以及全局与主题样式。",
+      "nodeIds": [
+        "file:src/pages/system-management/shelter-management/components/ShelterDetailModal.tsx",
+        "file:src/pages/system-management/shelter-management/components/ShelterForm.tsx",
+        "file:src/pages/system-management/shelter-management/components/ShelterTable.tsx",
+        "file:src/pages/system-management/shelter-management/constants.ts",
+        "file:src/pages/system-management/shelter-management/hooks/useShelterDetail.ts",
+        "file:src/pages/system-management/shelter-management/hooks/useShelterList.ts",
+        "file:src/pages/system-management/shelter-management/index.tsx",
+        "file:src/pages/system-management/shelter-management/types.ts",
+        "file:src/pages/system-management/shelter-management/without-custom-hooks/WithoutCustomHooksExample.tsx",
+        "file:src/layouts/MainLayout/Content.tsx",
+        "file:src/layouts/MainLayout/Header/components/UserProfile.tsx",
+        "file:src/layouts/MainLayout/Header/index.tsx",
+        "file:src/layouts/MainLayout/MobileDrawer.tsx",
+        "file:src/layouts/MainLayout/Sidebar.tsx",
+        "file:src/layouts/MainLayout/index.tsx",
+        "file:src/pages/system-management/user-management/components/UserFormModal.tsx",
+        "file:src/pages/system-management/user-management/components/UserTablePanel.tsx",
+        "file:src/pages/system-management/user-management/index.tsx",
+        "file:src/pages/system-management/user-management/types.ts",
+        "file:src/components/BreadCrumb/index.tsx",
+        "file:src/components/FullScreen/index.tsx",
+        "file:src/components/GithubLink/index.tsx",
+        "file:src/components/LanguageSwitch/index.tsx",
+        "file:src/components/ThemeSwitch/index.tsx",
+        "file:src/index.css",
+        "file:src/layouts/index.tsx",
+        "file:src/pages/animation/clock/index.tsx",
+        "file:src/pages/error/NotFound.tsx",
+        "file:src/pages/getting-started/hello-world/index.tsx",
+        "file:src/pages/getting-started/resolution-scale/index.tsx",
+        "file:src/pages/home/index.tsx",
+        "file:src/pages/login/index.tsx",
+        "file:src/pages/login/login.scss",
+        "file:src/pages/showcases/google-2d-tiles/index.tsx",
+        "file:src/styles/theme.css"
+      ]
+    },
+    {
+      "id": "layer:service-state",
+      "name": "状态与跨域服务层",
+      "description": "集中管理 Zustand 登录状态、认证令牌、国际化资源与语言切换等跨页面能力。",
+      "nodeIds": [
+        "file:src/i18n/constants.ts",
+        "file:src/i18n/index.ts",
+        "file:src/i18n/locales/en-US.ts",
+        "file:src/i18n/locales/zh-CN.ts",
+        "file:src/i18n/types.ts",
+        "file:src/i18n/utils.ts",
+        "file:src/auth/token.ts",
+        "file:src/auth/types.ts",
+        "file:src/store/auth.ts"
+      ]
+    },
+    {
+      "id": "layer:api",
+      "name": "API 与 Mock 数据层",
+      "description": "封装认证及 CRUD 请求协议、统一请求工具、生产 Mock 启动和本地 Mock 接口实现。",
+      "nodeIds": [
+        "file:mock/auth.mock.ts",
+        "file:mock/system-management/_shelter.mock.bundled_1786024270130_6cti8700vk4.mjs",
+        "file:mock/system-management/_user.mock.bundled_1786024270130_ed22rch2ug.mjs",
+        "file:mock/system-management/shelter.mock.ts",
+        "file:mock/system-management/user.mock.ts",
+        "file:src/api/auth.ts",
+        "file:src/api/shelterManagement.ts",
+        "file:src/api/userManagement.ts",
+        "file:src/mockProdServer.ts",
+        "file:src/types/api.ts",
+        "file:src/utils/request.ts"
+      ]
+    },
+    {
+      "id": "layer:config",
+      "name": "工程配置与工具链层",
+      "description": "定义 Vite、TypeScript、Tailwind CSS、ESLint、环境变量、开发规则及补丁等工程约束。",
+      "nodeIds": [
+        "config:.env.development",
+        "config:.env.production",
+        "config:package.json",
+        "config:pnpm-workspace.yaml",
+        "config:skills-lock.json",
+        "config:tsconfig.app.json",
+        "config:tsconfig.json",
+        "config:tsconfig.node.json",
+        "config:tsconfig.test.json",
+        "file:.cursor/rules/base/core.mdc",
+        "file:.cursor/rules/base/general.mdc",
+        "file:.cursor/rules/base/project-structure.mdc",
+        "file:.cursor/rules/base/tech-stack.mdc",
+        "file:.cursor/rules/frameworks/react.mdc",
+        "file:.cursor/rules/frameworks/styling-standards.mdc",
+        "file:.cursor/rules/frameworks/zustand.mdc",
+        "file:.cursor/rules/languages/typescript.mdc",
+        "file:.understand-anything/.understandignore",
+        "config:.understand-anything/config.json",
+        "file:eslint.config.js",
+        "file:patches/vite-plugin-mock@3.0.2.patch",
+        "file:postcss.config.js",
+        "file:src/vite-env.d.ts",
+        "file:tailwind.config.js",
+        "file:vite.config.ts"
+      ]
+    },
+    {
+      "id": "layer:test",
+      "name": "自动化测试层",
+      "description": "验证认证 Mock、请求封装、避难所 Hook 并发行为及用户和避难所 CRUD 数据契约。",
+      "nodeIds": [
+        "file:tests/auth.mock.test.ts",
+        "file:tests/request.test.ts",
+        "file:tests/shelterMock.test.ts",
+        "file:tests/shelterRequestHooks.test.ts",
+        "file:tests/userMock.test.ts"
+      ]
+    },
+    {
+      "id": "layer:documentation",
+      "name": "学习与项目文档层",
+      "description": "记录项目结构、React 路由、i18n、Ant Design 主题、Vite 配置与已知问题等学习资料。",
+      "nodeIds": [
+        "document:AGENTS.md",
+        "document:README.md",
+        "document:docs/Codex上下文.md",
+        "document:docs/Vite-base配置说明.md",
+        "document:docs/antd主题切换.md",
+        "document:docs/i18n配置和使用.md",
+        "document:docs/vite-plugin-mock生产环境动态路由问题.md",
+        "document:docs/大纲目录.md",
+        "document:docs/目录结构.md",
+        "document:docs/路由后续改进清单.md",
+        "document:docs/路由配置和使用.md",
+        "document:src/pages/index.md"
+      ]
+    },
+    {
+      "id": "layer:ci-cd",
+      "name": "CI/CD 发布层",
+      "description": "通过 GitHub Actions 构建并发布适配仓库基础路径的 GitHub Pages 站点。",
+      "nodeIds": [
+        "pipeline:.github/workflows/deploy-pages.yml"
+      ]
+    }
+  ],
+  "tour": [
+    {
+      "order": 1,
+      "title": "项目定位与工具链",
+      "description": "先从 README 理解这个仓库为何同时承载 React、TypeScript 与 Cesium 学习，再用 package.json 认识可执行脚本和核心依赖。TypeScript 严格配置与 Vite 构建配置共同划定源码检查、路径别名、Cesium 静态资源和开发代理的工程边界。掌握这组入口信息后，后续每段代码都能放回完整工具链中理解。",
+      "nodeIds": [
+        "document:README.md",
+        "config:package.json",
+        "config:tsconfig.app.json",
+        "file:vite.config.ts"
+      ],
+      "languageLesson": "TypeScript 的严格模式把类型错误提前到构建阶段；Vite 则负责开发期模块加载与生产构建，两者分别约束代码正确性和运行交付。"
+    },
+    {
+      "order": 2,
+      "title": "应用启动入口",
+      "description": "在工具链准备好后，main.tsx 是浏览器运行链的真正起点。bootstrap 先按环境初始化生产 Mock，再触发认证会话恢复，最后通过 StrictMode 挂载 React；Cesium ion Token 也在这里完成一次性全局配置。这一步展示了应用启动副作用应如何集中编排。",
+      "nodeIds": [
+        "file:src/main.tsx",
+        "function:src/main.tsx:bootstrap"
+      ],
+      "languageLesson": "React StrictMode 会在开发环境帮助暴露不安全副作用；异步 bootstrap 则把启动顺序显式化，避免挂载后才补齐关键运行条件。"
+    },
+    {
+      "order": 3,
+      "title": "根组件与 Provider",
+      "description": "main.tsx 挂载 App 后，根组件把应用级职责交给 AppProvider，保持自身足够薄。AppProvider 按主题、Ant Design 和 Router 的依赖顺序组合全局环境，Router 再成为页面树的唯一入口。这种组合结构清楚区分了应用装配与业务页面。",
+      "nodeIds": [
+        "file:src/app/App.tsx",
+        "file:src/app/providers/AppProvider.tsx",
+        "file:src/router/index.tsx"
+      ],
+      "languageLesson": "React Provider 依靠组件树传递上下文，外层 Provider 可以为内层 Provider 提供能力；因此装配顺序本身就是运行时依赖关系。"
+    },
+    {
+      "order": 4,
+      "title": "认证状态闭环",
+      "description": "Router 能否渲染受保护页面，取决于 Zustand 维护的 booting、anonymous 与 authenticated 三态认证流程。Store 协调认证 API、localStorage Token、用户信息和权限路由，使启动恢复、登录和退出形成同一个状态闭环。理解这一层后，路由跳转就不再是孤立的页面行为，而是认证状态变化的结果。",
+      "nodeIds": [
+        "file:src/store/auth.ts",
+        "file:src/api/auth.ts",
+        "file:src/auth/token.ts"
+      ],
+      "languageLesson": "Zustand Store 把跨页面状态与动作放在 React 组件之外；用有限状态表达认证过程，可以避免多个 boolean 组合出互相矛盾的状态。"
+    },
+    {
+      "order": 5,
+      "title": "动态权限路由",
+      "description": "认证 Store 提供用户权限路由后，Router 根据当前状态选择等待、登录跳转或受保护路由树。transformRoutes 使用 import.meta.glob 和递归转换，把后端式路由描述变成可懒加载的 React Router 对象；types 与 mockRoutes 分别定义契约和本地学习数据。这里把“权限数据”真正连接到“可渲染页面”。",
+      "nodeIds": [
+        "file:src/router/index.tsx",
+        "file:src/router/transform.tsx",
+        "file:src/router/types.ts",
+        "file:src/router/mockRoutes.ts"
+      ],
+      "languageLesson": "TypeScript 递归类型可描述树形路由，import.meta.glob 则让 Vite 在构建期收集页面模块；与 React.lazy 组合后，可以按路由拆分 bundle。"
+    },
+    {
+      "order": 6,
+      "title": "布局承载页面",
+      "description": "动态路由进入受保护区域后，MainLayout 通过 Outlet 承载当前页面，并统一组织 Header、桌面 Sidebar、移动导航和内容容器。菜单模块把同一棵授权路由树转换成 Ant Design 菜单，使地址、权限和导航保持一致。至此，启动链已经从入口走到了用户真正看到的页面外壳。",
+      "nodeIds": [
+        "file:src/layouts/MainLayout/index.tsx",
+        "file:src/layouts/MainLayout/Header/index.tsx",
+        "file:src/layouts/MainLayout/Sidebar.tsx",
+        "file:src/layouts/MainLayout/Content.tsx",
+        "file:src/router/menu.tsx"
+      ],
+      "languageLesson": "React Router 的 Outlet 是父子路由的渲染插槽；布局组件保留导航状态，具体页面只负责自己的业务状态。"
+    },
+    {
+      "order": 7,
+      "title": "CRUD 类型与 API",
+      "description": "进入避难场所功能前，先从 TypeScript 类型契约、统一请求工具和领域 API 建立数据边界。types 定义记录、查询、表单与 Props，request 负责 Token、响应解包和错误语义，shelterManagement API 则提供完整的列表、详情、新增、更新和删除操作。这样 UI 不需要理解 Axios 的底层细节。",
+      "nodeIds": [
+        "file:src/pages/system-management/shelter-management/types.ts",
+        "file:src/utils/request.ts",
+        "file:src/api/shelterManagement.ts"
+      ],
+      "languageLesson": "TypeScript 泛型让请求函数保留响应数据类型，AbortSignal 则为读取请求提供标准取消通道；类型与取消协议共同组成稳定的 API 边界。"
+    },
+    {
+      "order": 8,
+      "title": "CRUD 页面编排",
+      "description": "建立 API 边界后，避难场所页面作为编排层统一管理查询分页、弹窗模式、详情加载和 CRUD 后刷新。Table、Form 与 DetailModal 各自承担列表交互、编辑校验和详情呈现，并通过 Props 与回调把业务动作交还父页面。这个拆分是学习 React 状态归属与组件职责的完整案例。",
+      "nodeIds": [
+        "file:src/pages/system-management/shelter-management/index.tsx",
+        "file:src/pages/system-management/shelter-management/components/ShelterTable.tsx",
+        "file:src/pages/system-management/shelter-management/components/ShelterForm.tsx",
+        "file:src/pages/system-management/shelter-management/components/ShelterDetailModal.tsx"
+      ],
+      "languageLesson": "React 的状态提升让父页面持有流程状态，子组件通过受控 Props 展示数据并发出事件；这种单向数据流比组件间互相调用更容易推理。"
+    },
+    {
+      "order": 9,
+      "title": "Hook 请求竞态",
+      "description": "当列表条件快速变化或详情被连续打开时，异步响应可能乱序回写，因此 CRUD 页面把请求生命周期抽进 useShelterList 与 useShelterDetail。两个 Hook 负责取消旧请求、隔离 loading 归属并保护 latest-wins；无自定义 Hook 的对照示例则把竞态日志直接暴露出来。它把 React Hook 从“复用代码”提升为“明确管理并发所有权”的学习主题。",
+      "nodeIds": [
+        "file:src/pages/system-management/shelter-management/hooks/useShelterList.ts",
+        "file:src/pages/system-management/shelter-management/hooks/useShelterDetail.ts",
+        "file:src/pages/system-management/shelter-management/without-custom-hooks/WithoutCustomHooksExample.tsx"
+      ],
+      "languageLesson": "自定义 Hook 可以封装状态、Effect 和清理逻辑，但每次请求仍需明确谁有权更新当前状态；AbortController 与请求标识常用于实现 latest-wins。"
+    },
+    {
+      "order": 10,
+      "title": "Cesium 生命周期",
+      "description": "在掌握 React 组件与 Hook 生命周期后，再进入最小 Cesium Viewer 页面。该页面在组件挂载时创建 Viewer、加载世界地形并飞往上海，同时暴露初始化与渲染错误；卸载时销毁 Viewer，闭合 imperative Cesium 对象的资源生命周期。这是把 React 声明式界面与 Cesium 命令式 API 连接起来的关键示例。",
+      "nodeIds": [
+        "file:src/pages/getting-started/hello-world/index.tsx",
+        "function:src/pages/getting-started/hello-world/index.tsx:CesiumWidgetPage"
+      ],
+      "languageLesson": "useEffect 适合桥接 React 与命令式第三方库：Effect 创建外部资源，cleanup 必须销毁资源，以避免重复挂载、WebGL 上下文或事件监听泄漏。"
+    },
+    {
+      "order": 11,
+      "title": "自动化验证边界",
+      "description": "前面的认证、请求封装、CRUD 与 Hook 并发都有对应自动化测试，而 tsconfig.test 为 Node 测试环境补齐类型和文件范围。测试通过自定义 Axios adapter 与可控延迟主动制造乱序响应，验证取消、latest-wins、响应解包和 Mock 数据契约。它们把学习示例从“看起来可用”推进到“行为可以被证明”。",
+      "nodeIds": [
+        "config:tsconfig.test.json",
+        "file:tests/auth.mock.test.ts",
+        "file:tests/request.test.ts",
+        "file:tests/shelterMock.test.ts",
+        "file:tests/shelterRequestHooks.test.ts"
+      ],
+      "languageLesson": "并发测试应控制 Promise 的完成顺序，而不是依赖真实时间；可延迟 adapter 能稳定复现竞态，并准确断言旧响应不能覆盖新状态。"
+    },
+    {
+      "order": 12,
+      "title": "GitHub Pages 发布",
+      "description": "最后从本地代码走向 CI/CD：生产环境配置给出仓库子路径，Vite base 文档解释应用资源、Cesium 静态资源与 Hash Router 的职责边界。GitHub Actions 在 main 推送或手动触发时校验 Cesium ion Token、构建应用并发布 dist 到 GitHub Pages。这一步把入口配置、构建产物和线上访问路径收束成完整交付链。",
+      "nodeIds": [
+        "config:.env.production",
+        "document:docs/Vite-base配置说明.md",
+        "pipeline:.github/workflows/deploy-pages.yml"
+      ],
+      "languageLesson": "GitHub Actions YAML 用触发器定义何时运行，用 jobs 组织任务、steps 表达顺序；部署到项目子路径时，构建 base 与静态资源 URL 必须保持一致。"
+    }
+  ]
+}

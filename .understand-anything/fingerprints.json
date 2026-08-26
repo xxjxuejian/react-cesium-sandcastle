@@ -1,0 +1,3656 @@
+{
+  "version": "1.0.0",
+  "gitCommitHash": "15a7f9c9a4290358e3d5e32b0cd611b836e3c503",
+  "generatedAt": "2026-08-22T13:35:30.374Z",
+  "files": {
+    ".cursor/rules/base/core.mdc": {
+      "filePath": ".cursor/rules/base/core.mdc",
+      "contentHash": "33d7e6a5e9d24637b9b230a31a9091110652b38f4ec4e2e20ef09fede2d8ba97",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 12,
+      "hasStructuralAnalysis": false
+    },
+    ".cursor/rules/base/general.mdc": {
+      "filePath": ".cursor/rules/base/general.mdc",
+      "contentHash": "d4e74a5b1695c0d2e07a925835a9ccd10147ccd672d34af5450f623ed14637de",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 42,
+      "hasStructuralAnalysis": false
+    },
+    ".cursor/rules/base/project-structure.mdc": {
+      "filePath": ".cursor/rules/base/project-structure.mdc",
+      "contentHash": "21959242d7fc76de63f58fae8f6a4d3ff6b7d13435ab13d28cf726252a9e872c",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 58,
+      "hasStructuralAnalysis": false
+    },
+    ".cursor/rules/base/tech-stack.mdc": {
+      "filePath": ".cursor/rules/base/tech-stack.mdc",
+      "contentHash": "8ecef77442056e72cf73b14397b8d8ada94ad9d4367b2a9d39320e137dbd3aaf",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 21,
+      "hasStructuralAnalysis": false
+    },
+    ".cursor/rules/frameworks/react.mdc": {
+      "filePath": ".cursor/rules/frameworks/react.mdc",
+      "contentHash": "ead354c255fbe815a94ea6538b64bad103675be12130390e02c12ec04fa0b87b",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 46,
+      "hasStructuralAnalysis": false
+    },
+    ".cursor/rules/frameworks/styling-standards.mdc": {
+      "filePath": ".cursor/rules/frameworks/styling-standards.mdc",
+      "contentHash": "a9582c8e3c3a306a59a00115e0ba4833c74c8a64725a4329ac676e1117b4197d",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 18,
+      "hasStructuralAnalysis": false
+    },
+    ".cursor/rules/frameworks/zustand.mdc": {
+      "filePath": ".cursor/rules/frameworks/zustand.mdc",
+      "contentHash": "f12c3332b8b71e0c6d6b128c4aeafda3f67d958a188d4deb61324de06c17792a",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 17,
+      "hasStructuralAnalysis": false
+    },
+    ".cursor/rules/languages/typescript.mdc": {
+      "filePath": ".cursor/rules/languages/typescript.mdc",
+      "contentHash": "45cf471fe9dc2d19893692e0c2d7ae41273936c77aa44189cb67d3e6e33ac8cc",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 17,
+      "hasStructuralAnalysis": false
+    },
+    ".env.development": {
+      "filePath": ".env.development",
+      "contentHash": "2992ca8e26520d66b3cbfbf11f94d2373c8b1c689a6cd52cc4e1d966f8a71827",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 8,
+      "hasStructuralAnalysis": true
+    },
+    ".env.production": {
+      "filePath": ".env.production",
+      "contentHash": "cc6ba2fc375d7c2406b350901321a1950496a777d7b57385512aa5041176fc0f",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 3,
+      "hasStructuralAnalysis": true
+    },
+    ".github/workflows/deploy-pages.yml": {
+      "filePath": ".github/workflows/deploy-pages.yml",
+      "contentHash": "8df1d0e639160b21b9553c779e6efa973002892c3fae692eb7e8473c85c89b6f",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 71,
+      "hasStructuralAnalysis": true
+    },
+    ".understand-anything/.understandignore": {
+      "filePath": ".understand-anything/.understandignore",
+      "contentHash": "1784fdaf7c61b6cde62dc1b1184d382b3cc00faf04d139d1e9d16bb372d553ee",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 38,
+      "hasStructuralAnalysis": false
+    },
+    ".understand-anything/config.json": {
+      "filePath": ".understand-anything/config.json",
+      "contentHash": "5d2ff006cff22c68edd4776249d562ea8c73915a61c6214eb85933865a9402e7",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 4,
+      "hasStructuralAnalysis": true
+    },
+    "AGENTS.md": {
+      "filePath": "AGENTS.md",
+      "contentHash": "a32eb3db8b63fb69d255049b360d601e1f6311152cb69b2e014bcbb7ba72b20c",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 32,
+      "hasStructuralAnalysis": true
+    },
+    "docs/大纲目录.md": {
+      "filePath": "docs/大纲目录.md",
+      "contentHash": "4785f4fc04eda42944788dda4d90a5945437a9b514989eb172f7198a91b85787",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 102,
+      "hasStructuralAnalysis": true
+    },
+    "docs/路由后续改进清单.md": {
+      "filePath": "docs/路由后续改进清单.md",
+      "contentHash": "5b8b9a254586e60c5a2231e2ce342caa260f96daf62c2910abb574a00a1572b2",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 222,
+      "hasStructuralAnalysis": true
+    },
+    "docs/路由配置和使用.md": {
+      "filePath": "docs/路由配置和使用.md",
+      "contentHash": "15b35a343ed067851b1566a273a906c64c377b5fe6e8d6558b61117f1ebbf2aa",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 394,
+      "hasStructuralAnalysis": true
+    },
+    "docs/目录结构.md": {
+      "filePath": "docs/目录结构.md",
+      "contentHash": "3190c398a439a7b113bb1a78cadf57b48332e8b2b32ede6bf1f936dc319b1140",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 267,
+      "hasStructuralAnalysis": true
+    },
+    "docs/antd主题切换.md": {
+      "filePath": "docs/antd主题切换.md",
+      "contentHash": "753ca00963c3d95a23528335e59f4eccc3ae73cc7b307c0de5d15dd512815af8",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 302,
+      "hasStructuralAnalysis": true
+    },
+    "docs/Codex上下文.md": {
+      "filePath": "docs/Codex上下文.md",
+      "contentHash": "32c520673e7658eda3c39098227d78cc280550dd063750cc85062d040b85abed",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 158,
+      "hasStructuralAnalysis": true
+    },
+    "docs/i18n配置和使用.md": {
+      "filePath": "docs/i18n配置和使用.md",
+      "contentHash": "5ca2d2e0ff408ec969bd7bdea55447410447fa5a58798dad76067268c9533c7c",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 631,
+      "hasStructuralAnalysis": true
+    },
+    "docs/Vite-base配置说明.md": {
+      "filePath": "docs/Vite-base配置说明.md",
+      "contentHash": "6435539b16acecbea5d9e6236d7028844eaa21f54df9b86608c3c4b8bc7ffa9a",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 454,
+      "hasStructuralAnalysis": true
+    },
+    "docs/vite-plugin-mock生产环境动态路由问题.md": {
+      "filePath": "docs/vite-plugin-mock生产环境动态路由问题.md",
+      "contentHash": "83b57ca63f6fe9fbca614df8e78216ffd3631b2a4a7a600f0c4fe54301519701",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 221,
+      "hasStructuralAnalysis": true
+    },
+    "eslint.config.js": {
+      "filePath": "eslint.config.js",
+      "contentHash": "74bcb49fec61d75ef30542fbfe41f2498961f72a028a827c2091622b06d6921e",
+      "functions": [],
+      "classes": [],
+      "imports": [
+        {
+          "source": "@eslint/js",
+          "specifiers": [
+            "js"
+          ]
+        },
+        {
+          "source": "globals",
+          "specifiers": [
+            "globals"
+          ]
+        },
+        {
+          "source": "eslint-plugin-react-hooks",
+          "specifiers": [
+            "reactHooks"
+          ]
+        },
+        {
+          "source": "eslint-plugin-react-refresh",
+          "specifiers": [
+            "reactRefresh"
+          ]
+        },
+        {
+          "source": "typescript-eslint",
+          "specifiers": [
+            "tseslint"
+          ]
+        },
+        {
+          "source": "eslint/config",
+          "specifiers": [
+            "defineConfig",
+            "globalIgnores"
+          ]
+        }
+      ],
+      "exports": [],
+      "totalLines": 24,
+      "hasStructuralAnalysis": true
+    },
+    "index.html": {
+      "filePath": "index.html",
+      "contentHash": "90144077a49155522cc13e9dd7a9a927f2f800ce3968aeca63099a3870ad303e",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 14,
+      "hasStructuralAnalysis": false
+    },
+    "mock/auth.mock.ts": {
+      "filePath": "mock/auth.mock.ts",
+      "contentHash": "4dcc73bbdbfb995e70a97b803ce6b3c31849633fe1d6ea2c865edc58d401eabb",
+      "functions": [
+        {
+          "name": "getUserByToken",
+          "params": [
+            "headers"
+          ],
+          "exported": false,
+          "lineCount": 6
+        },
+        {
+          "name": "getSessionResult",
+          "params": [
+            "user"
+          ],
+          "returnType": "SessionResult",
+          "exported": false,
+          "lineCount": 11
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "../src/auth/types.js",
+          "specifiers": [
+            "LoginRequest",
+            "SessionResult"
+          ]
+        },
+        {
+          "source": "../src/router/types.js",
+          "specifiers": [
+            "BackendRouteItem"
+          ]
+        },
+        {
+          "source": "../src/router/mockRoutes.js",
+          "specifiers": [
+            "mockRoutes"
+          ]
+        },
+        {
+          "source": "../src/types/api.js",
+          "specifiers": [
+            "ApiResponse"
+          ]
+        }
+      ],
+      "exports": [],
+      "totalLines": 116,
+      "hasStructuralAnalysis": true
+    },
+    "mock/system-management/_shelter.mock.bundled_1786024270130_6cti8700vk4.mjs": {
+      "filePath": "mock/system-management/_shelter.mock.bundled_1786024270130_6cti8700vk4.mjs",
+      "contentHash": "6bed5ddba391d9875f594dc421b67cd74a4664053f39197576ddacd2f8b18a6b",
+      "functions": [
+        {
+          "name": "includesText",
+          "params": [
+            "source",
+            "keyword"
+          ],
+          "exported": false,
+          "lineCount": 3
+        },
+        {
+          "name": "getCurrentTime",
+          "params": [],
+          "exported": false,
+          "lineCount": 11
+        },
+        {
+          "name": "getPathId",
+          "params": [
+            "url"
+          ],
+          "exported": false,
+          "lineCount": 3
+        }
+      ],
+      "classes": [],
+      "imports": [],
+      "exports": [
+        "default"
+      ],
+      "totalLines": 247,
+      "hasStructuralAnalysis": true
+    },
+    "mock/system-management/_user.mock.bundled_1786024270130_ed22rch2ug.mjs": {
+      "filePath": "mock/system-management/_user.mock.bundled_1786024270130_ed22rch2ug.mjs",
+      "contentHash": "7db44dab078c98656be7d7d2a6e80dd87b580e866822b802aa7b02d2724f3456",
+      "functions": [
+        {
+          "name": "includesText",
+          "params": [
+            "source",
+            "keyword"
+          ],
+          "exported": false,
+          "lineCount": 3
+        },
+        {
+          "name": "getCreatedAt",
+          "params": [],
+          "exported": false,
+          "lineCount": 11
+        },
+        {
+          "name": "getPathId",
+          "params": [
+            "url"
+          ],
+          "exported": false,
+          "lineCount": 3
+        }
+      ],
+      "classes": [],
+      "imports": [],
+      "exports": [
+        "default"
+      ],
+      "totalLines": 155,
+      "hasStructuralAnalysis": true
+    },
+    "mock/system-management/shelter.mock.ts": {
+      "filePath": "mock/system-management/shelter.mock.ts",
+      "contentHash": "88c12ded8d4a84f4d9df2081457e8682cf383dfa75f7e1ecaae233dc5330d7ac",
+      "functions": [
+        {
+          "name": "includesText",
+          "params": [
+            "source",
+            "keyword"
+          ],
+          "exported": false,
+          "lineCount": 6
+        },
+        {
+          "name": "getCurrentTime",
+          "params": [],
+          "exported": false,
+          "lineCount": 13
+        },
+        {
+          "name": "getPathId",
+          "params": [
+            "url"
+          ],
+          "exported": false,
+          "lineCount": 3
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "../../src/pages/system-management/shelter-management/types.js",
+          "specifiers": [
+            "ShelterFormValues",
+            "ShelterListResult",
+            "ShelterQueryParams",
+            "ShelterRecord"
+          ]
+        },
+        {
+          "source": "../../src/types/api.js",
+          "specifiers": [
+            "ApiResponse"
+          ]
+        }
+      ],
+      "exports": [],
+      "totalLines": 301,
+      "hasStructuralAnalysis": true
+    },
+    "mock/system-management/user.mock.ts": {
+      "filePath": "mock/system-management/user.mock.ts",
+      "contentHash": "8bc743310d09f72728364f9b2d4567cf2d5ff45e52aca136425077783199b8f6",
+      "functions": [
+        {
+          "name": "includesText",
+          "params": [
+            "source",
+            "keyword"
+          ],
+          "exported": false,
+          "lineCount": 6
+        },
+        {
+          "name": "getCreatedAt",
+          "params": [],
+          "exported": false,
+          "lineCount": 13
+        },
+        {
+          "name": "getPathId",
+          "params": [
+            "url"
+          ],
+          "exported": false,
+          "lineCount": 3
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "../../src/types/api.js",
+          "specifiers": [
+            "ApiResponse"
+          ]
+        }
+      ],
+      "exports": [],
+      "totalLines": 214,
+      "hasStructuralAnalysis": true
+    },
+    "package.json": {
+      "filePath": "package.json",
+      "contentHash": "9d788dcc4749a835d410974b7cd64418f7f1ee640614acf058a2bdb162ba48f2",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 56,
+      "hasStructuralAnalysis": true
+    },
+    "patches/vite-plugin-mock@3.0.2.patch": {
+      "filePath": "patches/vite-plugin-mock@3.0.2.patch",
+      "contentHash": "51a6889309962bd2f777ae521450979d4f378cd30f214121e5889b2d7c6534e0",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 29,
+      "hasStructuralAnalysis": false
+    },
+    "pnpm-workspace.yaml": {
+      "filePath": "pnpm-workspace.yaml",
+      "contentHash": "6a91830f3e4c0f0bb915517ced802d066122ef88142636f15247fb6a37402c29",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 6,
+      "hasStructuralAnalysis": true
+    },
+    "postcss.config.js": {
+      "filePath": "postcss.config.js",
+      "contentHash": "374f669f08b18e67d0a7264fa45b71228017e604fe7f6db8a5c1bd5ba27e5c98",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 7,
+      "hasStructuralAnalysis": true
+    },
+    "README.md": {
+      "filePath": "README.md",
+      "contentHash": "0695bd4f44d604c8c138d267b5a149a2e6168495e144c71af4efd13d1e99040e",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 98,
+      "hasStructuralAnalysis": true
+    },
+    "skills-lock.json": {
+      "filePath": "skills-lock.json",
+      "contentHash": "a2e795dd797e143e21f945d0d10bfd87a3eaec4b1526a3eb78b6bfddc7670efd",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 24,
+      "hasStructuralAnalysis": true
+    },
+    "src/api/auth.ts": {
+      "filePath": "src/api/auth.ts",
+      "contentHash": "e8f9e154cec4475cbb0bdb842f22a6b5ad4d7c100ccc0d525c1bdb5df1dbdfbd",
+      "functions": [
+        {
+          "name": "login",
+          "params": [
+            "values"
+          ],
+          "returnType": "Promise<LoginResult>",
+          "exported": true,
+          "lineCount": 6
+        },
+        {
+          "name": "getSession",
+          "params": [],
+          "returnType": "Promise<SessionResult>",
+          "exported": true,
+          "lineCount": 5
+        },
+        {
+          "name": "logout",
+          "params": [],
+          "returnType": "Promise<boolean>",
+          "exported": true,
+          "lineCount": 3
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "@/auth/types",
+          "specifiers": [
+            "LoginRequest",
+            "LoginResult",
+            "SessionResult"
+          ]
+        },
+        {
+          "source": "@/types/api",
+          "specifiers": [
+            "ApiResponse"
+          ]
+        },
+        {
+          "source": "@/utils/request",
+          "specifiers": [
+            "request"
+          ]
+        }
+      ],
+      "exports": [
+        "login",
+        "getSession",
+        "logout"
+      ],
+      "totalLines": 39,
+      "hasStructuralAnalysis": true
+    },
+    "src/api/shelterManagement.ts": {
+      "filePath": "src/api/shelterManagement.ts",
+      "contentHash": "e687360d138a0d7137b1148129950d19a752583effa5a59be16e67b7c590465d",
+      "functions": [
+        {
+          "name": "getShelterList",
+          "params": [
+            "params",
+            "signal"
+          ],
+          "returnType": "Promise<ShelterListResult>",
+          "exported": true,
+          "lineCount": 9
+        },
+        {
+          "name": "getShelterDetail",
+          "params": [
+            "id",
+            "signal"
+          ],
+          "returnType": "Promise<ShelterRecord>",
+          "exported": true,
+          "lineCount": 9
+        },
+        {
+          "name": "createShelter",
+          "params": [
+            "values"
+          ],
+          "returnType": "Promise<ShelterRecord>",
+          "exported": true,
+          "lineCount": 8
+        },
+        {
+          "name": "updateShelter",
+          "params": [
+            "id",
+            "values"
+          ],
+          "returnType": "Promise<ShelterRecord>",
+          "exported": true,
+          "lineCount": 9
+        },
+        {
+          "name": "deleteShelter",
+          "params": [
+            "id"
+          ],
+          "returnType": "Promise<boolean>",
+          "exported": true,
+          "lineCount": 5
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "../pages/system-management/shelter-management/types.js",
+          "specifiers": [
+            "ShelterFormValues",
+            "ShelterListResult",
+            "ShelterQueryParams",
+            "ShelterRecord"
+          ]
+        },
+        {
+          "source": "../types/api.js",
+          "specifiers": [
+            "ApiResponse"
+          ]
+        },
+        {
+          "source": "../utils/request.js",
+          "specifiers": [
+            "request"
+          ]
+        }
+      ],
+      "exports": [
+        "getShelterList",
+        "getShelterDetail",
+        "createShelter",
+        "updateShelter",
+        "deleteShelter"
+      ],
+      "totalLines": 69,
+      "hasStructuralAnalysis": true
+    },
+    "src/api/userManagement.ts": {
+      "filePath": "src/api/userManagement.ts",
+      "contentHash": "2138e8d60ae96ba2137573ff8f43c72d7ba6cc818a35caf04c3c04921a45f290",
+      "functions": [
+        {
+          "name": "getUserList",
+          "params": [
+            "params"
+          ],
+          "returnType": "Promise<UserListResult>",
+          "exported": true,
+          "lineCount": 6
+        },
+        {
+          "name": "createUser",
+          "params": [
+            "values"
+          ],
+          "returnType": "Promise<UserRecord>",
+          "exported": true,
+          "lineCount": 6
+        },
+        {
+          "name": "updateUser",
+          "params": [
+            "id",
+            "values"
+          ],
+          "returnType": "Promise<UserRecord>",
+          "exported": true,
+          "lineCount": 9
+        },
+        {
+          "name": "deleteUser",
+          "params": [
+            "id"
+          ],
+          "returnType": "Promise<boolean>",
+          "exported": true,
+          "lineCount": 5
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "@/pages/system-management/user-management/types",
+          "specifiers": [
+            "UserFormValues",
+            "UserListResult",
+            "UserQueryParams",
+            "UserRecord"
+          ]
+        },
+        {
+          "source": "@/types/api",
+          "specifiers": [
+            "ApiResponse"
+          ]
+        },
+        {
+          "source": "@/utils/request",
+          "specifiers": [
+            "request"
+          ]
+        }
+      ],
+      "exports": [
+        "getUserList",
+        "createUser",
+        "updateUser",
+        "deleteUser"
+      ],
+      "totalLines": 43,
+      "hasStructuralAnalysis": true
+    },
+    "src/app/App.tsx": {
+      "filePath": "src/app/App.tsx",
+      "contentHash": "7b95be5e79f4acb845888754deff33ead323596632f75dda58260ec174ecf328",
+      "functions": [
+        {
+          "name": "App",
+          "params": [],
+          "exported": true,
+          "lineCount": 3
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "./providers/AppProvider",
+          "specifiers": [
+            "AppProvider"
+          ]
+        }
+      ],
+      "exports": [
+        "App"
+      ],
+      "totalLines": 6,
+      "hasStructuralAnalysis": true
+    },
+    "src/app/providers/AntdProvider.tsx": {
+      "filePath": "src/app/providers/AntdProvider.tsx",
+      "contentHash": "63370f5bc034ffa2e959563146c8ac21e924fc93787d8b3c7e95dd02e261b3bd",
+      "functions": [
+        {
+          "name": "AntdProvider",
+          "params": [
+            "{ children }"
+          ],
+          "exported": true,
+          "lineCount": 16
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "react",
+          "specifiers": [
+            "ReactNode"
+          ]
+        },
+        {
+          "source": "antd",
+          "specifiers": [
+            "ConfigProvider",
+            "theme"
+          ]
+        },
+        {
+          "source": "antd/es/locale/en_US",
+          "specifiers": [
+            "enUS"
+          ]
+        },
+        {
+          "source": "antd/es/locale/zh_CN",
+          "specifiers": [
+            "zhCN"
+          ]
+        },
+        {
+          "source": "@/i18n",
+          "specifiers": []
+        },
+        {
+          "source": "react-i18next",
+          "specifiers": [
+            "useTranslation"
+          ]
+        },
+        {
+          "source": "@/i18n",
+          "specifiers": [
+            "AppLanguage"
+          ]
+        },
+        {
+          "source": "./ThemeProvider",
+          "specifiers": [
+            "useThemeMode"
+          ]
+        }
+      ],
+      "exports": [
+        "AntdProvider"
+      ],
+      "totalLines": 38,
+      "hasStructuralAnalysis": true
+    },
+    "src/app/providers/AppProvider.tsx": {
+      "filePath": "src/app/providers/AppProvider.tsx",
+      "contentHash": "88402de5a2ccff114d90196711db3a51850f930fe9e5e4512f18080c3f9addd6",
+      "functions": [
+        {
+          "name": "AppProvider",
+          "params": [],
+          "exported": true,
+          "lineCount": 9
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "react-router",
+          "specifiers": [
+            "RouterProvider"
+          ]
+        },
+        {
+          "source": "@/router",
+          "specifiers": [
+            "router"
+          ]
+        },
+        {
+          "source": "./AntdProvider",
+          "specifiers": [
+            "AntdProvider"
+          ]
+        },
+        {
+          "source": "./ThemeProvider",
+          "specifiers": [
+            "ThemeProvider"
+          ]
+        }
+      ],
+      "exports": [
+        "AppProvider"
+      ],
+      "totalLines": 16,
+      "hasStructuralAnalysis": true
+    },
+    "src/app/providers/I18nProvider.tsx": {
+      "filePath": "src/app/providers/I18nProvider.tsx",
+      "contentHash": "93304be6af596de4212a77f34082d8e8b22e99ff43411bcab2cff56b71e5caf6",
+      "functions": [
+        {
+          "name": "I18nProvider",
+          "params": [
+            "{ children }"
+          ],
+          "exported": true,
+          "lineCount": 3
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "react",
+          "specifiers": [
+            "ReactNode"
+          ]
+        },
+        {
+          "source": "@/i18n",
+          "specifiers": []
+        }
+      ],
+      "exports": [
+        "I18nProvider"
+      ],
+      "totalLines": 12,
+      "hasStructuralAnalysis": true
+    },
+    "src/app/providers/ThemeProvider.tsx": {
+      "filePath": "src/app/providers/ThemeProvider.tsx",
+      "contentHash": "9e47f75d3825aa15ba42b774e7978f1070c6b40f95e88eef2aa82a3947442e4e",
+      "functions": [
+        {
+          "name": "isThemeMode",
+          "params": [
+            "value"
+          ],
+          "exported": false,
+          "lineCount": 3
+        },
+        {
+          "name": "getInitialThemeMode",
+          "params": [],
+          "returnType": "ThemeMode",
+          "exported": false,
+          "lineCount": 17
+        },
+        {
+          "name": "ThemeProvider",
+          "params": [
+            "{ children }"
+          ],
+          "exported": true,
+          "lineCount": 30
+        },
+        {
+          "name": "useThemeMode",
+          "params": [],
+          "exported": true,
+          "lineCount": 10
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "react",
+          "specifiers": [
+            "createContext",
+            "useCallback",
+            "useContext",
+            "useEffect",
+            "useMemo",
+            "useState",
+            "ReactNode"
+          ]
+        }
+      ],
+      "exports": [
+        "ThemeProvider",
+        "useThemeMode"
+      ],
+      "totalLines": 105,
+      "hasStructuralAnalysis": true
+    },
+    "src/auth/token.ts": {
+      "filePath": "src/auth/token.ts",
+      "contentHash": "9eb2889bdb77ef5807ed3cb4d2507a26845002337b00513cb99f6610edd5d40f",
+      "functions": [
+        {
+          "name": "getAccessToken",
+          "params": [],
+          "exported": true,
+          "lineCount": 3
+        },
+        {
+          "name": "setAccessToken",
+          "params": [
+            "token"
+          ],
+          "exported": true,
+          "lineCount": 3
+        },
+        {
+          "name": "removeAccessToken",
+          "params": [],
+          "exported": true,
+          "lineCount": 3
+        }
+      ],
+      "classes": [],
+      "imports": [],
+      "exports": [
+        "getAccessToken",
+        "setAccessToken",
+        "removeAccessToken"
+      ],
+      "totalLines": 14,
+      "hasStructuralAnalysis": true
+    },
+    "src/auth/types.ts": {
+      "filePath": "src/auth/types.ts",
+      "contentHash": "0260436a439b04afc5bcb63e13aacb7e6891719430c867ec0ff99abf4595fe6c",
+      "functions": [],
+      "classes": [],
+      "imports": [
+        {
+          "source": "../router/types.js",
+          "specifiers": [
+            "BackendRouteItem"
+          ]
+        }
+      ],
+      "exports": [],
+      "totalLines": 25,
+      "hasStructuralAnalysis": true
+    },
+    "src/components/BreadCrumb/index.tsx": {
+      "filePath": "src/components/BreadCrumb/index.tsx",
+      "contentHash": "48269ef7ee9e491617506a6a32c8c92d551ae611151718cbac0de9f05713bed9",
+      "functions": [
+        {
+          "name": "joinPath",
+          "params": [
+            "parentPath",
+            "path"
+          ],
+          "exported": false,
+          "lineCount": 7
+        },
+        {
+          "name": "normalizePath",
+          "params": [
+            "pathname"
+          ],
+          "exported": false,
+          "lineCount": 5
+        },
+        {
+          "name": "getRouteTitle",
+          "params": [
+            "route",
+            "t"
+          ],
+          "exported": false,
+          "lineCount": 10
+        },
+        {
+          "name": "matchBreadcrumbs",
+          "params": [
+            "routes",
+            "pathname",
+            "t",
+            "parentPath"
+          ],
+          "returnType": "RouteBreadcrumb[]",
+          "exported": false,
+          "lineCount": 36
+        },
+        {
+          "name": "getHomeBreadcrumb",
+          "params": [
+            "routes",
+            "t"
+          ],
+          "exported": false,
+          "lineCount": 13
+        },
+        {
+          "name": "renderHomeTitle",
+          "params": [
+            "title"
+          ],
+          "exported": false,
+          "lineCount": 8
+        },
+        {
+          "name": "BreadCrumb",
+          "params": [],
+          "exported": true,
+          "lineCount": 36
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "react",
+          "specifiers": [
+            "useMemo",
+            "ReactNode"
+          ]
+        },
+        {
+          "source": "antd",
+          "specifiers": [
+            "Breadcrumb"
+          ]
+        },
+        {
+          "source": "react-router",
+          "specifiers": [
+            "Link",
+            "useLocation"
+          ]
+        },
+        {
+          "source": "react-i18next",
+          "specifiers": [
+            "useTranslation"
+          ]
+        },
+        {
+          "source": "antd",
+          "specifiers": [
+            "BreadcrumbProps"
+          ]
+        },
+        {
+          "source": "@/router/types",
+          "specifiers": [
+            "BackendRouteItem"
+          ]
+        },
+        {
+          "source": "@/store/auth",
+          "specifiers": [
+            "useAuthStore"
+          ]
+        }
+      ],
+      "exports": [
+        "BreadCrumb"
+      ],
+      "totalLines": 139,
+      "hasStructuralAnalysis": true
+    },
+    "src/components/FullScreen/index.tsx": {
+      "filePath": "src/components/FullScreen/index.tsx",
+      "contentHash": "68755213745b2009de906b0771894e092b282728587a4d3c0d973bd6f11752a8",
+      "functions": [
+        {
+          "name": "FullScreen",
+          "params": [],
+          "exported": true,
+          "lineCount": 54
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "@ant-design/icons",
+          "specifiers": [
+            "FullscreenOutlined",
+            "FullscreenExitOutlined"
+          ]
+        },
+        {
+          "source": "antd",
+          "specifiers": [
+            "Tooltip",
+            "Button"
+          ]
+        },
+        {
+          "source": "react-i18next",
+          "specifiers": [
+            "useTranslation"
+          ]
+        },
+        {
+          "source": "react",
+          "specifiers": [
+            "useEffect",
+            "useState"
+          ]
+        }
+      ],
+      "exports": [
+        "FullScreen"
+      ],
+      "totalLines": 60,
+      "hasStructuralAnalysis": true
+    },
+    "src/components/GithubLink/index.tsx": {
+      "filePath": "src/components/GithubLink/index.tsx",
+      "contentHash": "5f8737fa1e2e749e3dbbb00f0771ea74134cec01f449fb8d27e1a31511bfaa97",
+      "functions": [
+        {
+          "name": "GithubLink",
+          "params": [],
+          "exported": true,
+          "lineCount": 11
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "@ant-design/icons",
+          "specifiers": [
+            "GithubOutlined"
+          ]
+        },
+        {
+          "source": "antd",
+          "specifiers": [
+            "Button"
+          ]
+        }
+      ],
+      "exports": [
+        "GithubLink"
+      ],
+      "totalLines": 15,
+      "hasStructuralAnalysis": true
+    },
+    "src/components/LanguageSwitch/index.tsx": {
+      "filePath": "src/components/LanguageSwitch/index.tsx",
+      "contentHash": "4cbea1825756b4d31f7532d87b32124d1136083416d0b7d0ce38c79588f4f5d3",
+      "functions": [
+        {
+          "name": "LanguageSwitch",
+          "params": [],
+          "exported": true,
+          "lineCount": 32
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "@ant-design/icons",
+          "specifiers": [
+            "TranslationOutlined"
+          ]
+        },
+        {
+          "source": "antd",
+          "specifiers": [
+            "Button",
+            "Dropdown",
+            "Tooltip"
+          ]
+        },
+        {
+          "source": "antd",
+          "specifiers": [
+            "MenuProps"
+          ]
+        },
+        {
+          "source": "react-i18next",
+          "specifiers": [
+            "useTranslation"
+          ]
+        },
+        {
+          "source": "@/i18n",
+          "specifiers": [
+            "LANGUAGE_STORAGE_KEY"
+          ]
+        },
+        {
+          "source": "@/i18n",
+          "specifiers": [
+            "AppLanguage"
+          ]
+        }
+      ],
+      "exports": [
+        "LanguageSwitch"
+      ],
+      "totalLines": 52,
+      "hasStructuralAnalysis": true
+    },
+    "src/components/ThemeSwitch/index.tsx": {
+      "filePath": "src/components/ThemeSwitch/index.tsx",
+      "contentHash": "6ca0a83827c72b6dc14c4ad65c8fd72e182f539e75dc609d249bacd16e3dc0c9",
+      "functions": [
+        {
+          "name": "ThemeSwitch",
+          "params": [],
+          "exported": true,
+          "lineCount": 16
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "@ant-design/icons",
+          "specifiers": [
+            "MoonOutlined",
+            "SunOutlined"
+          ]
+        },
+        {
+          "source": "antd",
+          "specifiers": [
+            "Switch",
+            "Tooltip"
+          ]
+        },
+        {
+          "source": "@/app/providers/ThemeProvider",
+          "specifiers": [
+            "useThemeMode"
+          ]
+        },
+        {
+          "source": "react-i18next",
+          "specifiers": [
+            "useTranslation"
+          ]
+        }
+      ],
+      "exports": [
+        "ThemeSwitch"
+      ],
+      "totalLines": 23,
+      "hasStructuralAnalysis": true
+    },
+    "src/config/menu.ts": {
+      "filePath": "src/config/menu.ts",
+      "contentHash": "94b83cc725d89e4ffb4cd277f57116909950f4b5a2c7feba5456b6b9f9ae33da",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 337,
+      "hasStructuralAnalysis": true
+    },
+    "src/i18n/constants.ts": {
+      "filePath": "src/i18n/constants.ts",
+      "contentHash": "8126b110904f15065bf803fdddd032321ccf183d7ae031ef58f7ecff5b41430f",
+      "functions": [],
+      "classes": [],
+      "imports": [
+        {
+          "source": "./types",
+          "specifiers": [
+            "AppLanguage"
+          ]
+        }
+      ],
+      "exports": [
+        "LANGUAGE_STORAGE_KEY",
+        "DEFAULT_LANGUAGE",
+        "SUPPORTED_LANGUAGES"
+      ],
+      "totalLines": 11,
+      "hasStructuralAnalysis": true
+    },
+    "src/i18n/index.ts": {
+      "filePath": "src/i18n/index.ts",
+      "contentHash": "1e31004e5d7bcd8ad61319acfa25f7c04825f1407d913fed7360852ee60898f4",
+      "functions": [],
+      "classes": [],
+      "imports": [
+        {
+          "source": "i18next",
+          "specifiers": [
+            "i18n"
+          ]
+        },
+        {
+          "source": "react-i18next",
+          "specifiers": [
+            "initReactI18next"
+          ]
+        },
+        {
+          "source": "./locales/zh-CN",
+          "specifiers": [
+            "zhCN"
+          ]
+        },
+        {
+          "source": "./locales/en-US",
+          "specifiers": [
+            "enUS"
+          ]
+        },
+        {
+          "source": "./constants",
+          "specifiers": [
+            "DEFAULT_LANGUAGE"
+          ]
+        },
+        {
+          "source": "./utils",
+          "specifiers": [
+            "getDefaultLanguage"
+          ]
+        }
+      ],
+      "exports": [
+        "LANGUAGE_STORAGE_KEY",
+        "AppLanguage"
+      ],
+      "totalLines": 28,
+      "hasStructuralAnalysis": true
+    },
+    "src/i18n/locales/en-US.ts": {
+      "filePath": "src/i18n/locales/en-US.ts",
+      "contentHash": "2438d33b82173795360cd404ecaf3086dcaa0733d0b87b985b7f676e4a50b6a6",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 53,
+      "hasStructuralAnalysis": true
+    },
+    "src/i18n/locales/zh-CN.ts": {
+      "filePath": "src/i18n/locales/zh-CN.ts",
+      "contentHash": "e165cf7fc55858bc39c34dfa92a1bd329ca44841cd18495058dee5abb3765460",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 53,
+      "hasStructuralAnalysis": true
+    },
+    "src/i18n/types.ts": {
+      "filePath": "src/i18n/types.ts",
+      "contentHash": "de4e6957bbfb3eb0d645bf81a7eb1a5d163b68d6ac070d122c64e5d50cdf5574",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 3,
+      "hasStructuralAnalysis": true
+    },
+    "src/i18n/utils.ts": {
+      "filePath": "src/i18n/utils.ts",
+      "contentHash": "dece704c40fbff373d325106fc9d931890b8e853290f40de58ea3996f5999b5f",
+      "functions": [
+        {
+          "name": "isAppLanguage",
+          "params": [
+            "language"
+          ],
+          "exported": true,
+          "lineCount": 3
+        },
+        {
+          "name": "getDefaultLanguage",
+          "params": [],
+          "returnType": "AppLanguage",
+          "exported": true,
+          "lineCount": 9
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "./constants",
+          "specifiers": [
+            "DEFAULT_LANGUAGE",
+            "LANGUAGE_STORAGE_KEY",
+            "SUPPORTED_LANGUAGES"
+          ]
+        },
+        {
+          "source": "./types",
+          "specifiers": [
+            "AppLanguage"
+          ]
+        }
+      ],
+      "exports": [
+        "isAppLanguage",
+        "getDefaultLanguage"
+      ],
+      "totalLines": 35,
+      "hasStructuralAnalysis": true
+    },
+    "src/index.css": {
+      "filePath": "src/index.css",
+      "contentHash": "833d418dfcc422ac677e3bdf1e956706e598c2a29b286feff75215a3a61d2219",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 9,
+      "hasStructuralAnalysis": false
+    },
+    "src/layouts/index.tsx": {
+      "filePath": "src/layouts/index.tsx",
+      "contentHash": "113018eb6164d7db0f0feed83b85ce18ca3a41b06df265c34b279f42757364f2",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [
+        "default"
+      ],
+      "totalLines": 2,
+      "hasStructuralAnalysis": true
+    },
+    "src/layouts/MainLayout/Content.tsx": {
+      "filePath": "src/layouts/MainLayout/Content.tsx",
+      "contentHash": "da381e01d7995e416125e3c34ff8a16747a58c6f31416ee5dc546de1184f3c0d",
+      "functions": [
+        {
+          "name": "MainLayoutContent",
+          "params": [
+            "{ children }"
+          ],
+          "exported": true,
+          "lineCount": 17
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "react",
+          "specifiers": [
+            "ReactNode"
+          ]
+        },
+        {
+          "source": "antd",
+          "specifiers": [
+            "Layout",
+            "theme"
+          ]
+        }
+      ],
+      "exports": [
+        "MainLayoutContent"
+      ],
+      "totalLines": 28,
+      "hasStructuralAnalysis": true
+    },
+    "src/layouts/MainLayout/Header/components/UserProfile.tsx": {
+      "filePath": "src/layouts/MainLayout/Header/components/UserProfile.tsx",
+      "contentHash": "f09db1d092d2733f24dcee1a1b330a097f330fbddaa8063dc00bccb3d9f756c9",
+      "functions": [
+        {
+          "name": "UserProfile",
+          "params": [],
+          "exported": true,
+          "lineCount": 38
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "@ant-design/icons",
+          "specifiers": [
+            "LogoutOutlined",
+            "UserOutlined"
+          ]
+        },
+        {
+          "source": "antd",
+          "specifiers": [
+            "Button",
+            "Dropdown"
+          ]
+        },
+        {
+          "source": "antd",
+          "specifiers": [
+            "MenuProps"
+          ]
+        },
+        {
+          "source": "react-i18next",
+          "specifiers": [
+            "useTranslation"
+          ]
+        },
+        {
+          "source": "@/store/auth",
+          "specifiers": [
+            "useAuthStore"
+          ]
+        }
+      ],
+      "exports": [
+        "UserProfile"
+      ],
+      "totalLines": 46,
+      "hasStructuralAnalysis": true
+    },
+    "src/layouts/MainLayout/Header/index.tsx": {
+      "filePath": "src/layouts/MainLayout/Header/index.tsx",
+      "contentHash": "80a221bf76e28b8df906b78deed12e9fa2022cc0b27d0e8702d1d2bc00d7e054",
+      "functions": [
+        {
+          "name": "MainLayoutHeader",
+          "params": [
+            "{\n  onMenuClick,\n  onSidebarToggle,\n  sidebarCollapsed,\n}"
+          ],
+          "exported": true,
+          "lineCount": 44
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "antd",
+          "specifiers": [
+            "Button",
+            "Layout",
+            "theme"
+          ]
+        },
+        {
+          "source": "@ant-design/icons",
+          "specifiers": [
+            "MenuOutlined",
+            "MenuFoldOutlined",
+            "MenuUnfoldOutlined"
+          ]
+        },
+        {
+          "source": "@/components/LanguageSwitch",
+          "specifiers": [
+            "LanguageSwitch"
+          ]
+        },
+        {
+          "source": "@/components/FullScreen",
+          "specifiers": [
+            "FullScreen"
+          ]
+        },
+        {
+          "source": "@/components/BreadCrumb",
+          "specifiers": [
+            "BreadCrumb"
+          ]
+        },
+        {
+          "source": "@/components/ThemeSwitch",
+          "specifiers": [
+            "ThemeSwitch"
+          ]
+        },
+        {
+          "source": "./components/UserProfile",
+          "specifiers": [
+            "UserProfile"
+          ]
+        }
+      ],
+      "exports": [
+        "MainLayoutHeader"
+      ],
+      "totalLines": 67,
+      "hasStructuralAnalysis": true
+    },
+    "src/layouts/MainLayout/index.tsx": {
+      "filePath": "src/layouts/MainLayout/index.tsx",
+      "contentHash": "eb1161905022658bedfab467c444e34f46f987e227f0d505734293661d3eb90d",
+      "functions": [
+        {
+          "name": "MainLayout",
+          "params": [],
+          "exported": true,
+          "lineCount": 35
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "antd",
+          "specifiers": [
+            "Layout"
+          ]
+        },
+        {
+          "source": "react-router",
+          "specifiers": [
+            "Outlet"
+          ]
+        },
+        {
+          "source": "react",
+          "specifiers": [
+            "useState"
+          ]
+        },
+        {
+          "source": "./Header",
+          "specifiers": [
+            "MainLayoutHeader"
+          ]
+        },
+        {
+          "source": "./Sidebar",
+          "specifiers": [
+            "MainLayoutSidebar"
+          ]
+        },
+        {
+          "source": "./Content",
+          "specifiers": [
+            "MainLayoutContent"
+          ]
+        },
+        {
+          "source": "./MobileDrawer",
+          "specifiers": [
+            "MainLayoutMobileDrawer"
+          ]
+        }
+      ],
+      "exports": [
+        "MainLayout"
+      ],
+      "totalLines": 47,
+      "hasStructuralAnalysis": true
+    },
+    "src/layouts/MainLayout/MobileDrawer.tsx": {
+      "filePath": "src/layouts/MainLayout/MobileDrawer.tsx",
+      "contentHash": "56ac60c538112ba24747ae24d7ff115745f4ffbc6dd1248559736c868f410900",
+      "functions": [
+        {
+          "name": "MainLayoutMobileDrawer",
+          "params": [
+            "{\r\n  open,\r\n  onClose,\r\n}"
+          ],
+          "exported": true,
+          "lineCount": 48
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "antd",
+          "specifiers": [
+            "Drawer",
+            "Menu"
+          ]
+        },
+        {
+          "source": "@ant-design/icons",
+          "specifiers": [
+            "CloseOutlined"
+          ]
+        },
+        {
+          "source": "react-router",
+          "specifiers": [
+            "useLocation",
+            "useNavigate"
+          ]
+        },
+        {
+          "source": "react",
+          "specifiers": [
+            "useMemo"
+          ]
+        },
+        {
+          "source": "antd",
+          "specifiers": [
+            "MenuProps"
+          ]
+        },
+        {
+          "source": "@/router/menu",
+          "specifiers": [
+            "createMenuItems"
+          ]
+        },
+        {
+          "source": "@/store/auth",
+          "specifiers": [
+            "useAuthStore"
+          ]
+        },
+        {
+          "source": "react-i18next",
+          "specifiers": [
+            "useTranslation"
+          ]
+        }
+      ],
+      "exports": [
+        "MainLayoutMobileDrawer"
+      ],
+      "totalLines": 69,
+      "hasStructuralAnalysis": true
+    },
+    "src/layouts/MainLayout/Sidebar.tsx": {
+      "filePath": "src/layouts/MainLayout/Sidebar.tsx",
+      "contentHash": "7c814fb7510e45bdb6b01fd61cbca5dde8f9c1eb5d167f80f55e70d08348b8ac",
+      "functions": [
+        {
+          "name": "MainLayoutSidebar",
+          "params": [
+            "{ collapsed }"
+          ],
+          "exported": true,
+          "lineCount": 42
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "antd",
+          "specifiers": [
+            "Layout",
+            "Menu"
+          ]
+        },
+        {
+          "source": "react-router",
+          "specifiers": [
+            "useLocation",
+            "useNavigate"
+          ]
+        },
+        {
+          "source": "react",
+          "specifiers": [
+            "useMemo"
+          ]
+        },
+        {
+          "source": "antd",
+          "specifiers": [
+            "MenuProps"
+          ]
+        },
+        {
+          "source": "@/router/menu",
+          "specifiers": [
+            "createMenuItems"
+          ]
+        },
+        {
+          "source": "@/store/auth",
+          "specifiers": [
+            "useAuthStore"
+          ]
+        },
+        {
+          "source": "react-i18next",
+          "specifiers": [
+            "useTranslation"
+          ]
+        }
+      ],
+      "exports": [
+        "MainLayoutSidebar"
+      ],
+      "totalLines": 62,
+      "hasStructuralAnalysis": true
+    },
+    "src/main.tsx": {
+      "filePath": "src/main.tsx",
+      "contentHash": "211da1998eaab0890b8ade42b4fc8f0f90e43747673c9b6a801bbbdfc443c659",
+      "functions": [
+        {
+          "name": "bootstrap",
+          "params": [],
+          "exported": false,
+          "lineCount": 24
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "react",
+          "specifiers": [
+            "StrictMode"
+          ]
+        },
+        {
+          "source": "react-dom/client",
+          "specifiers": [
+            "createRoot"
+          ]
+        },
+        {
+          "source": "cesium",
+          "specifiers": [
+            "Ion"
+          ]
+        },
+        {
+          "source": "./index.css",
+          "specifiers": []
+        },
+        {
+          "source": "cesium/Build/Cesium/Widgets/widgets.css",
+          "specifiers": []
+        },
+        {
+          "source": "@/app/App",
+          "specifiers": [
+            "App"
+          ]
+        },
+        {
+          "source": "@/store/auth",
+          "specifiers": [
+            "useAuthStore"
+          ]
+        }
+      ],
+      "exports": [],
+      "totalLines": 44,
+      "hasStructuralAnalysis": true
+    },
+    "src/mockProdServer.ts": {
+      "filePath": "src/mockProdServer.ts",
+      "contentHash": "627e4dee5138d211b4323086336347abda4e133971826f38e9860cbea6c84d5f",
+      "functions": [
+        {
+          "name": "setupProdMockServer",
+          "params": [],
+          "exported": true,
+          "lineCount": 3
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "vite-plugin-mock/client",
+          "specifiers": [
+            "createProdMockServer"
+          ]
+        },
+        {
+          "source": "vite-plugin-mock",
+          "specifiers": [
+            "MockMethod"
+          ]
+        }
+      ],
+      "exports": [
+        "setupProdMockServer"
+      ],
+      "totalLines": 14,
+      "hasStructuralAnalysis": true
+    },
+    "src/pages/animation/clock/index.tsx": {
+      "filePath": "src/pages/animation/clock/index.tsx",
+      "contentHash": "99709aecdf0ee9897b8f2c994649a66f5386560035a14afa65e36d99528f6ac4",
+      "functions": [
+        {
+          "name": "Clock",
+          "params": [],
+          "exported": true,
+          "lineCount": 3
+        }
+      ],
+      "classes": [],
+      "imports": [],
+      "exports": [
+        "Clock"
+      ],
+      "totalLines": 4,
+      "hasStructuralAnalysis": true
+    },
+    "src/pages/error/NotFound.tsx": {
+      "filePath": "src/pages/error/NotFound.tsx",
+      "contentHash": "a610e88f6751d7b502678423c66b1ba403ea604b3e6ab8137dcfd0cc2dc9da16",
+      "functions": [
+        {
+          "name": "NotFound",
+          "params": [],
+          "exported": true,
+          "lineCount": 3
+        }
+      ],
+      "classes": [],
+      "imports": [],
+      "exports": [
+        "NotFound"
+      ],
+      "totalLines": 4,
+      "hasStructuralAnalysis": true
+    },
+    "src/pages/getting-started/hello-world/index.tsx": {
+      "filePath": "src/pages/getting-started/hello-world/index.tsx",
+      "contentHash": "b3caea51eed5378f47f05bbf6f4d315f24f97441f645a39dc87992055f54721e",
+      "functions": [
+        {
+          "name": "getErrorMessage",
+          "params": [
+            "error"
+          ],
+          "exported": false,
+          "lineCount": 3
+        },
+        {
+          "name": "CesiumWidgetPage",
+          "params": [],
+          "exported": true,
+          "lineCount": 89
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "react",
+          "specifiers": [
+            "useEffect",
+            "useRef",
+            "useState"
+          ]
+        },
+        {
+          "source": "antd",
+          "specifiers": [
+            "Alert"
+          ]
+        },
+        {
+          "source": "cesium",
+          "specifiers": [
+            "Cartesian3",
+            "Terrain",
+            "Viewer"
+          ]
+        }
+      ],
+      "exports": [
+        "CesiumWidgetPage"
+      ],
+      "totalLines": 98,
+      "hasStructuralAnalysis": true
+    },
+    "src/pages/getting-started/resolution-scale/index.tsx": {
+      "filePath": "src/pages/getting-started/resolution-scale/index.tsx",
+      "contentHash": "20e67cd68b9b01bcbfd53066707b1f7e388e7a6d2212c8e7093e4d359bf5c3cb",
+      "functions": [
+        {
+          "name": "ResolutionScale",
+          "params": [],
+          "exported": true,
+          "lineCount": 3
+        }
+      ],
+      "classes": [],
+      "imports": [],
+      "exports": [
+        "ResolutionScale"
+      ],
+      "totalLines": 4,
+      "hasStructuralAnalysis": true
+    },
+    "src/pages/home/index.tsx": {
+      "filePath": "src/pages/home/index.tsx",
+      "contentHash": "6d3c6895dacba614d73a09c4b557becdcd00ea7db4e71d40d076099b78390d62",
+      "functions": [
+        {
+          "name": "Home",
+          "params": [],
+          "exported": true,
+          "lineCount": 9
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "antd",
+          "specifiers": [
+            "DatePicker",
+            "Empty",
+            "Pagination",
+            "Space"
+          ]
+        }
+      ],
+      "exports": [
+        "Home"
+      ],
+      "totalLines": 12,
+      "hasStructuralAnalysis": true
+    },
+    "src/pages/index.md": {
+      "filePath": "src/pages/index.md",
+      "contentHash": "f3f2fa945bcc2df545402e4e08dcae216924793b5e8800d757907386f19205b2",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 12,
+      "hasStructuralAnalysis": true
+    },
+    "src/pages/login/index.tsx": {
+      "filePath": "src/pages/login/index.tsx",
+      "contentHash": "d76cd4b7033ba942bdee8d44922a6af524b7024576cca6808fabe728b145abad",
+      "functions": [
+        {
+          "name": "LoginContent",
+          "params": [],
+          "exported": false,
+          "lineCount": 119
+        },
+        {
+          "name": "LoginPage",
+          "params": [],
+          "exported": true,
+          "lineCount": 16
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "@ant-design/icons",
+          "specifiers": [
+            "LockOutlined",
+            "UserOutlined"
+          ]
+        },
+        {
+          "source": "antd",
+          "specifiers": [
+            "Alert",
+            "Button",
+            "ConfigProvider",
+            "Form",
+            "Input",
+            "theme"
+          ]
+        },
+        {
+          "source": "react",
+          "specifiers": [
+            "useState"
+          ]
+        },
+        {
+          "source": "react-i18next",
+          "specifiers": [
+            "useTranslation"
+          ]
+        },
+        {
+          "source": "@/components/LanguageSwitch",
+          "specifiers": [
+            "LanguageSwitch"
+          ]
+        },
+        {
+          "source": "@/store/auth",
+          "specifiers": [
+            "useAuthStore"
+          ]
+        },
+        {
+          "source": "@/auth/types",
+          "specifiers": [
+            "LoginRequest"
+          ]
+        },
+        {
+          "source": "./login.scss",
+          "specifiers": []
+        }
+      ],
+      "exports": [
+        "LoginPage"
+      ],
+      "totalLines": 149,
+      "hasStructuralAnalysis": true
+    },
+    "src/pages/login/login.scss": {
+      "filePath": "src/pages/login/login.scss",
+      "contentHash": "208ae8b5d5c1e4bd584e76484582eeb1c264aec0b7a5c225c7c9496d0898cb28",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 341,
+      "hasStructuralAnalysis": false
+    },
+    "src/pages/showcases/google-2d-tiles/index.tsx": {
+      "filePath": "src/pages/showcases/google-2d-tiles/index.tsx",
+      "contentHash": "52daaf2c67c62108fe52f46053aaf137c93c926dcc4a0bac36071c37a5076e29",
+      "functions": [
+        {
+          "name": "Google2DTiles",
+          "params": [],
+          "exported": true,
+          "lineCount": 3
+        }
+      ],
+      "classes": [],
+      "imports": [],
+      "exports": [
+        "Google2DTiles"
+      ],
+      "totalLines": 4,
+      "hasStructuralAnalysis": true
+    },
+    "src/pages/system-management/shelter-management/components/ShelterDetailModal.tsx": {
+      "filePath": "src/pages/system-management/shelter-management/components/ShelterDetailModal.tsx",
+      "contentHash": "3ca19b04025b1fc045e10bfed1c8f3d7832a3e365e0e7a2550dcd1d944e3e57f",
+      "functions": [
+        {
+          "name": "getOccupancyRate",
+          "params": [
+            "{ capacity, availableCapacity }"
+          ],
+          "exported": false,
+          "lineCount": 5
+        },
+        {
+          "name": "ShelterDetailModal",
+          "params": [
+            "{\n  open,\n  loading,\n  shelter,\n  onCancel,\n}"
+          ],
+          "exported": true,
+          "lineCount": 78
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "antd",
+          "specifiers": [
+            "Descriptions",
+            "Modal",
+            "Space",
+            "Spin",
+            "Tag"
+          ]
+        },
+        {
+          "source": "../constants",
+          "specifiers": [
+            "shelterFacilityText",
+            "shelterFacilityTypeText",
+            "shelterOperationStatusColor",
+            "shelterOperationStatusText",
+            "shelterUsageText"
+          ]
+        },
+        {
+          "source": "../types",
+          "specifiers": [
+            "ShelterRecord"
+          ]
+        }
+      ],
+      "exports": [
+        "ShelterDetailModal"
+      ],
+      "totalLines": 106,
+      "hasStructuralAnalysis": true
+    },
+    "src/pages/system-management/shelter-management/components/ShelterForm.tsx": {
+      "filePath": "src/pages/system-management/shelter-management/components/ShelterForm.tsx",
+      "contentHash": "4f2e2afa4ed23bc611397ede0eda75217477b9f33767076526156d4ff0be11cb",
+      "functions": [
+        {
+          "name": "getFormValues",
+          "params": [
+            "mode",
+            "initialShelter"
+          ],
+          "returnType": "Partial<ShelterFormValues>",
+          "exported": false,
+          "lineCount": 22
+        },
+        {
+          "name": "ShelterForm",
+          "params": [
+            "{\n  open,\n  mode,\n  initialShelter,\n  confirmLoading,\n  onCancel,\n  onSubmit,\n}"
+          ],
+          "exported": true,
+          "lineCount": 261
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "antd",
+          "specifiers": [
+            "Button",
+            "Drawer",
+            "Form",
+            "Input",
+            "InputNumber",
+            "Select",
+            "Space"
+          ]
+        },
+        {
+          "source": "react",
+          "specifiers": [
+            "useEffect"
+          ]
+        },
+        {
+          "source": "../constants",
+          "specifiers": [
+            "shelterFacilityOptions",
+            "shelterFacilityTypeOptions",
+            "shelterOperationStatusOptions",
+            "shelterUsageOptions"
+          ]
+        },
+        {
+          "source": "../types",
+          "specifiers": [
+            "ShelterFormValues",
+            "ShelterRecord"
+          ]
+        }
+      ],
+      "exports": [
+        "ShelterForm"
+      ],
+      "totalLines": 314,
+      "hasStructuralAnalysis": true
+    },
+    "src/pages/system-management/shelter-management/components/ShelterTable.tsx": {
+      "filePath": "src/pages/system-management/shelter-management/components/ShelterTable.tsx",
+      "contentHash": "ddb06f28590e3eb94091755acdff15c9a74a4e1f1fab8d046c6f0fc4d78fab27",
+      "functions": [
+        {
+          "name": "ShelterTable",
+          "params": [
+            "{\n  shelters,\n  loading,\n  total,\n  queryParams,\n  onQuery,\n  onResetQuery,\n  onPageChange,\n  onCreate,\n  onDetail,\n  onEdit,\n  onDelete,\n}"
+          ],
+          "exported": true,
+          "lineCount": 216
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "antd",
+          "specifiers": [
+            "Space",
+            "Table",
+            "Tag",
+            "Button",
+            "Popconfirm",
+            "Form",
+            "Input",
+            "Select",
+            "Pagination"
+          ]
+        },
+        {
+          "source": "antd",
+          "specifiers": [
+            "TableProps"
+          ]
+        },
+        {
+          "source": "@ant-design/icons",
+          "specifiers": [
+            "PlusOutlined"
+          ]
+        },
+        {
+          "source": "../constants",
+          "specifiers": [
+            "shelterFacilityText",
+            "shelterFacilityTypeOptions",
+            "shelterFacilityTypeText",
+            "shelterOperationStatusColor",
+            "shelterOperationStatusOptions",
+            "shelterOperationStatusText",
+            "shelterUsageOptions",
+            "shelterUsageText"
+          ]
+        },
+        {
+          "source": "../types",
+          "specifiers": [
+            "ShelterFacility",
+            "ShelterRecord",
+            "ShelterQueryParams"
+          ]
+        }
+      ],
+      "exports": [
+        "ShelterTable"
+      ],
+      "totalLines": 270,
+      "hasStructuralAnalysis": true
+    },
+    "src/pages/system-management/shelter-management/constants.ts": {
+      "filePath": "src/pages/system-management/shelter-management/constants.ts",
+      "contentHash": "d2586e765bebcc96b544e65bb750d3b6ae10d72902b158c86c6d0923725a4231",
+      "functions": [],
+      "classes": [],
+      "imports": [
+        {
+          "source": "./types",
+          "specifiers": [
+            "ShelterFacility",
+            "ShelterFacilityType",
+            "ShelterOperationStatus",
+            "ShelterUsage"
+          ]
+        }
+      ],
+      "exports": [
+        "shelterFacilityTypeText",
+        "shelterUsageText",
+        "shelterOperationStatusText",
+        "shelterOperationStatusColor",
+        "shelterFacilityText",
+        "shelterFacilityTypeOptions",
+        "shelterUsageOptions",
+        "shelterOperationStatusOptions",
+        "shelterFacilityOptions"
+      ],
+      "totalLines": 113,
+      "hasStructuralAnalysis": true
+    },
+    "src/pages/system-management/shelter-management/hooks/useShelterDetail.ts": {
+      "filePath": "src/pages/system-management/shelter-management/hooks/useShelterDetail.ts",
+      "contentHash": "678ec1dd34fc8486cd0ed5a02d696be1e26615be783309848277f3bec2f17be7",
+      "functions": [
+        {
+          "name": "useShelterDetail",
+          "params": [],
+          "exported": true,
+          "lineCount": 70
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "react",
+          "specifiers": [
+            "useCallback",
+            "useEffect",
+            "useRef",
+            "useState"
+          ]
+        },
+        {
+          "source": "../../../../api/shelterManagement.js",
+          "specifiers": [
+            "getShelterDetail"
+          ]
+        },
+        {
+          "source": "../../../../utils/request.js",
+          "specifiers": [
+            "isRequestCanceled"
+          ]
+        },
+        {
+          "source": "../types.js",
+          "specifiers": [
+            "ShelterRecord"
+          ]
+        }
+      ],
+      "exports": [
+        "useShelterDetail"
+      ],
+      "totalLines": 80,
+      "hasStructuralAnalysis": true
+    },
+    "src/pages/system-management/shelter-management/hooks/useShelterList.ts": {
+      "filePath": "src/pages/system-management/shelter-management/hooks/useShelterList.ts",
+      "contentHash": "2d8a937c7ac4798ed5e367fc00f3f7d53a210c4e668f1d1b2692a3d8530b919e",
+      "functions": [
+        {
+          "name": "useShelterList",
+          "params": [
+            "queryParams"
+          ],
+          "exported": true,
+          "lineCount": 57
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "react",
+          "specifiers": [
+            "useCallback",
+            "useEffect",
+            "useState"
+          ]
+        },
+        {
+          "source": "../../../../api/shelterManagement.js",
+          "specifiers": [
+            "getShelterList"
+          ]
+        },
+        {
+          "source": "../../../../utils/request.js",
+          "specifiers": [
+            "isRequestCanceled"
+          ]
+        },
+        {
+          "source": "../types.js",
+          "specifiers": [
+            "ShelterQueryParams",
+            "ShelterRecord"
+          ]
+        }
+      ],
+      "exports": [
+        "useShelterList"
+      ],
+      "totalLines": 81,
+      "hasStructuralAnalysis": true
+    },
+    "src/pages/system-management/shelter-management/index.tsx": {
+      "filePath": "src/pages/system-management/shelter-management/index.tsx",
+      "contentHash": "14f0765366353c3b6bf2e775bee740d781f996dced448e136287604dc1af46f0",
+      "functions": [
+        {
+          "name": "ShelterManagement",
+          "params": [],
+          "exported": true,
+          "lineCount": 164
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "./types",
+          "specifiers": [
+            "ShelterFormValues",
+            "ShelterQueryParams",
+            "ShelterRecord"
+          ]
+        },
+        {
+          "source": "react",
+          "specifiers": [
+            "useEffect",
+            "useState"
+          ]
+        },
+        {
+          "source": "antd",
+          "specifiers": [
+            "message"
+          ]
+        },
+        {
+          "source": "./components/ShelterTable",
+          "specifiers": [
+            "ShelterTable"
+          ]
+        },
+        {
+          "source": "./components/ShelterForm",
+          "specifiers": [
+            "ShelterForm"
+          ]
+        },
+        {
+          "source": "./components/ShelterDetailModal",
+          "specifiers": [
+            "ShelterDetailModal"
+          ]
+        },
+        {
+          "source": "./hooks/useShelterDetail",
+          "specifiers": [
+            "useShelterDetail"
+          ]
+        },
+        {
+          "source": "./hooks/useShelterList",
+          "specifiers": [
+            "useShelterList"
+          ]
+        },
+        {
+          "source": "@/api/shelterManagement",
+          "specifiers": [
+            "createShelter",
+            "updateShelter",
+            "deleteShelter"
+          ]
+        }
+      ],
+      "exports": [
+        "ShelterManagement"
+      ],
+      "totalLines": 188,
+      "hasStructuralAnalysis": true
+    },
+    "src/pages/system-management/shelter-management/types.ts": {
+      "filePath": "src/pages/system-management/shelter-management/types.ts",
+      "contentHash": "3f7ec5ecf560de5e2b601bcf27ba09713cf50fb017092021695619c1cf491d16",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 140,
+      "hasStructuralAnalysis": true
+    },
+    "src/pages/system-management/shelter-management/without-custom-hooks/WithoutCustomHooksExample.tsx": {
+      "filePath": "src/pages/system-management/shelter-management/without-custom-hooks/WithoutCustomHooksExample.tsx",
+      "contentHash": "1efd69666abc5ccd06a7c2b4bcba6fb3ebea368ec7b68140b574dd197b4a50e4",
+      "functions": [
+        {
+          "name": "waitForResponse",
+          "params": [
+            "delayMs",
+            "signal"
+          ],
+          "returnType": "Promise<void>",
+          "exported": false,
+          "lineCount": 14
+        },
+        {
+          "name": "ShelterManagementWithoutCustomHooks",
+          "params": [],
+          "exported": true,
+          "lineCount": 394
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "react",
+          "specifiers": [
+            "useEffect",
+            "useRef",
+            "useState"
+          ]
+        },
+        {
+          "source": "antd",
+          "specifiers": [
+            "Alert",
+            "Button",
+            "message",
+            "Space",
+            "Typography"
+          ]
+        },
+        {
+          "source": "@/api/shelterManagement",
+          "specifiers": [
+            "createShelter",
+            "deleteShelter",
+            "getShelterDetail",
+            "getShelterList",
+            "updateShelter"
+          ]
+        },
+        {
+          "source": "@/utils/request",
+          "specifiers": [
+            "isRequestCanceled"
+          ]
+        },
+        {
+          "source": "../components/ShelterDetailModal",
+          "specifiers": [
+            "ShelterDetailModal"
+          ]
+        },
+        {
+          "source": "../components/ShelterForm",
+          "specifiers": [
+            "ShelterForm"
+          ]
+        },
+        {
+          "source": "../components/ShelterTable",
+          "specifiers": [
+            "ShelterTable"
+          ]
+        },
+        {
+          "source": "../types",
+          "specifiers": [
+            "ShelterFormValues",
+            "ShelterQueryParams",
+            "ShelterRecord"
+          ]
+        }
+      ],
+      "exports": [
+        "ShelterManagementWithoutCustomHooks"
+      ],
+      "totalLines": 456,
+      "hasStructuralAnalysis": true
+    },
+    "src/pages/system-management/user-management/components/UserFormModal.tsx": {
+      "filePath": "src/pages/system-management/user-management/components/UserFormModal.tsx",
+      "contentHash": "0e6b33be8ae20758285707a916232ec15eb9047a9822eafff1b2e48be64b078a",
+      "functions": [
+        {
+          "name": "getFormValues",
+          "params": [
+            "initialUser"
+          ],
+          "exported": false,
+          "lineCount": 14
+        },
+        {
+          "name": "UserFormModal",
+          "params": [
+            "{\r\n  open,\r\n  mode,\r\n  initialUser,\r\n  confirmLoading,\r\n  onCancel,\r\n  onSubmit,\r\n}"
+          ],
+          "exported": true,
+          "lineCount": 104
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "antd",
+          "specifiers": [
+            "Form",
+            "Input",
+            "Modal",
+            "Select"
+          ]
+        },
+        {
+          "source": "react",
+          "specifiers": [
+            "useEffect"
+          ]
+        },
+        {
+          "source": "../types",
+          "specifiers": [
+            "UserFormValues",
+            "UserRecord"
+          ]
+        }
+      ],
+      "exports": [
+        "UserFormModal"
+      ],
+      "totalLines": 164,
+      "hasStructuralAnalysis": true
+    },
+    "src/pages/system-management/user-management/components/UserTablePanel.tsx": {
+      "filePath": "src/pages/system-management/user-management/components/UserTablePanel.tsx",
+      "contentHash": "2ecdeb3e3fa3d2b0a9ded98920f3a403efce985f89c1265f360091e1a53d56d5",
+      "functions": [
+        {
+          "name": "UserTablePanel",
+          "params": [
+            "{\r\n  users,\r\n  total,\r\n  loading,\r\n  query,\r\n  onSearch,\r\n  onReset,\r\n  onCreate,\r\n  onEdit,\r\n  onDelete,\r\n  onPageChange,\r\n}"
+          ],
+          "exported": true,
+          "lineCount": 170
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "@ant-design/icons",
+          "specifiers": [
+            "PlusOutlined"
+          ]
+        },
+        {
+          "source": "antd",
+          "specifiers": [
+            "Button",
+            "Form",
+            "Input",
+            "Popconfirm",
+            "Select",
+            "Space",
+            "Table",
+            "Tag"
+          ]
+        },
+        {
+          "source": "antd",
+          "specifiers": [
+            "TableProps"
+          ]
+        },
+        {
+          "source": "react",
+          "specifiers": [
+            "useEffect"
+          ]
+        },
+        {
+          "source": "../types",
+          "specifiers": [
+            "UserQueryParams",
+            "UserRecord",
+            "UserStatus"
+          ]
+        }
+      ],
+      "exports": [
+        "UserTablePanel"
+      ],
+      "totalLines": 224,
+      "hasStructuralAnalysis": true
+    },
+    "src/pages/system-management/user-management/index.tsx": {
+      "filePath": "src/pages/system-management/user-management/index.tsx",
+      "contentHash": "4b1b608c7608f27847c3850ee7054272022a6adbc2ecb1fcf9d5b7c9cddd72dd",
+      "functions": [
+        {
+          "name": "UserManagement",
+          "params": [],
+          "exported": true,
+          "lineCount": 130
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "react",
+          "specifiers": [
+            "useCallback",
+            "useEffect",
+            "useState"
+          ]
+        },
+        {
+          "source": "antd",
+          "specifiers": [
+            "message"
+          ]
+        },
+        {
+          "source": "@/api/userManagement",
+          "specifiers": [
+            "createUser",
+            "deleteUser",
+            "getUserList",
+            "updateUser"
+          ]
+        },
+        {
+          "source": "./components/UserFormModal",
+          "specifiers": [
+            "UserFormModal"
+          ]
+        },
+        {
+          "source": "./components/UserTablePanel",
+          "specifiers": [
+            "UserTablePanel"
+          ]
+        },
+        {
+          "source": "./types",
+          "specifiers": [
+            "UserFormValues",
+            "UserQueryParams",
+            "UserRecord"
+          ]
+        }
+      ],
+      "exports": [
+        "UserManagement"
+      ],
+      "totalLines": 149,
+      "hasStructuralAnalysis": true
+    },
+    "src/pages/system-management/user-management/types.ts": {
+      "filePath": "src/pages/system-management/user-management/types.ts",
+      "contentHash": "d907f0fd29d086ba79aa386c75c842b22ff5818d7057ade224f8400089e16976",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 76,
+      "hasStructuralAnalysis": true
+    },
+    "src/router/index.tsx": {
+      "filePath": "src/router/index.tsx",
+      "contentHash": "3d4952570fe6db355d11a72ab25955fb42432bf3ee564ccdeb64664bc8251435",
+      "functions": [
+        {
+          "name": "LoadingScreen",
+          "params": [],
+          "exported": false,
+          "lineCount": 7
+        },
+        {
+          "name": "joinPath",
+          "params": [
+            "parentPath",
+            "path"
+          ],
+          "exported": false,
+          "lineCount": 3
+        },
+        {
+          "name": "hasRoutePath",
+          "params": [
+            "routes",
+            "targetPath",
+            "parentPath"
+          ],
+          "returnType": "boolean",
+          "exported": false,
+          "lineCount": 16
+        },
+        {
+          "name": "ProtectedRoutes",
+          "params": [],
+          "exported": false,
+          "lineCount": 56
+        },
+        {
+          "name": "LoginRoute",
+          "params": [],
+          "exported": false,
+          "lineCount": 29
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "react",
+          "specifiers": [
+            "lazy",
+            "Suspense",
+            "useMemo"
+          ]
+        },
+        {
+          "source": "react-router",
+          "specifiers": [
+            "createHashRouter",
+            "Navigate",
+            "useLocation",
+            "useRoutes"
+          ]
+        },
+        {
+          "source": "./types",
+          "specifiers": [
+            "BackendRouteItem"
+          ]
+        },
+        {
+          "source": "./transform",
+          "specifiers": [
+            "transformRoutes"
+          ]
+        },
+        {
+          "source": "@/store/auth",
+          "specifiers": [
+            "useAuthStore"
+          ]
+        }
+      ],
+      "exports": [],
+      "totalLines": 152,
+      "hasStructuralAnalysis": true
+    },
+    "src/router/menu.tsx": {
+      "filePath": "src/router/menu.tsx",
+      "contentHash": "d7dbd234205df01823e7609b56842f9d8fbeabb69913f9c187f5808988c96cc5",
+      "functions": [
+        {
+          "name": "joinPath",
+          "params": [
+            "parentPath",
+            "path"
+          ],
+          "exported": false,
+          "lineCount": 7
+        },
+        {
+          "name": "createMenuItems",
+          "params": [
+            "routes",
+            "t",
+            "parentPath"
+          ],
+          "returnType": "MenuItem[]",
+          "exported": true,
+          "lineCount": 36
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "react",
+          "specifiers": [
+            "createElement"
+          ]
+        },
+        {
+          "source": "@ant-design/icons",
+          "specifiers": [
+            "DashboardOutlined",
+            "HomeOutlined",
+            "SettingOutlined",
+            "UserOutlined"
+          ]
+        },
+        {
+          "source": "antd",
+          "specifiers": [
+            "MenuProps"
+          ]
+        },
+        {
+          "source": "i18next",
+          "specifiers": [
+            "TFunction"
+          ]
+        },
+        {
+          "source": "./types",
+          "specifiers": [
+            "BackendRouteItem"
+          ]
+        }
+      ],
+      "exports": [
+        "createMenuItems"
+      ],
+      "totalLines": 70,
+      "hasStructuralAnalysis": true
+    },
+    "src/router/mockRoutes.ts": {
+      "filePath": "src/router/mockRoutes.ts",
+      "contentHash": "95ff7d3d2185baf8605408000b406f9ddd34f7835bf9644854393441abff40b7",
+      "functions": [],
+      "classes": [],
+      "imports": [
+        {
+          "source": "./types",
+          "specifiers": [
+            "BackendRouteItem"
+          ]
+        }
+      ],
+      "exports": [
+        "mockRoutes"
+      ],
+      "totalLines": 140,
+      "hasStructuralAnalysis": true
+    },
+    "src/router/transform.tsx": {
+      "filePath": "src/router/transform.tsx",
+      "contentHash": "e8691e89edcf1f26c6d48153b7f75a8467cbca02ca389eca3265b4d85f456f66",
+      "functions": [
+        {
+          "name": "getPageImport",
+          "params": [
+            "component"
+          ],
+          "exported": false,
+          "lineCount": 7
+        },
+        {
+          "name": "lazyLoad",
+          "params": [
+            "component"
+          ],
+          "exported": false,
+          "lineCount": 16
+        },
+        {
+          "name": "transformRoutes",
+          "params": [
+            "routes"
+          ],
+          "returnType": "AppRouteObject[]",
+          "exported": true,
+          "lineCount": 38
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "react",
+          "specifiers": [
+            "lazy",
+            "Suspense"
+          ]
+        },
+        {
+          "source": "react",
+          "specifiers": [
+            "ComponentType"
+          ]
+        },
+        {
+          "source": "react-router",
+          "specifiers": [
+            "Navigate",
+            "Outlet"
+          ]
+        },
+        {
+          "source": "./types",
+          "specifiers": [
+            "AppRouteObject",
+            "BackendRouteItem"
+          ]
+        }
+      ],
+      "exports": [
+        "pageModules",
+        "transformRoutes"
+      ],
+      "totalLines": 83,
+      "hasStructuralAnalysis": true
+    },
+    "src/router/types.ts": {
+      "filePath": "src/router/types.ts",
+      "contentHash": "91cca84567307709c0ff199f614423ce42f346f971d692d46e917520e1f48167",
+      "functions": [],
+      "classes": [],
+      "imports": [
+        {
+          "source": "react-router",
+          "specifiers": [
+            "NonIndexRouteObject",
+            "RouteObject"
+          ]
+        }
+      ],
+      "exports": [],
+      "totalLines": 55,
+      "hasStructuralAnalysis": true
+    },
+    "src/store/auth.ts": {
+      "filePath": "src/store/auth.ts",
+      "contentHash": "e359a3a39c1ae215d7edc314ecdb9f89008d9e3e08448cb74d90adaa12cb2ddb",
+      "functions": [],
+      "classes": [],
+      "imports": [
+        {
+          "source": "zustand",
+          "specifiers": [
+            "create"
+          ]
+        },
+        {
+          "source": "@/api/auth",
+          "specifiers": [
+            "getSession",
+            "loginRequest",
+            "logoutRequest"
+          ]
+        },
+        {
+          "source": "@/auth/token",
+          "specifiers": [
+            "getAccessToken",
+            "removeAccessToken",
+            "setAccessToken"
+          ]
+        },
+        {
+          "source": "@/auth/types",
+          "specifiers": [
+            "AuthUser",
+            "LoginRequest"
+          ]
+        },
+        {
+          "source": "@/router/types",
+          "specifiers": [
+            "BackendRouteItem"
+          ]
+        }
+      ],
+      "exports": [
+        "useAuthStore"
+      ],
+      "totalLines": 120,
+      "hasStructuralAnalysis": true
+    },
+    "src/styles/theme.css": {
+      "filePath": "src/styles/theme.css",
+      "contentHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 1,
+      "hasStructuralAnalysis": false
+    },
+    "src/types/api.ts": {
+      "filePath": "src/types/api.ts",
+      "contentHash": "883154b39fe6c3739a48b58f8e5e9e87713eae51a9d71b9f0817d6d5ddee2e98",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 10,
+      "hasStructuralAnalysis": true
+    },
+    "src/utils/request.ts": {
+      "filePath": "src/utils/request.ts",
+      "contentHash": "449d1cf237d430cfb4e8c10eff5e8e3414dc98b8f9b8fe108ba3055154a0548b",
+      "functions": [
+        {
+          "name": "isRequestCanceled",
+          "params": [
+            "error"
+          ],
+          "returnType": "boolean",
+          "exported": true,
+          "lineCount": 3
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "../types/api.js",
+          "specifiers": [
+            "ApiResponse"
+          ]
+        },
+        {
+          "source": "axios",
+          "specifiers": [
+            "axios"
+          ]
+        },
+        {
+          "source": "@/auth/token",
+          "specifiers": [
+            "getAccessToken"
+          ]
+        }
+      ],
+      "exports": [
+        "isRequestCanceled"
+      ],
+      "totalLines": 43,
+      "hasStructuralAnalysis": true
+    },
+    "src/vite-env.d.ts": {
+      "filePath": "src/vite-env.d.ts",
+      "contentHash": "d5527e4cfc0b6cea96206280aecee9ce17f9b2bef47b5ec7de40ab870f7e917a",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 9,
+      "hasStructuralAnalysis": true
+    },
+    "tailwind.config.js": {
+      "filePath": "tailwind.config.js",
+      "contentHash": "b4e41c5e5ff8bdbff01653ee8d3a1dc609c565b1899f00bbc24687ceecf1150d",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 9,
+      "hasStructuralAnalysis": true
+    },
+    "tests/auth.mock.test.ts": {
+      "filePath": "tests/auth.mock.test.ts",
+      "contentHash": "c14c72112b6db25d6eb50374790645b2ee5072e817c2d81402af6f9b235ddef7",
+      "functions": [
+        {
+          "name": "getResponse",
+          "params": [
+            "url"
+          ],
+          "exported": false,
+          "lineCount": 6
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "node:assert/strict",
+          "specifiers": [
+            "assert"
+          ]
+        },
+        {
+          "source": "node:test",
+          "specifiers": [
+            "test"
+          ]
+        },
+        {
+          "source": "../mock/auth.mock.js",
+          "specifiers": [
+            "authMocks"
+          ]
+        },
+        {
+          "source": "../src/auth/types.js",
+          "specifiers": [
+            "LoginRequest",
+            "LoginResult"
+          ]
+        },
+        {
+          "source": "../src/types/api.js",
+          "specifiers": [
+            "ApiResponse"
+          ]
+        }
+      ],
+      "exports": [],
+      "totalLines": 58,
+      "hasStructuralAnalysis": true
+    },
+    "tests/request.test.ts": {
+      "filePath": "tests/request.test.ts",
+      "contentHash": "f014447c27246e78c0706a782981aa45d236e624c1f5b4260c96c7a5e04d5349",
+      "functions": [
+        {
+          "name": "createResponseAdapter",
+          "params": [
+            "data"
+          ],
+          "returnType": "AxiosAdapter",
+          "exported": false,
+          "lineCount": 9
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "node:assert/strict",
+          "specifiers": [
+            "assert"
+          ]
+        },
+        {
+          "source": "node:test",
+          "specifiers": [
+            "test"
+          ]
+        },
+        {
+          "source": "axios",
+          "specifiers": [
+            "AxiosError",
+            "AxiosHeaders",
+            "CanceledError",
+            "AxiosAdapter"
+          ]
+        },
+        {
+          "source": "../src/utils/request.js",
+          "specifiers": [
+            "request",
+            "isRequestCanceled"
+          ]
+        }
+      ],
+      "exports": [],
+      "totalLines": 60,
+      "hasStructuralAnalysis": true
+    },
+    "tests/shelterMock.test.ts": {
+      "filePath": "tests/shelterMock.test.ts",
+      "contentHash": "3cf7ada1de2f6cb0102ddb6f0ae23214b78c22c9bbdc32ba899e5bc0e22d9c23",
+      "functions": [
+        {
+          "name": "getMock",
+          "params": [
+            "method",
+            "url"
+          ],
+          "exported": false,
+          "lineCount": 8
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "node:assert/strict",
+          "specifiers": [
+            "assert"
+          ]
+        },
+        {
+          "source": "node:test",
+          "specifiers": [
+            "test"
+          ]
+        },
+        {
+          "source": "../mock/system-management/shelter.mock.js",
+          "specifiers": [
+            "shelterMocks"
+          ]
+        }
+      ],
+      "exports": [],
+      "totalLines": 91,
+      "hasStructuralAnalysis": true
+    },
+    "tests/shelterRequestHooks.test.ts": {
+      "filePath": "tests/shelterRequestHooks.test.ts",
+      "contentHash": "28528e6988969dcbb0a74a0bf65094a76e8f2fbb86ee2767e15672b1e1683ea4",
+      "functions": [
+        {
+          "name": "createDeferredAdapter",
+          "params": [],
+          "returnType": "{\n  adapter: AxiosAdapter;\n  pendingRequests: PendingRequest[];\n}",
+          "exported": false,
+          "lineCount": 23
+        },
+        {
+          "name": "createShelter",
+          "params": [
+            "id"
+          ],
+          "returnType": "ShelterRecord",
+          "exported": false,
+          "lineCount": 19
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "node:assert/strict",
+          "specifiers": [
+            "assert"
+          ]
+        },
+        {
+          "source": "node:test",
+          "specifiers": [
+            "afterEach",
+            "test"
+          ]
+        },
+        {
+          "source": "axios",
+          "specifiers": [
+            "AxiosHeaders",
+            "AxiosAdapter",
+            "AxiosResponse",
+            "InternalAxiosRequestConfig"
+          ]
+        },
+        {
+          "source": "jsdom",
+          "specifiers": [
+            "JSDOM"
+          ]
+        },
+        {
+          "source": "../src/pages/system-management/shelter-management/types.js",
+          "specifiers": [
+            "ShelterQueryParams",
+            "ShelterRecord"
+          ]
+        },
+        {
+          "source": "../src/pages/system-management/shelter-management/hooks/useShelterDetail.js",
+          "specifiers": [
+            "useShelterDetail"
+          ]
+        },
+        {
+          "source": "../src/pages/system-management/shelter-management/hooks/useShelterList.js",
+          "specifiers": [
+            "useShelterList"
+          ]
+        },
+        {
+          "source": "../src/utils/request.js",
+          "specifiers": [
+            "request"
+          ]
+        }
+      ],
+      "exports": [],
+      "totalLines": 172,
+      "hasStructuralAnalysis": true
+    },
+    "tests/userMock.test.ts": {
+      "filePath": "tests/userMock.test.ts",
+      "contentHash": "48170e8947bda4210a416c32cd9daa3500296a3dccd0d2aaf2c3320cf5881ee5",
+      "functions": [
+        {
+          "name": "getMock",
+          "params": [
+            "method",
+            "url"
+          ],
+          "exported": false,
+          "lineCount": 8
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "node:assert/strict",
+          "specifiers": [
+            "assert"
+          ]
+        },
+        {
+          "source": "node:test",
+          "specifiers": [
+            "test"
+          ]
+        },
+        {
+          "source": "../mock/system-management/user.mock.js",
+          "specifiers": [
+            "userMocks"
+          ]
+        }
+      ],
+      "exports": [],
+      "totalLines": 55,
+      "hasStructuralAnalysis": true
+    },
+    "tsconfig.app.json": {
+      "filePath": "tsconfig.app.json",
+      "contentHash": "f365b5f2da03a667f4b6b8fd649e1a03851d55045469c0eac1356a8aa4eda5c5",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 33,
+      "hasStructuralAnalysis": true
+    },
+    "tsconfig.json": {
+      "filePath": "tsconfig.json",
+      "contentHash": "ad28d132ee48d6e23917cf5827cace785d0fc01a44ca68b0dda51cc8c3fd3f52",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 8,
+      "hasStructuralAnalysis": true
+    },
+    "tsconfig.node.json": {
+      "filePath": "tsconfig.node.json",
+      "contentHash": "a6d49d645590cac21c235a0548605d867321b2e1750e99176d2153d702dfa842",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 27,
+      "hasStructuralAnalysis": true
+    },
+    "tsconfig.test.json": {
+      "filePath": "tsconfig.test.json",
+      "contentHash": "3bf34bdd4dd0fd9011189de7c78019ae5f50daca643eef5172e0f3bcf8b2f81c",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 13,
+      "hasStructuralAnalysis": true
+    },
+    "vite.config.ts": {
+      "filePath": "vite.config.ts",
+      "contentHash": "60de76a1e44d6702da27225704f662a0f964ed9d6cb7c4d7a88698540147605f",
+      "functions": [],
+      "classes": [],
+      "imports": [
+        {
+          "source": "vite",
+          "specifiers": [
+            "defineConfig",
+            "loadEnv",
+            "normalizePath"
+          ]
+        },
+        {
+          "source": "@vitejs/plugin-react",
+          "specifiers": [
+            "react"
+          ]
+        },
+        {
+          "source": "path",
+          "specifiers": [
+            "path"
+          ]
+        },
+        {
+          "source": "vite-plugin-mock",
+          "specifiers": [
+            "viteMockServe"
+          ]
+        },
+        {
+          "source": "vite-plugin-static-copy",
+          "specifiers": [
+            "viteStaticCopy"
+          ]
+        }
+      ],
+      "exports": [],
+      "totalLines": 96,
+      "hasStructuralAnalysis": true
+    }
+  }
+}
