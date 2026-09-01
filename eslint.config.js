@@ -19,5 +19,11 @@ export default defineConfig([
       ecmaVersion: 2020,
       globals: globals.browser,
     },
+    /** 将 useCesiumEffect 注册为需要检查依赖列表的自定义 Effect Hook。 */
+    settings: {
+      'react-hooks': {
+        additionalEffectHooks: '(useCesiumEffect)',
+      },
+    },
   },
 ])
