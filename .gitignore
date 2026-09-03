@@ -24,7 +24,7 @@ dist-ssr
 *.sw?
 
 .codex/*
-.agents/*
+# .agents/*
 .superpowers/*
 docs/superpowers/*
 
