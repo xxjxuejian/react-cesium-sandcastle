@@ -18,6 +18,7 @@ const enUS = {
       title: "System Management",
       userManagement: "User Management",
       shelterManagement: "Shelter Management",
+      airlineManagement: "Airline Management",
     },
   },
   header: {

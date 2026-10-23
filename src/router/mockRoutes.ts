@@ -134,6 +134,17 @@ export const mockRoutes: BackendRouteItem[] = [
           order: 2,
         },
       },
+      {
+        path: "airline-management",
+        name: "AirlineManagement",
+        component: "system-management/airline-management",
+        meta: {
+          title: "航线管理",
+          titleKey: "menu.systemManagement.airlineManagement",
+          showInMenu: true,
+          order: 3,
+        },
+      },
     ],
   },
 ];
