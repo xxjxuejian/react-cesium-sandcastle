@@ -2,7 +2,7 @@ import { DatePicker, Empty, Pagination, Space } from "antd";
 
 export default function Home() {
   return (
-    <Space orientation="vertical" size="large">
+    <Space orientation="vertical" size="large" className="p-4">
       <DatePicker />
       <Empty />
       <Pagination total={85} showSizeChanger showQuickJumper />

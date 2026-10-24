@@ -6,7 +6,7 @@
 >
 > 技术范围：CesiumJS 1.143、React 19、TypeScript、Vite
 >
-> 当前阶段：只定义需求、数据准备和实施边界，不包含代码实现
+> 文档范围：定义需求、数据准备和实施边界；实际实施进度见 [杭州行政区示例：当前进度与下一步](./hangzhou-regions-next-step.md)
 
 ## 1. 文档目的
 
@@ -147,6 +147,11 @@
 | CES-REGION-009 | P1 | 三维拉伸专题图 | 按统计值拉伸区县高度，并可切回贴地模式 |
 | CES-REGION-010 | P1 | 西湖区细化 | 展示西湖区的街道或重点片区边界，验证第二级下钻 |
 
+当前页面范围与进度（2026-10-24）：
+
+- `/hangzhou/boundaries` 负责双色边界展示、区县悬停与选中、下钻与返回；用户已确认 `CES-REGION-006` 完成。
+- `CES-REGION-007` 保留为总体规划中的需求，尚未实现，不属于 `/hangzhou/boundaries` 页面的实现或验收范围。具体承载页面与实施顺序后续另行确定。
+
 ### 6.4 建筑与 3D Tiles
 
 | 编号 | 优先级 | 需求 | 验收要点 |
@@ -243,11 +248,12 @@
 - 杭州市边界 GeoJSON。
 - 杭州市下辖区县 GeoJSON。
 - 西湖区街道或重点片区 GeoJSON，作为第二级下钻候选。
-- 每个 Feature 至少包含 `name`、`adcode`、`level`、`parentAdcode`。
+- 项目生成的标准 GeoJSON 中，每个 Feature 具有稳定的顶层 `id`、`MultiPolygon` 几何，以及 `name`、`adcode`、`level`、`parentAdcode`、`labelPoint` 属性；`parentAdcode` 对上级未纳入当前数据范围的区域允许为 `null`。
 
 要求：
 
 - 仓库内用于 Cesium 的坐标统一为 WGS84。
+- 原始下载文件保持不变；转换脚本负责坐标转换、字段映射和校验。原始数据可以使用 `parent.adcode` 等不同字段名，页面只读取项目标准字段。
 - 记录来源、下载日期、行政区版本和授权说明。
 - 对 MultiPolygon、内环和飞地进行检查。
 - 进行适度简化，但保留原始数据或可追溯来源。
@@ -432,7 +438,7 @@ type DroneTrackPoint = {
 - 杭州市初始相机。
 - 市域与区县 GeoJSON。
 - 描边、填充、标签、悬停、点击。
-- 区县分级设色。
+- 区县分级设色作为后续独立任务，承载页面与实施顺序另行确定，不纳入 `/hangzhou/boundaries` 页面验收范围。
 - 一级下钻和返回。
 
 阶段出口：行政区交互闭环完成，且资源清理正确。

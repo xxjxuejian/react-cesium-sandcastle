@@ -76,6 +76,42 @@ export const mockRoutes: BackendRouteItem[] = [
     ],
   },
   {
+    path: "hangzhou",
+    name: "Hangzhou",
+    redirect: "/hangzhou/regions",
+    meta: {
+      title: "杭州示例",
+      titleKey: "menu.hangzhou.title",
+      icon: "DashboardOutlined",
+      showInMenu: true,
+      order: 4,
+    },
+    children: [
+      {
+        path: "regions",
+        name: "HangzhouRegions",
+        component: "hangzhou/regions",
+        meta: {
+          title: "行政区",
+          titleKey: "menu.hangzhou.regions",
+          showInMenu: true,
+          order: 1,
+        },
+      },
+      {
+        path: "boundaries",
+        name: "HangzhouBoundaries",
+        component: "hangzhou/boundaries",
+        meta: {
+          title: "边界分层",
+          titleKey: "menu.hangzhou.boundaries",
+          showInMenu: true,
+          order: 2,
+        },
+      },
+    ],
+  },
+  {
     path: "animation",
     name: "animation",
     meta: {

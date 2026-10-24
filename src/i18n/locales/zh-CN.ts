@@ -10,6 +10,11 @@ const zhCN = {
       title: "案例展示",
       google2dTiles: "Google 2D 地图瓦片",
     },
+    hangzhou: {
+      title: "杭州示例",
+      regions: "行政区",
+      boundaries: "边界分层",
+    },
     animation: {
       title: "动画",
       clock: "时钟",

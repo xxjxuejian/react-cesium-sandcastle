@@ -10,6 +10,11 @@ const enUS = {
       title: "Showcases",
       google2dTiles: "Google 2D Tiles",
     },
+    hangzhou: {
+      title: "Hangzhou",
+      regions: "Districts",
+      boundaries: "Boundary Layers",
+    },
     animation: {
       title: "Animation",
       clock: "Clock",
