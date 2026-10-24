@@ -23,6 +23,7 @@ const zhCN = {
       title: "系统管理",
       userManagement: "用户管理",
       shelterManagement: "避难所管理",
+      airlineManagement: "航线管理",
     },
   },
   header: {
