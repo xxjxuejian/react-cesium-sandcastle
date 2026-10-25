@@ -9,6 +9,7 @@ const enUS = {
     showcases: {
       title: "Showcases",
       google2dTiles: "Google 2D Tiles",
+      tiandituBasic: "Tianditu Basic Test",
     },
     hangzhou: {
       title: "Hangzhou",

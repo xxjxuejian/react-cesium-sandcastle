@@ -73,6 +73,17 @@ export const mockRoutes: BackendRouteItem[] = [
           order: 1,
         },
       },
+      {
+        path: "tianditu-basic",
+        name: "TiandituBasic",
+        component: "showcases/tianditu-basic",
+        meta: {
+          title: "天地图基础测试",
+          titleKey: "menu.showcases.tiandituBasic",
+          showInMenu: true,
+          order: 2,
+        },
+      },
     ],
   },
   {

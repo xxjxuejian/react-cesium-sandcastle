@@ -9,6 +9,7 @@ const zhCN = {
     showcases: {
       title: "案例展示",
       google2dTiles: "Google 2D 地图瓦片",
+      tiandituBasic: "天地图基础测试",
     },
     hangzhou: {
       title: "杭州示例",
