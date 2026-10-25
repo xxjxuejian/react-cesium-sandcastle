@@ -29,3 +29,5 @@ dist-ssr
 docs/superpowers/*
 
 tests/*
+!tests/airlineMock.test.ts
+!tests/airlinePage.test.mjs

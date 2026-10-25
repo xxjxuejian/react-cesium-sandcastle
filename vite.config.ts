@@ -83,13 +83,13 @@ export default defineConfig(({ command, mode }) => {
     },
     server: {
       // 开发服务器代理，仅在 pnpm dev 时生效。
-      proxy: {
-        "/api": {
-          target: "https://sandcastle.cesium.com",
-          changeOrigin: true,
-          rewrite: (path) => path.replace(/^\/api/, ""),
-        },
-      },
+      // proxy: {
+      //   "/api": {
+      //     target: "https://sandcastle.cesium.com",
+      //     changeOrigin: true,
+      //     rewrite: (path) => path.replace(/^\/api/, ""),
+      //   },
+      // },
     },
   };
 });

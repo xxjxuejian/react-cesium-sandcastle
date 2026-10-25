@@ -17,7 +17,7 @@ export function MainLayoutContent({ children }: MainLayoutContentProps) {
       style={{ background: token.colorBgLayout }}
     >
       <div
-        className="min-h-full rounded-lg"
+        className="min-h-full rounded-lg p-4"
         style={{ background: token.colorBgContainer }}
       >
         {children}
