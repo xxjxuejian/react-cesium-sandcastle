@@ -24,6 +24,15 @@ pnpm.cmd dev
 
 仓库的 Pages 工作流要求存在名为 `VITE_CESIUM_ION_TOKEN` 的 Actions Secret。工作流会在构建前检查该值，并通过现有 `VITE_BASE_PATH` 让 Cesium 静态资源从仓库子路径加载。
 
+如需在 GitHub Pages 使用天地图，还需要配置可选的 `VITE_TIANDITU_TOKEN`：
+
+1. 打开 GitHub 仓库，进入 **Settings → Secrets and variables → Actions**，选择 **Secrets → New repository secret**。
+2. 名称填写 `VITE_TIANDITU_TOKEN`，值填写天地图 Key，保存为仓库级 Secret。不要将实际 Key 写入仓库文件。
+3. 将包含当前工作流配置的代码推送到 `main`。工作流会将该 Secret 作为构建环境变量，完成后自动部署 Pages；之后更新 Secret 时，需要在 **Actions → Deploy GitHub Pages → Run workflow** 重新构建和部署。
+4. 打开 Pages 中的“天地图基础测试”或“杭州示例 → 边界分层”，验证天地图底图及注记。没有配置天地图 Key 时，边界页仍可使用默认 OSM。
+
+GitHub Secret 避免将 Key 直接写入仓库，但 `VITE_` 变量会在构建时进入浏览器代码；天地图请求的 URL 也会包含 Key，因此访问者可以查看它。请按天地图提供的能力限制 Key 的使用范围和配额，不要将它当作只能由服务器读取的私密凭据。
+
 This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
 
 Currently, two official plugins are available:

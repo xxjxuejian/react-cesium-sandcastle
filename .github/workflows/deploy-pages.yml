@@ -21,6 +21,8 @@ jobs:
     env:
       VITE_BASE_PATH: /${{ github.event.repository.name }}/
       VITE_CESIUM_ION_TOKEN: ${{ secrets.VITE_CESIUM_ION_TOKEN }}
+      # 天地图为可选能力；未配置时仍使用 OSM，不阻止 Pages 构建。
+      VITE_TIANDITU_TOKEN: ${{ secrets.VITE_TIANDITU_TOKEN }}
     steps:
       - name: Checkout
         uses: actions/checkout@v6
