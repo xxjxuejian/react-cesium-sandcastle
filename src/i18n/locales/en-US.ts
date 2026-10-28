@@ -26,6 +26,10 @@ const enUS = {
       shelterManagement: "Shelter Management",
       airlineManagement: "Airline Management",
     },
+    map: {
+      title: "Map",
+      offlineMap: "Offline Map",
+    },
   },
   header: {
     switchLanguage: "Switch Language",

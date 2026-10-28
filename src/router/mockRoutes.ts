@@ -194,4 +194,29 @@ export const mockRoutes: BackendRouteItem[] = [
       },
     ],
   },
+  {
+    path: "map",
+    name: "Map",
+    redirect: "/map/offline-map",
+    meta: {
+      title: "地图",
+      titleKey: "menu.map.title",
+      icon: "DashboardOutlined",
+      showInMenu: true,
+      order: 6,
+    },
+    children: [
+      {
+        path: "offline-map",
+        name: "OfflineMap",
+        component: "map/offline-map",
+        meta: {
+          title: "离线地图",
+          titleKey: "menu.map.offlineMap",
+          showInMenu: true,
+          order: 1,
+        },
+      },
+    ],
+  },
 ];

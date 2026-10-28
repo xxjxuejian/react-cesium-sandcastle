@@ -26,6 +26,10 @@ const zhCN = {
       shelterManagement: "避难所管理",
       airlineManagement: "航线管理",
     },
+    map: {
+      title: "地图",
+      offlineMap: "离线地图",
+    },
   },
   header: {
     switchLanguage: "切换语言",
