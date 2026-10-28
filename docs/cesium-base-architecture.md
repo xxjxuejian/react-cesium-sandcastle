@@ -539,3 +539,11 @@ Viewer 是包含 DOM、WebGL 上下文和大量内部状态的命令式对象，
 - Playwright WebGL 回归测试。
 
 新增能力时继续遵循两个原则：Viewer 生命周期必须有唯一所有者；页面资源必须能够独立注册和清理。
+
+## 17. 可选地图基础工具（2026-10-25）
+
+已在 `src/components/CesiumMapTools/` 增加可复用底图与水平测量能力，首个接入页为杭州边界页，航线页暂不接入。地图底座继续只拥有 Viewer 生命周期，页面通过组合 `useBasemap()`、`useMapMeasurement()` 与 `MapToolbar` 使用工具。
+
+公共 Hook 通过既有 `useCesium()` 获取当前地图，并清理自己创建的图层、测量 DataSource 和事件。页面仍负责行政区、业务选中、下钻及测量期间的业务交互暂停。测量状态通过页面本地状态与 Ref 协调，不新增全局工具 Store、Provider 或图层注册中心。
+
+底图默认 OSM，天地图需要配置 Key；构造 Viewer 时设置 `baseLayer: false`，由底图 Hook 管理来源与类型。使用流程和接口说明见[公共地图工具说明](../src/components/CesiumMapTools/README.md)，实施与验收记录见[地图基础工具设计与集成计划](./地图基础工具设计与集成计划.md)。

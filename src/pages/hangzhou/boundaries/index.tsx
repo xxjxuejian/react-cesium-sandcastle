@@ -16,6 +16,10 @@ import {
 import type { Cartesian2, Entity, Viewer } from "cesium";
 
 import { CesiumMap, useCesiumEffect } from "@/components/CesiumMap";
+import { MapToolbar } from "@/components/CesiumMapTools/MapToolbar";
+import { useBasemap } from "@/components/CesiumMapTools/useBasemap";
+import { useMapMeasurement } from "@/components/CesiumMapTools/useMapMeasurement";
+import { MEASUREMENT_ENTITY_PREFIX } from "@/components/CesiumMapTools/measurement";
 
 type Position = [longitude: number, latitude: number];
 
@@ -61,6 +65,12 @@ const SELECTED_FILL = Color.ORANGE.withAlpha(0.8);
 
 /** 用派生线数据分别绘制金色市界和红色区界；区县面仍负责填充与选中。 */
 function BoundaryScene() {
+  // 两个公共 Hook 管理工具资源；本页面仍负责行政区、边界和下钻。
+  const basemap = useBasemap();
+  const measurement = useMapMeasurement();
+  const measuring = measurement.activeType !== null;
+  const interactionDisabledRef = useRef(false);
+  const clearHoverRef = useRef<(() => void) | null>(null);
   const [loadState, setLoadState] = useState<LoadState>({ status: "loading" });
   const [selectedRegion, setSelectedRegion] = useState<RegionSummary | null>(
     null,
@@ -69,6 +79,16 @@ function BoundaryScene() {
     null,
   );
   const drillActions = useRef<DrillActions | null>(null);
+
+  // 原来的场景 Effect 只执行一次。通过 Ref 让其中的事件读到最新模式，避免重新加载 GeoJSON。
+  useCesiumEffect(
+    (viewer) => {
+      interactionDisabledRef.current = measuring;
+      if (measuring) clearHoverRef.current?.();
+      else viewer.scene.canvas.style.cursor = "";
+    },
+    [measuring],
+  );
 
   useCesiumEffect((viewer) => {
     const controller = new AbortController();
@@ -95,9 +115,23 @@ function BoundaryScene() {
 
     /** 共享区界属于两个区县，不映射到任意一侧；只有面和标签可选中。 */
     function pickRegion(position: Cartesian2) {
-      const picked = viewer.scene.pick(position) as { id?: Entity } | undefined;
-      return picked?.id ? (pickableRegions.get(picked.id) ?? null) : null;
+      const pickedObjects = viewer.scene.drillPick(position) as Array<{
+        id?: Entity;
+      }>;
+      for (const picked of pickedObjects) {
+        if (picked.id?.id.startsWith(MEASUREMENT_ENTITY_PREFIX)) continue;
+        // 只穿过测量图形；边界线仍维持原有语义，不自动归属任意一侧区县。
+        return picked.id ? (pickableRegions.get(picked.id) ?? null) : null;
+      }
+      return null;
     }
+
+    clearHoverRef.current = () => {
+      const previousHovered = hoveredRegion;
+      hoveredRegion = null;
+      if (previousHovered) applyRegionStyle(previousHovered);
+      viewer.scene.requestRender();
+    };
 
     async function loadScene() {
       try {
@@ -243,6 +277,7 @@ function BoundaryScene() {
         interactionHandler = new ScreenSpaceEventHandler(viewer.scene.canvas);
         interactionHandler.setInputAction(
           (movement: ScreenSpaceEventHandler.MotionEvent) => {
+            if (interactionDisabledRef.current) return;
             const nextHovered = pickRegion(movement.endPosition);
             if (nextHovered?.adcode === hoveredRegion?.adcode) return;
             const previousHovered = hoveredRegion;
@@ -256,6 +291,7 @@ function BoundaryScene() {
         );
         interactionHandler.setInputAction(
           (event: ScreenSpaceEventHandler.PositionedEvent) => {
+            if (interactionDisabledRef.current) return;
             const nextSelected = pickRegion(event.position);
             const previousSelected = selectedRegionInScene;
             selectedRegionInScene = nextSelected;
@@ -278,7 +314,12 @@ function BoundaryScene() {
         });
         drillActions.current = {
           enter(adcode) {
-            if (!active || selectedRegionInScene?.adcode !== adcode) return;
+            if (
+              !active ||
+              interactionDisabledRef.current ||
+              selectedRegionInScene?.adcode !== adcode
+            )
+              return;
             const destination = districtViews.get(adcode);
             if (!destination) return;
             viewer.camera.cancelFlight();
@@ -289,7 +330,7 @@ function BoundaryScene() {
             viewer.camera.flyTo({ destination, duration: 1.5 });
           },
           back() {
-            if (!active) return;
+            if (!active || interactionDisabledRef.current) return;
             viewer.camera.cancelFlight();
             setDrilledRegion(null);
             const previousSelected = selectedRegionInScene;
@@ -314,9 +355,11 @@ function BoundaryScene() {
 
     return () => {
       active = false;
+      clearHoverRef.current = null;
       drillActions.current = null;
       controller.abort();
       interactionHandler?.destroy();
+      if (viewer.isDestroyed()) return;
       viewer.scene.canvas.style.cursor = "";
       viewer.camera.cancelFlight();
       for (const boundary of boundaries) viewer.entities.remove(boundary);
@@ -327,6 +370,7 @@ function BoundaryScene() {
 
   return (
     <>
+      <MapToolbar basemap={basemap} measurement={measurement} />
       <div className="absolute left-4 top-4 z-10 max-w-sm" aria-live="polite">
         {loadState.status === "error" ? (
           <Alert
@@ -345,6 +389,7 @@ function BoundaryScene() {
               >
                 <button
                   type="button"
+                  disabled={measuring}
                   className="text-amber-300 underline underline-offset-2 hover:text-amber-200"
                   onClick={() => drillActions.current?.back()}
                 >
@@ -374,7 +419,7 @@ function BoundaryScene() {
       </div>
 
       {selectedRegion ? (
-        <aside className="pointer-events-none absolute right-4 top-4 z-10 w-56 rounded-md bg-[#06111f]/90 p-4 text-white shadow-lg">
+        <aside className="pointer-events-none absolute bottom-28 left-4 z-10 w-56 max-w-[calc(100%-2rem)] rounded-md bg-[#06111f]/90 p-4 text-white shadow-lg sm:bottom-10 sm:max-w-[calc(100%-8rem)]">
           <div className="text-xs text-slate-400">当前选中区县</div>
           <div className="mt-2 text-lg font-semibold">
             {selectedRegion.name}
@@ -387,7 +432,8 @@ function BoundaryScene() {
           </div>
           <button
             type="button"
-            className="pointer-events-auto mt-4 rounded bg-amber-400 px-3 py-1.5 text-sm font-medium text-slate-950 hover:bg-amber-300"
+            disabled={measuring}
+            className="pointer-events-auto mt-4 rounded bg-amber-400 px-3 py-1.5 text-sm font-medium text-slate-950 hover:bg-amber-300 disabled:cursor-not-allowed disabled:opacity-50"
             onClick={() => drillActions.current?.enter(selectedRegion.adcode)}
           >
             进入区县
@@ -399,9 +445,9 @@ function BoundaryScene() {
 }
 
 export default function HangzhouBoundariesPage() {
-  // 保持 options 引用稳定，避免普通 React 重渲染时重建 Viewer。
+  // CesiumMap 只读取首次 options；useMemo 避免普通重渲染时重复创建 Terrain 配置。
   const viewerOptions = useMemo<Viewer.ConstructorOptions>(
-    () => ({ terrain: Terrain.fromWorldTerrain() }),
+    () => ({ baseLayer: false, terrain: Terrain.fromWorldTerrain() }),
     [],
   );
 

@@ -1,0 +1,197 @@
+/* 只保留定位、间距和交互状态；面板颜色沿用 Ant Design 的主题。 */
+.map-tools {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  max-width: calc(100% - 24px);
+  font-size: 12px;
+  line-height: 1.6;
+  pointer-events: none;
+}
+.map-tools--positioned {
+  position: absolute;
+  z-index: 20;
+  top: 50%;
+  right: 12px;
+  transform: translateY(-50%);
+}
+.map-tools-dock,
+.map-tools-panel,
+.map-tools-notices {
+  border: 1px solid;
+  border-radius: 6px;
+  box-shadow: 0 2px 8px #00000014;
+}
+.map-tools-dock {
+  order: 2;
+  display: flex;
+  flex: 0 0 auto;
+  flex-direction: column;
+  gap: 2px;
+  padding: 4px;
+  pointer-events: auto;
+}
+.map-tools button {
+  color: inherit;
+  font: inherit;
+  cursor: pointer;
+}
+.map-tools button:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+.map-tools button:focus-visible,
+.map-tools input:focus-visible {
+  outline: 2px solid #1677ff;
+  outline-offset: 2px;
+}
+.map-tools-tool {
+  min-width: 56px;
+  min-height: 32px;
+  padding: 4px 8px;
+  border: 0;
+  border-radius: 4px;
+  background: transparent;
+}
+.map-tools-tool:hover:not(:disabled) {
+  background: #80808012;
+}
+.map-tools-tool[aria-pressed="true"],
+.map-tools-tool[aria-expanded="true"] {
+  background: #e6f4ff;
+  color: #1677ff;
+}
+[data-theme="dark"] .map-tools-tool[aria-pressed="true"],
+[data-theme="dark"] .map-tools-tool[aria-expanded="true"] {
+  background: #15395b;
+  color: #91caff;
+}
+.map-tools-panel {
+  width: 250px;
+  min-width: 0;
+  max-height: min(360px, calc(100vh - 180px));
+  overflow-y: auto;
+  pointer-events: auto;
+}
+.map-tools-panel-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 9px 12px 0;
+}
+.map-tools-panel-header > strong {
+  font-weight: 500;
+}
+.map-tools-panel-body {
+  padding: 10px 12px 12px;
+}
+.map-tools-panel fieldset {
+  margin: 0 0 12px;
+  padding: 0;
+  border: 0;
+}
+.map-tools-panel legend {
+  margin-bottom: 5px;
+  opacity: 0.65;
+}
+.map-tools-panel label {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  margin-right: 16px;
+  cursor: pointer;
+}
+.map-tools-panel input {
+  margin: 0;
+  accent-color: #1677ff;
+}
+.map-tools-panel label:has(input:disabled) {
+  opacity: 0.45;
+  cursor: not-allowed;
+}
+.map-tools-note {
+  margin: 5px 0;
+  opacity: 0.65;
+  font-size: 11px;
+}
+.map-tools-value {
+  font-size: 14px;
+  font-weight: 500;
+}
+.map-tools-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 4px;
+  margin-top: 8px;
+}
+.map-tools-actions .map-tools-tool {
+  border: 1px solid #80808035;
+}
+.map-tools-link {
+  padding: 2px 0;
+  border: 0;
+  background: transparent;
+  opacity: 0.7;
+}
+.map-tools-link:hover {
+  opacity: 1;
+  text-decoration: underline;
+}
+.map-tools-result-list {
+  margin: 0 0 8px;
+  padding: 0;
+  list-style: none;
+}
+.map-tools-result-list li {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 12px;
+  padding: 5px 0;
+}
+.map-tools-result-list .map-tools-link {
+  flex: 0 0 auto;
+}
+.map-tools-return {
+  margin: 0 12px 10px;
+}
+/* 测量提示留给地图取点，只有操作按钮占用鼠标事件。 */
+.map-tools-panel--measurement {
+  pointer-events: none;
+}
+.map-tools-actions {
+  pointer-events: auto;
+}
+.map-tools-notices {
+  position: absolute;
+  right: 0;
+  bottom: calc(100% + 8px);
+  width: 250px;
+  max-width: calc(100vw - 48px);
+  padding: 10px 12px;
+  pointer-events: auto;
+}
+
+@media (max-width: 640px) {
+  .map-tools--positioned {
+    top: auto;
+    right: 12px;
+    bottom: 45px;
+    left: 12px;
+    max-width: none;
+    flex-direction: column;
+    transform: none;
+  }
+  .map-tools--positioned .map-tools-dock {
+    width: 100%;
+    flex-direction: row;
+  }
+  .map-tools--positioned .map-tools-dock .map-tools-tool {
+    flex: 1;
+    min-width: 0;
+    min-height: 36px;
+  }
+  .map-tools--positioned .map-tools-panel {
+    width: 100%;
+  }
+}

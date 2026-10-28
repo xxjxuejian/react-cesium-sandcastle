@@ -31,3 +31,4 @@ docs/superpowers/*
 tests/*
 !tests/airlineMock.test.ts
 !tests/airlinePage.test.mjs
+!tests/mapTools.test.mjs

@@ -2,7 +2,7 @@
 interface ImportMetaEnv {
   /** Cesium ion 的访问令牌；省略时无法使用需要授权的 ion 资源。 */
   readonly VITE_CESIUM_ION_TOKEN?: string;
-  /** 天地图服务的访问 Key；省略时天地图示例只显示配置提示。 */
+  /** 天地图服务的访问 Key；省略时公共工具仅启用 OSM，天地图示例显示配置提示。 */
   readonly VITE_TIANDITU_TOKEN?: string;
   /** 是否启用模拟接口；字符串 "true" 表示启用，省略时不启用。 */
   readonly VITE_USE_MOCK?: string;
