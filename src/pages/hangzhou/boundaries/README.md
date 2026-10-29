@@ -18,7 +18,7 @@
 
 ## 地图基础工具接入（2026-10-25）
 
-本页先行接入公共底图与测量工具，航线页本轮不接入。`CesiumMap` 的构造配置增加 `baseLayer: false`，由场景中的 `useBasemap()` 加载默认 OSM，并提供天地图矢量图／影像图及配套注记切换。天地图沿用 `.env.local` 中的 `VITE_TIANDITU_TOKEN`。
+本页接入公共底图与测量工具，航线页仅接入底图切换。`CesiumMap` 的构造配置增加 `baseLayer: false`，由场景中的 `useBasemap()` 加载默认 OSM，并提供天地图矢量图／影像图及配套注记切换。天地图沿用 `.env.local` 中的 `VITE_TIANDITU_TOKEN`。
 
 `useMapMeasurement()` 管理水平距离、水平面积和多组结果；`MapToolbar` 只显示状态并调用 Hook 的方法。进入测量后暂停区县悬停、点击、下钻与返回，保留已有选中区县；结束或取消后恢复。桌面使用右侧紧凑工具栏与左侧展开面板，窄屏改为底部操作带与上方展开面板；区县详情位于左下方，在窄屏下上移以避开底部工具。
 

@@ -1,6 +1,6 @@
 # 地图基础工具
 
-当前接入页为 `src/pages/hangzhou/boundaries/index.tsx`。航线页暂不接入，原有航点与表单逻辑保持原样。
+杭州边界页接入底图与测量工具；航线管理的查看、新增、编辑共用 `AirlineMap`，仅接入底图切换，航点与表单逻辑仍由页面负责。
 
 ## 文件与职责
 
@@ -56,6 +56,13 @@ export function MapExample() {
 
 页面需要不同 UI 时，可直接使用 Hook 返回的状态和方法。默认工具栏通过 `tools` 选择能力，例如 `tools={["basemap", "distance"]}`；通过 `className` 调整容器定位。
 
+仅需要底图切换时，无需调用 `useMapMeasurement` 或传入 `measurement`，不会创建测量数据源或鼠标事件。航线页保持默认天地图，接入代码为：
+
+```tsx
+const basemap = useBasemap("tianditu");
+return <MapToolbar basemap={basemap} tools={["basemap"]} />;
+```
+
 ## 工具栏样式与操作（2026-10-25）
 
 - 使用“底图、测距、测面积、结果”四个简单文字按钮；当前工具轻量高亮，结果数量直接显示在文字后面。桌面竖排，窄屏在底部横排。
@@ -70,7 +77,7 @@ export function MapExample() {
 
 ## 来源与 Key
 
-- 每次进入页面默认 OSM 矢量图，即使已经配置天地图 Key 也不会自动切换来源。
+- `useBasemap()` 默认 OSM 矢量图；页面可用 `useBasemap("tianditu")` 指定初始来源，普通重渲染不会重置用户选择。天地图缺少 Key 时初始使用 OSM，并在底图面板说明天地图不可用。
 - OSM 标准服务不提供影像图，UI 和 Hook 均阻止该组合。
 - 天地图 Key 配置在 `.env.local` 的 `VITE_TIANDITU_TOKEN` 中，修改后重启开发服务；根目录 `.env.example` 已提供变量示例。
 - 天地图矢量图使用 `vec_w` 与 `cva_w`，影像图使用 `img_w` 与 `cia_w`。两组都使用球面墨卡托矩阵集 `w`。

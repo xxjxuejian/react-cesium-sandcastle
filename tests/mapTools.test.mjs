@@ -372,6 +372,54 @@ test("有 Key 仍默认 OSM，成组切换天地图并保留业务影像层，�
   assert.equal(viewer.imageryLayers.length, 1);
 });
 
+test("页面可默认天地图，普通重渲染不重置来源，缺少 Key 时使用 OSM", () => {
+  const viewer = createViewer(withKey);
+  const { result, rerender, unmount } = renderHook(
+    () => withKey.useBasemap("tianditu"),
+    { wrapper: wrapperFor(viewer, withKey) },
+  );
+  assert.equal(result.current.source, "tianditu");
+  assert.equal(viewer.imageryLayers.length, 2);
+  assert.match(viewer.imageryLayers.get(0).imageryProvider.url, /\/vec_w\/wmts/);
+  act(() => result.current.setSource("osm"));
+  rerender();
+  assert.equal(result.current.source, "osm");
+  unmount();
+  assert.equal(viewer.imageryLayers.length, 0);
+
+  const withoutKeyViewer = createViewer(withoutKey);
+  const fallback = renderHook(() => withoutKey.useBasemap("tianditu"), {
+    wrapper: wrapperFor(withoutKeyViewer, withoutKey),
+  });
+  assert.equal(fallback.result.current.source, "osm");
+  assert.equal(withoutKeyViewer.imageryLayers.length, 1);
+  fallback.unmount();
+});
+
+test("仅接入底图工具栏，无需测量 Hook 即可切换影像并清理图层", () => {
+  const viewer = createViewer(withKey);
+  function BasemapOnly() {
+    return createElement(withKey.MapToolbar, {
+      basemap: withKey.useBasemap("tianditu"),
+      tools: ["basemap"],
+    });
+  }
+  const { unmount } = render(createElement(BasemapOnly), {
+    wrapper: wrapperFor(viewer, withKey),
+  });
+  assert.equal(screen.queryByRole("button", { name: "测距", exact: true }), null);
+  assert.equal(screen.queryByRole("button", { name: /测量结果/ }), null);
+  assert.equal(viewer.dataSources.length, 0);
+  fireEvent.click(screen.getByRole("button", { name: "底图", exact: true }));
+  assert.equal(screen.getByRole("radio", { name: "天地图" }).checked, true);
+  fireEvent.click(screen.getByRole("radio", { name: "影像图" }));
+  assert.equal(viewer.imageryLayers.length, 2);
+  assert.match(viewer.imageryLayers.get(0).imageryProvider.url, /\/img_w\/wmts/);
+  assert.match(viewer.imageryLayers.get(1).imageryProvider.url, /\/cia_w\/wmts/);
+  unmount();
+  assert.equal(viewer.imageryLayers.length, 0);
+});
+
 test("测量支持二维、三维取点、多组结果及逐条删除，清空不影响业务实体", async () => {
   const viewer = createViewer(withKey);
   const businessSource = await viewer.dataSources.add(

@@ -14,9 +14,9 @@ import "./MapToolbar.css";
 interface MapToolbarProps {
   /** 当前地图的底图状态及切换方法。 */
   basemap: BasemapControls;
-  /** 当前地图的测量状态及操作方法。 */
-  measurement: MeasurementControls;
-  /** 启用的工具；省略时全部启用，结果入口随测量工具显示。 */
+  /** 当前地图的测量状态及操作方法；省略时不显示测量入口、面板和结果。 */
+  measurement?: MeasurementControls;
+  /** 启用的工具；省略时显示所有已接入的能力，结果入口随测量工具显示。 */
   tools?: MapTool[];
   /** 自定义定位类名；省略时桌面靠右，窄屏在地图底部排列。 */
   className?: string;
@@ -39,8 +39,10 @@ export function MapToolbar({
   const rootRef = useRef<HTMLDivElement>(null);
   const triggerRef = useRef<HTMLButtonElement | null>(null);
   const [panel, setPanel] = useState<MapPanel>(null);
-  const measuring = measurement.activeType !== null;
-  const hasMeasurement = tools.includes("distance") || tools.includes("area");
+  const measuring = measurement != null && measurement.activeType !== null;
+  const hasMeasurement =
+    measurement != null &&
+    (tools.includes("distance") || tools.includes("area"));
   // 浏览底图或结果时保留测量草稿，关闭后重新显示测量提示。
   const visiblePanel = panel ?? (measuring ? "measurement" : null);
   const surfaceStyle = {
@@ -80,6 +82,7 @@ export function MapToolbar({
   }
 
   function startMeasurement(type: MeasurementType) {
+    if (!measurement) return;
     setPanel(null);
     // 再点一次当前工具取消草稿，已经完成的结果继续保留。
     if (measurement.activeType === type) measurement.cancel();
@@ -115,7 +118,7 @@ export function MapToolbar({
             {t("mapTools.basemap")}
           </button>
         ) : null}
-        {tools.includes("distance") ? (
+        {tools.includes("distance") && measurement ? (
           <button
             type="button"
             className="map-tools-tool"
@@ -126,7 +129,7 @@ export function MapToolbar({
             {t("mapTools.distance")}
           </button>
         ) : null}
-        {tools.includes("area") ? (
+        {tools.includes("area") && measurement ? (
           <button
             type="button"
             className="map-tools-tool"
@@ -137,7 +140,7 @@ export function MapToolbar({
             {t("mapTools.area")}
           </button>
         ) : null}
-        {hasMeasurement ? (
+        {hasMeasurement && measurement ? (
           <button
             type="button"
             className="map-tools-tool"
@@ -226,7 +229,7 @@ export function MapToolbar({
             </div>
           ) : null}
 
-          {visiblePanel === "measurement" && measurement.activeType ? (
+          {visiblePanel === "measurement" && measurement?.activeType ? (
             <div className="map-tools-panel-body">
               <strong className="map-tools-value">
                 {t(`mapTools.${measurement.activeType}`)} ·{" "}
@@ -256,7 +259,7 @@ export function MapToolbar({
             </div>
           ) : null}
 
-          {visiblePanel === "results" ? (
+          {visiblePanel === "results" && measurement ? (
             <div className="map-tools-panel-body">
               {measurement.results.length === 0 ? (
                 <p className="map-tools-note">{t("mapTools.empty")}</p>
@@ -306,7 +309,7 @@ export function MapToolbar({
       ) : null}
 
       {/* 错误单独显示，避免收起面板后失去重试入口。 */}
-      {basemap.hasError || measurement.error ? (
+      {basemap.hasError || measurement?.error ? (
         <div
           className="map-tools-notices"
           style={surfaceStyle}
@@ -324,7 +327,7 @@ export function MapToolbar({
               </button>
             </div>
           ) : null}
-          {measurement.error ? (
+          {measurement?.error ? (
             <div role="alert">{t(`mapTools.errors.${measurement.error}`)}</div>
           ) : null}
         </div>

@@ -1,5 +1,5 @@
-import { useLayoutEffect, useRef, useState } from "react";
-import { Alert, Button } from "antd";
+import { useLayoutEffect, useRef } from "react";
+import { Button } from "antd";
 import {
   BoundingSphere,
   Cartesian2,
@@ -9,7 +9,6 @@ import {
   Entity,
   HeadingPitchRange,
   Math as CesiumMath,
-  OpenStreetMapImageryProvider,
   Rectangle,
   SceneMode,
   ScreenSpaceEventHandler,
@@ -17,6 +16,8 @@ import {
 } from "cesium";
 import type { Viewer } from "cesium";
 import { CesiumMap, useCesium, useCesiumEffect } from "@/components/CesiumMap";
+import { MapToolbar } from "@/components/CesiumMapTools/MapToolbar";
+import { useBasemap } from "@/components/CesiumMapTools/useBasemap";
 import type { AirlineWaypoint } from "./types";
 
 /** 航线地图只接收表单状态，自己不保存另一份航点数据。 */
@@ -99,7 +100,8 @@ export function AirlineMap(props: AirlineMapProps) {
 /** 在 Viewer 就绪后挂载，不会在组件渲染期间直接调用 Cesium API。 */
 function AirlineScene(props: AirlineMapProps) {
   const viewer = useCesium();
-  const [imageryError, setImageryError] = useState(false);
+  // 公共工具接管底图及清理，默认天地图；仅接入底图，不注册测量取点事件。
+  const basemap = useBasemap("tianditu");
   const initialWaypointsRef = useRef(props.waypoints);
   const latestRef = useRef(props);
 
@@ -124,15 +126,6 @@ function AirlineScene(props: AirlineMapProps) {
     const controller = scene.screenSpaceCameraController;
     scene.globe.baseColor = Color.fromCssColorString("#dce6ed");
     scene.globe.enableLighting = false;
-    // 使用无需密钥的道路底图；保留 Cesium 自带的地图来源署名。
-    const provider = new OpenStreetMapImageryProvider({
-      url: "https://tile.openstreetmap.org/",
-      maximumLevel: 19,
-    });
-    const layer = currentViewer.imageryLayers.addImageryProvider(provider);
-    const removeImageryError = provider.errorEvent.addEventListener(() =>
-      setImageryError(true),
-    );
     fitAirline(currentViewer, initialWaypointsRef.current, 0);
     // 禁用默认双击行为，防止绘制时意外追踪实体或改变相机。
     currentViewer.screenSpaceEventHandler.removeInputAction(
@@ -246,10 +239,8 @@ function AirlineScene(props: AirlineMapProps) {
       window.removeEventListener("pointercancel", stopDragging);
       window.removeEventListener("blur", stopDragging);
       handler.destroy();
-      removeImageryError();
       if (!currentViewer.isDestroyed()) {
         currentViewer.camera.cancelFlight();
-        currentViewer.imageryLayers.remove(layer, true);
       }
     };
   }, []);
@@ -347,22 +338,16 @@ function AirlineScene(props: AirlineMapProps) {
 
   return (
     <>
+      <MapToolbar basemap={basemap} tools={["basemap"]} />
       <div className="absolute right-3 top-3 z-10">
         <Button onClick={() => fitAirline(viewer, props.waypoints, 0.6)}>
           预览整条航线
         </Button>
       </div>
       <div className="pointer-events-none absolute left-3 top-3 z-10 rounded bg-white/95 px-3 py-2 text-xs text-slate-700 shadow-sm">
-        WGS84 · 二维路径{props.drawing ? " · 点击添加航点" : ""}
+        {basemap.source === "tianditu" ? "天地图" : "OSM"} · WGS84 · 二维路径
+        {props.drawing ? " · 点击添加航点" : ""}
       </div>
-      {imageryError ? (
-        <Alert
-          className="absolute bottom-10 left-3 right-3 z-10"
-          type="warning"
-          showIcon
-          title="底图暂时无法加载，仍可在左侧编辑坐标和高度。"
-        />
-      ) : null}
     </>
   );
 }

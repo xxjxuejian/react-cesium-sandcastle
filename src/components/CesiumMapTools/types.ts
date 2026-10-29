@@ -6,7 +6,7 @@ export type BasemapType = "vector" | "imagery";
 
 /** 默认工具栏或自定义 UI 可使用的底图状态和操作。 */
 export interface BasemapControls {
-  /** 当前地图来源，首次进入始终为 osm。 */
+  /** 当前地图来源；由 useBasemap 的初始来源决定，天地图缺少 Key 时使用 osm。 */
   source: BasemapSource;
   /** 当前图层类型；OSM 只允许 vector。 */
   type: BasemapType;

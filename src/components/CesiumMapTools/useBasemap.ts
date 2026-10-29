@@ -8,10 +8,17 @@ import type { ImageryLayer } from "cesium";
 import { useCesiumEffect } from "../CesiumMap/hooks";
 import type { BasemapControls, BasemapSource, BasemapType } from "./types";
 
-/** 管理当前 Viewer 的底图；页面应通过 baseLayer: false 关闭 Cesium 默认底图。 */
-export function useBasemap(): BasemapControls {
+/**
+ * 管理当前 Viewer 的底图；页面应通过 baseLayer: false 关闭 Cesium 默认底图。
+ * @param initialSource 首次进入的来源，省略时为 OSM；天地图缺少 Key 时使用 OSM。
+ */
+export function useBasemap(
+  initialSource: BasemapSource = "osm",
+): BasemapControls {
   const token = import.meta.env.VITE_TIANDITU_TOKEN?.trim();
-  const [source, updateSource] = useState<BasemapSource>("osm");
+  const [source, updateSource] = useState<BasemapSource>(() =>
+    initialSource === "tianditu" && token ? "tianditu" : "osm",
+  );
   const [type, updateType] = useState<BasemapType>("vector");
   const [hasError, setHasError] = useState(false);
   const [retryCount, setRetryCount] = useState(0);
