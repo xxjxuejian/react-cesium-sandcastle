@@ -192,6 +192,17 @@ export const mockRoutes: BackendRouteItem[] = [
           order: 3,
         },
       },
+      {
+        path: "key-unit-management",
+        name: "KeyUnitManagement",
+        component: "system-management/key-unit-management",
+        meta: {
+          title: "重点单位管理",
+          titleKey: "menu.systemManagement.keyUnitManagement",
+          showInMenu: true,
+          order: 4,
+        },
+      },
     ],
   },
   {

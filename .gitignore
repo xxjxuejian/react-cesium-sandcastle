@@ -32,3 +32,5 @@ tests/*
 !tests/airlineMock.test.ts
 !tests/airlinePage.test.mjs
 !tests/mapTools.test.mjs
+!tests/keyUnitMock.test.ts
+!tests/keyUnitPage.test.mjs

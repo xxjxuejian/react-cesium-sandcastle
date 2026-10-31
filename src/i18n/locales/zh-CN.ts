@@ -63,6 +63,7 @@ const zhCN = {
       userManagement: "用户管理",
       shelterManagement: "避难所管理",
       airlineManagement: "航线管理",
+      keyUnitManagement: "重点单位管理",
     },
     map: {
       title: "地图",

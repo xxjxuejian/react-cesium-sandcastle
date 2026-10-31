@@ -4,7 +4,7 @@ export interface AirlineWaypoint {
   longitude: number;
   /** WGS84 纬度，单位为度，取值范围为 -90～90。 */
   latitude: number;
-  /** 相对本次起飞点的高度，单位为米，必须大于等于 0。 */
+  /** 相对统一地面零平面的高度，单位为米，必须大于等于 0；不叠加起飞点或地形高度。 */
   altitude: number;
 }
 

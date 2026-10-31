@@ -258,7 +258,7 @@ export function AirlineEditor({
               </span>
             </div>
             <p className="mb-3 mt-0 text-sm text-gray-500">
-              高度相对本次起飞点计算。点击航点行可定位，地图和列表同步更新。
+              地面统一按 0 米平面计算。点击航点行可定位，地图和列表同步更新。
             </p>
             {!readOnly ? (
               <Space className="mb-3" wrap>
@@ -536,7 +536,7 @@ export function AirlineEditor({
                   ? "依次点击地图添加航点，点击“结束绘制”后仍需保存。"
                   : "可拖动地图航点，或在左侧修改经纬度、高度和顺序。"
             }
-            description="地图展示二维水平路径，不自动闭合；各航点高度相对本次起飞点计算。"
+            description="地图展示二维水平路径，不自动闭合；地面统一按 0 米平面计算，各航点高度均相对此平面。"
           />
         </div>
       </div>

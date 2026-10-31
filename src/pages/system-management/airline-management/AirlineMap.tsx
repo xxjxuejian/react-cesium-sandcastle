@@ -32,7 +32,7 @@ interface AirlineMapProps {
   drawing: boolean;
   /** 查看或保存期间禁止添加、拖动，仍可选择和定位。 */
   readOnly: boolean;
-  /** 新增航点采用的相对起飞点高度，单位为米。 */
+  /** 新增航点相对统一地面零平面的默认高度，单位为米，必须大于等于 0。 */
   defaultAltitude: number;
   /** 地图点击后将新航点交给表单保存为未提交状态。 */
   onAdd: (point: AirlineWaypoint) => void;
@@ -42,7 +42,7 @@ interface AirlineMapProps {
   onSelect: (index: number) => void;
 }
 
-/** 仅在当前页面使用二维地图，航点相对高度不会被误用为椭球绝对高度。 */
+/** 二维地图只展示航点水平位置；高度保留在表单中，统一相对地面零平面计算。 */
 const mapOptions = {
   sceneMode: SceneMode.SCENE2D,
   baseLayer: false,

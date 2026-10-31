@@ -70,6 +70,7 @@ const enUS = {
       userManagement: "User Management",
       shelterManagement: "Shelter Management",
       airlineManagement: "Airline Management",
+      keyUnitManagement: "Key Unit Management",
     },
     map: {
       title: "Map",
