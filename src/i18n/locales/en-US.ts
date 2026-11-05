@@ -84,6 +84,7 @@ const enUS = {
     exitFullscreen: "Exit Full Screen",
     github: "GitHub",
     logout: "Sign out",
+    roles: { admin: "Administrator", viewer: "Viewer" },
   },
   login: {
     heroTitle: "Trace the motion of spatial data",

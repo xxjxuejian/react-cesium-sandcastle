@@ -1,4 +1,5 @@
 import { create } from "zustand";
+import { isAxiosError } from "axios";
 
 import {
   getSession,
@@ -12,23 +13,28 @@ import {
 } from "@/auth/token";
 import type { AuthUser, LoginRequest } from "@/auth/types";
 import type { BackendRouteItem } from "@/router/types";
+import request from "@/utils/request";
 
-/* 
-当前登录认证处于哪个阶段”，但它不只是简单的“是否登录”。.
-booting：正在检查登录状态。页面刚打开时，可能存在 token，但还没确认 token 是否有效。
-anonymous：确定未登录，例如没有 token、token 已失效或已经退出。
-authenticated：已经登录，并且成功获取了用户信息和路由权限。
-*/
+/** booting 正在恢复会话，anonymous 未登录，authenticated 已取得用户和路由。 */
 type AuthStatus = "booting" | "anonymous" | "authenticated";
 
 // Zustand 不要求把“状态”和“修改状态的方法”分开定义；它们共同组成一个 store。
 // 组件既可以订阅 status、user 等状态，也可以取出 login、logout 等 action 调用。
+/** 页面共享的认证状态和更新方法。 */
 type AuthState = {
+  /** 当前所处的认证阶段。 */
   status: AuthStatus;
+  /** 已登录用户，未登录时为空。 */
   user: AuthUser | null;
+  /** 由后端返回的可访问页面，未登录时为空数组。 */
   routes: BackendRouteItem[];
+  /** 登录页显示的会话恢复或过期提示，空字符串代表没有提示。 */
+  sessionError: string;
+  /** 页面启动时用本地凭证恢复会话。 */
   restoreSession: () => Promise<void>;
+  /** 校验账号密码并保存新会话。 */
   login: (values: LoginRequest) => Promise<void>;
+  /** 撤销服务端会话并清理本地状态。 */
   logout: () => Promise<void>;
 };
 
@@ -38,6 +44,7 @@ const anonymousState = {
   status: "anonymous" as const,
   user: null,
   routes: [],
+  sessionError: "",
 };
 
 /*
@@ -59,6 +66,7 @@ export const useAuthStore = create<AuthState>((set) => ({
   status: "booting",
   user: null,
   routes: [],
+  sessionError: "",
 
   /* 
   用于应用启动时恢复并校验登录状态，浏览器刷新正是最主要的触发场景。
@@ -69,26 +77,29 @@ export const useAuthStore = create<AuthState>((set) => ({
   // Zustand 的 action 可以直接是异步函数；请求完成后再调用 set 更新状态。
   restoreSession: async () => {
     // 没有 token 时无需请求后端，可以直接确认当前为未登录状态。
-    if (!getAccessToken()) {
+    const token = getAccessToken();
+    if (!token) {
       set(anonymousState);
       return;
     }
 
-    console.log("调用恢复会话接口")
-    //
-    // 而是携带 token 请求 /auth/session，由后端确认会话仍然有效，再恢复用户信息和权限路由。
-    // 携带 token 有axios请求拦截器中完成
+    // Axios 会携带 token。若请求期间会话已变化，忽略这次旧请求的结果。
     try {
       const session = await getSession();
+      if (getAccessToken() !== token) return;
       set({
         status: "authenticated",
         user: session.user,
         routes: session.routes,
+        sessionError: "",
       });
-    } catch {
-      // token 无效或会话请求失败时，清除旧凭证，避免后续请求继续携带它。
+    } catch (error) {
+      if (getAccessToken() !== token) return;
       removeAccessToken();
-      set(anonymousState);
+      set({
+        ...anonymousState,
+        sessionError: error instanceof Error ? error.message : "会话恢复失败",
+      });
     }
   },
 
@@ -102,6 +113,7 @@ export const useAuthStore = create<AuthState>((set) => ({
       status: "authenticated",
       user: result.user,
       routes: result.routes,
+      sessionError: "",
     });
   },
 
@@ -117,3 +129,20 @@ export const useAuthStore = create<AuthState>((set) => ({
     }
   },
 }));
+
+// 在 store 中处理 401，避免 request 反过来依赖 store。清理后路由守卫会跳回登录页。
+request.interceptors.response.use(undefined, (error: unknown) => {
+  const token = getAccessToken();
+  if (
+    token &&
+    isAxiosError(error) &&
+    error.response?.status === 401 &&
+    error.config?.url !== "/auth/login" &&
+    error.config?.headers.get("Authorization") === `Bearer ${token}`
+  ) {
+    // 只处理仍属于当前会话的响应。并发的旧 401 不会重复清理或退出新会话。
+    removeAccessToken();
+    useAuthStore.setState({ ...anonymousState, sessionError: error.message });
+  }
+  return Promise.reject(error);
+});

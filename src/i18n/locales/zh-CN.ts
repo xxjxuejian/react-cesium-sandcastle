@@ -77,6 +77,7 @@ const zhCN = {
     exitFullscreen: "退出全屏",
     github: "GitHub",
     logout: "退出登录",
+    roles: { admin: "管理员", viewer: "普通用户" },
   },
   login: {
     heroTitle: "探索空间数据的运行轨迹",

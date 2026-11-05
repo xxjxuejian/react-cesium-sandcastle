@@ -6,7 +6,7 @@
     "allowImportingTsExtensions": false,
     "noEmit": false,
     "outDir": "./node_modules/.tmp/api-response-tests",
-    "types": ["node"]
+    "types": ["node", "vite/client"]
   },
   "include": ["tests/**/*.test.ts"]
 }

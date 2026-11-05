@@ -1,5 +1,5 @@
 // src/router/mockRoutes.ts
-import type { BackendRouteItem } from "./types";
+import type { BackendRouteItem } from "./types.js";
 
 export const mockRoutes: BackendRouteItem[] = [
   {

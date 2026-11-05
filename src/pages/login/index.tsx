@@ -5,6 +5,7 @@ import { useTranslation } from "react-i18next";
 
 import { LanguageSwitch } from "@/components/LanguageSwitch";
 import { useAuthStore } from "@/store/auth";
+import { usesMockApi } from "@/auth/token";
 import type { LoginRequest } from "@/auth/types";
 import "./login.scss";
 
@@ -13,6 +14,7 @@ const { darkAlgorithm } = theme;
 function LoginContent() {
   const { t } = useTranslation();
   const login = useAuthStore((state) => state.login);
+  const sessionError = useAuthStore((state) => state.sessionError);
   const [submitting, setSubmitting] = useState(false);
   const [errorMessage, setErrorMessage] = useState("");
 
@@ -69,7 +71,7 @@ function LoginContent() {
           <Form<LoginRequest>
             layout="vertical"
             requiredMark={false}
-            initialValues={{ username: "admin", password: "admin123" }}
+            initialValues={usesMockApi ? { username: "admin", password: "admin123" } : undefined}
             onFinish={onFinish}
           >
             <Form.Item
@@ -98,11 +100,11 @@ function LoginContent() {
               />
             </Form.Item>
 
-            {errorMessage ? (
+            {(errorMessage || sessionError) && !submitting ? (
               <Alert
                 className="login-error"
                 type="error"
-                title={errorMessage}
+                title={errorMessage || sessionError}
                 showIcon
               />
             ) : null}
@@ -119,11 +121,13 @@ function LoginContent() {
             </Button>
           </Form>
 
-          <div className="login-demo-accounts">
-            <span>{t("login.demoTitle")}</span>
-            <code>admin / admin123</code>
-            <code>viewer / viewer123</code>
-          </div>
+          {usesMockApi && (
+            <div className="login-demo-accounts">
+              <span>{t("login.demoTitle")}</span>
+              <code>admin / admin123</code>
+              <code>viewer / viewer123</code>
+            </div>
+          )}
         </div>
       </section>
     </main>

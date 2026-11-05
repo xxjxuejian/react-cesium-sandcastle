@@ -25,7 +25,8 @@ export default defineConfig(({ command, mode }) => {
   // 读取当前 mode 对应的 .env 文件，只加载 VITE_ 前缀的变量。
   const env = loadEnv(mode, process.cwd());
   // Mock 服务需显式开启，并且只在 Vite 开发服务中注册。
-  const enableMock = env.VITE_USE_MOCK === "true";
+  const useBackend = mode === "backend";
+  const enableMock = !useBackend && env.VITE_USE_MOCK === "true";
   // 环境文件和 CI/CD 均提供完整路径，未配置时使用相对基础路径。
   const basePath = env.VITE_BASE_PATH ?? "./";
 
@@ -82,14 +83,14 @@ export default defineConfig(({ command, mode }) => {
       },
     },
     server: {
-      // 开发服务器代理，仅在 pnpm dev 时生效。
-      // proxy: {
-      //   "/api": {
-      //     target: "https://sandcastle.cesium.com",
-      //     changeOrigin: true,
-      //     rewrite: (path) => path.replace(/^\/api/, ""),
-      //   },
-      // },
+      // 联调模式下，浏览器仍请求同源的 /api，Vite 将完整路径转给后端。
+      proxy: useBackend
+        ? {
+            "/api": {
+              target: env.VITE_API_PROXY_TARGET || "http://127.0.0.1:3000",
+            },
+          }
+        : undefined,
     },
   };
 });

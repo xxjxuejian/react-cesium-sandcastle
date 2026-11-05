@@ -13,7 +13,7 @@ export function UserProfile() {
   const userItems: MenuProps["items"] = [
     {
       key: "role",
-      label: user?.role,
+      label: user ? t(`header.roles.${user.role}`) : undefined,
       disabled: true,
     },
     { type: "divider" },

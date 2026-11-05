@@ -9,6 +9,7 @@
   },
   "scripts": {
     "dev": "vite",
+    "dev:backend": "vite --mode backend",
     "test": "tsc -p tsconfig.test.json && cd node_modules/.tmp/api-response-tests && node --test",
     "build": "tsc -b && vite build",
     "lint": "eslint .",
