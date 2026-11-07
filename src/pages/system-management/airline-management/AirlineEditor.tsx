@@ -12,6 +12,11 @@ import {
   Tag,
 } from "antd";
 import { AirlineMap } from "./AirlineMap";
+import {
+  maxAirlineNameLength,
+  maxAirlineRemarkLength,
+  maxAirlineWaypoints,
+} from "./constants";
 import { calculateAirlineLength } from "@/utils/airline";
 import type {
   AirlineEditorMode,
@@ -114,7 +119,18 @@ export function AirlineEditor({
   function handleAddPoint(point: AirlineWaypoint) {
     if (readOnly || submitting) return;
     const current = form.getFieldValue("waypoints") as AirlineWaypoint[];
+    if (current.length >= maxAirlineWaypoints) {
+      setDrawing(false);
+      form.setFields([
+        {
+          name: "waypoints",
+          errors: [`每条航线最多 ${maxAirlineWaypoints} 个航点`],
+        },
+      ]);
+      return;
+    }
     form.setFieldValue("waypoints", [...current, point]);
+    if (current.length + 1 === maxAirlineWaypoints) setDrawing(false);
     setSelectedIndex(current.length);
     setDirty(true);
   }
@@ -229,9 +245,16 @@ export function AirlineEditor({
               label="航线名称"
               rules={[
                 { required: true, whitespace: true, message: "请输入航线名称" },
+                {
+                  max: maxAirlineNameLength,
+                  message: `航线名称最多 ${maxAirlineNameLength} 个字符`,
+                },
               ]}
             >
-              <Input placeholder="例如：滨江沿江巡检航线" />
+              <Input
+                maxLength={maxAirlineNameLength}
+                placeholder="例如：滨江沿江巡检航线"
+              />
             </Form.Item>
             <Form.Item
               name="speed"
@@ -247,8 +270,22 @@ export function AirlineEditor({
             >
               <InputNumber className="w-full" min={0} step={1} />
             </Form.Item>
-            <Form.Item name="remark" label="备注">
-              <Input.TextArea rows={2} placeholder="填写航线用途或补充说明" />
+            <Form.Item
+              name="remark"
+              label="备注"
+              rules={[
+                {
+                  max: maxAirlineRemarkLength,
+                  message: `备注最多 ${maxAirlineRemarkLength} 个字符`,
+                },
+              ]}
+            >
+              <Input.TextArea
+                rows={2}
+                maxLength={maxAirlineRemarkLength}
+                showCount
+                placeholder="填写航线用途或补充说明"
+              />
             </Form.Item>
             <div className="mb-3 flex flex-wrap items-center justify-between gap-2">
               <h2 className="m-0 text-base font-semibold">航点列表</h2>
@@ -258,7 +295,8 @@ export function AirlineEditor({
               </span>
             </div>
             <p className="mb-3 mt-0 text-sm text-gray-500">
-              地面统一按 0 米平面计算。点击航点行可定位，地图和列表同步更新。
+              地面统一按 0 米平面计算。每条航线最多 {maxAirlineWaypoints}{" "}
+              个航点。点击航点行可定位，地图和列表同步更新。
             </p>
             {!readOnly ? (
               <Space className="mb-3" wrap>
@@ -291,6 +329,10 @@ export function AirlineEditor({
                     if (!points || points.length < 2)
                       throw new Error(
                         "航线至少需要两个航点，请在地图上绘制或手动添加。",
+                      );
+                    if (points.length > maxAirlineWaypoints)
+                      throw new Error(
+                        `每条航线最多 ${maxAirlineWaypoints} 个航点`,
                       );
                   },
                 },
@@ -458,7 +500,9 @@ export function AirlineEditor({
                     <Button
                       className="mt-3"
                       block
+                      disabled={waypoints.length >= maxAirlineWaypoints}
                       onClick={() => {
+                        if (waypoints.length >= maxAirlineWaypoints) return;
                         const last = waypoints.at(-1);
                         add({
                           longitude: last?.longitude ?? 120.2102,
@@ -503,7 +547,10 @@ export function AirlineEditor({
             {!readOnly ? (
               <Button
                 type={drawing ? "default" : "primary"}
-                disabled={submitting}
+                disabled={
+                  submitting ||
+                  (!drawing && waypoints.length >= maxAirlineWaypoints)
+                }
                 onClick={() => setDrawing((current) => !current)}
               >
                 {drawing

@@ -7,6 +7,11 @@ import type {
 } from "../../src/pages/system-management/airline-management/types.js";
 import type { ApiResponse } from "../../src/types/api.js";
 import { calculateAirlineLength } from "../../src/utils/airline.js";
+import {
+  maxAirlineNameLength,
+  maxAirlineRemarkLength,
+  maxAirlineWaypoints,
+} from "../../src/pages/system-management/airline-management/constants.js";
 
 /** URL 查询参数是字符串，与页面传入的数字分页参数分开描述。 */
 interface AirlineTestRequest {
@@ -103,8 +108,12 @@ function validateAirline(values?: AirlineFormValues): string {
   if (!values || typeof values !== "object" || Array.isArray(values)) {
     return "请求体必须是航线对象";
   }
-  if (typeof values.name !== "string" || !values.name.trim()) {
-    return "航线名称不能为空";
+  if (
+    typeof values.name !== "string" ||
+    !values.name.trim() ||
+    values.name.trim().length > maxAirlineNameLength
+  ) {
+    return `航线名称须为 1～${maxAirlineNameLength} 个字符`;
   }
   if (
     typeof values.speed !== "number" ||
@@ -113,12 +122,18 @@ function validateAirline(values?: AirlineFormValues): string {
   ) {
     return "飞行速度必须是大于 0 的有限数值";
   }
-  if (values.remark !== undefined && typeof values.remark !== "string") {
-    return "备注必须是字符串";
+  if (
+    values.remark !== undefined &&
+    (typeof values.remark !== "string" ||
+      values.remark.length > maxAirlineRemarkLength)
+  ) {
+    return `备注必须是不超过 ${maxAirlineRemarkLength} 个字符的字符串`;
   }
   if (!Array.isArray(values.waypoints) || values.waypoints.length < 2) {
     return "航线至少包含两个航点";
   }
+  if (values.waypoints.length > maxAirlineWaypoints)
+    return `每条航线最多 ${maxAirlineWaypoints} 个航点`;
 
   for (let index = 0; index < values.waypoints.length; index += 1) {
     const point = values.waypoints[index];

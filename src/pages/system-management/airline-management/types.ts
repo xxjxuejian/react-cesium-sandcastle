@@ -16,13 +16,13 @@ export interface AirlineWaypointRecord extends AirlineWaypoint {
 
 /** 新增和编辑使用相同的数据结构，不提交系统计算的字段。 */
 export interface AirlineFormValues {
-  /** 航线名称，必填；保存时去除首尾空格，允许与其他航线同名。 */
+  /** 航线名称，去除首尾空格后为 1～100 个字符，允许与其他航线同名。 */
   name: string;
   /** 整条航线的飞行速度，单位为米/秒，必须大于 0。 */
   speed: number;
-  /** 航线用途或补充说明；可以不传，省略时保存为空字符串。 */
+  /** 航线用途或补充说明，最多 2000 个字符；可以不传，省略时保存为空字符串。 */
   remark?: string;
-  /** 按飞行顺序排列的完整航点列表，至少两个；编辑保存时整体替换。 */
+  /** 按飞行顺序排列的 2～1000 个完整航点；编辑保存时整体替换。 */
   waypoints: AirlineWaypoint[];
 }
 

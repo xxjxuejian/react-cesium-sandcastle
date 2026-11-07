@@ -22,6 +22,7 @@ import {
 } from "@/api/airlineManagement";
 import { isRequestCanceled } from "@/utils/request";
 import { AirlineEditor } from "./AirlineEditor";
+import { maxAirlineNameLength } from "./constants";
 import type {
   AirlineEditorMode,
   AirlineFormValues,
@@ -340,6 +341,7 @@ export default function AirlineManagement() {
             <Form.Item label="航线名称" htmlFor="airline-search">
               <Input
                 id="airline-search"
+                maxLength={maxAirlineNameLength}
                 allowClear
                 placeholder="输入航线名称"
                 value={searchName}
