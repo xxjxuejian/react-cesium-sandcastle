@@ -14,13 +14,7 @@
 
 ## 2. 从已有代码理解后端
 
-原有 Mock 模式的调用关系（仍保留供页面演示）：
-
-```text
-管理页面 → src/api/*.ts → src/utils/request.ts → mock/*.ts → 内存数组
-```
-
-真实联调模式的调用关系（当前已接入登录与用户管理）：
+本分支只连接真实后端，运行代码中已移除 Mock。当前调用关系（当前已接入登录与用户管理）：
 
 ```text
 管理页面 → 原有 API 方法 → /api 请求 → Node.js 后端 → SQLite
@@ -36,8 +30,8 @@
 
 | 模块 | 当前依据 | 后端需要完成的内容 |
 | --- | --- | --- |
-| 登录与会话 | `mock/auth.mock.ts`、`src/api/auth.ts` | 校验密码、创建登录凭证、恢复会话、退出失效 |
-| 动态路由 | `src/router/mockRoutes.ts`、`src/router/transform.tsx` | 按账号权限返回路由描述 |
+| 登录与会话 | `src/api/auth.ts`、后端 `src/auth.ts` | 校验密码、创建登录凭证、恢复会话、退出失效 |
+| 动态路由 | 后端 `src/available-routes.ts`、前端 `src/router/transform.tsx` | 按账号权限返回路由描述 |
 | 用户管理 | `src/api/userManagement.ts` | 查询、分页、新增、修改、删除、账号启停及密码管理 |
 | 避难场所 | `src/api/shelterManagement.ts` | 列表与详情、增删改、容量和位置校验 |
 | 航线 | `src/api/airlineManagement.ts` | 列表与详情、增删改、航点校验、服务端计算长度 |
@@ -118,7 +112,7 @@ react-cesium-server/
 | GET、POST | `/api/system-management/key-units` | 列表、新增 |
 | GET、PUT、DELETE | `/api/system-management/key-units/:id` | 详情、修改、删除 |
 
-成功仍返回 `{ code: 0, message, data }`；列表 data 为 `{ list, total }`；删除 data 为 true；失败 data 为 null。沿用已有筛选字段和业务错误码，具体以 API 文件、类型和 Mock 为准。
+成功仍返回 `{ code: 0, message, data }`；列表 data 为 `{ list, total }`；删除 data 为 true；失败 data 为 null。沿用已有筛选字段和业务错误码，具体以 API 文件、类型及独立后端实现为准。
 
 第一版建议真正使用 HTTP 状态：400 参数错误、401 会话失效、403 无权限、404 记录不存在、409 用户名冲突、500 服务端异常。航线和重点单位的原文档采用 HTTP 200 搭配业务码，迁移时要同步修订文档和请求拦截器，不能只改后端。
 
@@ -128,7 +122,7 @@ react-cesium-server/
 
 ## 7. 登录、用户与权限需要先统一
 
-`auth.mock.ts` 与 `user.mock.ts` 仍分别维护模拟登录账号与模拟列表。阶段 3 已将角色编码统一为 admin/viewer，但 Mock 模式下修改列表不会修改登录账号。真实后端的登录与用户管理统一使用 users 表。
+本分支已移除模拟登录与模拟列表，登录与用户管理统一使用真实后端的 users 表。
 
 第一版建议只保留 `admin`、`viewer` 两种角色编码，界面显示“管理员”“普通用户”。管理员可以访问四个管理模块；普通用户仅访问目前允许的示例页面。对应调整用户表单里现有的四种角色选项、用户类型与展示文案。这是明确的范围简化，不自动推断运营专员等现有名称的权限。
 
@@ -142,7 +136,7 @@ react-cesium-server/
 
 ## 8. 动态路由怎么处理
 
-将 `src/router/mockRoutes.ts` 中的纯配置作为后端 `config/routes.ts` 的起点，按角色筛选后随 login/session 返回。不需要单独建立菜单表或菜单编辑页面。
+后端 `src/available-routes.ts` 维护已开放页面的静态配置，按角色筛选后随 login/session 返回。不需要单独建立菜单表或菜单编辑页面。
 
 `component: "system-management/airline-management"` 仍只是前端页面的标识。后端返回 JSON，前端 `transform.tsx` 使用本地 `import.meta.glob` 查找已经打包的页面。后端不会返回 React 组件，也不会让前端执行任意远程代码。
 
@@ -171,7 +165,7 @@ react-cesium-server/
 
 本地前端仍用 `pnpm dev`；后端也提供 `pnpm dev`，监听例如 3000 端口。后端另提供 build、start、test、lint、db:migrate、db:seed 命令，README 按实际实现写清楚执行顺序。
 
-前端在 `frontend_single` 分支运行 `pnpm dev:backend`，该模式关闭 Mock，并在 `vite.config.ts` 中启用 `/api` 到 `http://127.0.0.1:3000` 的代理。后端端口不同时通过 `VITE_API_PROXY_TARGET` 指定目标。后端本身也使用 `/api` 前缀，因此不删除此前缀。`request.ts` 的 baseURL 保持 `/api`。
+前端在 `frontend_single` 分支运行 `pnpm dev`，默认在 `vite.config.ts` 中启用 `/api` 到 `http://127.0.0.1:3000` 的代理。后端端口不同时通过 `VITE_API_PROXY_TARGET` 指定目标。后端本身也使用 `/api` 前缀，因此不删除此前缀。`request.ts` 的 baseURL 保持 `/api`。
 
 生产环境使用同一个 HTTPS 域名：静态文件交给 Web 服务，`/api` 反向代理到 Node.js。Vite 开发代理在生产构建后不会生效；若继续把前端放在 GitHub Pages，需要另设后端地址并配置明确允许的跨域来源。
 

@@ -60,13 +60,13 @@ globalThis.cancelAnimationFrame = clearTimeout;
 const temporaryDirectory = resolve("node_modules/.tmp/airline-page-tests");
 await mkdir(temporaryDirectory, { recursive: true });
 const sourceRoot = resolve("src").replaceAll("\\", "/");
-const mockRoot = resolve("mock").replaceAll("\\", "/");
+const fixtureRoot = resolve("tests/fixtures").replaceAll("\\", "/");
 const bundlePath = resolve(temporaryDirectory, "page.mjs");
 await build({
   stdin: {
     contents: `export { default as AirlineManagement } from "${sourceRoot}/pages/system-management/airline-management/index.tsx";
       export { default as request } from "${sourceRoot}/utils/request.ts";
-      export { default as mocks } from "${mockRoot}/system-management/airline.mock.ts";`,
+      export { default as apiRoutes } from "${fixtureRoot}/airlineApi.ts";`,
     resolveDir: process.cwd(),
     loader: "tsx",
   },
@@ -104,7 +104,7 @@ const { render, screen, fireEvent, waitFor, cleanup, act } =
   await import("@testing-library/react");
 const { AxiosHeaders } = await import("axios");
 const { Modal } = await import("antd");
-const { AirlineManagement, request, mocks } = await import(
+const { AirlineManagement, request, apiRoutes } = await import(
   pathToFileURL(bundlePath).href
 );
 after(() => {
@@ -129,7 +129,7 @@ request.defaults.adapter = async (config) => {
     failNextList = false;
     result = { code: 50003, message: "模拟列表加载失败", data: null };
   } else {
-    const route = mocks.find(
+    const route = apiRoutes.find(
       (item) =>
         item.method === method &&
         item.url === (url === baseUrl ? baseUrl : `${baseUrl}/:id`),
@@ -157,7 +157,7 @@ request.defaults.adapter = async (config) => {
 
 afterEach(() => {
   cleanup();
-  const remove = mocks.find((item) => item.method === "delete");
+  const remove = apiRoutes.find((item) => item.method === "delete");
   for (const id of createdIds.splice(0))
     remove.response({ url: `${baseUrl}/${id}` });
   requests.length = 0;
@@ -273,7 +273,7 @@ test("绘制结束不保存，航点批量改高度、拖动回写、排序后�
   fireEvent.click(screen.getByRole("button", { name: "保存航线" }));
   await screen.findAllByRole("table");
   await screen.findByText("页面测试航线");
-  const detail = mocks
+  const detail = apiRoutes
     .find((item) => item.method === "get" && item.url.endsWith(":id"))
     .response({ url: `${baseUrl}/${createdIds[0]}` });
   assert.deepEqual(

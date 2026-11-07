@@ -1,3 +1,4 @@
+// 仅供页面自动化测试使用，不注册开发服务或生产接口。
 import type {
   KeyUnitFormValues,
   KeyUnitListItem,
@@ -7,8 +8,8 @@ import type {
 import type { ApiResponse } from "../../src/types/api.js";
 import { validateKeyUnit } from "../../src/utils/keyUnit.js";
 
-/** Mock 接收的原始请求，不信任请求体中的结构。 */
-interface KeyUnitMockRequest {
+/** 页面测试传入的原始请求，用于模拟成功与失败的响应。 */
+interface KeyUnitTestRequest {
   /** 包含单位编号的请求地址。 */
   url: string;
   /** 新增和更新的原始请求体，省略时校验失败。 */
@@ -17,14 +18,14 @@ interface KeyUnitMockRequest {
   query?: { name?: string; page?: string; pageSize?: string };
 }
 
-/** 供开发与生产 Mock 注册的路由。 */
-interface KeyUnitMockMethod {
+/** 仅供页面测试选择的接口响应定义，不会注册到 Vite。 */
+interface KeyUnitTestMethod {
   /** 接口地址，包含 /api 前缀。 */
   url: string;
   /** HTTP 请求方法。 */
   method: "get" | "post" | "put" | "delete";
   /** 返回项目统一业务响应。 */
-  response: (request: KeyUnitMockRequest) => unknown;
+  response: (request: KeyUnitTestRequest) => unknown;
 }
 
 // 固定演示数据用于分页和反复验证，不表示真实重点单位或布防标准。
@@ -111,7 +112,7 @@ function pathId(url: string): string {
 const base = "/api/system-management/key-units";
 export default [
   {
-    // 详情优先，避免生产 Mock 的地址正则先匹配到列表。
+    // 页面测试按完整路径选择详情响应。
     url: `${base}/:id`,
     method: "get",
     response: ({ url }) => {
@@ -234,4 +235,4 @@ export default [
       } satisfies ApiResponse<boolean>;
     },
   },
-] satisfies KeyUnitMockMethod[];
+] satisfies KeyUnitTestMethod[];

@@ -5,7 +5,6 @@ import { useTranslation } from "react-i18next";
 
 import { LanguageSwitch } from "@/components/LanguageSwitch";
 import { useAuthStore } from "@/store/auth";
-import { usesMockApi } from "@/auth/token";
 import type { LoginRequest } from "@/auth/types";
 import "./login.scss";
 
@@ -46,8 +45,12 @@ function LoginContent() {
 
         <div className="orbital-map" aria-hidden="true">
           <div className="orbital-globe" />
-          <div className="orbit orbit-one"><span /></div>
-          <div className="orbit orbit-two"><span /></div>
+          <div className="orbit orbit-one">
+            <span />
+          </div>
+          <div className="orbit orbit-two">
+            <span />
+          </div>
           <div className="coordinate coordinate-north">39.9042° N</div>
           <div className="coordinate coordinate-east">116.4074° E</div>
         </div>
@@ -71,7 +74,6 @@ function LoginContent() {
           <Form<LoginRequest>
             layout="vertical"
             requiredMark={false}
-            initialValues={usesMockApi ? { username: "admin", password: "admin123" } : undefined}
             onFinish={onFinish}
           >
             <Form.Item
@@ -120,14 +122,6 @@ function LoginContent() {
               {t("login.submit")}
             </Button>
           </Form>
-
-          {usesMockApi && (
-            <div className="login-demo-accounts">
-              <span>{t("login.demoTitle")}</span>
-              <code>admin / admin123</code>
-              <code>viewer / viewer123</code>
-            </div>
-          )}
         </div>
       </section>
     </main>

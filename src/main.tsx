@@ -5,7 +5,6 @@ import "./index.css";
 import "cesium/Build/Cesium/Widgets/widgets.css";
 import App from "@/app/App";
 import { useAuthStore } from "@/store/auth";
-import { usesMockApi } from "@/auth/token";
 
 const cesiumIonToken = import.meta.env.VITE_CESIUM_ION_TOKEN?.trim();
 
@@ -17,12 +16,6 @@ if (cesiumIonToken) {
 
 // 按启动顺序完成运行环境初始化、登录状态恢复和 React 应用挂载。
 async function bootstrap() {
-  // 生产环境启用 Mock 时，先注册 Mock 服务，确保后续会话请求能够被拦截。
-  if (import.meta.env.PROD && usesMockApi) {
-    const { setupProdMockServer } = await import("./mockProdServer");
-    await setupProdMockServer();
-  }
-
   /* 
   restoreSession() 没有被 await，所以会话请求和 React 首次渲染同时进行。
   此时 store 初始状态是 booting，路由会先显示加载页。

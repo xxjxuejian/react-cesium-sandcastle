@@ -4,8 +4,8 @@ interface ImportMetaEnv {
   readonly VITE_CESIUM_ION_TOKEN?: string;
   /** 天地图服务的访问 Key；省略时公共工具仅启用 OSM，天地图示例显示配置提示。 */
   readonly VITE_TIANDITU_TOKEN?: string;
-  /** 是否启用模拟接口；字符串 "true" 表示启用，省略时不启用。 */
-  readonly VITE_USE_MOCK?: string;
+  /** 开发代理目标，省略时使用 http://127.0.0.1:3000。 */
+  readonly VITE_API_PROXY_TARGET?: string;
 }
 
 /** 扩展模块元信息，让 TypeScript 能识别 Vite 环境变量。 */

@@ -59,10 +59,10 @@ src/main.tsx
 
 ## 路由与菜单
 
-项目以 `src/router/mockRoutes.ts` 作为当前路由配置源。它同时驱动两条链路：
+项目以独立后端 `src/available-routes.ts` 返回的授权路由作为当前配置源，由认证 store 保存。它同时驱动两条链路：
 
-- 页面路由：`mockRoutes` 通过 `transformRoutes` 转换为 React Router 路由对象。
-- 导航菜单：`mockRoutes` 通过 `createMenuItems` 转换为 Ant Design `Menu` 的 `items`。
+- 页面路由：`availableRoutes` 通过 `transformRoutes` 转换为 React Router 路由对象。
+- 导航菜单：`availableRoutes` 通过 `createMenuItems` 转换为 Ant Design `Menu` 的 `items`。
 
 页面组件路径由路由配置中的 `component` 字段决定：
 
@@ -74,7 +74,7 @@ component: "getting-started/hello-world"
 新增路由时通常需要同步处理：
 
 - 新增页面组件文件。
-- 修改 `src/router/mockRoutes.ts`。
+- 修改 `独立后端 src/available-routes.ts`。
 - 如果需要显示在菜单中，设置 `meta.showInMenu: true`。
 - 如果使用新图标，在 `src/router/menu.tsx` 的 `iconMap` 中注册。
 - 补充所有语言包中的 `titleKey` 文案。
@@ -128,7 +128,7 @@ menu.gettingStarted.resolutionScale
 新增普通页面：
 
 1. 新增 `src/pages/xxx/index.tsx`。
-2. 在 `src/router/mockRoutes.ts` 中新增路由配置。
+2. 在 `独立后端 src/available-routes.ts` 中新增路由配置。
 3. 如果显示在菜单中，配置 `meta.titleKey`、`meta.showInMenu`、`meta.order`。
 4. 在 `src/i18n/locales/zh-CN.ts` 和 `src/i18n/locales/en-US.ts` 中补充文案。
 5. 执行 `pnpm.cmd build`，并手动验证路由跳转和菜单选中态。
@@ -150,7 +150,7 @@ menu.gettingStarted.resolutionScale
 ## 当前注意事项
 
 - `README.md` 仍以 Vite 模板说明为主，项目真实说明主要在 `docs/`。
-- 修改路由、菜单或国际化文案时，需要同时检查 `src/router/mockRoutes.ts`、`src/router/menu.tsx` 和语言包。
+- 修改路由、菜单或国际化文案时，需要同时检查 `独立后端 src/available-routes.ts`、`src/router/menu.tsx` 和语言包。
 - 页面模块由 `import.meta.glob("../pages/**/index.tsx")` 收集，页面入口文件名需要保持为 `index.tsx`。
 - 当前项目没有测试脚本；改动后优先执行 `pnpm.cmd build`，必要时执行 `pnpm.cmd lint`。
 - `pnpm.cmd lint` 可能暴露既有规则问题，处理任务时要区分本次改动和历史遗留问题。

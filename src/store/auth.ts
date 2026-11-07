@@ -121,7 +121,7 @@ export const useAuthStore = create<AuthState>((set) => ({
     try {
       await logoutRequest();
     } catch {
-      // 即使 Mock 或后端退出失败，也要清理当前浏览器中的登录状态。
+      // 即使后端退出失败，也要清理当前浏览器中的登录状态。
     } finally {
       // finally 保证本地登出一定执行；set 后所有订阅认证状态的组件会自动更新。
       removeAccessToken();

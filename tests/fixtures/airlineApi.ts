@@ -1,3 +1,4 @@
+// 仅供页面自动化测试使用，不注册开发服务或生产接口。
 import type {
   AirlineFormValues,
   AirlineListItem,
@@ -8,16 +9,23 @@ import type { ApiResponse } from "../../src/types/api.js";
 import { calculateAirlineLength } from "../../src/utils/airline.js";
 
 /** URL 查询参数是字符串，与页面传入的数字分页参数分开描述。 */
-interface AirlineMockRequest {
+interface AirlineTestRequest {
+  /** 包含航线编号的测试请求地址。 */
   url: string;
+  /** 新增或编辑的资料；查询与删除时省略。 */
   body?: AirlineFormValues;
+  /** 文本查询参数，省略时使用默认分页。 */
   query?: { name?: string; page?: string; pageSize?: string };
 }
 
-interface AirlineMockMethod {
+/** 页面测试的接口响应定义，不会注册到 Vite。 */
+interface AirlineTestMethod {
+  /** 包含 /api 前缀的匹配地址。 */
   url: string;
+  /** 测试请求采用的 HTTP 方法。 */
   method: "get" | "post" | "put" | "delete";
-  response: (request: AirlineMockRequest) => unknown;
+  /** 根据输入生成统一业务响应。 */
+  response: (request: AirlineTestRequest) => unknown;
 }
 
 // 使用固定样例，方便刷新后重复验证搜索和分页，不依赖随机数据。
@@ -86,7 +94,7 @@ const initialAirlines: AirlineRecord[] = sampleRoutes.map((route, index) => {
   };
 });
 
-/** 只在当前 Mock 运行期间保存，服务重启或页面重新加载后恢复样例。 */
+/** 只在当前 Test 运行期间保存，服务重启或页面重新加载后恢复样例。 */
 const airlines = structuredClone(initialAirlines);
 
 /** 返回具体字段或航点的错误，新增和更新执行相同的保存规则。 */
@@ -155,7 +163,7 @@ function validateAirline(values?: AirlineFormValues): string {
   return "";
 }
 
-/** 明确指定北京时间，避免 Mock 所在机器的时区改变接口结果。 */
+/** 明确指定北京时间，避免 Test 所在机器的时区改变接口结果。 */
 function getCurrentTime(): string {
   return new Intl.DateTimeFormat("sv-SE", {
     timeZone: "Asia/Shanghai",
@@ -203,7 +211,7 @@ function buildAirline(
 
 export default [
   {
-    // 生产 Mock 按 URL 正则匹配，详情必须先于列表注册，避免被列表路径提前匹配。
+    // 页面测试按完整路径选择详情响应。
     url: "/api/system-management/airlines/:id",
     method: "get",
     response: ({ url }) => {
@@ -211,7 +219,7 @@ export default [
       if (!airline) {
         return { code: 40403, message: "航线不存在", data: null };
       }
-      // 返回副本，页面编辑未保存的数据时不能直接改动 Mock 内存。
+      // 返回副本，页面编辑未保存的数据时不能直接改动 Test 内存。
       return {
         code: 0,
         message: "查询航线详情成功",
@@ -346,4 +354,4 @@ export default [
       } satisfies ApiResponse<boolean>;
     },
   },
-] satisfies AirlineMockMethod[];
+] satisfies AirlineTestMethod[];

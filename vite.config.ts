@@ -1,7 +1,6 @@
 import { defineConfig, loadEnv, normalizePath } from "vite";
 import react from "@vitejs/plugin-react";
 import path from "path";
-import { viteMockServe } from "vite-plugin-mock";
 import { viteStaticCopy } from "vite-plugin-static-copy";
 
 // Cesium npm 包中需要在运行时按 URL 加载的静态资源根目录。
@@ -21,12 +20,9 @@ const cesiumSourceBaseSegmentCount = cesiumSourcePath.split("/").length;
 const cesiumStaticDirectory = "cesiumStatic";
 
 // https://vite.dev/config/
-export default defineConfig(({ command, mode }) => {
+export default defineConfig(({ mode }) => {
   // 读取当前 mode 对应的 .env 文件，只加载 VITE_ 前缀的变量。
   const env = loadEnv(mode, process.cwd());
-  // Mock 服务需显式开启，并且只在 Vite 开发服务中注册。
-  const useBackend = mode === "backend";
-  const enableMock = !useBackend && env.VITE_USE_MOCK === "true";
   // 环境文件和 CI/CD 均提供完整路径，未配置时使用相对基础路径。
   const basePath = env.VITE_BASE_PATH ?? "./";
 
@@ -68,13 +64,6 @@ export default defineConfig(({ command, mode }) => {
           },
         ],
       }),
-      // 本地开发时按环境变量决定是否启用 mock 接口。
-      viteMockServe({
-        mockPath: "mock",
-        enable: command === "serve" && enableMock,
-        watchFiles: true,
-        logger: true,
-      }),
     ],
     resolve: {
       alias: {
@@ -83,14 +72,12 @@ export default defineConfig(({ command, mode }) => {
       },
     },
     server: {
-      // 联调模式下，浏览器仍请求同源的 /api，Vite 将完整路径转给后端。
-      proxy: useBackend
-        ? {
-            "/api": {
-              target: env.VITE_API_PROXY_TARGET || "http://127.0.0.1:3000",
-            },
-          }
-        : undefined,
+      // 所有开发请求都通过代理访问真实后端，保留完整的 /api 前缀。
+      proxy: {
+        "/api": {
+          target: env.VITE_API_PROXY_TARGET || "http://127.0.0.1:3000",
+        },
+      },
     },
   };
 });

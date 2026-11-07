@@ -94,7 +94,7 @@ const enUS = {
     routePolicy: "Identity-based routes",
     renderEngine: "Cesium scene ready",
     title: "Sign in to the console",
-    description: "Use a demo account to load the routes assigned to that role.",
+    description: "Sign in with your system account to load the pages you can access.",
     username: "Username",
     password: "Password",
     usernamePlaceholder: "Enter your username",
@@ -103,7 +103,6 @@ const enUS = {
     passwordRequired: "Enter your password",
     submit: "Enter workspace",
     loginFailed: "Sign-in failed. Try again.",
-    demoTitle: "Demo accounts",
   },
 };
 

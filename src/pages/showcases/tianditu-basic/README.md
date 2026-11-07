@@ -21,7 +21,7 @@
 
 ## 路由与计划的关系
 
-当前菜单来自 `src/router/mockRoutes.ts`，`src/router/transform.tsx` 自动发现本目录的 `index.tsx`。已检查 `src/config/menu.ts`，它是未参与当前 React 路由的历史配置，本示例无需修改它。
+当前菜单来自独立后端登录与会话接口返回的路由描述，`src/router/transform.tsx` 自动发现本目录的 `index.tsx`。已检查 `src/config/menu.ts`，它是未参与当前 React 路由的历史配置，本示例无需修改它。
 
 这是独立学习示例，不代表[地图基础工具设计与集成计划](../../../../docs/地图基础工具设计与集成计划.md)中的底图 Hook、测量工具或工具栏已经实施。
 

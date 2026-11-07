@@ -2,7 +2,7 @@ import type { AirlineWaypoint } from "../pages/system-management/airline-managem
 
 /**
  * 用 Haversine 算法累加相邻航点的水平大圆距离，单位为米。
- * Mock 保存和页面预览共用此算法；调用前应保证经纬度有效。
+ * 页面预览使用此算法，后端独立计算保存结果；调用前应保证经纬度有效。
  * 只计算已有航段，不包含高度差，也不会自动连接终点和起点。
  */
 export function calculateAirlineLength(waypoints: AirlineWaypoint[]): number {

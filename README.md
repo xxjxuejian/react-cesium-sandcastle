@@ -1,4 +1,36 @@
-# React + TypeScript + Vite
+# React + Cesium 学习项目
+
+当前分支 `frontend_single` 只使用独立 Node.js 后端接口。运行时 Mock、模拟账号和本地模拟路由已经移除。
+
+## 启动前后端
+
+后端目录为同级的 `react-cesium-server/`。首次启动按后端 README 完成依赖安装、`pnpm db:migrate` 和管理员初始化，再运行：
+
+```powershell
+cd D:\Desktop\my-projects\react-cesium-server
+pnpm dev
+```
+
+另开终端启动前端：
+
+```powershell
+cd D:\Desktop\my-projects\react-cesium-sandcastle
+pnpm install
+pnpm dev
+```
+
+打开 Vite 显示的地址，使用真实账号登录。`pnpm dev` 默认将 `/api` 代理到 `http://127.0.0.1:3000`；自定义端口时在前端 `.env.local` 设置 `VITE_API_PROXY_TARGET`。原 `pnpm dev:backend` 命令已经移除。
+
+后端当前开放登录与用户管理，其余管理页面随模块实施逐步开放。进度见 [后端阶段任务](docs/backend/后端分阶段实施任务.md)。
+
+## 检查命令
+
+- `pnpm lint`：检查 TypeScript 和 React 代码。
+- `pnpm test`：检查请求处理、异步保护和空间业务规则；编译前清理旧测试产物。
+- `node --test tests/airlinePage.test.mjs tests/keyUnitPage.test.mjs tests/mapTools.test.mjs`：页面与地图工具回归。
+- `pnpm build`：类型检查并构建生产前端。
+
+页面测试中的 `tests/fixtures/` 只用于自动化测试，不向应用提供接口，也不参与生产打包。生产部署需要为同源 `/api` 配置反向代理；Vite 开发代理不能随静态文件部署。
 
 ## CesiumJS 本地配置
 
@@ -20,7 +52,9 @@ pnpm.cmd dev
 
 `VITE_` 环境变量会进入浏览器产物，因此 Cesium ion Token 并不是真正的服务端密钥。开发和生产应使用不同 Token；生产 Token 只授予场景所需的 `assets:read` 权限，并在 Cesium ion 后台限制允许访问的资产和 GitHub Pages URL。
 
-## GitHub Pages 配置
+## GitHub Pages 历史部署配置
+
+当前工作流自动发布 main 分支。本分支依赖真实后端，单独发布到 Pages 不会自动具备 API 服务；正式部署方案在后端阶段 7 完成。
 
 仓库的 Pages 工作流要求存在名为 `VITE_CESIUM_ION_TOKEN` 的 Actions Secret。工作流会在构建前检查该值，并通过现有 `VITE_BASE_PATH` 让 Cesium 静态资源从仓库子路径加载。
 
@@ -32,75 +66,3 @@ pnpm.cmd dev
 4. 打开 Pages 中的“天地图基础测试”或“杭州示例 → 边界分层”，验证天地图底图及注记。没有配置天地图 Key 时，边界页仍可使用默认 OSM。
 
 GitHub Secret 避免将 Key 直接写入仓库，但 `VITE_` 变量会在构建时进入浏览器代码；天地图请求的 URL 也会包含 Key，因此访问者可以查看它。请按天地图提供的能力限制 Key 的使用范围和配额，不要将它当作只能由服务器读取的私密凭据。
-
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
-
-Currently, two official plugins are available:
-
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
-
-## React Compiler
-
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
-
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
-
-```js
-export default defineConfig([
-  globalIgnores(["dist"]),
-  {
-    files: ["**/*.{ts,tsx}"],
-    extends: [
-      // Other configs...
-
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
-
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ["./tsconfig.node.json", "./tsconfig.app.json"],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-]);
-```
-
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
-
-```js
-// eslint.config.js
-import reactX from "eslint-plugin-react-x";
-import reactDom from "eslint-plugin-react-dom";
-
-export default defineConfig([
-  globalIgnores(["dist"]),
-  {
-    files: ["**/*.{ts,tsx}"],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs["recommended-typescript"],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ["./tsconfig.node.json", "./tsconfig.app.json"],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-]);
-```

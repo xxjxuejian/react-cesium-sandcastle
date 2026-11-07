@@ -60,13 +60,13 @@ globalThis.cancelAnimationFrame = clearTimeout;
 const temporaryDirectory = resolve("node_modules/.tmp/key-unit-page-tests");
 await mkdir(temporaryDirectory, { recursive: true });
 const sourceRoot = resolve("src").replaceAll("\\", "/");
-const mockRoot = resolve("mock").replaceAll("\\", "/");
+const fixtureRoot = resolve("tests/fixtures").replaceAll("\\", "/");
 const bundlePath = resolve(temporaryDirectory, "page.mjs");
 await build({
   stdin: {
     contents: `export { default as KeyUnitManagement } from "${sourceRoot}/pages/system-management/key-unit-management/index.tsx";
       export { default as request } from "${sourceRoot}/utils/request.ts";
-      export { default as mocks } from "${mockRoot}/system-management/keyUnit.mock.ts";`,
+      export { default as apiRoutes } from "${fixtureRoot}/keyUnitApi.ts";`,
     resolveDir: process.cwd(),
     loader: "tsx",
   },
@@ -105,7 +105,7 @@ const { render, screen, fireEvent, waitFor, cleanup, act } =
 const { AxiosHeaders } = await import("axios");
 const { Modal } = await import("antd");
 const { createMemoryRouter, RouterProvider } = await import("react-router");
-const { KeyUnitManagement, request, mocks } = await import(
+const { KeyUnitManagement, request, apiRoutes } = await import(
   pathToFileURL(bundlePath).href
 );
 after(() => {
@@ -131,7 +131,7 @@ request.defaults.adapter = async (config) => {
     failNextList = false;
     result = { code: 50003, message: "模拟列表加载失败", data: null };
   } else {
-    const route = mocks.find(
+    const route = apiRoutes.find(
       (item) =>
         item.method === method &&
         item.url === (url === baseUrl ? baseUrl : `${baseUrl}/:id`),
@@ -160,7 +160,7 @@ request.defaults.adapter = async (config) => {
 afterEach(() => {
   cleanup();
   pageRouter?.dispose();
-  const remove = mocks.find((item) => item.method === "delete");
+  const remove = apiRoutes.find((item) => item.method === "delete");
   for (const id of createdIds.splice(0))
     remove.response({ url: `${baseUrl}/${id}` });
   requests.length = 0;
@@ -284,7 +284,7 @@ test("新增整体校验三层参数，保存失败保留输入，重试后高�
   assert.equal(screen.getByLabelText("核心圈最高高度").value, "120");
   fireEvent.click(screen.getByRole("button", { name: "保存重点单位" }));
   await screen.findByText("共 13 个重点单位");
-  const saved = mocks
+  const saved = apiRoutes
     .find((item) => item.method === "get" && item.url.endsWith(":id"))
     .response({ url: `${baseUrl}/${createdIds[0]}` }).data;
   assert.equal(saved.rings.core.minHeight, 0);

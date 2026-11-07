@@ -19,7 +19,7 @@ export type BackendRouteMeta = {
   order?: number;
 };
 
-// 后端返回或本地 mock 的原始路由结构。
+// 后端登录与会话接口返回的原始路由结构。
 // transformRoutes 会把它转换成 React Router 可识别的路由对象。
 export type BackendRouteItem = {
   // 路由路径片段。作为子路由时不要以 / 开头，例如 home、getting-started。

@@ -1,5 +1,5 @@
 import { useCallback, useEffect, useState } from "react";
-import { Alert, Form, Input, Modal, message } from "antd";
+import { Form, Input, Modal, message } from "antd";
 
 import {
   createUser,
@@ -12,7 +12,6 @@ import { UserFormModal } from "./components/UserFormModal";
 import { UserTablePanel } from "./components/UserTablePanel";
 import type { UserFormInput, UserQueryParams, UserRecord } from "./types";
 import { useAuthStore } from "@/store/auth";
-import { usesMockApi } from "@/auth/token";
 import { isRequestCanceled } from "@/utils/request";
 
 const defaultQuery: UserQueryParams = {
@@ -102,7 +101,7 @@ export default function UserManagement() {
   async function handleDelete(user: UserRecord) {
     try {
       await deleteUser(user.id);
-      if (!usesMockApi && useAuthStore.getState().user?.id === user.id) {
+      if (useAuthStore.getState().user?.id === user.id) {
         await useAuthStore.getState().restoreSession();
         return;
       }
@@ -133,10 +132,7 @@ export default function UserManagement() {
         const { password: _password, ...profile } = values;
         void _password;
         await updateUser(currentUser.id, profile);
-        if (
-          !usesMockApi &&
-          useAuthStore.getState().user?.id === currentUser.id
-        ) {
+        if (useAuthStore.getState().user?.id === currentUser.id) {
           await useAuthStore.getState().restoreSession();
         }
       }
@@ -160,16 +156,9 @@ export default function UserManagement() {
       await resetUserPassword(passwordUser.id, password);
       passwordForm.resetFields();
       setPasswordUser(null);
-      messageApi.success(
-        usesMockApi
-          ? "模拟重置成功，不会修改登录账号"
-          : "密码已重置，该用户需重新登录",
-      );
+      messageApi.success("密码已重置，该用户需重新登录");
       // 修改自己的密码后，成功响应本身是 200；主动恢复会话才能立即发现旧凭证失效。
-      if (
-        !usesMockApi &&
-        useAuthStore.getState().user?.id === passwordUser.id
-      ) {
+      if (useAuthStore.getState().user?.id === passwordUser.id) {
         await useAuthStore.getState().restoreSession();
       }
     } catch (error) {
@@ -182,14 +171,6 @@ export default function UserManagement() {
   return (
     <>
       {messageContext}
-      {usesMockApi && (
-        <Alert
-          type="info"
-          showIcon
-          className="mb-4"
-          title="当前为 Mock 模式：新增、停用和重置密码仅模拟列表操作，不影响登录账号。真实账号验收请使用 pnpm dev:backend。"
-        />
-      )}
       <UserTablePanel
         users={users}
         total={total}

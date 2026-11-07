@@ -87,7 +87,7 @@ const zhCN = {
     routePolicy: "路由按身份加载",
     renderEngine: "Cesium 场景就绪",
     title: "登录控制台",
-    description: "使用演示账号登录，系统将加载该身份对应的路由。",
+    description: "使用系统账号登录，系统将加载该身份可访问的页面。",
     username: "用户名",
     password: "密码",
     usernamePlaceholder: "请输入用户名",
@@ -96,7 +96,6 @@ const zhCN = {
     passwordRequired: "请输入密码",
     submit: "进入系统",
     loginFailed: "登录失败，请稍后重试",
-    demoTitle: "演示账号",
   },
 };
 

@@ -35,7 +35,7 @@ export function hasValidKeyUnitCenter(
 }
 
 /**
- * 表单和 Mock 共用的业务校验，返回第一条可修正的错误；空字符串表示通过。
+ * 表单提交前的业务校验，后端还会独立校验，返回第一条可修正的错误；空字符串表示通过。
  * 参数使用 unknown，因为接口还需要防止非对象、缺失字段等真实请求错误。
  */
 export function validateKeyUnit(input: unknown): string {

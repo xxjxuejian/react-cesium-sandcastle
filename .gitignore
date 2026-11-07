@@ -28,9 +28,4 @@ dist-ssr
 .superpowers/*
 docs/superpowers/*
 
-tests/*
-!tests/airlineMock.test.ts
-!tests/airlinePage.test.mjs
-!tests/mapTools.test.mjs
-!tests/keyUnitMock.test.ts
-!tests/keyUnitPage.test.mjs
+# 测试源码与测试数据一并维护，编译产物位于已忽略的 node_modules/.tmp 中。
