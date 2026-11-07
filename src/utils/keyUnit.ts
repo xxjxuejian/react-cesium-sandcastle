@@ -19,6 +19,13 @@ export const DEFENSE_RINGS: DefenseRingDefinition[] = [
   { type: "warning", label: "警戒圈", color: "#06B6D4" },
 ];
 
+/** 单位名称最多 100 个字符，与真实后端的校验保持一致。 */
+export const MAX_KEY_UNIT_NAME_LENGTH = 100;
+/** 位置描述最多 500 个字符，可以留空。 */
+export const MAX_KEY_UNIT_ADDRESS_LENGTH = 500;
+/** 备注最多 2000 个字符，可以留空。 */
+export const MAX_KEY_UNIT_REMARK_LENGTH = 2000;
+
 /** 验证地图可以使用的经纬度；输入为空时不会被转换成 0。 */
 export function hasValidKeyUnitCenter(
   longitude: unknown,
@@ -44,10 +51,16 @@ export function validateKeyUnit(input: unknown): string {
   const values = input as Record<string, unknown>;
   if (typeof values.name !== "string" || !values.name.trim())
     return "请输入单位名称";
+  if (values.name.trim().length > MAX_KEY_UNIT_NAME_LENGTH)
+    return `单位名称最多 ${MAX_KEY_UNIT_NAME_LENGTH} 个字符`;
   if (!hasValidKeyUnitCenter(values.longitude, values.latitude))
     return "请设置有效的单位中心点：经度 -180～180，纬度 -90～90";
   if (typeof values.address !== "string" || typeof values.remark !== "string")
     return "位置描述和备注必须是字符串，可留空";
+  if (values.address.trim().length > MAX_KEY_UNIT_ADDRESS_LENGTH)
+    return `位置描述最多 ${MAX_KEY_UNIT_ADDRESS_LENGTH} 个字符`;
+  if (values.remark.trim().length > MAX_KEY_UNIT_REMARK_LENGTH)
+    return `备注最多 ${MAX_KEY_UNIT_REMARK_LENGTH} 个字符`;
   if (
     !values.rings ||
     typeof values.rings !== "object" ||

@@ -19,6 +19,27 @@ function values(): KeyUnitFormValues {
     },
   };
 }
+
+test("名称、位置描述与备注限制长度，合法边界和空白资料仍可提交", () => {
+  const unit = values();
+  unit.name = "名".repeat(100);
+  unit.address = "址".repeat(500);
+  unit.remark = "注".repeat(2000);
+  assert.equal(validateKeyUnit(unit), "");
+  assert.match(
+    validateKeyUnit({ ...unit, name: "名".repeat(101) }),
+    /单位名称最多 100/,
+  );
+  assert.match(
+    validateKeyUnit({ ...unit, address: "址".repeat(501) }),
+    /位置描述最多 500/,
+  );
+  assert.match(
+    validateKeyUnit({ ...unit, remark: "注".repeat(2001) }),
+    /备注最多 2000/,
+  );
+  assert.equal(validateKeyUnit({ ...unit, address: "", remark: "" }), "");
+});
 test("空值不当成零坐标，合法零坐标和零高度可以使用", () => {
   assert.equal(hasValidKeyUnitCenter(null, 0), false);
   assert.equal(hasValidKeyUnitCenter(0, undefined), false);

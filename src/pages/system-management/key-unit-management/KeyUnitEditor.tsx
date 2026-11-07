@@ -17,7 +17,13 @@ import {
   CloseOutlined,
 } from "@ant-design/icons";
 import { MainLayoutContext } from "@/layouts/MainLayout/context";
-import { DEFENSE_RINGS, validateKeyUnit } from "@/utils/keyUnit";
+import {
+  DEFENSE_RINGS,
+  MAX_KEY_UNIT_NAME_LENGTH,
+  MAX_KEY_UNIT_ADDRESS_LENGTH,
+  MAX_KEY_UNIT_REMARK_LENGTH,
+  validateKeyUnit,
+} from "@/utils/keyUnit";
 import { KeyUnitMap } from "./KeyUnitMap";
 import type {
   DefenseRingDraft,
@@ -592,6 +598,7 @@ export function KeyUnitEditor({
                 <span>单位名称 *</span>
                 <Input
                   id="key-unit-name"
+                  maxLength={MAX_KEY_UNIT_NAME_LENGTH}
                   value={draft.name}
                   placeholder="例如：某市政府"
                   disabled={locked || !!mapAction}
@@ -607,6 +614,7 @@ export function KeyUnitEditor({
                 <span>位置描述</span>
                 <Input
                   id="key-unit-address"
+                  maxLength={MAX_KEY_UNIT_ADDRESS_LENGTH}
                   value={draft.address}
                   placeholder="地址或地标"
                   disabled={locked || !!mapAction}
@@ -655,6 +663,9 @@ export function KeyUnitEditor({
                 <span>备注</span>
                 <Input.TextArea
                   id="key-unit-remark"
+                  aria-label="备注"
+                  maxLength={MAX_KEY_UNIT_REMARK_LENGTH}
+                  showCount
                   rows={3}
                   value={draft.remark}
                   disabled={locked || !!mapAction}

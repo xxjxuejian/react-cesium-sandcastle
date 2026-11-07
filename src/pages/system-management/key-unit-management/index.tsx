@@ -21,7 +21,7 @@ import {
   updateKeyUnit,
 } from "@/api/keyUnitManagement";
 import { isRequestCanceled } from "@/utils/request";
-import { DEFENSE_RINGS } from "@/utils/keyUnit";
+import { DEFENSE_RINGS, MAX_KEY_UNIT_NAME_LENGTH } from "@/utils/keyUnit";
 import { KeyUnitEditor } from "./KeyUnitEditor";
 import type {
   KeyUnitEditorMode,
@@ -339,6 +339,7 @@ export default function KeyUnitManagement() {
             <Form.Item label="单位名称" htmlFor="key-unit-search">
               <Input
                 id="key-unit-search"
+                maxLength={MAX_KEY_UNIT_NAME_LENGTH}
                 allowClear
                 placeholder="请输入单位名称"
                 value={searchName}

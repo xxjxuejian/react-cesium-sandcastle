@@ -23,15 +23,15 @@ export interface DefenseRings {
 
 /** 保存重点单位时提交的全部可编辑字段。 */
 export interface KeyUnitFormValues {
-  /** 单位名称，去除首尾空白后不能为空，允许同名。 */
+  /** 单位名称，去除首尾空白后为 1～100 个字符，允许同名。 */
   name: string;
   /** 共同中心的 WGS84 经度，单位为度，范围 -180～180。 */
   longitude: number;
   /** 共同中心的 WGS84 纬度，单位为度，范围 -90～90。 */
   latitude: number;
-  /** 地址或地标，未填写时使用空字符串。 */
+  /** 地址或地标，最多 500 个字符；未填写时使用空字符串。 */
   address: string;
-  /** 补充说明，未填写时使用空字符串。 */
+  /** 补充说明，最多 2000 个字符；未填写时使用空字符串。 */
   remark: string;
   /** 三个防御空间，半径递增且高度区间逐层包含。 */
   rings: DefenseRings;
