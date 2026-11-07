@@ -21,13 +21,13 @@ pnpm dev
 
 打开 Vite 显示的地址，使用真实账号登录。`pnpm dev` 默认将 `/api` 代理到 `http://127.0.0.1:3000`；自定义端口时在前端 `.env.local` 设置 `VITE_API_PROXY_TARGET`。原 `pnpm dev:backend` 命令已经移除。
 
-后端当前开放登录与用户管理，其余管理页面随模块实施逐步开放。进度见 [后端阶段任务](docs/backend/后端分阶段实施任务.md)。
+后端当前开放登录、用户管理与避难场所管理，其余管理页面随模块实施逐步开放。进度见 [后端阶段任务](docs/backend/后端分阶段实施任务.md)。
 
 ## 检查命令
 
 - `pnpm lint`：检查 TypeScript 和 React 代码。
 - `pnpm test`：检查请求处理、异步保护和空间业务规则；编译前清理旧测试产物。
-- `node --test tests/airlinePage.test.mjs tests/keyUnitPage.test.mjs tests/mapTools.test.mjs`：页面与地图工具回归。
+- `node --test --test-force-exit tests/airlinePage.test.mjs tests/keyUnitPage.test.mjs tests/mapTools.test.mjs`：页面与地图工具回归；全部断言执行完毕后退出，避免本机 JSDOM 后台计时器持续等待。
 - `pnpm build`：类型检查并构建生产前端。
 
 页面测试中的 `tests/fixtures/` 只用于自动化测试，不向应用提供接口，也不参与生产打包。生产部署需要为同源 `/api` 配置反向代理；Vite 开发代理不能随静态文件部署。

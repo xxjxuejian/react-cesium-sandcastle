@@ -4,7 +4,7 @@ import type {
   ShelterRecord,
 } from "./types";
 import { useEffect, useState } from "react";
-import { message } from "antd";
+import { Alert, Button, message } from "antd";
 import { ShelterTable } from "./components/ShelterTable";
 import { ShelterForm } from "./components/ShelterForm";
 import { ShelterDetailModal } from "./components/ShelterDetailModal";
@@ -22,6 +22,7 @@ const defaultQueryParams: ShelterQueryParams = {
 };
 
 export default function ShelterManagement() {
+  const [messageApi, messageContext] = message.useMessage();
   const [queryParams, setQueryParams] =
     useState<ShelterQueryParams>(defaultQueryParams);
   const [modalOpen, setModalOpen] = useState(false);
@@ -45,15 +46,22 @@ export default function ShelterManagement() {
   } = useShelterDetail();
 
   useEffect(() => {
-    if (listError) message.error("加载避难场所列表失败");
-  }, [listError]);
+    if (listError)
+      messageApi.error(
+        listError instanceof Error ? listError.message : "加载避难场所列表失败",
+      );
+  }, [listError, messageApi]);
 
   useEffect(() => {
     if (!detailError) return;
 
     setDetailOpen(false);
-    message.error("加载避难场所详情失败");
-  }, [detailError]);
+    messageApi.error(
+      detailError instanceof Error
+        ? detailError.message
+        : "加载避难场所详情失败",
+    );
+  }, [detailError, messageApi]);
 
   function handleQuery(values: Partial<ShelterQueryParams>) {
     setQueryParams((currentQuery) => ({
@@ -96,7 +104,7 @@ export default function ShelterManagement() {
           ? queryParams.page - 1
           : queryParams.page;
 
-      message.success("删除成功");
+      messageApi.success("删除成功");
       if (nextPage !== queryParams.page) {
         setQueryParams((currentQuery) => ({
           ...currentQuery,
@@ -105,22 +113,25 @@ export default function ShelterManagement() {
       } else {
         refreshShelters();
       }
-    } catch {
-      message.error("删除避难场所失败");
+    } catch (error) {
+      messageApi.error(
+        error instanceof Error ? error.message : "删除避难场所失败",
+      );
     }
   }
 
   async function handleSubmit(values: ShelterFormValues) {
+    if (submitting) return;
     setSubmitting(true);
 
     try {
       if (modalMode === "create") {
         await createShelter(values);
-        message.success("添加成功");
+        messageApi.success("添加成功");
       } else {
         if (curShelter) {
           await updateShelter(curShelter.id, values);
-          message.success("修改成功");
+          messageApi.success("修改成功");
         }
       }
 
@@ -130,8 +141,11 @@ export default function ShelterManagement() {
       } else {
         refreshShelters();
       }
-    } catch {
-      message.error("保存避难场所失败");
+    } catch (error) {
+      // 保留抽屉与输入，用户可以依据后端的字段错误修正后重新保存。
+      messageApi.error(
+        error instanceof Error ? error.message : "保存避难场所失败",
+      );
     } finally {
       setSubmitting(false);
     }
@@ -154,6 +168,24 @@ export default function ShelterManagement() {
 
   return (
     <>
+      {messageContext}
+      {listError !== null && (
+        <Alert
+          type="error"
+          showIcon
+          className="mb-4"
+          title={
+            listError instanceof Error
+              ? listError.message
+              : "加载避难场所列表失败"
+          }
+          action={
+            <Button size="small" onClick={refreshShelters}>
+              重试
+            </Button>
+          }
+        />
+      )}
       <ShelterTable
         shelters={shelters}
         loading={loading}

@@ -60,7 +60,7 @@ export function ShelterDetailModal({
             <Descriptions.Item label="容量情况">
               {`${shelter.availableCapacity}/${shelter.capacity}`}
             </Descriptions.Item>
-            <Descriptions.Item label="使用率">
+            <Descriptions.Item label="使用率" span={2}>
               {getOccupancyRate(shelter)}
             </Descriptions.Item>
             <Descriptions.Item label="详细地址" span={2}>

@@ -192,6 +192,7 @@ export function ShelterTable({
   return (
     <div className="flex w-full flex-col gap-4">
       <Form<SearchFormValues>
+        name="shelter-search"
         form={form}
         layout="inline"
         className="gap-y-3"

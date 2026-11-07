@@ -11,11 +11,17 @@ import type { ShelterFormValues, ShelterRecord } from "../types";
 
 /** 避难场所新增和编辑抽屉的属性。 */
 interface ShelterFormProps {
+  /** 是否展开编辑抽屉。 */
   open: boolean;
+  /** create 新增，edit 编辑已有场所。 */
   mode: "create" | "edit";
+  /** 编辑的完整记录，新增时为空。 */
   initialShelter: ShelterRecord | null;
+  /** 保存期间禁止重复提交与关闭抽屉。 */
   confirmLoading: boolean;
+  /** 提交校验通过的资料。 */
   onSubmit: (values: ShelterFormValues) => void;
+  /** 关闭抽屉并清理编辑上下文。 */
   onCancel: () => void;
 }
 
@@ -84,7 +90,7 @@ export function ShelterForm({
       size={760}
       destroyOnHidden
       closable={!confirmLoading}
-      maskClosable={!confirmLoading}
+      mask={{ closable: !confirmLoading }}
       keyboard={!confirmLoading}
       onClose={handleClose}
       footer={
@@ -103,6 +109,7 @@ export function ShelterForm({
       }
     >
       <Form<ShelterFormValues>
+        name="shelter-editor"
         form={form}
         layout="vertical"
         requiredMark="optional"
@@ -114,9 +121,12 @@ export function ShelterForm({
             <Form.Item
               name="name"
               label="场所名称"
-              rules={[{ required: true, message: "请输入场所名称" }]}
+              rules={[
+                { required: true, whitespace: true, message: "请输入场所名称" },
+                { max: 100, message: "最多 100 个字符" },
+              ]}
             >
-              <Input placeholder="请输入场所名称" />
+              <Input maxLength={100} placeholder="请输入场所名称" />
             </Form.Item>
             <Form.Item
               name="facilityType"
@@ -157,7 +167,15 @@ export function ShelterForm({
             <Form.Item
               name="capacity"
               label="总容量"
-              rules={[{ required: true, message: "请输入总容量" }]}
+              rules={[
+                { required: true, message: "请输入总容量" },
+                {
+                  type: "integer",
+                  min: 0,
+                  max: Number.MAX_SAFE_INTEGER,
+                  message: "请输入非负安全整数",
+                },
+              ]}
             >
               <InputNumber
                 className="w-full"
@@ -172,6 +190,12 @@ export function ShelterForm({
               dependencies={["capacity"]}
               rules={[
                 { required: true, message: "请输入可用容量" },
+                {
+                  type: "integer",
+                  min: 0,
+                  max: Number.MAX_SAFE_INTEGER,
+                  message: "请输入非负安全整数",
+                },
                 ({ getFieldValue }) => ({
                   /** 保证可用容量不会超过当前填写的总容量。 */
                   validator(_, value: number | null | undefined) {
@@ -188,9 +212,7 @@ export function ShelterForm({
                       return Promise.resolve();
                     }
 
-                    return Promise.reject(
-                      new Error("可用容量不能大于总容量"),
-                    );
+                    return Promise.reject(new Error("可用容量不能大于总容量"));
                   },
                 }),
               ]}
@@ -203,11 +225,7 @@ export function ShelterForm({
               />
             </Form.Item>
           </div>
-          <Form.Item
-            name="facilities"
-            label="设施能力"
-            rules={[{ required: true, message: "请选择设施能力" }]}
-          >
+          <Form.Item name="facilities" label="设施能力">
             <Select
               allowClear
               mode="multiple"
@@ -224,7 +242,7 @@ export function ShelterForm({
             label="详细地址"
             rules={[{ required: true, message: "请输入详细地址" }]}
           >
-            <Input placeholder="请输入详细地址" />
+            <Input maxLength={500} placeholder="请输入详细地址" />
           </Form.Item>
           <div className="grid grid-cols-1 gap-x-4 md:grid-cols-3">
             <Form.Item
@@ -283,14 +301,14 @@ export function ShelterForm({
               label="管理单位"
               rules={[{ required: true, message: "请输入管理单位" }]}
             >
-              <Input placeholder="请输入管理单位" />
+              <Input maxLength={100} placeholder="请输入管理单位" />
             </Form.Item>
             <Form.Item
               name="contactName"
               label="联系人"
               rules={[{ required: true, message: "请输入联系人" }]}
             >
-              <Input placeholder="请输入联系人" />
+              <Input maxLength={64} placeholder="请输入联系人" />
             </Form.Item>
             <Form.Item
               name="contactPhone"
@@ -300,11 +318,16 @@ export function ShelterForm({
                 { pattern: /^1\d{10}$/, message: "请输入 11 位手机号码" },
               ]}
             >
-              <Input placeholder="请输入联系电话" />
+              <Input maxLength={11} placeholder="请输入联系电话" />
             </Form.Item>
           </div>
           <Form.Item name="description" label="备注">
-            <Input.TextArea rows={4} placeholder="请输入备注" />
+            <Input.TextArea
+              rows={4}
+              maxLength={2000}
+              showCount
+              placeholder="请输入备注"
+            />
           </Form.Item>
         </section>
       </Form>
