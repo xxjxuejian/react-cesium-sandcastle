@@ -1,15 +1,22 @@
 import { Form, Input, Modal, Select } from "antd";
 import { useEffect } from "react";
 
-import type { UserFormValues, UserRecord } from "../types";
+import type { UserFormInput, UserRecord } from "../types";
 
+/** 用户新增和编辑弹窗，由列表页负责请求及保存状态。 */
 interface UserFormModalProps {
+  /** 是否显示弹窗。 */
   open: boolean;
+  /** create 需要初始密码，edit 只修改资料。 */
   mode: "create" | "edit";
+  /** 编辑记录，新增时为空。 */
   initialUser: UserRecord | null;
+  /** 请求期间禁用重复保存。 */
   confirmLoading: boolean;
+  /** 关闭弹窗并清理当前记录。 */
   onCancel: () => void;
-  onSubmit: (values: UserFormValues) => void;
+  /** 提交校验通过的界面输入。 */
+  onSubmit: (values: UserFormInput) => void;
 }
 
 const statusOptions = [
@@ -24,10 +31,8 @@ const genderOptions = [
 ];
 
 const roleOptions = [
-  { label: "超级管理员", value: "超级管理员" },
-  { label: "运营专员", value: "运营专员" },
-  { label: "安全审核员", value: "安全审核员" },
-  { label: "数据分析员", value: "数据分析员" },
+  { label: "管理员", value: "admin" },
+  { label: "普通用户", value: "viewer" },
 ];
 
 const departmentOptions = [
@@ -37,9 +42,10 @@ const departmentOptions = [
   { label: "数据服务部", value: "数据服务部" },
 ];
 
-const defaultFormValues: Partial<UserFormValues> = {
+const defaultFormValues: Partial<UserFormInput> = {
   status: "enabled",
   gender: "unknown",
+  role: "viewer",
 };
 
 function getFormValues(initialUser: UserRecord | null) {
@@ -65,7 +71,7 @@ export function UserFormModal({
   onCancel,
   onSubmit,
 }: UserFormModalProps) {
-  const [form] = Form.useForm<UserFormValues>();
+  const [form] = Form.useForm<UserFormInput>();
   const title = mode === "create" ? "新增用户" : "编辑用户";
 
   useEffect(() => {
@@ -87,10 +93,14 @@ export function UserFormModal({
       okText="保存"
       cancelText="取消"
       confirmLoading={confirmLoading}
+      cancelButtonProps={{ disabled: confirmLoading }}
+      closable={!confirmLoading}
+      mask={{ closable: !confirmLoading }}
       onCancel={handleCancel}
       onOk={() => form.submit()}
     >
-      <Form<UserFormValues>
+      <Form<UserFormInput>
+        name="user-profile"
         form={form}
         layout="vertical"
         onFinish={onSubmit}
@@ -98,17 +108,40 @@ export function UserFormModal({
         <Form.Item
           name="username"
           label="用户名"
-          rules={[{ required: true, message: "请输入用户名" }]}
+          rules={[
+            { required: true, whitespace: true, message: "请输入用户名" },
+            { max: 64, message: "最多 64 个字符" },
+          ]}
         >
-          <Input placeholder="请输入用户名" />
+          <Input maxLength={64} autoComplete="off" placeholder="请输入用户名" />
         </Form.Item>
         <Form.Item
           name="nickname"
           label="昵称"
-          rules={[{ required: true, message: "请输入昵称" }]}
+          rules={[
+            { required: true, whitespace: true, message: "请输入昵称" },
+            { max: 64, message: "最多 64 个字符" },
+          ]}
         >
           <Input placeholder="请输入昵称" />
         </Form.Item>
+        {mode === "create" && (
+          <Form.Item
+            name="password"
+            label="初始密码"
+            preserve={false}
+            rules={[
+              { required: true, message: "请输入初始密码" },
+              { min: 15, max: 128, message: "密码长度须为 15～128 个字符" },
+            ]}
+          >
+            <Input.Password
+              autoComplete="new-password"
+              maxLength={128}
+              placeholder="请输入 15～128 个字符的初始密码"
+            />
+          </Form.Item>
+        )}
         <Form.Item
           name="status"
           label="状态"
@@ -123,12 +156,12 @@ export function UserFormModal({
         >
           <Select options={genderOptions} placeholder="请选择性别" />
         </Form.Item>
-        <Form.Item
-          name="department"
-          label="部门"
-          rules={[{ required: true, message: "请选择部门" }]}
-        >
-          <Select options={departmentOptions} placeholder="请选择部门" />
+        <Form.Item name="department" label="部门">
+          <Select
+            allowClear
+            options={departmentOptions}
+            placeholder="请选择部门"
+          />
         </Form.Item>
         <Form.Item
           name="role"
@@ -140,20 +173,14 @@ export function UserFormModal({
         <Form.Item
           name="phone"
           label="手机号码"
-          rules={[
-            { required: true, message: "请输入手机号码" },
-            { pattern: /^1\d{10}$/, message: "请输入 11 位手机号码" },
-          ]}
+          rules={[{ pattern: /^1\d{10}$/, message: "请输入 11 位手机号码" }]}
         >
           <Input placeholder="请输入手机号码" />
         </Form.Item>
         <Form.Item
           name="email"
           label="邮箱"
-          rules={[
-            { required: true, message: "请输入邮箱" },
-            { type: "email", message: "请输入正确的邮箱地址" },
-          ]}
+          rules={[{ type: "email", message: "请输入正确的邮箱地址" }]}
         >
           <Input placeholder="请输入邮箱" />
         </Form.Item>

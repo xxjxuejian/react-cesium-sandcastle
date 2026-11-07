@@ -1,5 +1,6 @@
 import type {
   UserFormValues,
+  UserCreateValues,
   UserListResult,
   UserQueryParams,
   UserRecord,
@@ -8,18 +9,32 @@ import type { ApiResponse } from "@/types/api";
 import request from "@/utils/request";
 
 /** 查询用户分页列表。 */
-export function getUserList(params: UserQueryParams): Promise<UserListResult> {
+export function getUserList(
+  params: UserQueryParams,
+  signal?: AbortSignal,
+): Promise<UserListResult> {
   return request.get<ApiResponse<UserListResult>, UserListResult>(
     "/system-management/users",
-    { params },
+    { params, signal },
   );
 }
 
 /** 新增用户。 */
-export function createUser(values: UserFormValues): Promise<UserRecord> {
+export function createUser(values: UserCreateValues): Promise<UserRecord> {
   return request.post<ApiResponse<UserRecord>, UserRecord>(
     "/system-management/users",
     values,
+  );
+}
+
+/** 管理员重置密码；后端会同时撤销该账号的全部会话。 */
+export function resetUserPassword(
+  id: string,
+  password: string,
+): Promise<boolean> {
+  return request.put<ApiResponse<boolean>, boolean>(
+    `/system-management/users/${id}/password`,
+    { password },
   );
 }
 

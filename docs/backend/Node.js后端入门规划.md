@@ -1,6 +1,6 @@
 # Node.js 独立后端入门规划
 
-日期：2026-11-05。本文描述整体设计。独立后端已完成 SQLite 数据库基础及登录联调，管理接口将逐阶段实现。实施进度与验收以[后端分阶段实施任务](./后端分阶段实施任务.md)为准。
+更新日期：2026-11-07。本文描述整体设计。独立后端已实现 SQLite 数据库基础、登录联调与用户管理，其余管理接口将逐阶段实现。实施进度与验收以[后端分阶段实施任务](./后端分阶段实施任务.md)为准。
 
 ## 1. 第一版的目标
 
@@ -14,13 +14,13 @@
 
 ## 2. 从已有代码理解后端
 
-目前的调用关系：
+原有 Mock 模式的调用关系（仍保留供页面演示）：
 
 ```text
 管理页面 → src/api/*.ts → src/utils/request.ts → mock/*.ts → 内存数组
 ```
 
-接入后：
+真实联调模式的调用关系（当前已接入登录与用户管理）：
 
 ```text
 管理页面 → 原有 API 方法 → /api 请求 → Node.js 后端 → SQLite
@@ -110,6 +110,7 @@ react-cesium-server/
 | POST | `/api/auth/logout` | 撤销当前会话，返回 true |
 | GET、POST | `/api/system-management/users` | 列表、新增 |
 | PUT、DELETE | `/api/system-management/users/:id` | 修改、删除 |
+| PUT              | `/api/system-management/users/:id/password` | 管理员重置密码并撤销会话 |
 | GET、POST | `/api/system-management/shelters` | 列表、新增 |
 | GET、PUT、DELETE | `/api/system-management/shelters/:id` | 详情、修改、删除 |
 | GET、POST | `/api/system-management/airlines` | 列表、新增 |
@@ -121,17 +122,17 @@ react-cesium-server/
 
 第一版建议真正使用 HTTP 状态：400 参数错误、401 会话失效、403 无权限、404 记录不存在、409 用户名冲突、500 服务端异常。航线和重点单位的原文档采用 HTTP 200 搭配业务码，迁移时要同步修订文档和请求拦截器，不能只改后端。
 
-当前 `src/utils/request.ts` 在 HTTP 非成功响应时直接抛 Axios 错误。需要补充读取 `error.response.data.message`，并在 401 时清理登录状态、回到登录页；403 只提示无权限，不当作退出登录。取消请求继续保留原有处理。
+阶段 2 已在 `src/utils/request.ts` 补齐 HTTP 错误消息读取，认证 store 处理 401 并清理登录状态、回到登录页；403 只提示无权限，不当作退出登录。取消请求继续保留原有处理。
 
 分页默认 page=1、pageSize=10，限制 pageSize 为 1～100，先筛选再统计和分页。沿用航线与重点单位的更新时间倒序、编号升序规则；其他模块也明确稳定排序。列表为空与查询失败要区分。
 
 ## 7. 登录、用户与权限需要先统一
 
-当前 `auth.mock.ts` 的 admin/viewer 与 `user.mock.ts` 的用户列表是两套数组，角色名称也不一致。因此现在修改用户列表不等于修改真实登录账号。真实后端统一使用 users 表。
+`auth.mock.ts` 与 `user.mock.ts` 仍分别维护模拟登录账号与模拟列表。阶段 3 已将角色编码统一为 admin/viewer，但 Mock 模式下修改列表不会修改登录账号。真实后端的登录与用户管理统一使用 users 表。
 
 第一版建议只保留 `admin`、`viewer` 两种角色编码，界面显示“管理员”“普通用户”。管理员可以访问四个管理模块；普通用户仅访问目前允许的示例页面。对应调整用户表单里现有的四种角色选项、用户类型与展示文案。这是明确的范围简化，不自动推断运营专员等现有名称的权限。
 
-账号创建目前没有密码字段，实施时补上“新增时必填初始密码”；新增请求与编辑请求分开，编辑普通资料不修改密码。另外增加 `PUT /api/system-management/users/:id/password` 供管理员重置密码，成功撤销该用户已有会话。第一版不开放自行注册。
+阶段 3 已补齐“新增时必填初始密码”，新增请求与编辑请求分开，编辑普通资料不修改密码。`PUT /api/system-management/users/:id/password` 供管理员重置密码，成功撤销该用户已有会话。密码长度为 15～128 个字符，与管理员初始化一致。第一版不开放自行注册。
 
 建议使用随机、不可预测的会话 token，继续走现有 `Authorization: Bearer ...`，不用先引入 JWT。数据库只保存 token 的哈希和过期时间；建议默认有效期 8 小时，不做自动续期。每次请求检查会话期限、用户状态和当前角色。退出删除会话；停用账号、删除账号或改密码撤销会话，角色调整按数据库中的最新权限生效。
 
@@ -170,11 +171,11 @@ react-cesium-server/
 
 本地前端仍用 `pnpm dev`；后端也提供 `pnpm dev`，监听例如 3000 端口。后端另提供 build、start、test、lint、db:migrate、db:seed 命令，README 按实际实现写清楚执行顺序。
 
-前端设置 `VITE_USE_MOCK=false`，并在 `vite.config.ts` 中启用 `/api` 到 `http://localhost:3000` 的代理。后端本身也使用 `/api` 前缀，因此不删除此前缀。`request.ts` 的 baseURL 可以继续保持 `/api`。
+前端在 `frontend_single` 分支运行 `pnpm dev:backend`，该模式关闭 Mock，并在 `vite.config.ts` 中启用 `/api` 到 `http://127.0.0.1:3000` 的代理。后端端口不同时通过 `VITE_API_PROXY_TARGET` 指定目标。后端本身也使用 `/api` 前缀，因此不删除此前缀。`request.ts` 的 baseURL 保持 `/api`。
 
 生产环境使用同一个 HTTPS 域名：静态文件交给 Web 服务，`/api` 反向代理到 Node.js。Vite 开发代理在生产构建后不会生效；若继续把前端放在 GitHub Pages，需要另设后端地址并配置明确允许的跨域来源。
 
-后端 `.env.example` 至少说明 PORT、DATABASE_PATH、SESSION_TTL_HOURS 的用途；真实环境变量和数据库文件排除 Git。数据库放在持久目录，备份时使用一致性备份方式或停服备份，并验证能够恢复。部署先保持单实例。
+当前后端 `.env.example` 说明 PORT、HOST、DATABASE_PATH 和管理员初始化配置；会话固定有效 8 小时，尚未提供 SESSION_TTL_HOURS 配置。真实环境变量和数据库文件排除 Git。数据库放在持久目录，备份时使用一致性备份方式或停服备份，并验证能够恢复。部署先保持单实例。
 
 ## 11. 原始实施概览与验收
 

@@ -14,16 +14,29 @@ import { useEffect } from "react";
 
 import type { UserQueryParams, UserRecord, UserStatus } from "../types";
 
+/** 用户列表及查询事件；所有写请求由页面处理。 */
 interface UserTablePanelProps {
+  /** 当前页记录。 */
   users: UserRecord[];
+  /** 筛选后的总数。 */
   total: number;
+  /** 列表是否正在加载。 */
   loading: boolean;
+  /** 当前筛选及分页。 */
   query: UserQueryParams;
+  /** 提交筛选。 */
   onSearch: (values: Partial<UserQueryParams>) => void;
+  /** 重置筛选。 */
   onReset: () => void;
+  /** 打开新增弹窗。 */
   onCreate: () => void;
+  /** 打开编辑弹窗。 */
   onEdit: (user: UserRecord) => void;
+  /** 删除指定用户。 */
   onDelete: (user: UserRecord) => void;
+  /** 打开指定用户的密码重置弹窗。 */
+  onResetPassword: (user: UserRecord) => void;
+  /** 切换分页。 */
   onPageChange: (page: number, pageSize: number) => void;
 }
 
@@ -61,6 +74,7 @@ export function UserTablePanel({
   onCreate,
   onEdit,
   onDelete,
+  onResetPassword,
   onPageChange,
 }: UserTablePanelProps) {
   const [form] = Form.useForm<SearchFormValues>();
@@ -111,6 +125,8 @@ export function UserTablePanel({
       title: "角色",
       dataIndex: "role",
       width: 140,
+      render: (role: UserRecord["role"]) =>
+        role === "admin" ? "管理员" : "普通用户",
     },
     {
       title: "手机号码",
@@ -131,11 +147,18 @@ export function UserTablePanel({
       title: "操作",
       key: "actions",
       fixed: "right",
-      width: 140,
+      width: 220,
       render: (_, record) => (
         <Space size="small">
           <Button type="link" size="small" onClick={() => onEdit(record)}>
             编辑
+          </Button>
+          <Button
+            type="link"
+            size="small"
+            onClick={() => onResetPassword(record)}
+          >
+            重置密码
           </Button>
           <Popconfirm
             title="确认删除用户？"
@@ -162,6 +185,7 @@ export function UserTablePanel({
   return (
     <Space className="w-full" orientation="vertical" size="middle">
       <Form<SearchFormValues>
+        name="user-search"
         form={form}
         layout="inline"
         onFinish={onSearch}

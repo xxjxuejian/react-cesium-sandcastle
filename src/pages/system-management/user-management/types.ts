@@ -4,6 +4,9 @@ export type UserStatus = "enabled" | "disabled";
 /** 用户性别。 */
 export type UserGender = "male" | "female" | "unknown";
 
+/** admin 表示管理员，viewer 表示只能访问示例页面的普通用户。 */
+export type UserRole = "admin" | "viewer";
+
 /** 用户列表中的单条用户数据。 */
 export interface UserRecord {
   /** 用户唯一标识。 */
@@ -19,7 +22,7 @@ export interface UserRecord {
   /** 所属部门。 */
   department: string;
   /** 用户角色。 */
-  role: string;
+  role: UserRole;
   /** 手机号码。 */
   phone: string;
   /** 邮箱地址。 */
@@ -46,7 +49,7 @@ export interface UserQueryParams {
   pageSize: number;
 }
 
-/** 新增或编辑用户时提交的表单数据。 */
+/** 编辑用户的资料白名单；不会修改密码或系统维护字段。 */
 export interface UserFormValues {
   /** 用户名。 */
   username: string;
@@ -59,11 +62,23 @@ export interface UserFormValues {
   /** 所属部门。 */
   department: string;
   /** 用户角色。 */
-  role: string;
+  role: UserRole;
   /** 手机号码。 */
   phone: string;
   /** 邮箱地址。 */
   email: string;
+}
+
+/** 新增真实账号时需要同时提供初始密码。 */
+export interface UserCreateValues extends UserFormValues {
+  /** 初始密码，15～128 个字符，响应中不会返回。 */
+  password: string;
+}
+
+/** 新增与编辑共用的界面输入，提交时分别转换为对应请求。 */
+export interface UserFormInput extends UserFormValues {
+  /** 仅新增时必填；编辑时省略，密码须通过重置操作修改。 */
+  password?: string;
 }
 
 /** 分页列表响应。 */

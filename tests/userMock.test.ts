@@ -52,3 +52,64 @@ test("删除用户返回 true 和对应消息，重复删除返回业务错误",
     data: null,
   });
 });
+
+test("Mock 新增校验初始密码与唯一用户名，响应不含密码及伪造字段", () => {
+  const create = getMock("post", "/api/system-management/users");
+  const body = {
+    username: "new-mock-user",
+    nickname: "模拟用户",
+    status: "enabled" as const,
+    gender: "unknown" as const,
+    role: "viewer" as const,
+    password: "test-only-initial-password",
+    id: "forged",
+  };
+  const result = create.response({ url: create.url, body, query: {} }) as {
+    code: number;
+    data: { id: string; password?: string; role: string };
+  };
+  assert.equal(result.code, 0);
+  assert.notEqual(result.data.id, "forged");
+  assert.equal(result.data.password, undefined);
+  assert.equal(result.data.role, "viewer");
+  const duplicate = create.response({ url: create.url, body, query: {} }) as {
+    code: number;
+  };
+  assert.equal(duplicate.code, 40900);
+  const invalid = create.response({
+    url: create.url,
+    body: { ...body, username: "another-user", password: "short" },
+    query: {},
+  }) as { code: number };
+  assert.equal(invalid.code, 40000);
+  const reset = getMock("put", "/api/system-management/users/:id/password");
+  assert.deepEqual(
+    reset.response({
+      url: `/api/system-management/users/${result.data.id}/password`,
+      body: { password: body.password },
+      query: {},
+    }),
+    { code: 0, message: "模拟重置成功，不会修改登录账号", data: true },
+  );
+});
+
+test("Mock 保护最后一个启用管理员，分页参数错误返回明确响应", () => {
+  const remove = getMock("delete", "/api/system-management/users/:id");
+  const result = remove.response({
+    url: "/api/system-management/users/1",
+    body: {},
+    query: {},
+  }) as { code: number };
+  assert.equal(result.code, 40900);
+  const list = getMock("get", "/api/system-management/users");
+  assert.equal(
+    (
+      list.response({
+        url: list.url,
+        body: {},
+        query: { pageSize: "101" },
+      }) as { code: number }
+    ).code,
+    40000,
+  );
+});
